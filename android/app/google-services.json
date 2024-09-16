@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "314969008159",
+    "project_id": "silah-4ba37",
+    "storage_bucket": "silah-4ba37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314969008159:android:48930754af13f52c944d2a",
+        "android_client_info": {
+          "package_name": "com.mycompany.silah"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQogToR0SBBDtuUwh2moxPZmqbhE8AySs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
