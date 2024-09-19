@@ -101,8 +101,8 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                   color: Color(0xFF9299A1),
                   size: 24.0,
                 ),
-                onPressed: () async {
-                  context.pushNamed('directory');
+                onPressed: () {
+                  print('IconButton pressed ...');
                 },
               ),
               FlutterFlowIconButton(
@@ -115,8 +115,8 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                   color: Color(0xFF9299A1),
                   size: 24.0,
                 ),
-                onPressed: () async {
-                  context.pushNamed('feeds');
+                onPressed: () {
+                  print('IconButton pressed ...');
                 },
               ),
               Column(
@@ -137,8 +137,8 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                         color: Colors.white,
                         size: 30.0,
                       ),
-                      onPressed: () async {
-                        context.pushNamed('home');
+                      onPressed: () {
+                        print('MiddleButton pressed ...');
                       },
                     ),
                   ),

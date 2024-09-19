@@ -8,13 +8,18 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl = '';
+
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
   String? _textController1Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
     }
 
     return null;
@@ -26,7 +31,7 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
   String? Function(BuildContext, String?)? textController2Validator;
   String? _textController2Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
     }
 
     return null;
@@ -38,7 +43,7 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
   String? Function(BuildContext, String?)? textController3Validator;
   String? _textController3Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
     }
 
     return null;
@@ -50,7 +55,7 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
   String? Function(BuildContext, String?)? textController4Validator;
   String? _textController4Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
     }
 
     return null;
@@ -62,7 +67,7 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
   String? Function(BuildContext, String?)? textController5Validator;
   String? _textController5Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
     }
 
     return null;
@@ -74,7 +79,7 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
   String? Function(BuildContext, String?)? textController6Validator;
   String? _textController6Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
     }
 
     return null;
@@ -86,7 +91,14 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
   String? Function(BuildContext, String?)? textController7Validator;
   String? _textController7Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
+    }
+
+    if (val.length < 10) {
+      return 'الرقم غير صحيح';
+    }
+    if (val.length > 10) {
+      return 'الرقم غير صحيح';
     }
 
     return null;
@@ -102,11 +114,11 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
   String? _emailAddressTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return 'Has to be a valid email address.';
+      return 'لابد أن يكون البريد على هذا النمط XXX@xxx.com';
     }
     return null;
   }
@@ -118,9 +130,12 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
   String? _passwordTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
     }
 
+    if (!RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+\$').hasMatch(val)) {
+      return 'لم توافق الشروط';
+    }
     return null;
   }
 
@@ -133,14 +148,18 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
   String? _passwordConfirmTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
     }
 
     return null;
   }
 
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  FamilyRecord? family;
+  FamilyRecord? familyExist;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  FamilyRecord? newFamily;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  UsersRecord? user;
 
   @override
   void initState(BuildContext context) {

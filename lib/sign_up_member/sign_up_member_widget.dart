@@ -12,7 +12,6 @@ import '/flutter_flow/upload_data.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:provider/provider.dart';
 import 'sign_up_member_model.dart';
 export 'sign_up_member_model.dart';
 
@@ -107,8 +106,6 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -196,7 +193,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                           ),
                           child: Form(
                             key: _model.formKey,
-                            autovalidateMode: AutovalidateMode.disabled,
+                            autovalidateMode: AutovalidateMode.always,
                             child: Align(
                               alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Padding(
@@ -208,23 +205,26 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 16.0),
-                                          child: Text(
-                                            'تسجيل الدخول',
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .displaySmall
-                                                .override(
-                                                  fontFamily:
-                                                      'Plus Jakarta Sans',
-                                                  color: const Color(0xFF101213),
-                                                  fontSize: 25.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 16.0),
+                                            child: Text(
+                                              'تسجيل الدخول',
+                                              textAlign: TextAlign.center,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .displaySmall
+                                                  .override(
+                                                    fontFamily:
+                                                        'Plus Jakarta Sans',
+                                                    color: const Color(0xFF101213),
+                                                    fontSize: 25.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -819,7 +819,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                       letterSpacing: 0.0,
                                                     ),
                                                 hintText: 'اختر عائلتك',
-                                                searchHintText: 'Search...',
+                                                searchHintText: 'بحث...',
                                                 icon: Icon(
                                                   Icons
                                                       .keyboard_arrow_down_rounded,
@@ -980,10 +980,19 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
                                               ),
-                                          keyboardType: TextInputType.number,
+                                          maxLength: 15,
+                                          buildCounter: (context,
+                                                  {required currentLength,
+                                                  required isFocused,
+                                                  maxLength}) =>
+                                              null,
+                                          keyboardType: TextInputType.phone,
                                           validator: _model
                                               .textController5Validator
                                               .asValidator(context),
+                                          inputFormatters: [
+                                            _model.textFieldMask5
+                                          ],
                                         ),
                                       ),
                                     ),
@@ -1111,6 +1120,29 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                               .emailAddressTextControllerValidator
                                               .asValidator(context),
                                         ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 16.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '- يجب أن تحتوي كلمة المرور على أحرف صغيرة وكبيرة وأرقام.\n- يجب أن تحتوي كلمة المرور 6 خانات على الأقل.',
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  fontSize: 11.0,
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                     Padding(
@@ -1316,9 +1348,8 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 16.0),
-                                      child:
-                                          StreamBuilder<List<RequestsRecord>>(
-                                        stream: queryRequestsRecord(
+                                      child: StreamBuilder<List<UsersRecord>>(
+                                        stream: queryUsersRecord(
                                           singleRecord: true,
                                         ),
                                         builder: (context, snapshot) {
@@ -1340,18 +1371,16 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                               ),
                                             );
                                           }
-                                          List<RequestsRecord>
-                                              buttonRequestsRecordList =
+                                          List<UsersRecord>
+                                              buttonUsersRecordList =
                                               snapshot.data!;
                                           // Return an empty Container when the item does not exist.
                                           if (snapshot.data!.isEmpty) {
                                             return Container();
                                           }
-                                          final buttonRequestsRecord =
-                                              buttonRequestsRecordList
-                                                      .isNotEmpty
-                                                  ? buttonRequestsRecordList
-                                                      .first
+                                          final buttonUsersRecord =
+                                              buttonUsersRecordList.isNotEmpty
+                                                  ? buttonUsersRecordList.first
                                                   : null;
 
                                           return FFButtonWidget(
@@ -1360,6 +1389,10 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                       null ||
                                                   !_model.formKey.currentState!
                                                       .validate()) {
+                                                return;
+                                              }
+                                              if (_model.dropDownValue1 ==
+                                                  null) {
                                                 return;
                                               }
                                               if (_model.dropDownValue2 ==
@@ -1397,16 +1430,13 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                 return;
                                               }
 
-                                              FFAppState().familyID =
-                                                  _model.dropDownValue1!;
-                                              safeSetState(() {});
                                               _model.family =
                                                   await queryFamilyRecordOnce(
                                                 queryBuilder: (familyRecord) =>
                                                     familyRecord.where(
                                                   'FamilyName',
                                                   isEqualTo:
-                                                      FFAppState().familyID,
+                                                      _model.dropDownValue1,
                                                 ),
                                                 singleRecord: true,
                                               ).then((s) => s.firstOrNull);
@@ -1435,8 +1465,10 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   email: _model
                                                       .emailAddressTextController
                                                       .text,
-                                                  familyID:
+                                                  uid: currentUserUid,
+                                                  familyName:
                                                       _model.family?.reference,
+                                                  accepted: false,
                                                 ),
                                                 ...mapToFirestore(
                                                   {
@@ -1468,8 +1500,10 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   email: _model
                                                       .emailAddressTextController
                                                       .text,
-                                                  familyID:
+                                                  uid: currentUserUid,
+                                                  familyName:
                                                       _model.family?.reference,
+                                                  accepted: false,
                                                 ),
                                                 ...mapToFirestore(
                                                   {
@@ -1478,20 +1512,10 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   },
                                                 ),
                                               }, usersRecordReference);
-
-                                              await RequestsRecord.collection
-                                                  .doc()
-                                                  .set(createRequestsRecordData(
-                                                    accepted: false,
-                                                    userID:
-                                                        _model.user?.reference,
-                                                    familyID: _model
-                                                        .family?.reference,
-                                                  ));
-                                              if (buttonRequestsRecord!
-                                                  .accepted) {
+                                              if (buttonUsersRecord!.accepted) {
                                                 context.pushNamedAuth(
-                                                    'HOME1', context.mounted);
+                                                    'HomeUser',
+                                                    context.mounted);
                                               } else {
                                                 context.pushNamedAuth(
                                                   'PendingPage',
@@ -1499,7 +1523,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   queryParameters: {
                                                     'familyname':
                                                         serializeParam(
-                                                      _model.dropDownValue1,
+                                                      _model.family?.familyName,
                                                       ParamType.String,
                                                     ),
                                                   }.withoutNulls,

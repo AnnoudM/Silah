@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'feeds_widget.dart' show FeedsWidget;
+import 'side_widget.dart' show SideWidget;
 import 'package:flutter/material.dart';
 
-class FeedsModel extends FlutterFlowModel<FeedsWidget> {
+class SideModel extends FlutterFlowModel<SideWidget> {
   @override
   void initState(BuildContext context) {}
 

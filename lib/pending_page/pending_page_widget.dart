@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'pending_page_model.dart';
 export 'pending_page_model.dart';
 
@@ -154,10 +155,11 @@ class _PendingPageWidgetState extends State<PendingPageWidget>
                                             MediaQuery.of(context).textScaler,
                                         text: TextSpan(
                                           children: [
-                                            const TextSpan(
+                                            TextSpan(
                                               text:
                                                   ' تم ارسال طلب انضمامك لمشرف\n اسرة  ',
-                                              style: TextStyle(
+                                              style: GoogleFonts.getFont(
+                                                'Plus Jakarta Sans',
                                                 color: Colors.black,
                                                 fontSize: 15.0,
                                               ),
@@ -180,10 +182,11 @@ class _PendingPageWidgetState extends State<PendingPageWidget>
                                                             FontWeight.w600,
                                                       ),
                                             ),
-                                            const TextSpan(
+                                            TextSpan(
                                               text:
                                                   '!\n تستطيع الدخول الى حسابك عندما يتم قبولك.',
-                                              style: TextStyle(
+                                              style: GoogleFonts.getFont(
+                                                'Plus Jakarta Sans',
                                                 color: Colors.black,
                                                 fontSize: 15.0,
                                               ),

@@ -50,23 +50,12 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
           buttonSize: 60.0,
           icon: Icon(
             Icons.arrow_back_rounded,
-            color: FlutterFlowTheme.of(context).primaryText,
+            color: FlutterFlowTheme.of(context).primaryBackground,
             size: 30.0,
           ),
           onPressed: () async {
             context.pop();
           },
-        ),
-        title: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
-          child: Text(
-            'ارجع',
-            style: FlutterFlowTheme.of(context).displaySmall.override(
-                  fontFamily: 'Outfit',
-                  fontSize: 16.0,
-                  letterSpacing: 0.0,
-                ),
-          ),
         ),
         actions: const [],
         centerTitle: false,

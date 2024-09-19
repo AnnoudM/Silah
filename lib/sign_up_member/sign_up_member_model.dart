@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'sign_up_member_widget.dart' show SignUpMemberWidget;
 import 'package:flutter/material.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
   ///  State fields for stateful widgets in this page.
@@ -19,7 +20,7 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
   String? Function(BuildContext, String?)? textController1Validator;
   String? _textController1Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
     }
 
     return null;
@@ -31,7 +32,7 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
   String? Function(BuildContext, String?)? textController2Validator;
   String? _textController2Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوبهذا الحقل مطلوب';
     }
 
     return null;
@@ -43,7 +44,7 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
   String? Function(BuildContext, String?)? textController3Validator;
   String? _textController3Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
     }
 
     return null;
@@ -55,7 +56,7 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
   String? Function(BuildContext, String?)? textController4Validator;
   String? _textController4Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
     }
 
     return null;
@@ -67,10 +68,11 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode5;
   TextEditingController? textController5;
+  final textFieldMask5 = MaskTextInputFormatter(mask: '966 ### ### ###');
   String? Function(BuildContext, String?)? textController5Validator;
   String? _textController5Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
     }
 
     return null;
@@ -86,11 +88,11 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
   String? _emailAddressTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return 'Has to be a valid email address.';
+      return 'لابد أن يكون البريد على هذا النمط XXX@xxx.com';
     }
     return null;
   }
@@ -102,9 +104,12 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
   String? _passwordTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
     }
 
+    if (!RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+\$').hasMatch(val)) {
+      return 'لم توافق الشروط';
+    }
     return null;
   }
 
@@ -117,9 +122,12 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
   String? _passwordConfirmTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'هذا الحقل مطلوب';
     }
 
+    if (!RegExp('').hasMatch(val)) {
+      return 'Invalid text';
+    }
     return null;
   }
 

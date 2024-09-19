@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -7,8 +8,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/upload_data.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'sign_up_admin_model.dart';
 export 'sign_up_admin_model.dart';
@@ -217,10 +220,94 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                             .override(
                                               fontFamily: 'Plus Jakarta Sans',
                                               color: const Color(0xFF101213),
-                                              fontSize: 32.0,
+                                              fontSize: 25.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                             ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 26.0),
+                                      child: FlutterFlowIconButton(
+                                        borderColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                        borderRadius: 50.0,
+                                        buttonSize: 85.0,
+                                        fillColor: const Color(0xFFFFFCF6),
+                                        icon: Icon(
+                                          Icons.camera_alt,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 50.0,
+                                        ),
+                                        onPressed: () async {
+                                          final selectedMedia =
+                                              await selectMediaWithSourceBottomSheet(
+                                            context: context,
+                                            allowPhoto: true,
+                                          );
+                                          if (selectedMedia != null &&
+                                              selectedMedia.every((m) =>
+                                                  validateFileFormat(
+                                                      m.storagePath,
+                                                      context))) {
+                                            safeSetState(() =>
+                                                _model.isDataUploading = true);
+                                            var selectedUploadedFiles =
+                                                <FFUploadedFile>[];
+
+                                            var downloadUrls = <String>[];
+                                            try {
+                                              selectedUploadedFiles =
+                                                  selectedMedia
+                                                      .map(
+                                                          (m) => FFUploadedFile(
+                                                                name: m
+                                                                    .storagePath
+                                                                    .split('/')
+                                                                    .last,
+                                                                bytes: m.bytes,
+                                                                height: m
+                                                                    .dimensions
+                                                                    ?.height,
+                                                                width: m
+                                                                    .dimensions
+                                                                    ?.width,
+                                                                blurHash:
+                                                                    m.blurHash,
+                                                              ))
+                                                      .toList();
+
+                                              downloadUrls = (await Future.wait(
+                                                selectedMedia.map(
+                                                  (m) async => await uploadData(
+                                                      m.storagePath, m.bytes),
+                                                ),
+                                              ))
+                                                  .where((u) => u != null)
+                                                  .map((u) => u!)
+                                                  .toList();
+                                            } finally {
+                                              _model.isDataUploading = false;
+                                            }
+                                            if (selectedUploadedFiles.length ==
+                                                    selectedMedia.length &&
+                                                downloadUrls.length ==
+                                                    selectedMedia.length) {
+                                              safeSetState(() {
+                                                _model.uploadedLocalFile =
+                                                    selectedUploadedFiles.first;
+                                                _model.uploadedFileUrl =
+                                                    downloadUrls.first;
+                                              });
+                                            } else {
+                                              safeSetState(() {});
+                                              return;
+                                            }
+                                          }
+                                        },
                                       ),
                                     ),
                                     Row(
@@ -822,10 +909,14 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
                                               ),
-                                          keyboardType: TextInputType.number,
+                                          keyboardType: TextInputType.phone,
                                           validator: _model
                                               .textController7Validator
                                               .asValidator(context),
+                                          inputFormatters: [
+                                            FilteringTextInputFormatter.allow(
+                                                RegExp('[0-9]'))
+                                          ],
                                         ),
                                       ),
                                     ),
@@ -848,6 +939,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Readex Pro',
+                                                    color: const Color(0xFF262D34),
                                                     letterSpacing: 0.0,
                                                   ),
                                           hintText: 'الجنس',
@@ -947,6 +1039,29 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                         ),
                                       ),
                                     ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 10.0),
+                                          child: Text(
+                                            '- يجب أن تحتوي كلمة المرور على أحرف صغيرة وكبيرة وأرقام.\n- يجب أن تحتوي كلمة المرور 6 خانات على الأقل.',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  fontSize: 11.0,
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 16.0),
@@ -963,7 +1078,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                           obscureText:
                                               !_model.passwordVisibility,
                                           decoration: InputDecoration(
-                                            labelText: 'الرقم السري',
+                                            labelText: 'كلمة المرور',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
@@ -1063,7 +1178,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                           obscureText:
                                               !_model.passwordConfirmVisibility,
                                           decoration: InputDecoration(
-                                            labelText: 'تأكيد الرقم السري',
+                                            labelText: 'تأكيد كلمة المرور',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
@@ -1162,7 +1277,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                           if (_model.dropDownValue == null) {
                                             return;
                                           }
-                                          _model.family =
+                                          _model.familyExist =
                                               await queryFamilyRecordOnce(
                                             queryBuilder: (familyRecord) =>
                                                 familyRecord.where(
@@ -1173,7 +1288,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                             singleRecord: true,
                                           ).then((s) => s.firstOrNull);
                                           shouldSetState = true;
-                                          if (_model.family?.familyName ==
+                                          if (_model.familyExist?.familyName ==
                                               _model.textController5.text) {
                                             await showDialog(
                                               context: context,
@@ -1187,7 +1302,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: const Text('اضغط هنا'),
                                                     ),
                                                   ],
                                                 );
@@ -1232,42 +1347,88 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                             return;
                                           }
 
-                                          await FamilyRecord.collection
-                                              .doc()
+                                          var familyRecordReference =
+                                              FamilyRecord.collection.doc();
+                                          await familyRecordReference
                                               .set(createFamilyRecordData(
-                                                familyDesc:
-                                                    _model.textController6.text,
-                                                familyName:
-                                                    _model.textController5.text,
-                                                familyAdmin:
-                                                    _model.textController1.text,
-                                              ));
+                                            familyDesc:
+                                                _model.textController6.text,
+                                            familyName:
+                                                _model.textController5.text,
+                                            familyAdmin:
+                                                _model.textController1.text,
+                                          ));
+                                          _model.newFamily =
+                                              FamilyRecord.getDocumentFromData(
+                                                  createFamilyRecordData(
+                                                    familyDesc: _model
+                                                        .textController6.text,
+                                                    familyName: _model
+                                                        .textController5.text,
+                                                    familyAdmin: _model
+                                                        .textController1.text,
+                                                  ),
+                                                  familyRecordReference);
+                                          shouldSetState = true;
 
-                                          await UsersRecord.collection
-                                              .doc()
+                                          var usersRecordReference =
+                                              UsersRecord.collection.doc();
+                                          await usersRecordReference
                                               .set(createUsersRecordData(
-                                                password: _model
-                                                    .passwordTextController
-                                                    .text,
-                                                gender: _model.dropDownValue,
-                                                isAdmin: true,
-                                                email: _model
-                                                    .emailAddressTextController
-                                                    .text,
-                                                displayName:
-                                                    _model.textController1.text,
-                                                phoneNumber:
-                                                    _model.textController7.text,
-                                                secondName:
-                                                    _model.textController2.text,
-                                                thirdName:
-                                                    _model.textController3.text,
-                                                fourthName:
-                                                    _model.textController4.text,
-                                              ));
+                                            password: _model
+                                                .passwordTextController.text,
+                                            gender: _model.dropDownValue,
+                                            isAdmin: true,
+                                            email: _model
+                                                .emailAddressTextController
+                                                .text,
+                                            displayName:
+                                                _model.textController1.text,
+                                            phoneNumber:
+                                                _model.textController7.text,
+                                            secondName:
+                                                _model.textController2.text,
+                                            thirdName:
+                                                _model.textController3.text,
+                                            fourthName:
+                                                _model.textController4.text,
+                                            uid: currentUserUid,
+                                            familyName:
+                                                _model.newFamily?.reference,
+                                            accepted: true,
+                                          ));
+                                          _model.user =
+                                              UsersRecord.getDocumentFromData(
+                                                  createUsersRecordData(
+                                                    password: _model
+                                                        .passwordTextController
+                                                        .text,
+                                                    gender:
+                                                        _model.dropDownValue,
+                                                    isAdmin: true,
+                                                    email: _model
+                                                        .emailAddressTextController
+                                                        .text,
+                                                    displayName: _model
+                                                        .textController1.text,
+                                                    phoneNumber: _model
+                                                        .textController7.text,
+                                                    secondName: _model
+                                                        .textController2.text,
+                                                    thirdName: _model
+                                                        .textController3.text,
+                                                    fourthName: _model
+                                                        .textController4.text,
+                                                    uid: currentUserUid,
+                                                    familyName: _model
+                                                        .newFamily?.reference,
+                                                    accepted: true,
+                                                  ),
+                                                  usersRecordReference);
+                                          shouldSetState = true;
 
                                           context.pushNamedAuth(
-                                              'home', context.mounted);
+                                              'HomeAdmin', context.mounted);
 
                                           if (shouldSetState) {
                                             safeSetState(() {});

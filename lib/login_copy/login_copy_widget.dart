@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -110,14 +111,47 @@ class _LoginCopyWidgetState extends State<LoginCopyWidget>
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.asset(
-                          'assets/images/SilahFINALLogo.jpg',
-                          width: 242.0,
-                          height: 172.0,
-                          fit: BoxFit.cover,
-                        ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 30.0,
+                                borderWidth: 1.0,
+                                buttonSize: 60.0,
+                                icon: const Icon(
+                                  Icons.arrow_back_rounded,
+                                  color: Colors.white,
+                                  size: 30.0,
+                                ),
+                                onPressed: () async {
+                                  context.pop();
+                                },
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 60.0, 0.0),
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                    bottomLeft: Radius.circular(0.0),
+                                    bottomRight: Radius.circular(0.0),
+                                    topLeft: Radius.circular(0.0),
+                                    topRight: Radius.circular(0.0),
+                                  ),
+                                  child: Image.asset(
+                                    'assets/images/SilahFINALLogo.jpg',
+                                    width: 155.0,
+                                    height: 96.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                       Padding(
                         padding: const EdgeInsets.all(16.0),
@@ -383,10 +417,10 @@ class _LoginCopyWidgetState extends State<LoginCopyWidget>
                                             ).then((s) => s.firstOrNull);
                                             if (_model.userLog!.isAdmin) {
                                               context.pushNamedAuth(
-                                                  'HOME1', context.mounted);
+                                                  'HomeUser', context.mounted);
                                             } else {
                                               context.pushNamedAuth(
-                                                  'home', context.mounted);
+                                                  'HomeAdmin', context.mounted);
                                             }
 
                                             safeSetState(() {});

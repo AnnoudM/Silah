@@ -71,14 +71,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const InitialPageWidget() : const InitialPageWidget(),
+          appStateNotifier.loggedIn ? const InitialPageWidget() : const HomeUserWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
               ? const InitialPageWidget()
-              : const InitialPageWidget(),
+              : const HomeUserWidget(),
         ),
         FFRoute(
           name: 'initialPage',
@@ -106,21 +106,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const RecoverpasswordWidget(),
         ),
         FFRoute(
-          name: 'home',
-          path: '/home',
-          builder: (context, params) => HomeWidget(
-            familyName: params.getParam(
-              'familyName',
-              ParamType.String,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'feeds',
-          path: '/feeds',
-          builder: (context, params) => const FeedsWidget(),
-        ),
-        FFRoute(
           name: 'SignUpAdmin',
           path: '/signUpAdmin',
           builder: (context, params) => const SignUpAdminWidget(),
@@ -131,28 +116,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const SignUpMemberWidget(),
         ),
         FFRoute(
-          name: 'directory',
-          path: '/directory',
-          builder: (context, params) => const DirectoryWidget(),
-        ),
-        FFRoute(
-          name: 'HOME1',
-          path: '/home1',
-          builder: (context, params) => Home1Widget(
-            familyName: params.getParam(
-              'familyName',
-              ParamType.String,
-            ),
-            familyid: params.getParam(
-              'familyid',
-              ParamType.String,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'requests',
-          path: '/requests',
-          builder: (context, params) => const RequestsWidget(),
+          name: 'HomeUser',
+          path: '/homeUser',
+          builder: (context, params) => const HomeUserWidget(),
         ),
         FFRoute(
           name: 'LoginCopy',
@@ -160,9 +126,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const LoginCopyWidget(),
         ),
         FFRoute(
-          name: 'requestsCopy',
-          path: '/requestsCopy',
-          builder: (context, params) => const RequestsCopyWidget(),
+          name: 'requestsCopyCopy',
+          path: '/requestsCopyCopy',
+          builder: (context, params) => const RequestsCopyCopyWidget(),
+        ),
+        FFRoute(
+          name: 'HomeAdmin',
+          path: '/homeAdmin',
+          builder: (context, params) => const HomeAdminWidget(),
+        ),
+        FFRoute(
+          name: 'requestsCopyCopyCopy',
+          path: '/requestsCopyCopyCopy',
+          builder: (context, params) => const RequestsCopyCopyCopyWidget(),
+        ),
+        FFRoute(
+          name: 'settings',
+          path: '/settings',
+          builder: (context, params) => const SettingsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -333,7 +314,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/initialPage';
+            return '/homeUser';
           }
           return null;
         },

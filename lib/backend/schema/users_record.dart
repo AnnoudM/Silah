@@ -70,15 +70,20 @@ class UsersRecord extends FirestoreRecord {
   String get userPIc => _userPIc ?? '';
   bool hasUserPIc() => _userPIc != null;
 
-  // "FamilyID" field.
-  DocumentReference? _familyID;
-  DocumentReference? get familyID => _familyID;
-  bool hasFamilyID() => _familyID != null;
+  // "uid" field.
+  String? _uid;
+  String get uid => _uid ?? '';
+  bool hasUid() => _uid != null;
 
   // "FamilyName" field.
   DocumentReference? _familyName;
   DocumentReference? get familyName => _familyName;
   bool hasFamilyName() => _familyName != null;
+
+  // "Accepted" field.
+  bool? _accepted;
+  bool get accepted => _accepted ?? false;
+  bool hasAccepted() => _accepted != null;
 
   void _initializeFields() {
     _password = snapshotData['Password'] as String?;
@@ -92,8 +97,9 @@ class UsersRecord extends FirestoreRecord {
     _thirdName = snapshotData['thirdName'] as String?;
     _fourthName = snapshotData['fourthName'] as String?;
     _userPIc = snapshotData['userPIc'] as String?;
-    _familyID = snapshotData['FamilyID'] as DocumentReference?;
+    _uid = snapshotData['uid'] as String?;
     _familyName = snapshotData['FamilyName'] as DocumentReference?;
+    _accepted = snapshotData['Accepted'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -141,8 +147,9 @@ Map<String, dynamic> createUsersRecordData({
   String? thirdName,
   String? fourthName,
   String? userPIc,
-  DocumentReference? familyID,
+  String? uid,
   DocumentReference? familyName,
+  bool? accepted,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -157,8 +164,9 @@ Map<String, dynamic> createUsersRecordData({
       'thirdName': thirdName,
       'fourthName': fourthName,
       'userPIc': userPIc,
-      'FamilyID': familyID,
+      'uid': uid,
       'FamilyName': familyName,
+      'Accepted': accepted,
     }.withoutNulls,
   );
 
@@ -181,8 +189,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.thirdName == e2?.thirdName &&
         e1?.fourthName == e2?.fourthName &&
         e1?.userPIc == e2?.userPIc &&
-        e1?.familyID == e2?.familyID &&
-        e1?.familyName == e2?.familyName;
+        e1?.uid == e2?.uid &&
+        e1?.familyName == e2?.familyName &&
+        e1?.accepted == e2?.accepted;
   }
 
   @override
@@ -198,8 +207,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.thirdName,
         e?.fourthName,
         e?.userPIc,
-        e?.familyID,
-        e?.familyName
+        e?.uid,
+        e?.familyName,
+        e?.accepted
       ]);
 
   @override
