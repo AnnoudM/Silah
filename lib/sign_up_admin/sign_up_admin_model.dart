@@ -5,6 +5,10 @@ import 'sign_up_admin_widget.dart' show SignUpAdminWidget;
 import 'package:flutter/material.dart';
 
 class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
+  ///  Local state fields for this page.
+
+  bool? matchPass = true;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -94,13 +98,9 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
       return 'هذا الحقل مطلوب';
     }
 
-    if (val.length < 10) {
-      return 'الرقم غير صحيح';
+    if (!RegExp('^05').hasMatch(val)) {
+      return 'يجب ان يبدأ الرقم ب05';
     }
-    if (val.length > 10) {
-      return 'الرقم غير صحيح';
-    }
-
     return null;
   }
 
@@ -117,7 +117,7 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
       return 'هذا الحقل مطلوب';
     }
 
-    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+    if (!RegExp('^[\\w-\\.]+@([\\w-]+\\.)+com\$').hasMatch(val)) {
       return 'لابد أن يكون البريد على هذا النمط XXX@xxx.com';
     }
     return null;
@@ -133,8 +133,12 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
       return 'هذا الحقل مطلوب';
     }
 
+    if (val.length < 6) {
+      return 'يجب ان تحتوي على 6 خانات على الأقل';
+    }
+
     if (!RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+\$').hasMatch(val)) {
-      return 'لم توافق الشروط';
+      return 'يجب ان تحتوي على أحرف صغيرة وكبيرة وارقام';
     }
     return null;
   }

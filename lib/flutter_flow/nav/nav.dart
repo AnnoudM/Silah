@@ -70,15 +70,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const InitialPageWidget() : const HomeUserWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? const LoggedinPageWidget()
+          : const InitialPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? const InitialPageWidget()
-              : const HomeUserWidget(),
+              ? const LoggedinPageWidget()
+              : const InitialPageWidget(),
         ),
         FFRoute(
           name: 'initialPage',
@@ -144,6 +145,31 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'settings',
           path: '/settings',
           builder: (context, params) => const SettingsWidget(),
+        ),
+        FFRoute(
+          name: 'verification',
+          path: '/verification',
+          builder: (context, params) => VerificationWidget(
+            familyname: params.getParam(
+              'familyname',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'loggedinPage',
+          path: '/loggedinPage',
+          builder: (context, params) => LoggedinPageWidget(
+            familyname: params.getParam(
+              'familyname',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'LoginCopy2',
+          path: '/loginCopy2',
+          builder: (context, params) => const LoginCopy2Widget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -314,7 +340,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/homeUser';
+            return '/initialPage';
           }
           return null;
         },

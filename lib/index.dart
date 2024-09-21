@@ -14,3 +14,6 @@ export '/home_admin/home_admin_widget.dart' show HomeAdminWidget;
 export '/homes/requests_copy_copy_copy/requests_copy_copy_copy_widget.dart'
     show RequestsCopyCopyCopyWidget;
 export '/settings/settings_widget.dart' show SettingsWidget;
+export '/verification/verification_widget.dart' show VerificationWidget;
+export '/loggedin_page/loggedin_page_widget.dart' show LoggedinPageWidget;
+export '/login_copy2/login_copy2_widget.dart' show LoginCopy2Widget;

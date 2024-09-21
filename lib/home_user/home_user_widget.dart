@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/side_widget.dart';
+import '/components/side_user_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -97,10 +97,19 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
             backgroundColor: const Color(0xFF2A497D),
             endDrawer: Drawer(
               elevation: 16.0,
-              child: wrapWithModel(
-                model: _model.sideModel,
-                updateCallback: () => safeSetState(() {}),
-                child: const SideWidget(),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  wrapWithModel(
+                    model: _model.sideUserModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: const SideUserWidget(),
+                  ),
+                  const Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [],
+                  ),
+                ],
               ),
             ),
             appBar: AppBar(
@@ -129,68 +138,52 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 0.0),
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFFFFCF6),
-                            boxShadow: const [
-                              BoxShadow(
-                                blurRadius: 4.0,
-                                color: Color(0x25090F13),
-                                offset: Offset(
-                                  0.0,
-                                  2.0,
-                                ),
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                12.0, 12.0, 12.0, 16.0),
-                            child: StreamBuilder<List<FamilyRecord>>(
-                              stream: queryFamilyRecord(
-                                queryBuilder: (familyRecord) =>
-                                    familyRecord.where(
-                                  'FamilyName',
-                                  isEqualTo:
-                                      homeUserUsersRecord?.familyName?.id,
-                                ),
-                                singleRecord: true,
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
-                                        ),
-                                      ),
+                        child: StreamBuilder<FamilyRecord>(
+                          stream: FamilyRecord.getDocument(
+                              homeUserUsersRecord!.familyName!),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
                                     ),
-                                  );
-                                }
-                                List<FamilyRecord> columnFamilyRecordList =
-                                    snapshot.data!;
-                                // Return an empty Container when the item does not exist.
-                                if (snapshot.data!.isEmpty) {
-                                  return Container();
-                                }
-                                final columnFamilyRecord =
-                                    columnFamilyRecordList.isNotEmpty
-                                        ? columnFamilyRecordList.first
-                                        : null;
+                                  ),
+                                ),
+                              );
+                            }
 
-                                return Column(
+                            final containerFamilyRecord = snapshot.data!;
+
+                            return Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFFFFCF6),
+                                boxShadow: const [
+                                  BoxShadow(
+                                    blurRadius: 4.0,
+                                    color: Color(0x25090F13),
+                                    offset: Offset(
+                                      0.0,
+                                      2.0,
+                                    ),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 12.0, 12.0, 16.0),
+                                child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      columnFamilyRecord!.familyName,
+                                      containerFamilyRecord.familyName,
                                       style: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .override(
@@ -202,7 +195,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                           ),
                                     ),
                                     Text(
-                                      homeUserUsersRecord!.reference.id,
+                                      containerFamilyRecord.familyDesc,
                                       style: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .override(
@@ -219,10 +212,10 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                       color: Color(0xFFF1F4F8),
                                     ),
                                   ],
-                                );
-                              },
-                            ),
-                          ),
+                                ),
+                              ),
+                            );
+                          },
                         ),
                       ),
                       Padding(

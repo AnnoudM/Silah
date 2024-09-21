@@ -8,19 +8,19 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'login_model.dart';
-export 'login_model.dart';
+import 'login_copy2_model.dart';
+export 'login_copy2_model.dart';
 
-class LoginWidget extends StatefulWidget {
-  const LoginWidget({super.key});
+class LoginCopy2Widget extends StatefulWidget {
+  const LoginCopy2Widget({super.key});
 
   @override
-  State<LoginWidget> createState() => _LoginWidgetState();
+  State<LoginCopy2Widget> createState() => _LoginCopy2WidgetState();
 }
 
-class _LoginWidgetState extends State<LoginWidget>
+class _LoginCopy2WidgetState extends State<LoginCopy2Widget>
     with TickerProviderStateMixin {
-  late LoginModel _model;
+  late LoginCopy2Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -29,7 +29,7 @@ class _LoginWidgetState extends State<LoginWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => LoginModel());
+    _model = createModel(context, () => LoginCopy2Model());
 
     _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
@@ -394,6 +394,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                             0.0, 0.0, 0.0, 16.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
+                                            await authManager.refreshUser();
                                             GoRouter.of(context)
                                                 .prepareAuthEvent();
 
@@ -422,9 +423,23 @@ class _LoginWidgetState extends State<LoginWidget>
                                               context.pushNamedAuth(
                                                   'HomeAdmin', context.mounted);
                                             } else {
-                                              context.pushNamedAuth(
-                                                  'verification',
-                                                  context.mounted);
+                                              if (currentUserEmailVerified ==
+                                                  true) {
+                                                if (_model.userLog?.accepted ==
+                                                    true) {
+                                                  context.pushNamedAuth(
+                                                      'HomeUser',
+                                                      context.mounted);
+                                                } else {
+                                                  context.pushNamedAuth(
+                                                      'PendingPage',
+                                                      context.mounted);
+                                                }
+                                              } else {
+                                                context.pushNamedAuth(
+                                                    'verification',
+                                                    context.mounted);
+                                              }
                                             }
 
                                             safeSetState(() {});

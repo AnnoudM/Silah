@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -105,8 +106,8 @@ class _InitialPageWidgetState extends State<InitialPageWidget>
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image.asset(
                           'assets/images/SilahFINALLogo.jpg',
-                          width: 241.0,
-                          height: 171.0,
+                          width: 328.0,
+                          height: 255.0,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -139,18 +140,22 @@ class _InitialPageWidgetState extends State<InitialPageWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Text(
-                                    'مرحبا بك',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .displaySmall
-                                        .override(
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          color: const Color(0xFF101213),
-                                          fontSize: 32.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                        ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 30.0),
+                                    child: Text(
+                                      'مرحبا بك!',
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .displaySmall
+                                          .override(
+                                            fontFamily: 'Plus Jakarta Sans',
+                                            color: const Color(0xFF2A497D),
+                                            fontSize: 32.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                    ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
@@ -195,7 +200,7 @@ class _InitialPageWidgetState extends State<InitialPageWidget>
                                       onPressed: () async {
                                         context.pushNamed('SignUpAdmin');
                                       },
-                                      text: 'سجل كمشرف أسرة',
+                                      text: 'انشاء حساب مشرف أسرة',
                                       options: FFButtonOptions(
                                         width: double.infinity,
                                         height: 44.0,
@@ -209,7 +214,7 @@ class _InitialPageWidgetState extends State<InitialPageWidget>
                                             .titleSmall
                                             .override(
                                               fontFamily: 'Plus Jakarta Sans',
-                                              color: const Color(0xFF101213),
+                                              color: const Color(0xFF2A497D),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -227,40 +232,103 @@ class _InitialPageWidgetState extends State<InitialPageWidget>
                                   ),
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 16.0),
-                                    child: FFButtonWidget(
-                                      onPressed: () async {
-                                        context.pushNamed('SignUpMember');
-                                      },
-                                      text: 'تسجيل الأعضاء ',
-                                      options: FFButtonOptions(
-                                        width: double.infinity,
-                                        height: 44.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 0.0),
-                                        iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: Colors.white,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Plus Jakarta Sans',
-                                              color: const Color(0xFF101213),
-                                              fontSize: 16.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w500,
+                                        0.0, 0.0, 0.0, 30.0),
+                                    child: StreamBuilder<List<FamilyRecord>>(
+                                      stream: queryFamilyRecord(),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                                ),
+                                              ),
                                             ),
-                                        elevation: 0.0,
-                                        borderSide: const BorderSide(
-                                          color: Color(0xFFE0E3E7),
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                        hoverColor: const Color(0xFFF1F4F8),
-                                      ),
+                                          );
+                                        }
+                                        List<FamilyRecord>
+                                            buttonFamilyRecordList =
+                                            snapshot.data!;
+
+                                        return FFButtonWidget(
+                                          onPressed: () async {
+                                            if (buttonFamilyRecordList
+                                                .isNotEmpty) {
+                                              context.pushNamed('SignUpMember');
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: const Text(
+                                                        'لاتوجد عائلات مسجلة '),
+                                                    content: const Text(
+                                                        'عزيزي المستخدم, لاتوجد عائلات مسجلة للانضمام إليها, لذا سجل كمشرف أسرة لانشاء اول عائلة '),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: const Text('حسنا'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            }
+                                          },
+                                          text: 'انشاء حساب عضو أسرة',
+                                          options: FFButtonOptions(
+                                            width: double.infinity,
+                                            height: 44.0,
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            iconPadding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: Colors.white,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily:
+                                                          'Plus Jakarta Sans',
+                                                      color: const Color(0xFF2A497D),
+                                                      fontSize: 16.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                            elevation: 0.0,
+                                            borderSide: const BorderSide(
+                                              color: Color(0xFFE0E3E7),
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                            hoverColor: const Color(0xFFF1F4F8),
+                                          ),
+                                        );
+                                      },
                                     ),
+                                  ),
+                                  Text(
+                                    'نتمنى لك تجربة ممتعة!',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: const Color(0xFF2A497D),
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ],
                               ),

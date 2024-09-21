@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/side_admin_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -30,8 +31,8 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.user = await queryUsersRecordOnce(
         queryBuilder: (usersRecord) => usersRecord.where(
-          'email',
-          isEqualTo: currentUserEmail,
+          'uid',
+          isEqualTo: currentUserUid,
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
@@ -57,8 +58,8 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
     return StreamBuilder<List<UsersRecord>>(
       stream: queryUsersRecord(
         queryBuilder: (usersRecord) => usersRecord.where(
-          'email',
-          isEqualTo: currentUserEmail,
+          'uid',
+          isEqualTo: currentUserUid,
         ),
         singleRecord: true,
       ),
@@ -94,28 +95,18 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: const Color(0xFF2A497D),
+            endDrawer: Drawer(
+              elevation: 16.0,
+              child: wrapWithModel(
+                model: _model.sideAdminModel,
+                updateCallback: () => safeSetState(() {}),
+                child: const SideAdminWidget(),
+              ),
+            ),
             appBar: AppBar(
               backgroundColor: const Color(0xFF2A497D),
               automaticallyImplyLeading: false,
-              actions: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      context.pushNamed('requestsCopyCopy');
-                    },
-                    child: const Icon(
-                      Icons.group_add,
-                      color: Color(0xFFFFFCF6),
-                      size: 24.0,
-                    ),
-                  ),
-                ),
-              ],
+              actions: const [],
               flexibleSpace: FlexibleSpaceBar(
                 title: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),

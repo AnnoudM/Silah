@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'side_widget.dart' show SideWidget;
+import 'side_admin_widget.dart' show SideAdminWidget;
 import 'package:flutter/material.dart';
 
-class SideModel extends FlutterFlowModel<SideWidget> {
+class SideAdminModel extends FlutterFlowModel<SideAdminWidget> {
   @override
   void initState(BuildContext context) {}
 

@@ -80,8 +80,8 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
           child: Stack(
             children: [
               Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   StreamBuilder<List<UsersRecord>>(
                     stream: queryUsersRecord(
@@ -532,17 +532,6 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                         ],
                       );
                     },
-                  ),
-                  const Expanded(
-                    child: Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [],
-                      ),
-                    ),
                   ),
                 ],
               ),

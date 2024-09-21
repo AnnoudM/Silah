@@ -3,9 +3,12 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'sign_up_member_widget.dart' show SignUpMemberWidget;
 import 'package:flutter/material.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
+  ///  Local state fields for this page.
+
+  bool? matchPass = true;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -23,6 +26,12 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
       return 'هذا الحقل مطلوب';
     }
 
+    if (val.length > 50) {
+      return 'الاسم طويل جدا';
+    }
+    if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
+      return 'اسم فارغ!';
+    }
     return null;
   }
 
@@ -32,9 +41,15 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
   String? Function(BuildContext, String?)? textController2Validator;
   String? _textController2Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'هذا الحقل مطلوبهذا الحقل مطلوب';
+      return 'هذا الحقل مطلوب';
     }
 
+    if (val.length > 50) {
+      return 'الاسم طويل جدا';
+    }
+    if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
+      return 'اسم فارغ!';
+    }
     return null;
   }
 
@@ -47,6 +62,12 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
       return 'هذا الحقل مطلوب';
     }
 
+    if (val.length > 50) {
+      return 'الاسم طويل جدا';
+    }
+    if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
+      return 'اسم فارغ!';
+    }
     return null;
   }
 
@@ -59,22 +80,31 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
       return 'هذا الحقل مطلوب';
     }
 
+    if (val.length > 50) {
+      return 'الاسم طويل جدا';
+    }
+    if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
+      return 'اسم فارغ!';
+    }
     return null;
   }
 
   // State field(s) for DropDown widget.
   String? dropDownValue1;
   FormFieldController<String>? dropDownValueController1;
+  List<FamilyRecord>? dropDownPreviousSnapshot;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode5;
   TextEditingController? textController5;
-  final textFieldMask5 = MaskTextInputFormatter(mask: '966 ### ### ###');
   String? Function(BuildContext, String?)? textController5Validator;
   String? _textController5Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'هذا الحقل مطلوب';
     }
 
+    if (!RegExp('^05').hasMatch(val)) {
+      return 'يجب ان يبدأ الرقم ب05';
+    }
     return null;
   }
 
@@ -91,7 +121,7 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
       return 'هذا الحقل مطلوب';
     }
 
-    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+    if (!RegExp('^[\\w-\\.]+@([\\w-]+\\.)+com\$').hasMatch(val)) {
       return 'لابد أن يكون البريد على هذا النمط XXX@xxx.com';
     }
     return null;
@@ -107,8 +137,12 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
       return 'هذا الحقل مطلوب';
     }
 
+    if (val.length < 6) {
+      return 'يجب ان تحتوي على 6 خانات على الأقل';
+    }
+
     if (!RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+\$').hasMatch(val)) {
-      return 'لم توافق الشروط';
+      return 'يجب ان تحتوي على أحرف صغيرة وكبيرة وأرقام';
     }
     return null;
   }
@@ -125,9 +159,6 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
       return 'هذا الحقل مطلوب';
     }
 
-    if (!RegExp('').hasMatch(val)) {
-      return 'Invalid text';
-    }
     return null;
   }
 
