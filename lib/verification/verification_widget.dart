@@ -229,10 +229,7 @@ class _VerificationWidgetState extends State<VerificationWidget>
                                                   ),
                                                 ),
                                                 TextSpan(
-                                                  text: valueOrDefault<String>(
-                                                    widget.email,
-                                                    'لايوجد',
-                                                  ),
+                                                  text: widget.email,
                                                   style: GoogleFonts.getFont(
                                                     'Plus Jakarta Sans',
                                                     color: Colors.black,

@@ -166,27 +166,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
     );
     _model.passwordConfirmTextController ??= TextEditingController();
     _model.passwordConfirmFocusNode ??= FocusNode();
-    _model.passwordConfirmFocusNode!.addListener(
-      () async {
-        if ((_model.dropDownValue == null || _model.dropDownValue == '') &&
-            (_model.passwordConfirmFocusNode?.hasFocus ?? false)) {
-          _model.genderChosen = false;
-          safeSetState(() {});
-        } else {
-          _model.genderChosen = true;
-          safeSetState(() {});
-        }
 
-        if (_model.passwordTextController.text ==
-            _model.passwordConfirmTextController.text) {
-          _model.matchPass = true;
-          safeSetState(() {});
-        } else {
-          _model.matchPass = false;
-          safeSetState(() {});
-        }
-      },
-    );
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -1760,6 +1740,27 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         .passwordConfirmTextController,
                                                     focusNode: _model
                                                         .passwordConfirmFocusNode,
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      '_model.passwordConfirmTextController',
+                                                      const Duration(milliseconds: 5),
+                                                      () async {
+                                                        if (_model
+                                                                .passwordTextController
+                                                                .text ==
+                                                            _model
+                                                                .passwordConfirmTextController
+                                                                .text) {
+                                                          _model.matchPass =
+                                                              true;
+                                                          safeSetState(() {});
+                                                        } else {
+                                                          _model.matchPass =
+                                                              false;
+                                                          safeSetState(() {});
+                                                        }
+                                                      },
+                                                    ),
                                                     autofocus: false,
                                                     autofillHints: const [
                                                       AutofillHints.password

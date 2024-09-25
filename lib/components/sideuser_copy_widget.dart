@@ -204,7 +204,7 @@ class _SideuserCopyWidgetState extends State<SideuserCopyWidget> {
                       title: Text(
                         'تسجيل خروج\n',
                         style: FlutterFlowTheme.of(context).titleLarge.override(
-                              fontFamily: 'Outfit',
+                              fontFamily: 'Readex Pro',
                               color: FlutterFlowTheme.of(context).secondaryText,
                               fontSize: 20.0,
                               letterSpacing: 0.0,
@@ -214,6 +214,8 @@ class _SideuserCopyWidgetState extends State<SideuserCopyWidget> {
                       tileColor:
                           FlutterFlowTheme.of(context).secondaryBackground,
                       dense: false,
+                      contentPadding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     ),
                   ),
                 ),
