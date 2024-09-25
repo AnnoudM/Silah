@@ -1,0 +1,25 @@
+import 'dart:convert';
+import 'dart:math' as math;
+
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
+import 'package:timeago/timeago.dart' as timeago;
+import 'lat_lng.dart';
+import 'place.dart';
+import 'uploaded_file.dart';
+import '/backend/backend.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '/backend/schema/structs/index.dart';
+import '/auth/firebase_auth/auth_util.dart';
+
+String? concatenateStrings(
+  String? str1,
+  String? str2,
+  String? str3,
+  String? str4,
+  String? str5,
+) {
+  return '${str1 ?? ''} ${str2 ?? ''} ${str3 ?? ''} ${str4 ?? ''} ${str5 ?? ''}'
+      .trim();
+}

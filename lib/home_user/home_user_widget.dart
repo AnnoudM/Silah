@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/side_user_widget.dart';
+import '/components/sideuser_copy_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -100,14 +100,12 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  wrapWithModel(
-                    model: _model.sideUserModel,
-                    updateCallback: () => safeSetState(() {}),
-                    child: const SideUserWidget(),
-                  ),
-                  const Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [],
+                  Expanded(
+                    child: wrapWithModel(
+                      model: _model.sideuserCopyModel,
+                      updateCallback: () => safeSetState(() {}),
+                      child: const SideuserCopyWidget(),
+                    ),
                   ),
                 ],
               ),
@@ -182,17 +180,41 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      containerFamilyRecord.familyName,
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineMedium
-                                          .override(
-                                            fontFamily: 'Outfit',
-                                            color: const Color(0xFF14181B),
-                                            fontSize: 24.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.normal,
+                                    RichText(
+                                      textScaler:
+                                          MediaQuery.of(context).textScaler,
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: 'عائلة ',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  fontSize: 20.0,
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
+                                          TextSpan(
+                                            text: containerFamilyRecord
+                                                .familyName,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  fontSize: 20.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                          )
+                                        ],
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
                                     ),
                                     Text(
                                       containerFamilyRecord.familyDesc,

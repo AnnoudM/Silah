@@ -1,5 +1,5 @@
 import '/backend/backend.dart';
-import '/components/side_user_widget.dart';
+import '/components/sideuser_copy_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'home_user_widget.dart' show HomeUserWidget;
 import 'package:flutter/material.dart';
@@ -9,16 +9,16 @@ class HomeUserModel extends FlutterFlowModel<HomeUserWidget> {
 
   // Stores action output result for [Firestore Query - Query a collection] action in HomeUser widget.
   UsersRecord? user;
-  // Model for sideUser component.
-  late SideUserModel sideUserModel;
+  // Model for sideuserCopy component.
+  late SideuserCopyModel sideuserCopyModel;
 
   @override
   void initState(BuildContext context) {
-    sideUserModel = createModel(context, () => SideUserModel());
+    sideuserCopyModel = createModel(context, () => SideuserCopyModel());
   }
 
   @override
   void dispose() {
-    sideUserModel.dispose();
+    sideuserCopyModel.dispose();
   }
 }

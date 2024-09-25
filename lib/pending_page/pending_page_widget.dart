@@ -3,11 +3,11 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'pending_page_model.dart';
 export 'pending_page_model.dart';
 
@@ -46,9 +46,20 @@ class _PendingPageWidgetState extends State<PendingPageWidget>
         singleRecord: true,
       ).then((s) => s.firstOrNull);
       if (_model.user?.accepted == true) {
-        context.pushNamed('LoginCopy2');
+        context.pushNamed('Login');
       } else {
-        return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'لم يتم قبولك بعد!',
+              style: TextStyle(
+                color: FlutterFlowTheme.of(context).primaryText,
+              ),
+            ),
+            duration: const Duration(milliseconds: 4000),
+            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          ),
+        );
       }
     });
 
@@ -215,9 +226,8 @@ class _PendingPageWidgetState extends State<PendingPageWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .displaySmall
                                                 .override(
-                                                  fontFamily:
-                                                      'Plus Jakarta Sans',
-                                                  color: const Color(0xFF101213),
+                                                  fontFamily: 'Readex Pro',
+                                                  color: const Color(0xFF2A497D),
                                                   fontSize: 20.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
@@ -271,53 +281,52 @@ class _PendingPageWidgetState extends State<PendingPageWidget>
                                                         text:
                                                             ' لقد تم ارسال طلب انضمامك لمشرف\n اسرة  ',
                                                         style:
-                                                            GoogleFonts.getFont(
-                                                          'Plus Jakarta Sans',
-                                                          color: Colors.black,
-                                                          fontSize: 15.0,
-                                                        ),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                       ),
                                                       TextSpan(
                                                         text:
                                                             richTextFamilyRecord
                                                                 .familyName,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Plus Jakarta Sans',
-                                                              color:
-                                                                  Colors.black,
-                                                              fontSize: 15.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                            ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                       ),
                                                       TextSpan(
                                                         text:
                                                             '!\n تستطيع الدخول الى حسابك عندما يتم قبولك.',
                                                         style:
-                                                            GoogleFonts.getFont(
-                                                          'Plus Jakarta Sans',
-                                                          color: Colors.black,
-                                                          fontSize: 15.0,
-                                                        ),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                       )
                                                     ],
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium
+                                                        .labelMedium
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -325,6 +334,44 @@ class _PendingPageWidgetState extends State<PendingPageWidget>
                                                 );
                                               },
                                             ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 16.0),
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              context.pushNamed('initialPage');
+                                            },
+                                            text: 'العودة الى الصفحة الرئيسية',
+                                            options: FFButtonOptions(
+                                              width: double.infinity,
+                                              height: 44.0,
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              iconPadding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color: const Color(0xFF2A497D),
+                                              textStyle: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: Colors.white,
+                                                    fontSize: 16.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                              elevation: 3.0,
+                                              borderSide: const BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                            showLoadingIndicator: false,
                                           ),
                                         ),
                                       ],

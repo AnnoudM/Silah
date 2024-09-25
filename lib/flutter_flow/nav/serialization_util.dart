@@ -88,6 +88,9 @@ String? serializeParam(
         final reference = (param as FirestoreRecord).reference;
         data = _serializeDocumentReference(reference);
 
+      case ParamType.DataStruct:
+        data = param is BaseStruct ? param.serialize() : null;
+
       default:
         data = null;
     }
@@ -178,6 +181,7 @@ enum ParamType {
 
   Document,
   DocumentReference,
+  DataStruct,
 }
 
 dynamic deserializeParam<T>(
@@ -185,6 +189,7 @@ dynamic deserializeParam<T>(
   ParamType paramType,
   bool isList, {
   List<String>? collectionNamePath,
+  StructBuilder<T>? structBuilder,
 }) {
   try {
     if (param == null) {
@@ -198,8 +203,13 @@ dynamic deserializeParam<T>(
       return paramValues
           .whereType<String>()
           .map((p) => p)
-          .map((p) => deserializeParam<T>(p, paramType, false,
-              collectionNamePath: collectionNamePath))
+          .map((p) => deserializeParam<T>(
+                p,
+                paramType,
+                false,
+                collectionNamePath: collectionNamePath,
+                structBuilder: structBuilder,
+              ))
           .where((p) => p != null)
           .map((p) => p! as T)
           .toList();
@@ -232,6 +242,10 @@ dynamic deserializeParam<T>(
         return json.decode(param);
       case ParamType.DocumentReference:
         return _deserializeDocumentReference(param, collectionNamePath ?? []);
+
+      case ParamType.DataStruct:
+        final data = json.decode(param) as Map<String, dynamic>? ?? {};
+        return structBuilder != null ? structBuilder(data) : null;
 
       default:
         return null;

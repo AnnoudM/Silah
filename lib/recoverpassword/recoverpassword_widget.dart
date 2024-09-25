@@ -68,17 +68,22 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
           constraints: const BoxConstraints(
             maxWidth: 570.0,
           ),
-          decoration: const BoxDecoration(),
+          decoration: const BoxDecoration(
+            color: Color(0xFFFFFCF6),
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(13.0, 0.0, 11.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(13.0, 16.0, 11.0, 16.0),
                 child: Text(
                   'نسيت كلمة المرور',
-                  style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Outfit',
+                  textAlign: TextAlign.center,
+                  style: FlutterFlowTheme.of(context).displaySmall.override(
+                        fontFamily: 'Readex Pro',
+                        color: const Color(0xFF2A497D),
+                        fontSize: 20.0,
                         letterSpacing: 0.0,
                       ),
                 ),
@@ -130,7 +135,7 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
                   ),
                 ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 16.0),
                 child: Text(
                   'سنرسل لك رسالة بريد إلكتروني تحتوي على رابط لإعادة تعيين كلمة المرور الخاصة بك، يرجى إدخال البريد الإلكتروني المرتبط بحسابك أدناه.',
                   style: FlutterFlowTheme.of(context).labelMedium.override(
@@ -189,7 +194,7 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       filled: true,
-                      fillColor: const Color(0xFFE4E6EA),
+                      fillColor: const Color(0xFFF1F4F8),
                       contentPadding: const EdgeInsetsDirectional.fromSTEB(
                           24.0, 24.0, 20.0, 24.0),
                     ),
@@ -229,7 +234,7 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
                     text: 'أرسل الرابط',
                     options: FFButtonOptions(
                       width: 270.0,
-                      height: 50.0,
+                      height: 44.0,
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:

@@ -9,14 +9,11 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
 
   bool? matchPass = true;
 
+  bool genderChosen = true;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
-
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
@@ -26,6 +23,12 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
       return 'هذا الحقل مطلوب';
     }
 
+    if (val.length > 50) {
+      return 'الاسم طويل جدا';
+    }
+    if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
+      return 'اسم فارغ!';
+    }
     return null;
   }
 
@@ -38,6 +41,12 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
       return 'هذا الحقل مطلوب';
     }
 
+    if (val.length > 50) {
+      return 'الاسم طويل جدا';
+    }
+    if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
+      return 'الاسم فارغ!';
+    }
     return null;
   }
 
@@ -50,6 +59,12 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
       return 'هذا الحقل مطلوب';
     }
 
+    if (val.length > 50) {
+      return 'الاسم طويل جدا';
+    }
+    if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
+      return 'اسم فارغ!';
+    }
     return null;
   }
 
@@ -62,6 +77,12 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
       return 'هذا الحقل مطلوب';
     }
 
+    if (val.length > 50) {
+      return 'الاسم طويل جدا';
+    }
+    if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
+      return 'اسم فارغ!';
+    }
     return null;
   }
 
@@ -74,6 +95,12 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
       return 'هذا الحقل مطلوب';
     }
 
+    if (val.length > 50) {
+      return 'الاسم طويل جدا';
+    }
+    if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
+      return 'اسم فارغ!';
+    }
     return null;
   }
 
@@ -86,6 +113,12 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
       return 'هذا الحقل مطلوب';
     }
 
+    if (val.length > 300) {
+      return 'Maximum 300 characters allowed, currently ${val.length}.';
+    }
+    if (!RegExp('^[\\u0600-\\u06FF0-9\\s\\p{P}،.]+\$').hasMatch(val)) {
+      return 'Invalid text';
+    }
     return null;
   }
 
@@ -98,8 +131,11 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
       return 'هذا الحقل مطلوب';
     }
 
-    if (!RegExp('^05').hasMatch(val)) {
-      return 'يجب ان يبدأ الرقم ب05';
+    if (val.length > 10) {
+      return 'رقم الهاتف مكون من 10 خانات فقط';
+    }
+    if (!RegExp('^05\\d{8}\$').hasMatch(val)) {
+      return 'يجب ان يبدأ الرقم ب05 ويتكون من 10 أرقام';
     }
     return null;
   }
@@ -117,8 +153,11 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
       return 'هذا الحقل مطلوب';
     }
 
-    if (!RegExp('^[\\w-\\.]+@([\\w-]+\\.)+com\$').hasMatch(val)) {
-      return 'لابد أن يكون البريد على هذا النمط XXX@xxx.com';
+    if (val.length > 150) {
+      return 'البريد الإلكتروني طويل جدا';
+    }
+    if (!RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[a-zA-Z]{2,}\$').hasMatch(val)) {
+      return 'يرجى إدخال بريد إلكتروني صحيح بدون\nمسافات وفي الصياغة التالية (xxx@xxx.xxx)';
     }
     return null;
   }
@@ -133,12 +172,13 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
       return 'هذا الحقل مطلوب';
     }
 
-    if (val.length < 6) {
-      return 'يجب ان تحتوي على 6 خانات على الأقل';
+    if (val.length > 20) {
+      return 'كلمة المرور طويلة جدا';
     }
-
-    if (!RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+\$').hasMatch(val)) {
-      return 'يجب ان تحتوي على أحرف صغيرة وكبيرة وارقام';
+    if (!RegExp(
+            '^(?!.*[\\u0600-\\u06FF])(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d\\S]{8,}\$')
+        .hasMatch(val)) {
+      return 'كلمة المرور لا تحقق الشروط';
     }
     return null;
   }
@@ -160,10 +200,16 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
 
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   FamilyRecord? familyExist;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  UsersRecord? phoneExist;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  UsersRecord? emailExist;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  UsersRecord? userLoggedInn;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   FamilyRecord? newFamily;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  UsersRecord? user;
+  UsersRecord? users;
 
   @override
   void initState(BuildContext context) {

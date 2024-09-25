@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/logout_alert_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -115,7 +116,7 @@ class _SideAdminWidgetState extends State<SideAdminWidget> {
                         Align(
                           alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Text(
-                            columnUsersRecord!.displayName,
+                            columnUsersRecord!.fullName,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -142,170 +143,60 @@ class _SideAdminWidgetState extends State<SideAdminWidget> {
                           .divide(const SizedBox(height: 4.0))
                           .around(const SizedBox(height: 4.0)),
                     ),
-                  ].divide(const SizedBox(width: 16.0)).around(const SizedBox(width: 16.0)),
+                  ].divide(const SizedBox(width: 16.0)),
                 ),
               ),
             ),
-            Container(
-              width: MediaQuery.sizeOf(context).width * 1.0,
-              height: MediaQuery.sizeOf(context).height * 0.7,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-              ),
-              child: ListView(
-                padding: EdgeInsets.zero,
-                scrollDirection: Axis.vertical,
-                children: [
-                  Align(
-                    alignment: const AlignmentDirectional(-1.0, -1.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        context.pushNamed('settings');
-                      },
-                      child: ListTile(
-                        leading: Icon(
-                          Icons.person,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 25.0,
-                        ),
-                        title: Text(
-                          'الملف الشخصي',
-                          style: FlutterFlowTheme.of(context)
-                              .titleLarge
-                              .override(
-                                fontFamily: 'Outfit',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 20.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.normal,
-                              ),
-                        ),
-                        tileColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        dense: false,
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: const AlignmentDirectional(-1.0, -1.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        context.pushNamed('settings');
-                      },
-                      child: ListTile(
-                        leading: Icon(
-                          Icons.settings_outlined,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 25.0,
-                        ),
-                        title: Text(
-                          'الإعدادات',
-                          style: FlutterFlowTheme.of(context)
-                              .titleLarge
-                              .override(
-                                fontFamily: 'Outfit',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 20.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.normal,
-                              ),
-                        ),
-                        tileColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        dense: false,
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: const AlignmentDirectional(-1.0, -1.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        setDarkModeSetting(
-                          context,
-                          FFAppState().DarkMode
-                              ? ThemeMode.dark
-                              : ThemeMode.light,
-                        );
-                      },
-                      child: ListTile(
-                        key: ValueKey(FFAppState().DarkMode.toString()),
-                        leading: Icon(
+            Expanded(
+              child: Container(
+                width: MediaQuery.sizeOf(context).width * 1.0,
+                height: MediaQuery.sizeOf(context).height * 0.7,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    Align(
+                      alignment: const AlignmentDirectional(-1.0, -1.0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('requestsCopyCopy');
+                        },
+                        child: ListTile(
                           key: ValueKey(FFAppState().DarkMode.toString()),
-                          Icons.mode_night_outlined,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 25.0,
+                          leading: Icon(
+                            key: ValueKey(FFAppState().DarkMode.toString()),
+                            Icons.group_add_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 25.0,
+                          ),
+                          title: Text(
+                            'طلبات الإنضمام للعائلة',
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  fontSize: 20.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                          ),
+                          tileColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          dense: false,
                         ),
-                        title: Text(
-                          'الوضع الليلي',
-                          style: FlutterFlowTheme.of(context)
-                              .titleLarge
-                              .override(
-                                fontFamily: 'Outfit',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 20.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.normal,
-                              ),
-                        ),
-                        tileColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        dense: false,
                       ),
                     ),
-                  ),
-                  Align(
-                    alignment: const AlignmentDirectional(-1.0, -1.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        context.pushNamed('requestsCopyCopy');
-                      },
-                      child: ListTile(
-                        key: ValueKey(FFAppState().DarkMode.toString()),
-                        leading: Icon(
-                          key: ValueKey(FFAppState().DarkMode.toString()),
-                          Icons.group_add_rounded,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 25.0,
-                        ),
-                        title: Text(
-                          'قبول/رفض اضافة للعائلة',
-                          style: FlutterFlowTheme.of(context)
-                              .titleLarge
-                              .override(
-                                fontFamily: 'Outfit',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 20.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.normal,
-                              ),
-                        ),
-                        tileColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        dense: false,
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Opacity(
@@ -324,63 +215,47 @@ class _SideAdminWidgetState extends State<SideAdminWidget> {
               ),
               child: Align(
                 alignment: const AlignmentDirectional(-1.0, -1.0),
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    GoRouter.of(context).prepareAuthEvent();
-                    await authManager.signOut();
-                    GoRouter.of(context).clearRedirectLocation();
-
-                    var confirmDialogResponse = await showDialog<bool>(
-                          context: context,
-                          builder: (alertDialogContext) {
-                            return AlertDialog(
-                              title: const Text('تسجيل خروج'),
-                              content:
-                                  const Text('هل انت متأكد من طلبك لتسجيل الخروج؟'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(alertDialogContext, false),
-                                  child: const Text('لا'),
-                                ),
-                                TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(alertDialogContext, true),
-                                  child: const Text('نعم'),
-                                ),
-                              ],
-                            );
-                          },
-                        ) ??
-                        false;
-                    if (confirmDialogResponse) {
-                      context.pushNamedAuth('initialPage', context.mounted);
-                    } else {
-                      Navigator.pop(context);
-                    }
-                  },
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.logout_rounded,
-                      color: FlutterFlowTheme.of(context).secondaryText,
-                      size: 25.0,
+                child: Builder(
+                  builder: (context) => InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      await showDialog(
+                        context: context,
+                        builder: (dialogContext) {
+                          return Dialog(
+                            elevation: 0,
+                            insetPadding: EdgeInsets.zero,
+                            backgroundColor: Colors.transparent,
+                            alignment: const AlignmentDirectional(0.0, 0.0)
+                                .resolve(Directionality.of(context)),
+                            child: const LogoutAlertWidget(),
+                          );
+                        },
+                      );
+                    },
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.logout_rounded,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 25.0,
+                      ),
+                      title: Text(
+                        'تسجيل خروج\n',
+                        style: FlutterFlowTheme.of(context).titleLarge.override(
+                              fontFamily: 'Outfit',
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              fontSize: 20.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.normal,
+                            ),
+                      ),
+                      tileColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      dense: false,
                     ),
-                    title: Text(
-                      'تسجيل خروج\n',
-                      style: FlutterFlowTheme.of(context).titleLarge.override(
-                            fontFamily: 'Outfit',
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            fontSize: 20.0,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.normal,
-                          ),
-                    ),
-                    tileColor: FlutterFlowTheme.of(context).secondaryBackground,
-                    dense: false,
                   ),
                 ),
               ),

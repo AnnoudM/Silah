@@ -9,14 +9,13 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
 
   bool? matchPass = true;
 
+  bool familyChosen = true;
+
+  bool genderChosen = true;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
-
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
@@ -92,7 +91,6 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue1;
   FormFieldController<String>? dropDownValueController1;
-  List<FamilyRecord>? dropDownPreviousSnapshot;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode5;
   TextEditingController? textController5;
@@ -102,8 +100,11 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
       return 'هذا الحقل مطلوب';
     }
 
-    if (!RegExp('^05').hasMatch(val)) {
-      return 'يجب ان يبدأ الرقم ب05';
+    if (val.length > 10) {
+      return 'رقم الهاتف مكون من 10 أرقام فقط';
+    }
+    if (!RegExp('^05\\d{8}\$').hasMatch(val)) {
+      return 'يجب ان يبدأ الرقم ب05 ويتكون من 10 أرقام';
     }
     return null;
   }
@@ -121,8 +122,11 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
       return 'هذا الحقل مطلوب';
     }
 
-    if (!RegExp('^[\\w-\\.]+@([\\w-]+\\.)+com\$').hasMatch(val)) {
-      return 'لابد أن يكون البريد على هذا النمط XXX@xxx.com';
+    if (val.length > 150) {
+      return 'البريد الإلكتروني طويل جدا';
+    }
+    if (!RegExp('^[\\w\\-.]+@[\\w\\-.]+\\.[a-zA-Z]{2,}\$').hasMatch(val)) {
+      return 'يرجى إدخال بريد إلكتروني صحيح بدون\nمسافات وفي الصياغة التالية (xxx@xxx.xxx)';
     }
     return null;
   }
@@ -137,12 +141,13 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
       return 'هذا الحقل مطلوب';
     }
 
-    if (val.length < 6) {
-      return 'يجب ان تحتوي على 6 خانات على الأقل';
+    if (val.length > 20) {
+      return 'كلمة المرور طويلة جدا';
     }
-
-    if (!RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+\$').hasMatch(val)) {
-      return 'يجب ان تحتوي على أحرف صغيرة وكبيرة وأرقام';
+    if (!RegExp(
+            '^(?!.*[\\u0600-\\u06FF])(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d\\S]{8,}\$')
+        .hasMatch(val)) {
+      return 'كلمة المرور لا تحقق الشروط';
     }
     return null;
   }
@@ -164,6 +169,10 @@ class SignUpMemberModel extends FlutterFlowModel<SignUpMemberWidget> {
 
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   FamilyRecord? family;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  UsersRecord? phoneExist;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  UsersRecord? emailExist;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   UsersRecord? user;
 

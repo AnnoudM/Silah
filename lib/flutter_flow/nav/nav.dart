@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -114,17 +116,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'SignUpMember',
           path: '/signUpMember',
-          builder: (context, params) => const SignUpMemberWidget(),
+          builder: (context, params) => SignUpMemberWidget(
+            email: params.getParam(
+              'email',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'HomeUser',
           path: '/homeUser',
           builder: (context, params) => const HomeUserWidget(),
-        ),
-        FFRoute(
-          name: 'LoginCopy',
-          path: '/loginCopy',
-          builder: (context, params) => const LoginCopyWidget(),
         ),
         FFRoute(
           name: 'requestsCopyCopy',
@@ -137,11 +139,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const HomeAdminWidget(),
         ),
         FFRoute(
-          name: 'requestsCopyCopyCopy',
-          path: '/requestsCopyCopyCopy',
-          builder: (context, params) => const RequestsCopyCopyCopyWidget(),
-        ),
-        FFRoute(
           name: 'settings',
           path: '/settings',
           builder: (context, params) => const SettingsWidget(),
@@ -152,6 +149,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => VerificationWidget(
             familyname: params.getParam(
               'familyname',
+              ParamType.String,
+            ),
+            email: params.getParam(
+              'email',
               ParamType.String,
             ),
           ),
@@ -167,9 +168,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'LoginCopy2',
-          path: '/loginCopy2',
-          builder: (context, params) => const LoginCopy2Widget(),
+          name: 'RejectPage',
+          path: '/rejectPage',
+          builder: (context, params) => RejectPageWidget(
+            familyname: params.getParam(
+              'familyname',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -289,6 +295,7 @@ class FFParameters {
     ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -307,6 +314,7 @@ class FFParameters {
       type,
       isList,
       collectionNamePath: collectionNamePath,
+      structBuilder: structBuilder,
     );
   }
 }

@@ -39,18 +39,32 @@ class _LoggedinPageWidgetState extends State<LoggedinPageWidget> {
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
-      if (currentUserEmailVerified) {
-        if (_model.user?.isAdmin == true) {
+      if (_model.user?.isAdmin == true) {
+        if (currentUserEmailVerified) {
           context.pushNamed('HomeAdmin');
+
+          return;
         } else {
-          if (_model.user!.accepted) {
-            context.pushNamed('HomeUser');
-          } else {
-            context.pushNamed('PendingPage');
-          }
+          context.pushNamed('verification');
+
+          return;
         }
       } else {
-        context.pushNamed('verification');
+        if (_model.user!.accepted) {
+          context.pushNamed('HomeUser');
+
+          return;
+        } else {
+          if (_model.user?.rejected == true) {
+            context.pushNamed('RejectPage');
+
+            return;
+          } else {
+            context.pushNamed('PendingPage');
+
+            return;
+          }
+        }
       }
     });
   }

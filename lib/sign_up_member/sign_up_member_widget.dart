@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -8,7 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +18,12 @@ import 'sign_up_member_model.dart';
 export 'sign_up_member_model.dart';
 
 class SignUpMemberWidget extends StatefulWidget {
-  const SignUpMemberWidget({super.key});
+  const SignUpMemberWidget({
+    super.key,
+    this.email,
+  });
+
+  final String? email;
 
   @override
   State<SignUpMemberWidget> createState() => _SignUpMemberWidgetState();
@@ -40,25 +44,158 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
-
+    _model.textFieldFocusNode1!.addListener(
+      () async {
+        if ((_model.dropDownValue1 == null || _model.dropDownValue1 == '') &&
+            (_model.textFieldFocusNode1?.hasFocus ?? false)) {
+          _model.familyChosen = false;
+          safeSetState(() {});
+          if ((_model.dropDownValue2 == null || _model.dropDownValue2 == '') &&
+              (_model.textFieldFocusNode1?.hasFocus ?? false)) {
+            _model.genderChosen = false;
+            safeSetState(() {});
+          }
+        } else {
+          if ((_model.dropDownValue2 == null || _model.dropDownValue2 == '') &&
+              (_model.textFieldFocusNode1?.hasFocus ?? false)) {
+            _model.genderChosen = false;
+            safeSetState(() {});
+          }
+        }
+      },
+    );
     _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
-
+    _model.textFieldFocusNode2!.addListener(
+      () async {
+        if ((_model.dropDownValue1 == null || _model.dropDownValue1 == '') &&
+            (_model.textFieldFocusNode2?.hasFocus ?? false)) {
+          _model.familyChosen = false;
+          safeSetState(() {});
+          if ((_model.dropDownValue2 == null || _model.dropDownValue2 == '') &&
+              (_model.textFieldFocusNode2?.hasFocus ?? false)) {
+            _model.genderChosen = false;
+            safeSetState(() {});
+          }
+        } else {
+          if ((_model.dropDownValue2 == null || _model.dropDownValue2 == '') &&
+              (_model.textFieldFocusNode2?.hasFocus ?? false)) {
+            _model.genderChosen = false;
+            safeSetState(() {});
+          }
+        }
+      },
+    );
     _model.textController3 ??= TextEditingController();
     _model.textFieldFocusNode3 ??= FocusNode();
-
+    _model.textFieldFocusNode3!.addListener(
+      () async {
+        if ((_model.dropDownValue1 == null || _model.dropDownValue1 == '') &&
+            (_model.textFieldFocusNode3?.hasFocus ?? false)) {
+          _model.familyChosen = false;
+          safeSetState(() {});
+          if ((_model.dropDownValue2 == null || _model.dropDownValue2 == '') &&
+              (_model.textFieldFocusNode3?.hasFocus ?? false)) {
+            _model.genderChosen = false;
+            safeSetState(() {});
+          }
+        } else {
+          if ((_model.dropDownValue2 == null || _model.dropDownValue2 == '') &&
+              (_model.textFieldFocusNode3?.hasFocus ?? false)) {
+            _model.genderChosen = false;
+            safeSetState(() {});
+          }
+        }
+      },
+    );
     _model.textController4 ??= TextEditingController();
     _model.textFieldFocusNode4 ??= FocusNode();
-
+    _model.textFieldFocusNode4!.addListener(
+      () async {
+        if ((_model.dropDownValue1 == null || _model.dropDownValue1 == '') &&
+            (_model.textFieldFocusNode4?.hasFocus ?? false)) {
+          _model.familyChosen = false;
+          safeSetState(() {});
+          if ((_model.dropDownValue2 == null || _model.dropDownValue2 == '') &&
+              (_model.textFieldFocusNode4?.hasFocus ?? false)) {
+            _model.genderChosen = false;
+            safeSetState(() {});
+          }
+        } else {
+          if ((_model.dropDownValue2 == null || _model.dropDownValue2 == '') &&
+              (_model.textFieldFocusNode4?.hasFocus ?? false)) {
+            _model.genderChosen = false;
+            safeSetState(() {});
+          }
+        }
+      },
+    );
     _model.textController5 ??= TextEditingController();
     _model.textFieldFocusNode5 ??= FocusNode();
-
+    _model.textFieldFocusNode5!.addListener(
+      () async {
+        if ((_model.dropDownValue1 == null || _model.dropDownValue1 == '') &&
+            (_model.textFieldFocusNode5?.hasFocus ?? false)) {
+          _model.familyChosen = false;
+          safeSetState(() {});
+          if ((_model.dropDownValue2 == null || _model.dropDownValue2 == '') &&
+              (_model.textFieldFocusNode5?.hasFocus ?? false)) {
+            _model.genderChosen = false;
+            safeSetState(() {});
+          }
+        } else {
+          if ((_model.dropDownValue2 == null || _model.dropDownValue2 == '') &&
+              (/* NOT RECOMMENDED */ _model.textController5.text == 'true')) {
+            _model.genderChosen = false;
+            safeSetState(() {});
+          }
+        }
+      },
+    );
     _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
-
+    _model.emailAddressFocusNode!.addListener(
+      () async {
+        if ((_model.dropDownValue1 == null || _model.dropDownValue1 == '') &&
+            (_model.emailAddressFocusNode?.hasFocus ?? false)) {
+          _model.familyChosen = false;
+          safeSetState(() {});
+          if ((_model.dropDownValue2 == null || _model.dropDownValue2 == '') &&
+              (_model.emailAddressFocusNode?.hasFocus ?? false)) {
+            _model.genderChosen = false;
+            safeSetState(() {});
+          }
+        } else {
+          if ((_model.dropDownValue2 == null || _model.dropDownValue2 == '') &&
+              (_model.emailAddressFocusNode?.hasFocus ?? false)) {
+            _model.genderChosen = false;
+            safeSetState(() {});
+          }
+        }
+      },
+    );
     _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
-
+    _model.passwordFocusNode!.addListener(
+      () async {
+        if ((_model.dropDownValue1 == null || _model.dropDownValue1 == '') &&
+            (_model.passwordFocusNode?.hasFocus ?? false)) {
+          _model.familyChosen = false;
+          safeSetState(() {});
+          if ((_model.dropDownValue2 == null || _model.dropDownValue2 == '') &&
+              (_model.passwordFocusNode?.hasFocus ?? false)) {
+            _model.genderChosen = false;
+            safeSetState(() {});
+          }
+        } else {
+          if ((_model.dropDownValue2 == null || _model.dropDownValue2 == '') &&
+              (_model.passwordFocusNode?.hasFocus ?? false)) {
+            _model.genderChosen = false;
+            safeSetState(() {});
+          }
+        }
+      },
+    );
     _model.passwordConfirmTextController ??= TextEditingController();
     _model.passwordConfirmFocusNode ??= FocusNode();
 
@@ -138,6 +275,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           FlutterFlowIconButton(
                             borderColor: Colors.transparent,
@@ -153,21 +291,23 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                               context.pop();
                             },
                           ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 60.0, 0.0),
-                            child: ClipRRect(
-                              borderRadius: const BorderRadius.only(
-                                bottomLeft: Radius.circular(0.0),
-                                bottomRight: Radius.circular(0.0),
-                                topLeft: Radius.circular(0.0),
-                                topRight: Radius.circular(0.0),
-                              ),
-                              child: Image.asset(
-                                'assets/images/SilahFINALLogo.jpg',
-                                width: 155.0,
-                                height: 96.0,
-                                fit: BoxFit.cover,
+                          Expanded(
+                            child: Align(
+                              alignment: const AlignmentDirectional(-0.3, 0.0),
+                              child: ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                  bottomLeft: Radius.circular(0.0),
+                                  bottomRight: Radius.circular(0.0),
+                                  topLeft: Radius.circular(0.0),
+                                  topRight: Radius.circular(0.0),
+                                ),
+                                child: Image.asset(
+                                  'assets/images/SilahFINALLogo.jpg',
+                                  width: 155.0,
+                                  height: 96.0,
+                                  fit: BoxFit.cover,
+                                  alignment: const Alignment(0.0, 0.0),
+                                ),
                               ),
                             ),
                           ),
@@ -208,25 +348,29 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 16.0),
-                                            child: Text(
-                                              'تسجيل الدخول',
-                                              textAlign: TextAlign.center,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .displaySmall
-                                                  .override(
-                                                    fontFamily:
-                                                        'Plus Jakarta Sans',
-                                                    color: const Color(0xFF101213),
-                                                    fontSize: 25.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
+                                        Flexible(
+                                          child: Align(
+                                            alignment:
+                                                const AlignmentDirectional(0.0, 0.0),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 0.0, 16.0),
+                                              child: Text(
+                                                'إنشاء حساب كعضو',
+                                                textAlign: TextAlign.center,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .displaySmall
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color: const Color(0xFF2A497D),
+                                                      fontSize: 20.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -239,405 +383,291 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                       child: Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 2.0, 16.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            context.pushNamed('SignUpAdmin');
-                                          },
-                                          child: RichText(
-                                            textScaler: MediaQuery.of(context)
-                                                .textScaler,
-                                            text: TextSpan(
-                                              children: const [
-                                                TextSpan(
-                                                  text:
-                                                      'يرجى ادخال بياناتك الشخصية  وتحديد العائلة التي تنتمي إليها من القائمة ادناه ',
-                                                  style: TextStyle(
-                                                    fontSize: 12.0,
-                                                  ),
-                                                )
-                                              ],
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            ),
-                                            textAlign: TextAlign.start,
+                                        child: RichText(
+                                          textScaler:
+                                              MediaQuery.of(context).textScaler,
+                                          text: TextSpan(
+                                            children: const [
+                                              TextSpan(
+                                                text:
+                                                    'يرجى إدخال بياناتك الشخصية باللغة العربية وتحديد العائلة التي تنتمي إليها من القائمة أدناه ',
+                                                style: TextStyle(
+                                                  fontSize: 12.0,
+                                                ),
+                                              )
+                                            ],
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
+                                          textAlign: TextAlign.center,
                                         ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 26.0),
-                                      child: FlutterFlowIconButton(
-                                        borderColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                        borderRadius: 50.0,
-                                        buttonSize: 85.0,
-                                        fillColor: const Color(0xFFFFFCF6),
-                                        icon: Icon(
-                                          Icons.camera_alt,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 50.0,
-                                        ),
-                                        onPressed: () async {
-                                          final selectedMedia =
-                                              await selectMediaWithSourceBottomSheet(
-                                            context: context,
-                                            allowPhoto: true,
-                                          );
-                                          if (selectedMedia != null &&
-                                              selectedMedia.every((m) =>
-                                                  validateFileFormat(
-                                                      m.storagePath,
-                                                      context))) {
-                                            safeSetState(() =>
-                                                _model.isDataUploading = true);
-                                            var selectedUploadedFiles =
-                                                <FFUploadedFile>[];
-
-                                            var downloadUrls = <String>[];
-                                            try {
-                                              selectedUploadedFiles =
-                                                  selectedMedia
-                                                      .map(
-                                                          (m) => FFUploadedFile(
-                                                                name: m
-                                                                    .storagePath
-                                                                    .split('/')
-                                                                    .last,
-                                                                bytes: m.bytes,
-                                                                height: m
-                                                                    .dimensions
-                                                                    ?.height,
-                                                                width: m
-                                                                    .dimensions
-                                                                    ?.width,
-                                                                blurHash:
-                                                                    m.blurHash,
-                                                              ))
-                                                      .toList();
-
-                                              downloadUrls = (await Future.wait(
-                                                selectedMedia.map(
-                                                  (m) async => await uploadData(
-                                                      m.storagePath, m.bytes),
-                                                ),
-                                              ))
-                                                  .where((u) => u != null)
-                                                  .map((u) => u!)
-                                                  .toList();
-                                            } finally {
-                                              _model.isDataUploading = false;
-                                            }
-                                            if (selectedUploadedFiles.length ==
-                                                    selectedMedia.length &&
-                                                downloadUrls.length ==
-                                                    selectedMedia.length) {
-                                              safeSetState(() {
-                                                _model.uploadedLocalFile =
-                                                    selectedUploadedFiles.first;
-                                                _model.uploadedFileUrl =
-                                                    downloadUrls.first;
-                                              });
-                                            } else {
-                                              safeSetState(() {});
-                                              return;
-                                            }
-                                          }
-                                        },
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        // You will have to add an action on this rich text to go to your login page.
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 16.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context
-                                                    .pushNamed('SignUpAdmin');
-                                              },
-                                              child: RichText(
-                                                textScaler:
-                                                    MediaQuery.of(context)
-                                                        .textScaler,
-                                                text: TextSpan(
-                                                  children: const [
-                                                    TextSpan(
-                                                      text:
-                                                          'يجب ادخال اسمك باللغة العربية',
-                                                      style: TextStyle(
-                                                        fontSize: 12.0,
-                                                      ),
-                                                    )
-                                                  ],
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                                textAlign: TextAlign.start,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
                                     ),
                                     Row(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    2.0, 0.0, 0.0, 16.0),
-                                            child: SizedBox(
-                                              width: 370.0,
-                                              child: TextFormField(
-                                                controller:
-                                                    _model.textController1,
-                                                focusNode:
-                                                    _model.textFieldFocusNode1,
-                                                autofocus: true,
-                                                autofillHints: const [
-                                                  AutofillHints.name
-                                                ],
-                                                obscureText: false,
-                                                decoration: InputDecoration(
-                                                  labelText: ' الاسم ',
-                                                  labelStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                  errorStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                      ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                      color: Color(0xFFF1F4F8),
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                      color: Color(0xFF4B39EF),
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                  ),
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                      color: Color(0xFFFF5963),
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                  ),
-                                                  focusedErrorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                      color: Color(0xFFFF5963),
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                  ),
-                                                  filled: true,
-                                                  fillColor: const Color(0xFFF1F4F8),
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                        Flexible(
+                                          child: Align(
+                                            alignment:
+                                                const AlignmentDirectional(-0.6, 0.0),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      2.0, 0.0, 0.0, 16.0),
+                                              child: SizedBox(
+                                                width: 370.0,
+                                                child: TextFormField(
+                                                  controller:
+                                                      _model.textController1,
+                                                  focusNode: _model
+                                                      .textFieldFocusNode1,
+                                                  autofocus: false,
+                                                  autofillHints: const [
+                                                    AutofillHints.name
+                                                  ],
+                                                  textCapitalization:
+                                                      TextCapitalization.none,
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelText: ' الاسم ',
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    errorStyle: FlutterFlowTheme
+                                                            .of(context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF101213),
-                                                          fontSize: 14.0,
+                                                              'Readex Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
-                                                              FontWeight.w500,
+                                                              FontWeight.w300,
                                                         ),
-                                                keyboardType:
-                                                    TextInputType.name,
-                                                validator: _model
-                                                    .textController1Validator
-                                                    .asValidator(context),
-                                                inputFormatters: [
-                                                  FilteringTextInputFormatter
-                                                      .allow(RegExp(
-                                                          '^[\\u0600-\\u06FF\\s]+\$'))
-                                                ],
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0xFFF1F4F8),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0xFF4B39EF),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0xFFFF5963),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0xFFFF5963),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor:
+                                                        const Color(0xFFF1F4F8),
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        color:
+                                                            const Color(0xFF101213),
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                  maxLength: 51,
+                                                  buildCounter: (context,
+                                                          {required currentLength,
+                                                          required isFocused,
+                                                          maxLength}) =>
+                                                      null,
+                                                  keyboardType:
+                                                      TextInputType.name,
+                                                  validator: _model
+                                                      .textController1Validator
+                                                      .asValidator(context),
+                                                  inputFormatters: [
+                                                    FilteringTextInputFormatter
+                                                        .allow(RegExp(
+                                                            '^[\\u0600-\\u06FF\\s]+\$'))
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 2.0, 16.0),
-                                            child: SizedBox(
-                                              width: 370.0,
-                                              child: TextFormField(
-                                                controller:
-                                                    _model.textController2,
-                                                focusNode:
-                                                    _model.textFieldFocusNode2,
-                                                autofocus: true,
-                                                autofillHints: const [
-                                                  AutofillHints.name
-                                                ],
-                                                obscureText: false,
-                                                decoration: InputDecoration(
-                                                  labelText: 'اسم الأب',
-                                                  labelStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                  errorStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                      ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                      color: Color(0xFFF1F4F8),
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
+                                        Flexible(
+                                          child: Align(
+                                            alignment:
+                                                const AlignmentDirectional(0.44, 0.0),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 0.2, 16.0),
+                                              child: SizedBox(
+                                                width: 370.0,
+                                                child: TextFormField(
+                                                  controller:
+                                                      _model.textController2,
+                                                  focusNode: _model
+                                                      .textFieldFocusNode2,
+                                                  onChanged: (_) =>
+                                                      EasyDebounce.debounce(
+                                                    '_model.textController2',
+                                                    const Duration(milliseconds: 5),
+                                                    () => safeSetState(() {}),
                                                   ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                      color: Color(0xFF4B39EF),
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                  ),
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                      color: Color(0xFFFF5963),
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                  ),
-                                                  focusedErrorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                      color: Color(0xFFFF5963),
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                  ),
-                                                  filled: true,
-                                                  fillColor: const Color(0xFFF1F4F8),
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                                  autofocus: false,
+                                                  autofillHints: const [
+                                                    AutofillHints.name
+                                                  ],
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelText: 'اسم الأب',
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    errorStyle: FlutterFlowTheme
+                                                            .of(context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF101213),
-                                                          fontSize: 14.0,
+                                                              'Readex Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
-                                                              FontWeight.w500,
+                                                              FontWeight.w300,
                                                         ),
-                                                keyboardType:
-                                                    TextInputType.name,
-                                                validator: _model
-                                                    .textController2Validator
-                                                    .asValidator(context),
-                                                inputFormatters: [
-                                                  FilteringTextInputFormatter
-                                                      .allow(RegExp(
-                                                          '^[\\u0600-\\u06FF\\s]+\$'))
-                                                ],
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0xFFF1F4F8),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0xFF4B39EF),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0xFFFF5963),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0xFFFF5963),
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor:
+                                                        const Color(0xFFF1F4F8),
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        color:
+                                                            const Color(0xFF101213),
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                  maxLength: 51,
+                                                  buildCounter: (context,
+                                                          {required currentLength,
+                                                          required isFocused,
+                                                          maxLength}) =>
+                                                      null,
+                                                  keyboardType:
+                                                      TextInputType.name,
+                                                  validator: _model
+                                                      .textController2Validator
+                                                      .asValidator(context),
+                                                  inputFormatters: [
+                                                    FilteringTextInputFormatter
+                                                        .allow(RegExp(
+                                                            '^[\\u0600-\\u06FF\\s]+\$'))
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -659,7 +689,13 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                     _model.textController3,
                                                 focusNode:
                                                     _model.textFieldFocusNode3,
-                                                autofocus: true,
+                                                onChanged: (_) =>
+                                                    EasyDebounce.debounce(
+                                                  '_model.textController3',
+                                                  const Duration(milliseconds: 5),
+                                                  () => safeSetState(() {}),
+                                                ),
+                                                autofocus: false,
                                                 autofillHints: const [
                                                   AutofillHints.name
                                                 ],
@@ -746,6 +782,12 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
+                                                maxLength: 51,
+                                                buildCounter: (context,
+                                                        {required currentLength,
+                                                        required isFocused,
+                                                        maxLength}) =>
+                                                    null,
                                                 keyboardType:
                                                     TextInputType.name,
                                                 validator: _model
@@ -772,7 +814,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                     _model.textController4,
                                                 focusNode:
                                                     _model.textFieldFocusNode4,
-                                                autofocus: true,
+                                                autofocus: false,
                                                 autofillHints: const [
                                                   AutofillHints.name
                                                 ],
@@ -859,6 +901,12 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
+                                                maxLength: 51,
+                                                buildCounter: (context,
+                                                        {required currentLength,
+                                                        required isFocused,
+                                                        maxLength}) =>
+                                                    null,
                                                 keyboardType:
                                                     TextInputType.name,
                                                 validator: _model
@@ -884,24 +932,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   5.0, 0.0, 0.0, 16.0),
                                           child:
                                               StreamBuilder<List<FamilyRecord>>(
-                                            stream: queryFamilyRecord()
-                                              ..listen((snapshot) {
-                                                List<FamilyRecord>
-                                                    dropDownFamilyRecordList =
-                                                    snapshot;
-                                                if (_model.dropDownPreviousSnapshot !=
-                                                        null &&
-                                                    !const ListEquality(
-                                                            FamilyRecordDocumentEquality())
-                                                        .equals(
-                                                            dropDownFamilyRecordList,
-                                                            _model
-                                                                .dropDownPreviousSnapshot)) {
-                                                  () async {}();
-                                                }
-                                                _model.dropDownPreviousSnapshot =
-                                                    snapshot;
-                                              }),
+                                            stream: queryFamilyRecord(),
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
                                               if (!snapshot.hasData) {
@@ -943,9 +974,25 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                         .map(
                                                             (e) => e.familyName)
                                                         .toList(),
-                                                onChanged: (val) =>
-                                                    safeSetState(() => _model
-                                                        .dropDownValue1 = val),
+                                                onChanged: (val) async {
+                                                  safeSetState(() => _model
+                                                      .dropDownValue1 = val);
+                                                  if (!(_model.dropDownValue1 ==
+                                                          null ||
+                                                      _model.dropDownValue1 ==
+                                                          '')) {
+                                                    _model.familyChosen = true;
+                                                    safeSetState(() {});
+                                                    if (_model.dropDownValue2 ==
+                                                            null ||
+                                                        _model.dropDownValue2 ==
+                                                            '') {
+                                                      _model.genderChosen =
+                                                          false;
+                                                      safeSetState(() {});
+                                                    }
+                                                  }
+                                                },
                                                 width: 146.0,
                                                 height: 40.0,
                                                 searchHintTextStyle:
@@ -984,8 +1031,12 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                 ),
                                                 fillColor: const Color(0xFFF1F4F8),
                                                 elevation: 2.0,
-                                                borderColor: Colors.transparent,
-                                                borderWidth: 0.0,
+                                                borderColor: _model.familyChosen
+                                                    ? const Color(0xFFF1F4F8)
+                                                    : FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                borderWidth: 2.0,
                                                 borderRadius: 8.0,
                                                 margin: const EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -1000,72 +1051,127 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                         ),
 
                                         // You will have to add an action on this rich text to go to your login page.
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 2.0, 16.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context
-                                                    .pushNamed('SignUpAdmin');
-                                              },
-                                              child: RichText(
-                                                textScaler:
-                                                    MediaQuery.of(context)
-                                                        .textScaler,
-                                                text: TextSpan(
-                                                  children: [
-                                                    const TextSpan(
-                                                      text: 'لم تجد عائلتك؟ ',
-                                                      style: TextStyle(
-                                                        fontSize: 12.0,
+                                        Expanded(
+                                          child: Align(
+                                            alignment:
+                                                const AlignmentDirectional(0.44, 0.0),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 0.0, 16.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  context
+                                                      .pushNamed('SignUpAdmin');
+                                                },
+                                                child: RichText(
+                                                  textScaler:
+                                                      MediaQuery.of(context)
+                                                          .textScaler,
+                                                  text: TextSpan(
+                                                    children: [
+                                                      const TextSpan(
+                                                        text: 'لم تجد عائلتك؟ ',
+                                                        style: TextStyle(
+                                                          fontSize: 12.0,
+                                                        ),
                                                       ),
-                                                    ),
-                                                    TextSpan(
-                                                      text: 'سجل كمشرف',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
-                                                            color: const Color(
-                                                                0xFF4B39EF),
-                                                            fontSize: 12.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                          ),
-                                                    )
-                                                  ],
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color:
-                                                            const Color(0xFF101213),
-                                                        fontSize: 11.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
+                                                      TextSpan(
+                                                        text: 'سجل كمشرف',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Plus Jakarta Sans',
+                                                              color: const Color(
+                                                                  0xFF2A497D),
+                                                              fontSize: 12.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .underline,
+                                                            ),
+                                                      )
+                                                    ],
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                  textAlign: TextAlign.start,
                                                 ),
-                                                textAlign: TextAlign.end,
                                               ),
                                             ),
                                           ),
                                         ),
                                       ],
+                                    ),
+                                    Builder(
+                                      builder: (context) {
+                                        if (_model.familyChosen) {
+                                          return Container(
+                                            width: 1.0,
+                                            height: 1.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                          );
+                                        } else {
+                                          return Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 16.0, 16.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 40.0, 0.0),
+                                                  child: Text(
+                                                    'هذا الحقل مطلوب',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        }
+                                      },
                                     ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
@@ -1114,12 +1220,13 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   _model.textController5,
                                               focusNode:
                                                   _model.textFieldFocusNode5,
-                                              autofocus: true,
+                                              autofocus: false,
                                               autofillHints: const [
                                                 AutofillHints.telephoneNumber
                                               ],
                                               obscureText: false,
                                               decoration: InputDecoration(
+                                                isDense: false,
                                                 labelText: 'رقم الهاتف',
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -1196,7 +1303,9 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),
-                                              maxLength: 10,
+                                              maxLength: 11,
+                                              maxLengthEnforcement:
+                                                  MaxLengthEnforcement.enforced,
                                               buildCounter: (context,
                                                       {required currentLength,
                                                       required isFocused,
@@ -1225,8 +1334,22 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   .dropDownValueController2 ??=
                                               FormFieldController<String>(null),
                                           options: const ['ذكر', 'انثى'],
-                                          onChanged: (val) => safeSetState(() =>
-                                              _model.dropDownValue2 = val),
+                                          onChanged: (val) async {
+                                            safeSetState(() =>
+                                                _model.dropDownValue2 = val);
+                                            if (!(_model.dropDownValue2 ==
+                                                    null ||
+                                                _model.dropDownValue2 == '')) {
+                                              _model.genderChosen = true;
+                                              safeSetState(() {});
+                                              if (_model.dropDownValue1 ==
+                                                      null ||
+                                                  _model.dropDownValue1 == '') {
+                                                _model.familyChosen = false;
+                                                safeSetState(() {});
+                                              }
+                                            }
+                                          },
                                           width: 340.0,
                                           height: 40.0,
                                           textStyle:
@@ -1245,8 +1368,11 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                           ),
                                           fillColor: const Color(0xFFF1F4F8),
                                           elevation: 2.0,
-                                          borderColor: Colors.transparent,
-                                          borderWidth: 0.0,
+                                          borderColor: _model.genderChosen
+                                              ? const Color(0x00000000)
+                                              : FlutterFlowTheme.of(context)
+                                                  .error,
+                                          borderWidth: 2.0,
                                           borderRadius: 8.0,
                                           margin:
                                               const EdgeInsetsDirectional.fromSTEB(
@@ -1258,6 +1384,54 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                         ),
                                       ),
                                     ),
+                                    Builder(
+                                      builder: (context) {
+                                        if (_model.genderChosen) {
+                                          return Container(
+                                            width: 1.0,
+                                            height: 1.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                          );
+                                        } else {
+                                          return Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 16.0, 16.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 40.0, 0.0),
+                                                  child: Text(
+                                                    'هذا الحقل مطلوب',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        }
+                                      },
+                                    ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 16.0),
@@ -1268,7 +1442,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                               _model.emailAddressTextController,
                                           focusNode:
                                               _model.emailAddressFocusNode,
-                                          autofocus: true,
+                                          autofocus: false,
                                           autofillHints: const [AutofillHints.email],
                                           obscureText: false,
                                           decoration: InputDecoration(
@@ -1344,6 +1518,12 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
                                               ),
+                                          maxLength: 151,
+                                          buildCounter: (context,
+                                                  {required currentLength,
+                                                  required isFocused,
+                                                  maxLength}) =>
+                                              null,
                                           keyboardType:
                                               TextInputType.emailAddress,
                                           validator: _model
@@ -1362,15 +1542,19 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            '- يجب أن تحتوي كلمة المرور على أحرف صغيرة وكبيرة وأرقام.\n- يجب أن تحتوي كلمة المرور 6 خانات على الأقل.',
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelMedium
-                                                .override(
-                                                  fontFamily: 'Readex Pro',
-                                                  fontSize: 11.0,
-                                                  letterSpacing: 0.0,
-                                                ),
+                                          Expanded(
+                                            child: Text(
+                                              '- يجب أن تحتوي كلمة المرور على أحرف صغيرة وكبيرة وأرقام.\n- يجب أن تحتوي كلمة المرور 8 خانات على الأقل.\n- يجب أن تحتوي كلمة المرور على أحرف انجليزية فقط\n- يجب أن لا تحتوي كلمة المرور على مسافات.',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        fontSize: 11.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -1384,7 +1568,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                           controller:
                                               _model.passwordTextController,
                                           focusNode: _model.passwordFocusNode,
-                                          autofocus: true,
+                                          autofocus: false,
                                           autofillHints: const [
                                             AutofillHints.password
                                           ],
@@ -1485,7 +1669,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
                                               ),
-                                          maxLength: 15,
+                                          maxLength: 21,
                                           buildCounter: (context,
                                                   {required currentLength,
                                                   required isFocused,
@@ -1527,7 +1711,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                               }
                                             },
                                           ),
-                                          autofocus: true,
+                                          autofocus: false,
                                           autofillHints: const [
                                             AutofillHints.password
                                           ],
@@ -1641,7 +1825,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
                                               ),
-                                          maxLength: 15,
+                                          maxLength: 21,
                                           buildCounter: (context,
                                                   {required currentLength,
                                                   required isFocused,
@@ -1750,6 +1934,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                           return FFButtonWidget(
                                             onPressed: () async {
                                               var shouldSetState = false;
+                                              Function() navigate = () {};
                                               if (_model.formKey.currentState ==
                                                       null ||
                                                   !_model.formKey.currentState!
@@ -1775,7 +1960,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                     backgroundColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .primaryBackground,
+                                                            .error,
                                                   ),
                                                 );
                                                 return;
@@ -1806,37 +1991,6 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                 );
                                                 return;
                                               }
-                                              GoRouter.of(context)
-                                                  .prepareAuthEvent();
-                                              if (_model.passwordTextController
-                                                      .text !=
-                                                  _model
-                                                      .passwordConfirmTextController
-                                                      .text) {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  const SnackBar(
-                                                    content: Text(
-                                                      'Passwords don\'t match!',
-                                                    ),
-                                                  ),
-                                                );
-                                                return;
-                                              }
-
-                                              final user = await authManager
-                                                  .createAccountWithEmail(
-                                                context,
-                                                _model
-                                                    .emailAddressTextController
-                                                    .text,
-                                                _model.passwordTextController
-                                                    .text,
-                                              );
-                                              if (user == null) {
-                                                return;
-                                              }
-
                                               _model.family =
                                                   await queryFamilyRecordOnce(
                                                 queryBuilder: (familyRecord) =>
@@ -1851,80 +2005,30 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                               if (_model.dropDownValue1 !=
                                                       null &&
                                                   _model.dropDownValue1 != '') {
-                                                var usersRecordReference =
-                                                    UsersRecord.collection
-                                                        .doc();
-                                                await usersRecordReference.set({
-                                                  ...createUsersRecordData(
-                                                    password: _model
-                                                        .passwordTextController
-                                                        .text,
-                                                    gender:
-                                                        _model.dropDownValue2,
-                                                    isAdmin: false,
-                                                    displayName: _model
-                                                        .textController1.text,
-                                                    phoneNumber: _model
+                                                _model.phoneExist =
+                                                    await queryUsersRecordOnce(
+                                                  queryBuilder: (usersRecord) =>
+                                                      usersRecord.where(
+                                                    'phone_number',
+                                                    isEqualTo: _model
                                                         .textController5.text,
-                                                    secondName: _model
-                                                        .textController2.text,
-                                                    thirdName: _model
-                                                        .textController3.text,
-                                                    fourthName: _model
-                                                        .textController4.text,
-                                                    userPIc:
-                                                        _model.uploadedFileUrl,
-                                                    email: _model
-                                                        .emailAddressTextController
-                                                        .text,
-                                                    uid: currentUserUid,
-                                                    familyName: _model
-                                                        .family?.reference,
                                                   ),
-                                                  ...mapToFirestore(
-                                                    {
-                                                      'created_time': FieldValue
-                                                          .serverTimestamp(),
-                                                    },
-                                                  ),
-                                                });
-                                                _model.user = UsersRecord
-                                                    .getDocumentFromData({
-                                                  ...createUsersRecordData(
-                                                    password: _model
-                                                        .passwordTextController
-                                                        .text,
-                                                    gender:
-                                                        _model.dropDownValue2,
-                                                    isAdmin: false,
-                                                    displayName: _model
-                                                        .textController1.text,
-                                                    phoneNumber: _model
-                                                        .textController5.text,
-                                                    secondName: _model
-                                                        .textController2.text,
-                                                    thirdName: _model
-                                                        .textController3.text,
-                                                    fourthName: _model
-                                                        .textController4.text,
-                                                    userPIc:
-                                                        _model.uploadedFileUrl,
-                                                    email: _model
-                                                        .emailAddressTextController
-                                                        .text,
-                                                    uid: currentUserUid,
-                                                    familyName: _model
-                                                        .family?.reference,
-                                                  ),
-                                                  ...mapToFirestore(
-                                                    {
-                                                      'created_time':
-                                                          DateTime.now(),
-                                                    },
-                                                  ),
-                                                }, usersRecordReference);
+                                                  singleRecord: true,
+                                                ).then((s) => s.firstOrNull);
                                                 shouldSetState = true;
-                                                if (buttonUsersRecord
+                                                _model.emailExist =
+                                                    await queryUsersRecordOnce(
+                                                  queryBuilder: (usersRecord) =>
+                                                      usersRecord.where(
+                                                    'email',
+                                                    isEqualTo: _model
+                                                        .emailAddressTextController
+                                                        .text,
+                                                  ),
+                                                  singleRecord: true,
+                                                ).then((s) => s.firstOrNull);
+                                                shouldSetState = true;
+                                                if (_model.phoneExist
                                                         ?.phoneNumber ==
                                                     _model
                                                         .textController5.text) {
@@ -1932,11 +2036,11 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                       .showSnackBar(
                                                     SnackBar(
                                                       content: Text(
-                                                        'رقم الجوال مسجل بالفعل!',
+                                                        'رقم الهاتف موجود مسبقا!',
                                                         style: TextStyle(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primaryText,
+                                                              .primaryBackground,
                                                         ),
                                                       ),
                                                       duration: const Duration(
@@ -1952,50 +2056,212 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   }
                                                   return;
                                                 } else {
-                                                  context.pushNamedAuth(
-                                                    'verification',
-                                                    context.mounted,
-                                                    queryParameters: {
-                                                      'familyname':
-                                                          serializeParam(
-                                                        _model.dropDownValue1,
-                                                        ParamType.String,
-                                                      ),
-                                                    }.withoutNulls,
-                                                  );
-                                                }
-                                              } else {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  SnackBar(
-                                                    content: Text(
-                                                      'يجب اختيار عائلتك',
-                                                      style: TextStyle(
-                                                        color:
+                                                  if (_model
+                                                          .emailExist?.email ==
+                                                      _model
+                                                          .emailAddressTextController
+                                                          .text) {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(
+                                                          '!البريد الإلكتروني موجود مسبقا',
+                                                          style: TextStyle(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryBackground,
+                                                          ),
+                                                        ),
+                                                        duration: const Duration(
+                                                            milliseconds: 4000),
+                                                        backgroundColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryText,
+                                                                .error,
                                                       ),
-                                                    ),
-                                                    duration: const Duration(
-                                                        milliseconds: 4000),
-                                                    backgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondary,
-                                                  ),
-                                                );
+                                                    );
+                                                    if (shouldSetState) {
+                                                      safeSetState(() {});
+                                                    }
+                                                    return;
+                                                  } else {
+                                                    GoRouter.of(context)
+                                                        .prepareAuthEvent();
+                                                    if (_model
+                                                            .passwordTextController
+                                                            .text !=
+                                                        _model
+                                                            .passwordConfirmTextController
+                                                            .text) {
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                        const SnackBar(
+                                                          content: Text(
+                                                            'كلمة المرور لا تتطابق',
+                                                          ),
+                                                        ),
+                                                      );
+                                                      return;
+                                                    }
+
+                                                    final user = await authManager
+                                                        .createAccountWithEmail(
+                                                      context,
+                                                      _model
+                                                          .emailAddressTextController
+                                                          .text,
+                                                      _model
+                                                          .passwordTextController
+                                                          .text,
+                                                    );
+                                                    if (user == null) {
+                                                      return;
+                                                    }
+
+                                                    navigate = () =>
+                                                        context.goNamedAuth(
+                                                            'loggedinPage',
+                                                            context.mounted);
+
+                                                    var usersRecordReference =
+                                                        UsersRecord.collection
+                                                            .doc();
+                                                    await usersRecordReference
+                                                        .set({
+                                                      ...createUsersRecordData(
+                                                        password: _model
+                                                            .passwordTextController
+                                                            .text,
+                                                        gender: _model
+                                                            .dropDownValue2,
+                                                        isAdmin: false,
+                                                        displayName: _model
+                                                            .textController1
+                                                            .text,
+                                                        phoneNumber: _model
+                                                            .textController5
+                                                            .text,
+                                                        secondName: _model
+                                                            .textController2
+                                                            .text,
+                                                        thirdName: _model
+                                                            .textController3
+                                                            .text,
+                                                        fourthName: _model
+                                                            .textController4
+                                                            .text,
+                                                        email: _model
+                                                            .emailAddressTextController
+                                                            .text,
+                                                        uid: currentUserUid,
+                                                        familyName: _model
+                                                            .family?.reference,
+                                                        accepted: false,
+                                                        rejected: false,
+                                                        fullName: functions.concatenateStrings(
+                                                            _model
+                                                                .textController1
+                                                                .text,
+                                                            _model
+                                                                .textController2
+                                                                .text,
+                                                            _model
+                                                                .textController3
+                                                                .text,
+                                                            _model
+                                                                .textController4
+                                                                .text,
+                                                            _model
+                                                                .dropDownValue1),
+                                                      ),
+                                                      ...mapToFirestore(
+                                                        {
+                                                          'created_time': FieldValue
+                                                              .serverTimestamp(),
+                                                        },
+                                                      ),
+                                                    });
+                                                    _model.user = UsersRecord
+                                                        .getDocumentFromData({
+                                                      ...createUsersRecordData(
+                                                        password: _model
+                                                            .passwordTextController
+                                                            .text,
+                                                        gender: _model
+                                                            .dropDownValue2,
+                                                        isAdmin: false,
+                                                        displayName: _model
+                                                            .textController1
+                                                            .text,
+                                                        phoneNumber: _model
+                                                            .textController5
+                                                            .text,
+                                                        secondName: _model
+                                                            .textController2
+                                                            .text,
+                                                        thirdName: _model
+                                                            .textController3
+                                                            .text,
+                                                        fourthName: _model
+                                                            .textController4
+                                                            .text,
+                                                        email: _model
+                                                            .emailAddressTextController
+                                                            .text,
+                                                        uid: currentUserUid,
+                                                        familyName: _model
+                                                            .family?.reference,
+                                                        accepted: false,
+                                                        rejected: false,
+                                                        fullName: functions.concatenateStrings(
+                                                            _model
+                                                                .textController1
+                                                                .text,
+                                                            _model
+                                                                .textController2
+                                                                .text,
+                                                            _model
+                                                                .textController3
+                                                                .text,
+                                                            _model
+                                                                .textController4
+                                                                .text,
+                                                            _model
+                                                                .dropDownValue1),
+                                                      ),
+                                                      ...mapToFirestore(
+                                                        {
+                                                          'created_time':
+                                                              DateTime.now(),
+                                                        },
+                                                      ),
+                                                    }, usersRecordReference);
+                                                    shouldSetState = true;
+
+                                                    navigate();
+                                                    if (shouldSetState) {
+                                                      safeSetState(() {});
+                                                    }
+                                                    return;
+                                                  }
+                                                }
+                                              } else {
+                                                _model.familyChosen = false;
+                                                safeSetState(() {});
                                                 if (shouldSetState) {
                                                   safeSetState(() {});
                                                 }
                                                 return;
                                               }
 
+                                              navigate();
                                               if (shouldSetState) {
                                                 safeSetState(() {});
                                               }
                                             },
-                                            text: 'تسجيل الدخول',
+                                            text: 'انشاء حساب',
                                             options: FFButtonOptions(
                                               width: double.infinity,
                                               height: 44.0,
@@ -2004,18 +2270,16 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                               iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color: const Color(0xFF2A497D),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color: Colors.white,
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
+                                              textStyle: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: Colors.white,
+                                                    fontSize: 16.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
                                               elevation: 3.0,
                                               borderSide: const BorderSide(
                                                 color: Colors.transparent,

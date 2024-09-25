@@ -1,8 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'side_user_widget.dart' show SideUserWidget;
+import 'family_exist_already_widget.dart' show FamilyExistAlreadyWidget;
 import 'package:flutter/material.dart';
 
-class SideUserModel extends FlutterFlowModel<SideUserWidget> {
+class FamilyExistAlreadyModel
+    extends FlutterFlowModel<FamilyExistAlreadyWidget> {
   @override
   void initState(BuildContext context) {}
 
