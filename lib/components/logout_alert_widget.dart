@@ -160,84 +160,88 @@ class _LogoutAlertWidgetState extends State<LogoutAlertWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                12.0, 0.0, 0.0, 0.0),
+                          Flexible(
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 0.0, 0.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  context.safePop();
+                                },
+                                text: 'تراجع',
+                                options: FFButtonOptions(
+                                  height: 40.0,
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 0.0, 20.0, 0.0),
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: Colors.white,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: const Color(0xFF2A497D),
+                                        fontSize: 16.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                  elevation: 0.0,
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFF2A497D),
+                                  ),
+                                  borderRadius: BorderRadius.circular(40.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Flexible(
                             child: FFButtonWidget(
                               onPressed: () async {
-                                context.safePop();
+                                GoRouter.of(context).prepareAuthEvent();
+                                await authManager.signOut();
+                                GoRouter.of(context).clearRedirectLocation();
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'تم تسجيل الخروج بنجاح',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                    ),
+                                    duration: const Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).success,
+                                  ),
+                                );
+
+                                context.pushNamedAuth(
+                                    'initialPage', context.mounted);
                               },
-                              text: 'تراجع',
+                              text: 'تأكيد',
                               options: FFButtonOptions(
                                 height: 40.0,
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 20.0, 0.0),
                                 iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: Colors.white,
+                                color: const Color(0xFF2A497D),
                                 textStyle: FlutterFlowTheme.of(context)
-                                    .bodyLarge
+                                    .titleSmall
                                     .override(
                                       fontFamily: 'Readex Pro',
-                                      color: const Color(0xFF2A497D),
+                                      color: Colors.white,
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                 elevation: 0.0,
                                 borderSide: const BorderSide(
-                                  color: Color(0xFF2A497D),
+                                  color: Colors.transparent,
                                 ),
                                 borderRadius: BorderRadius.circular(40.0),
                               ),
-                            ),
-                          ),
-                          FFButtonWidget(
-                            onPressed: () async {
-                              GoRouter.of(context).prepareAuthEvent();
-                              await authManager.signOut();
-                              GoRouter.of(context).clearRedirectLocation();
-
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'تم تسجيل الخروج بنجاح',
-                                    style: TextStyle(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                  ),
-                                  duration: const Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).success,
-                                ),
-                              );
-
-                              context.pushNamedAuth(
-                                  'initialPage', context.mounted);
-                            },
-                            text: 'تأكيد',
-                            options: FFButtonOptions(
-                              height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 0.0, 20.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: const Color(0xFF2A497D),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                              elevation: 0.0,
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
-                              ),
-                              borderRadius: BorderRadius.circular(40.0),
                             ),
                           ),
                         ],

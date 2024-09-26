@@ -132,57 +132,60 @@ class _RejectRequestAlertWidgetState extends State<RejectRequestAlertWidget> {
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 30.0, 0.0, 30.0),
-                                child: RichText(
-                                  textScaler: MediaQuery.of(context).textScaler,
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text:
-                                            'هل أنت متأكد من رفض طلب انضمام\n',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontSize: 15.0,
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                      TextSpan(
-                                        text: widget.rejectedname,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontSize: 15.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                      ),
-                                      TextSpan(
-                                        text: '؟',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          fontSize: 15.0,
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 30.0, 0.0, 30.0),
+                                  child: RichText(
+                                    textScaler:
+                                        MediaQuery.of(context).textScaler,
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text:
+                                              'هل أنت متأكد من رفض طلب انضمام\n',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                fontSize: 15.0,
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
-                                      )
-                                    ],
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          fontSize: 15.0,
-                                          letterSpacing: 0.0,
+                                        TextSpan(
+                                          text: widget.rejectedname,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                fontSize: 15.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.normal,
+                                              ),
                                         ),
+                                        TextSpan(
+                                          text: '؟',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            fontSize: 15.0,
+                                          ),
+                                        )
+                                      ],
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            fontSize: 15.0,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
                                   ),
                                 ),
                               ),
