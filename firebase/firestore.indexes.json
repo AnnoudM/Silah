@@ -1,3 +1,58 @@
 {
-  "indexes": []
+  "indexes": [
+    {
+      "collectionGroup": "Posts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "FamilyID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "DatePosted",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "FamilyName",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Accepted",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Rejected",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "FullName",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Events",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "FamilyName",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "CreatedBy",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Date",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
 }

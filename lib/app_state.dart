@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -19,6 +20,9 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _DarkMode = prefs.getBool('ff_DarkMode') ?? _DarkMode;
     });
+    _safeInit(() {
+      _FamilyName = prefs.getString('ff_FamilyName')?.ref ?? _FamilyName;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -33,6 +37,15 @@ class FFAppState extends ChangeNotifier {
   set DarkMode(bool value) {
     _DarkMode = value;
     prefs.setBool('ff_DarkMode', value);
+  }
+
+  DocumentReference? _FamilyName;
+  DocumentReference? get FamilyName => _FamilyName;
+  set FamilyName(DocumentReference? value) {
+    _FamilyName = value;
+    value != null
+        ? prefs.setString('ff_FamilyName', value.path)
+        : prefs.remove('ff_FamilyName');
   }
 }
 

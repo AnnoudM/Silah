@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -139,11 +138,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const HomeAdminWidget(),
         ),
         FFRoute(
-          name: 'settings',
-          path: '/settings',
-          builder: (context, params) => const SettingsWidget(),
-        ),
-        FFRoute(
           name: 'verification',
           path: '/verification',
           builder: (context, params) => VerificationWidget(
@@ -176,6 +170,85 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'DirectoryPage',
+          path: '/directoryPage',
+          builder: (context, params) => const DirectoryPageWidget(),
+        ),
+        FFRoute(
+          name: 'ProfileDetails',
+          path: '/profileDetails',
+          asyncParams: {
+            'name': getDoc(['Users'], UsersRecord.fromSnapshot),
+          },
+          builder: (context, params) => ProfileDetailsWidget(
+            name: params.getParam(
+              'name',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'calenderr',
+          path: '/calenderr',
+          builder: (context, params) => const CalenderrWidget(),
+        ),
+        FFRoute(
+          name: 'threadpage',
+          path: '/threadpage',
+          builder: (context, params) => const ThreadpageWidget(),
+        ),
+        FFRoute(
+          name: 'profilePage',
+          path: '/profilePage',
+          builder: (context, params) => const ProfilePageWidget(),
+        ),
+        FFRoute(
+          name: 'posts',
+          path: '/posts',
+          builder: (context, params) => const PostsWidget(),
+        ),
+        FFRoute(
+          name: 'EventDetails',
+          path: '/eventDetails',
+          asyncParams: {
+            'event': getDoc(['Events'], EventsRecord.fromSnapshot),
+          },
+          builder: (context, params) => EventDetailsWidget(
+            event: params.getParam(
+              'event',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'EditEvent',
+          path: '/editEvent',
+          asyncParams: {
+            'event': getDoc(['Events'], EventsRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditEventWidget(
+            event: params.getParam(
+              'event',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'DirectoryPageCopy',
+          path: '/directoryPageCopy',
+          builder: (context, params) => const DirectoryPageCopyWidget(),
+        ),
+        FFRoute(
+          name: 'calenderrCopy4',
+          path: '/calenderrCopy4',
+          builder: (context, params) => const CalenderrCopy4Widget(),
+        ),
+        FFRoute(
+          name: 'HomeAdminCopy',
+          path: '/homeAdminCopy',
+          builder: (context, params) => const HomeAdminCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -25,27 +25,45 @@ class EventsRecord extends FirestoreRecord {
   String get location => _location ?? '';
   bool hasLocation() => _location != null;
 
-  // "Date" field.
-  String? _date;
-  String get date => _date ?? '';
-  bool hasDate() => _date != null;
-
   // "EventID" field.
   String? _eventID;
   String get eventID => _eventID ?? '';
   bool hasEventID() => _eventID != null;
 
-  // "FamilyID" field.
-  DocumentReference? _familyID;
-  DocumentReference? get familyID => _familyID;
-  bool hasFamilyID() => _familyID != null;
+  // "FamilyName" field.
+  DocumentReference? _familyName;
+  DocumentReference? get familyName => _familyName;
+  bool hasFamilyName() => _familyName != null;
+
+  // "EventDes" field.
+  String? _eventDes;
+  String get eventDes => _eventDes ?? '';
+  bool hasEventDes() => _eventDes != null;
+
+  // "Date" field.
+  DateTime? _date;
+  DateTime? get date => _date;
+  bool hasDate() => _date != null;
+
+  // "CreatedBy" field.
+  DocumentReference? _createdBy;
+  DocumentReference? get createdBy => _createdBy;
+  bool hasCreatedBy() => _createdBy != null;
+
+  // "PublisherName" field.
+  String? _publisherName;
+  String get publisherName => _publisherName ?? '';
+  bool hasPublisherName() => _publisherName != null;
 
   void _initializeFields() {
     _name = snapshotData['Name'] as String?;
     _location = snapshotData['Location'] as String?;
-    _date = snapshotData['Date'] as String?;
     _eventID = snapshotData['EventID'] as String?;
-    _familyID = snapshotData['FamilyID'] as DocumentReference?;
+    _familyName = snapshotData['FamilyName'] as DocumentReference?;
+    _eventDes = snapshotData['EventDes'] as String?;
+    _date = snapshotData['Date'] as DateTime?;
+    _createdBy = snapshotData['CreatedBy'] as DocumentReference?;
+    _publisherName = snapshotData['PublisherName'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -84,17 +102,23 @@ class EventsRecord extends FirestoreRecord {
 Map<String, dynamic> createEventsRecordData({
   String? name,
   String? location,
-  String? date,
   String? eventID,
-  DocumentReference? familyID,
+  DocumentReference? familyName,
+  String? eventDes,
+  DateTime? date,
+  DocumentReference? createdBy,
+  String? publisherName,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'Name': name,
       'Location': location,
-      'Date': date,
       'EventID': eventID,
-      'FamilyID': familyID,
+      'FamilyName': familyName,
+      'EventDes': eventDes,
+      'Date': date,
+      'CreatedBy': createdBy,
+      'PublisherName': publisherName,
     }.withoutNulls,
   );
 
@@ -108,14 +132,25 @@ class EventsRecordDocumentEquality implements Equality<EventsRecord> {
   bool equals(EventsRecord? e1, EventsRecord? e2) {
     return e1?.name == e2?.name &&
         e1?.location == e2?.location &&
-        e1?.date == e2?.date &&
         e1?.eventID == e2?.eventID &&
-        e1?.familyID == e2?.familyID;
+        e1?.familyName == e2?.familyName &&
+        e1?.eventDes == e2?.eventDes &&
+        e1?.date == e2?.date &&
+        e1?.createdBy == e2?.createdBy &&
+        e1?.publisherName == e2?.publisherName;
   }
 
   @override
-  int hash(EventsRecord? e) => const ListEquality()
-      .hash([e?.name, e?.location, e?.date, e?.eventID, e?.familyID]);
+  int hash(EventsRecord? e) => const ListEquality().hash([
+        e?.name,
+        e?.location,
+        e?.eventID,
+        e?.familyName,
+        e?.eventDes,
+        e?.date,
+        e?.createdBy,
+        e?.publisherName
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is EventsRecord;

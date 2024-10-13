@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -62,9 +64,9 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                 child: Container(
                   width: double.infinity,
                   height: 80.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).primaryBackground,
-                    boxShadow: const [
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFFFFCF6),
+                    boxShadow: [
                       BoxShadow(
                         blurRadius: 10.0,
                         color: Color(0x1A57636C),
@@ -75,7 +77,7 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                         spreadRadius: 0.1,
                       )
                     ],
-                    borderRadius: const BorderRadius.only(
+                    borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0.0),
                       bottomRight: Radius.circular(0.0),
                       topLeft: Radius.circular(20.0),
@@ -101,8 +103,8 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                   color: Color(0xFF9299A1),
                   size: 24.0,
                 ),
-                onPressed: () {
-                  print('IconButton pressed ...');
+                onPressed: () async {
+                  context.pushNamed('DirectoryPage');
                 },
               ),
               FlutterFlowIconButton(
@@ -111,12 +113,12 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                 borderWidth: 1.0,
                 buttonSize: 50.0,
                 icon: const Icon(
-                  Icons.chat_bubble_rounded,
+                  Icons.post_add,
                   color: Color(0xFF9299A1),
                   size: 24.0,
                 ),
-                onPressed: () {
-                  print('IconButton pressed ...');
+                onPressed: () async {
+                  context.pushNamed('posts');
                 },
               ),
               Column(
@@ -126,19 +128,59 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                   Padding(
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                    child: FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 25.0,
-                      borderWidth: 1.0,
-                      buttonSize: 60.0,
-                      fillColor: const Color(0xFF2A497D),
-                      icon: const Icon(
-                        Icons.home,
-                        color: Colors.white,
-                        size: 30.0,
+                    child: StreamBuilder<List<UsersRecord>>(
+                      stream: queryUsersRecord(
+                        queryBuilder: (usersRecord) => usersRecord.where(
+                          'uid',
+                          isEqualTo: currentUserUid,
+                        ),
+                        singleRecord: true,
                       ),
-                      onPressed: () {
-                        print('MiddleButton pressed ...');
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                        List<UsersRecord> middleButtonUsersRecordList =
+                            snapshot.data!;
+                        // Return an empty Container when the item does not exist.
+                        if (snapshot.data!.isEmpty) {
+                          return Container();
+                        }
+                        final middleButtonUsersRecord =
+                            middleButtonUsersRecordList.isNotEmpty
+                                ? middleButtonUsersRecordList.first
+                                : null;
+
+                        return FlutterFlowIconButton(
+                          borderColor: Colors.transparent,
+                          borderRadius: 25.0,
+                          borderWidth: 1.0,
+                          buttonSize: 60.0,
+                          fillColor: const Color(0xFF2A497D),
+                          icon: const Icon(
+                            Icons.home,
+                            color: Colors.white,
+                            size: 30.0,
+                          ),
+                          onPressed: () async {
+                            if (middleButtonUsersRecord?.isAdmin == true) {
+                              context.pushNamed('HomeAdmin');
+                            } else {
+                              context.pushNamed('HomeUser');
+                            }
+                          },
+                        );
                       },
                     ),
                   ),
@@ -154,8 +196,8 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                   color: Color(0xFF9299A1),
                   size: 24.0,
                 ),
-                onPressed: () {
-                  print('IconButton pressed ...');
+                onPressed: () async {
+                  context.pushNamed('DirectoryPageCopy');
                 },
               ),
               FlutterFlowIconButton(
@@ -168,8 +210,8 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                   color: Color(0xFF9299A1),
                   size: 24.0,
                 ),
-                onPressed: () {
-                  print('IconButton pressed ...');
+                onPressed: () async {
+                  context.pushNamed('calenderr');
                 },
               ),
             ],

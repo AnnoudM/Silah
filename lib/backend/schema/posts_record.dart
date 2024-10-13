@@ -40,12 +40,36 @@ class PostsRecord extends FirestoreRecord {
   DocumentReference? get userID => _userID;
   bool hasUserID() => _userID != null;
 
+  // "DatePosted" field.
+  DateTime? _datePosted;
+  DateTime? get datePosted => _datePosted;
+  bool hasDatePosted() => _datePosted != null;
+
+  // "postContent" field.
+  String? _postContent;
+  String get postContent => _postContent ?? '';
+  bool hasPostContent() => _postContent != null;
+
+  // "likedBy" field.
+  List<DocumentReference>? _likedBy;
+  List<DocumentReference> get likedBy => _likedBy ?? const [];
+  bool hasLikedBy() => _likedBy != null;
+
+  // "numLike" field.
+  int? _numLike;
+  int get numLike => _numLike ?? 0;
+  bool hasNumLike() => _numLike != null;
+
   void _initializeFields() {
     _category = snapshotData['Category'] as String?;
     _content = snapshotData['Content'] as String?;
     _postID = snapshotData['PostID'] as String?;
     _familyID = snapshotData['FamilyID'] as DocumentReference?;
     _userID = snapshotData['UserID'] as DocumentReference?;
+    _datePosted = snapshotData['DatePosted'] as DateTime?;
+    _postContent = snapshotData['postContent'] as String?;
+    _likedBy = getDataList(snapshotData['likedBy']);
+    _numLike = castToType<int>(snapshotData['numLike']);
   }
 
   static CollectionReference get collection =>
@@ -87,6 +111,9 @@ Map<String, dynamic> createPostsRecordData({
   String? postID,
   DocumentReference? familyID,
   DocumentReference? userID,
+  DateTime? datePosted,
+  String? postContent,
+  int? numLike,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -95,6 +122,9 @@ Map<String, dynamic> createPostsRecordData({
       'PostID': postID,
       'FamilyID': familyID,
       'UserID': userID,
+      'DatePosted': datePosted,
+      'postContent': postContent,
+      'numLike': numLike,
     }.withoutNulls,
   );
 
@@ -106,16 +136,30 @@ class PostsRecordDocumentEquality implements Equality<PostsRecord> {
 
   @override
   bool equals(PostsRecord? e1, PostsRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.category == e2?.category &&
         e1?.content == e2?.content &&
         e1?.postID == e2?.postID &&
         e1?.familyID == e2?.familyID &&
-        e1?.userID == e2?.userID;
+        e1?.userID == e2?.userID &&
+        e1?.datePosted == e2?.datePosted &&
+        e1?.postContent == e2?.postContent &&
+        listEquality.equals(e1?.likedBy, e2?.likedBy) &&
+        e1?.numLike == e2?.numLike;
   }
 
   @override
-  int hash(PostsRecord? e) => const ListEquality()
-      .hash([e?.category, e?.content, e?.postID, e?.familyID, e?.userID]);
+  int hash(PostsRecord? e) => const ListEquality().hash([
+        e?.category,
+        e?.content,
+        e?.postID,
+        e?.familyID,
+        e?.userID,
+        e?.datePosted,
+        e?.postContent,
+        e?.likedBy,
+        e?.numLike
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is PostsRecord;
