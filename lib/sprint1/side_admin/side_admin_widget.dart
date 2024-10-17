@@ -214,7 +214,7 @@ class _SideAdminWidgetState extends State<SideAdminWidget> {
                             size: 25.0,
                           ),
                           title: Text(
-                            'حساب الشخصي',
+                            'الحساب الشخصي',
                             style: FlutterFlowTheme.of(context)
                                 .titleLarge
                                 .override(

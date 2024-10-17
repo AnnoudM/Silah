@@ -136,6 +136,12 @@ class _EventWidgetState extends State<EventWidget> {
                                       .bodyLarge
                                       .override(
                                         fontFamily: 'Readex Pro',
+                                        color: rowEventsRecord.date! >=
+                                                getCurrentTimestamp
+                                            ? FlutterFlowTheme.of(context)
+                                                .primaryText
+                                            : FlutterFlowTheme.of(context)
+                                                .secondaryText,
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -148,13 +154,22 @@ class _EventWidgetState extends State<EventWidget> {
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  rowEventsRecord.date!
-                                      .toString()
-                                      .maybeHandleOverflow(maxChars: 10),
+                                  dateTimeFormat(
+                                    "y/M/d  h:mm a",
+                                    rowEventsRecord.date!,
+                                    locale: FFLocalizations.of(context)
+                                        .languageCode,
+                                  ).maybeHandleOverflow(maxChars: 10),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyLarge
                                       .override(
                                         fontFamily: 'Readex Pro',
+                                        color: rowEventsRecord.date! >=
+                                                getCurrentTimestamp
+                                            ? FlutterFlowTheme.of(context)
+                                                .primaryText
+                                            : FlutterFlowTheme.of(context)
+                                                .secondaryText,
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -171,12 +186,12 @@ class _EventWidgetState extends State<EventWidget> {
                                 'EventDetails',
                                 queryParameters: {
                                   'event': serializeParam(
-                                    rowEventsRecord,
+                                    eventDisplayEventsRecord,
                                     ParamType.Document,
                                   ),
                                 }.withoutNulls,
                                 extra: <String, dynamic>{
-                                  'event': rowEventsRecord,
+                                  'event': eventDisplayEventsRecord,
                                 },
                               );
                             },
@@ -187,15 +202,35 @@ class _EventWidgetState extends State<EventWidget> {
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 18.0, 0.0, 0.0),
-                                  child: Text(
-                                    'التفاصيل ',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: const Color(0xFF2A497D),
-                                          letterSpacing: 0.0,
-                                        ),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'EventDetails',
+                                        queryParameters: {
+                                          'event': serializeParam(
+                                            rowEventsRecord,
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'event': rowEventsRecord,
+                                        },
+                                      );
+                                    },
+                                    child: Text(
+                                      'التفاصيل ',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: const Color(0xFF2A497D),
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
                                   ),
                                 ),
                               ],

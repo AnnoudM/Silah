@@ -177,7 +177,7 @@ class _SideuserCopyWidgetState extends State<SideuserCopyWidget> {
                             size: 25.0,
                           ),
                           title: Text(
-                            'حساب الشخصي',
+                            'الحساب الشخصي',
                             style: FlutterFlowTheme.of(context)
                                 .titleLarge
                                 .override(

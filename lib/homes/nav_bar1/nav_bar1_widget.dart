@@ -4,11 +4,17 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'nav_bar1_model.dart';
 export 'nav_bar1_model.dart';
 
 class NavBar1Widget extends StatefulWidget {
-  const NavBar1Widget({super.key});
+  const NavBar1Widget({
+    super.key,
+    this.currentpage,
+  });
+
+  final String? currentpage;
 
   @override
   State<NavBar1Widget> createState() => _NavBar1WidgetState();
@@ -38,6 +44,8 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       width: double.infinity,
       height: 90.0,
@@ -98,9 +106,11 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                 borderRadius: 30.0,
                 borderWidth: 1.0,
                 buttonSize: 50.0,
-                icon: const Icon(
+                icon: Icon(
                   Icons.people,
-                  color: Color(0xFF9299A1),
+                  color: FFAppState().currentPage == 'DirectoryPage'
+                      ? const Color(0xFF2A497D)
+                      : const Color(0xFF9299A1),
                   size: 24.0,
                 ),
                 onPressed: () async {
@@ -112,13 +122,23 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                 borderRadius: 30.0,
                 borderWidth: 1.0,
                 buttonSize: 50.0,
-                icon: const Icon(
+                icon: Icon(
                   Icons.post_add,
-                  color: Color(0xFF9299A1),
+                  color: FFAppState().currentPage == 'posts'
+                      ? const Color(0xFF2A497D)
+                      : const Color(0xFF9299A1),
                   size: 24.0,
                 ),
                 onPressed: () async {
-                  context.pushNamed('posts');
+                  context.pushNamed(
+                    'posts',
+                    queryParameters: {
+                      'currentpage': serializeParam(
+                        'posts',
+                        ParamType.String,
+                      ),
+                    }.withoutNulls,
+                  );
                 },
               ),
               Column(
@@ -176,8 +196,13 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                           onPressed: () async {
                             if (middleButtonUsersRecord?.isAdmin == true) {
                               context.pushNamed('HomeAdmin');
+
+                              FFAppState().currentPage = 'home';
+                              safeSetState(() {});
                             } else {
                               context.pushNamed('HomeUser');
+
+                              safeSetState(() {});
                             }
                           },
                         );
@@ -196,8 +221,8 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                   color: Color(0xFF9299A1),
                   size: 24.0,
                 ),
-                onPressed: () async {
-                  context.pushNamed('DirectoryPageCopy');
+                onPressed: () {
+                  print('IconButton pressed ...');
                 },
               ),
               FlutterFlowIconButton(
@@ -205,13 +230,15 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                 borderRadius: 30.0,
                 borderWidth: 1.0,
                 buttonSize: 50.0,
-                icon: const Icon(
+                icon: Icon(
                   Icons.date_range_rounded,
-                  color: Color(0xFF9299A1),
+                  color: FFAppState().currentPage == 'CalenderPage'
+                      ? const Color(0xFF2A497F)
+                      : const Color(0xFF9299A1),
                   size: 24.0,
                 ),
                 onPressed: () async {
-                  context.pushNamed('calenderr');
+                  context.pushNamed('CalenderPage');
                 },
               ),
             ],

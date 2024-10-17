@@ -136,12 +136,12 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
         }
       },
     );
-    _model.emailAddressTextController ??= TextEditingController();
-    _model.emailAddressFocusNode ??= FocusNode();
-    _model.emailAddressFocusNode!.addListener(
+    _model.emailTextController ??= TextEditingController();
+    _model.emailFocusNode ??= FocusNode();
+    _model.emailFocusNode!.addListener(
       () async {
         if ((_model.dropDownValue == null || _model.dropDownValue == '') &&
-            (_model.emailAddressFocusNode?.hasFocus ?? false)) {
+            (_model.emailFocusNode?.hasFocus ?? false)) {
           _model.genderChosen = false;
           safeSetState(() {});
         } else {
@@ -392,8 +392,18 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
-                                                        labelText: ' الاسم ',
+                                                        labelText: 'الاسم *',
                                                         labelStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .labelMedium
@@ -504,7 +514,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       inputFormatters: [
                                                         FilteringTextInputFormatter
                                                             .allow(RegExp(
-                                                                '^[\\u0600-\\u06FF\\s]+\$'))
+                                                                '^[\\u0621-\\u064A]+\$'))
                                                       ],
                                                     ),
                                                   ),
@@ -529,7 +539,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
-                                                        labelText: 'اسم الأب',
+                                                        labelText: 'اسم الأب *',
                                                         labelStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -641,7 +651,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       inputFormatters: [
                                                         FilteringTextInputFormatter
                                                             .allow(RegExp(
-                                                                '^[\\u0600-\\u06FF\\s]+\$'))
+                                                                '^[\\u0621-\\u064A]+\$'))
                                                       ],
                                                     ),
                                                   ),
@@ -673,7 +683,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     ],
                                                     obscureText: false,
                                                     decoration: InputDecoration(
-                                                      labelText: 'اسم الجد ',
+                                                      labelText: 'اسم الجد * ',
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -776,7 +786,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     inputFormatters: [
                                                       FilteringTextInputFormatter
                                                           .allow(RegExp(
-                                                              '^[\\u0600-\\u06FF\\s]+\$'))
+                                                              '^[\\u0621-\\u064A]+\$'))
                                                     ],
                                                   ),
                                                 ),
@@ -800,7 +810,8 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     ],
                                                     obscureText: false,
                                                     decoration: InputDecoration(
-                                                      labelText: 'اسم أب الجد ',
+                                                      labelText:
+                                                          'اسم أب الجد * ',
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -903,7 +914,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     inputFormatters: [
                                                       FilteringTextInputFormatter
                                                           .allow(RegExp(
-                                                              '^[\\u0600-\\u06FF\\s]+\$'))
+                                                              '^[\\u0621-\\u064A]+\$'))
                                                     ],
                                                   ),
                                                 ),
@@ -938,7 +949,8 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     ],
                                                     obscureText: false,
                                                     decoration: InputDecoration(
-                                                      labelText: 'اسم العائلة ',
+                                                      labelText:
+                                                          'اسم العائلة * ',
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1039,7 +1051,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     inputFormatters: [
                                                       FilteringTextInputFormatter
                                                           .allow(RegExp(
-                                                              '^[\\u0600-\\u06FF\\s]+\$'))
+                                                              '^[\\u0621-\\u064A\\s]+\$'))
                                                     ],
                                                   ),
                                                 ),
@@ -1091,7 +1103,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       labelText:
-                                                          'نبذة عن العائلة ',
+                                                          'نبذة عن العائلة * ',
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1234,7 +1246,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     ],
                                                     obscureText: false,
                                                     decoration: InputDecoration(
-                                                      labelText: 'رقم الهاتف',
+                                                      labelText: 'رقم الهاتف *',
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1425,7 +1437,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                             'Readex Pro',
                                                         letterSpacing: 0.0,
                                                       ),
-                                              hintText: 'الجنس ',
+                                              hintText: 'الجنس * ',
                                               icon: Icon(
                                                 Icons
                                                     .keyboard_arrow_down_rounded,
@@ -1452,132 +1464,203 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                             ),
                                           ),
                                         ),
-                                        Container(
-                                          height: 65.0,
-                                          decoration: const BoxDecoration(),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 16.0),
-                                            child: SizedBox(
-                                              width: 370.0,
-                                              child: TextFormField(
-                                                controller: _model
-                                                    .emailAddressTextController,
-                                                focusNode: _model
-                                                    .emailAddressFocusNode,
-                                                onChanged: (_) =>
-                                                    EasyDebounce.debounce(
-                                                  '_model.emailAddressTextController',
-                                                  const Duration(milliseconds: 5),
-                                                  () async {
-                                                    if (!(_model.emailExist
-                                                                ?.email !=
-                                                            null &&
-                                                        _model.emailExist
-                                                                ?.email !=
-                                                            '')) {
-                                                      _model.emaiExist = false;
-                                                      safeSetState(() {});
-                                                    }
-                                                  },
+                                        Builder(
+                                          builder: (context) {
+                                            if (_model.genderChosen) {
+                                              return Container(
+                                                width: 1.0,
+                                                height: 1.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
                                                 ),
-                                                autofocus: false,
-                                                autofillHints: const [
-                                                  AutofillHints.email
-                                                ],
-                                                obscureText: false,
-                                                decoration: InputDecoration(
-                                                  labelText:
-                                                      'البريد الإلكتروني',
-                                                  labelStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
+                                              );
+                                            } else {
+                                              return Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 16.0, 16.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Text(
+                                                      'هذا الحقل مطلوب',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
                                                           .override(
                                                             fontFamily:
                                                                 'Readex Pro',
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                  errorStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .error,
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                      ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                      color: Color(0xFFF1F4F8),
-                                                      width: 2.0,
+                                                            fontSize: 12.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w300,
+                                                          ),
                                                     ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                      color: Color(0xFF4B39EF),
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                  ),
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                      color: Color(0xFFFF5963),
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                  ),
-                                                  focusedErrorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                      color: Color(0xFFFF5963),
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                  ),
-                                                  filled: true,
-                                                  fillColor: const Color(0xFFF1F4F8),
+                                                  ],
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                              );
+                                            }
+                                          },
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 16.0),
+                                                child: SizedBox(
+                                                  width: 370.0,
+                                                  child: TextFormField(
+                                                    controller: _model
+                                                        .emailTextController,
+                                                    focusNode:
+                                                        _model.emailFocusNode,
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      '_model.emailTextController',
+                                                      const Duration(
+                                                          milliseconds: 2000),
+                                                      () async {
+                                                        if (!(_model.emailExist
+                                                                    ?.email !=
+                                                                null &&
+                                                            _model.emailExist
+                                                                    ?.email !=
+                                                                '')) {
+                                                          _model.emaiExist =
+                                                              false;
+                                                          safeSetState(() {});
+                                                        }
+                                                      },
+                                                    ),
+                                                    autofocus: false,
+                                                    obscureText: false,
+                                                    decoration: InputDecoration(
+                                                      isDense: false,
+                                                      labelText:
+                                                          'البريد الإلكتروني *',
+                                                      labelStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                      hintStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                      errorStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                                fontSize: 12.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                              ),
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: const BorderSide(
+                                                          color:
+                                                              Color(0xFFF1F4F8),
+                                                          width: 2.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      focusedBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: const BorderSide(
+                                                          color:
+                                                              Color(0xFF4B39EF),
+                                                          width: 2.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      errorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          width: 2.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      focusedErrorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          width: 2.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      filled: true,
+                                                      fillColor:
+                                                          const Color(0xFFF1F4F8),
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                              'Readex Pro',
                                                           color:
                                                               const Color(0xFF101213),
-                                                          fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
-                                                keyboardType:
-                                                    TextInputType.emailAddress,
-                                                validator: _model
-                                                    .emailAddressTextControllerValidator
-                                                    .asValidator(context),
+                                                    textAlign: TextAlign.start,
+                                                    cursorColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText,
+                                                    validator: _model
+                                                        .emailTextControllerValidator
+                                                        .asValidator(context),
+                                                  ),
+                                                ),
                                               ),
                                             ),
-                                          ),
+                                          ],
                                         ),
                                         Builder(
                                           builder: (context) {
@@ -1673,7 +1756,8 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     obscureText: !_model
                                                         .passwordVisibility,
                                                     decoration: InputDecoration(
-                                                      labelText: 'كلمة المرور',
+                                                      labelText:
+                                                          'كلمة المرور *',
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1852,7 +1936,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         .passwordConfirmVisibility,
                                                     decoration: InputDecoration(
                                                       labelText:
-                                                          'تأكيد كلمة المرور',
+                                                          'تأكيد كلمة المرور *',
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -2175,7 +2259,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                           .where(
                                                                 'email',
                                                                 isEqualTo: _model
-                                                                    .emailAddressTextController
+                                                                    .emailTextController
                                                                     .text,
                                                               ),
                                                               singleRecord:
@@ -2263,7 +2347,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                       .emailExist
                                                                       ?.email ==
                                                                   _model
-                                                                      .emailAddressTextController
+                                                                      .emailTextController
                                                                       .text) {
                                                                 _model.emaiExist =
                                                                     true;
@@ -2280,7 +2364,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                       .emailExist
                                                                       ?.email ==
                                                                   _model
-                                                                      .emailAddressTextController
+                                                                      .emailTextController
                                                                       .text) {
                                                                 _model.emaiExist =
                                                                     true;
@@ -2294,60 +2378,6 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                               } else {
                                                                 if (currentUserEmail !=
                                                                         '') {
-                                                                  _model.userLoggedInn =
-                                                                      await queryUsersRecordOnce(
-                                                                    queryBuilder:
-                                                                        (usersRecord) =>
-                                                                            usersRecord.where(
-                                                                      'uid',
-                                                                      isEqualTo:
-                                                                          currentUserUid,
-                                                                    ),
-                                                                    singleRecord:
-                                                                        true,
-                                                                  ).then((s) =>
-                                                                          s.firstOrNull);
-                                                                  shouldSetState =
-                                                                      true;
-                                                                  if (_model
-                                                                      .emailAddressTextController
-                                                                      .text
-                                                                      .isEmpty) {
-                                                                    ScaffoldMessenger.of(
-                                                                            context)
-                                                                        .showSnackBar(
-                                                                      const SnackBar(
-                                                                        content:
-                                                                            Text(
-                                                                          'Email required!',
-                                                                        ),
-                                                                      ),
-                                                                    );
-                                                                    return;
-                                                                  }
-
-                                                                  await authManager
-                                                                      .updateEmail(
-                                                                    email: _model
-                                                                        .emailAddressTextController
-                                                                        .text,
-                                                                    context:
-                                                                        context,
-                                                                  );
-                                                                  safeSetState(
-                                                                      () {});
-
-                                                                  await _model
-                                                                      .userLoggedInn!
-                                                                      .reference
-                                                                      .update(
-                                                                          createUsersRecordData(
-                                                                    email: _model
-                                                                        .emailAddressTextController
-                                                                        .text,
-                                                                  ));
-                                                                  await authManager
-                                                                      .sendEmailVerification();
                                                                 } else {
                                                                   GoRouter.of(
                                                                           context)
@@ -2376,7 +2406,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                           .createAccountWithEmail(
                                                                     context,
                                                                     _model
-                                                                        .emailAddressTextController
+                                                                        .emailTextController
                                                                         .text,
                                                                     _model
                                                                         .passwordTextController
@@ -2440,7 +2470,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                       isAdmin:
                                                                           true,
                                                                       email: _model
-                                                                          .emailAddressTextController
+                                                                          .emailTextController
                                                                           .text,
                                                                       displayName: _model
                                                                           .textController1
@@ -2502,7 +2532,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                       isAdmin:
                                                                           true,
                                                                       email: _model
-                                                                          .emailAddressTextController
+                                                                          .emailTextController
                                                                           .text,
                                                                       displayName: _model
                                                                           .textController1

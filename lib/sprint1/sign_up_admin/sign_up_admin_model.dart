@@ -147,18 +147,17 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
-  // State field(s) for emailAddress widget.
-  FocusNode? emailAddressFocusNode;
-  TextEditingController? emailAddressTextController;
-  String? Function(BuildContext, String?)? emailAddressTextControllerValidator;
-  String? _emailAddressTextControllerValidator(
-      BuildContext context, String? val) {
+  // State field(s) for email widget.
+  FocusNode? emailFocusNode;
+  TextEditingController? emailTextController;
+  String? Function(BuildContext, String?)? emailTextControllerValidator;
+  String? _emailTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'هذا الحقل مطلوب';
     }
 
     if (val.length > 150) {
-      return 'البريد اإلكتروني طويل جدا';
+      return 'البريد الإلكتروني طويل جدا';
     }
     if (!RegExp('^[\\w\\-.]+@[\\w\\-.]+\\.[a-zA-Z]{2,}\$').hasMatch(val)) {
       return 'يرجى إدخال بريد إلكتروني صحيح بدون\nمسافات وفي الصياغة التالية (xxx@xxx.xxx)';
@@ -208,8 +207,6 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
   UsersRecord? phoneExist;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   UsersRecord? emailExist;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  UsersRecord? userLoggedInn;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   FamilyRecord? newFamily;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
@@ -224,7 +221,7 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
     textController5Validator = _textController5Validator;
     textController6Validator = _textController6Validator;
     textController7Validator = _textController7Validator;
-    emailAddressTextControllerValidator = _emailAddressTextControllerValidator;
+    emailTextControllerValidator = _emailTextControllerValidator;
     passwordVisibility = false;
     passwordTextControllerValidator = _passwordTextControllerValidator;
     passwordConfirmVisibility = false;
@@ -255,8 +252,8 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
     textFieldFocusNode7?.dispose();
     textController7?.dispose();
 
-    emailAddressFocusNode?.dispose();
-    emailAddressTextController?.dispose();
+    emailFocusNode?.dispose();
+    emailTextController?.dispose();
 
     passwordFocusNode?.dispose();
     passwordTextController?.dispose();

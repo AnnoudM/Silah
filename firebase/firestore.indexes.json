@@ -10,12 +10,12 @@
         },
         {
           "fieldPath": "DatePosted",
-          "order": "ASCENDING"
+          "order": "DESCENDING"
         }
       ]
     },
     {
-      "collectionGroup": "Users",
+      "collectionGroup": "Events",
       "queryScope": "COLLECTION",
       "fields": [
         {
@@ -23,15 +23,7 @@
           "order": "ASCENDING"
         },
         {
-          "fieldPath": "Accepted",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "Rejected",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "FullName",
+          "fieldPath": "Date",
           "order": "ASCENDING"
         }
       ]
@@ -50,7 +42,21 @@
         },
         {
           "fieldPath": "Date",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Events",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "FamilyName",
           "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Date",
+          "order": "DESCENDING"
         }
       ]
     }

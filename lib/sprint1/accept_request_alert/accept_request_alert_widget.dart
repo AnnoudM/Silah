@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'accept_request_alert_model.dart';
 export 'accept_request_alert_model.dart';
 
@@ -250,8 +251,9 @@ class _AcceptRequestAlertWidgetState extends State<AcceptRequestAlertWidget> {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'تم إضافة الفرد بنجاح.',
-                                        style: TextStyle(
+                                        'تم إضافة الفرد بنجاح',
+                                        style: GoogleFonts.getFont(
+                                          'Readex Pro',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
                                         ),

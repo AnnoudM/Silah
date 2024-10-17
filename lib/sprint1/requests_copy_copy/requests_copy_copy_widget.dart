@@ -130,7 +130,7 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                 padding: const EdgeInsets.all(16.0),
                                 child: Container(
                                   width: 430.0,
-                                  height: 708.0,
+                                  height: 581.0,
                                   decoration: BoxDecoration(
                                     color: const Color(0xFFFFFCF6),
                                     boxShadow: const [
@@ -184,6 +184,7 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                                                 'Readex Pro',
                                                             color: const Color(
                                                                 0xFF2A497D),
+                                                            fontSize: 18.0,
                                                             letterSpacing: 0.0,
                                                           ),
                                                     ),
@@ -194,7 +195,7 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                           ),
                                           Container(
                                             width: 382.0,
-                                            height: 641.0,
+                                            height: 470.0,
                                             decoration: const BoxDecoration(
                                               color: Color(0xFFFFFCF6),
                                             ),

@@ -124,8 +124,8 @@ class _FamilyExistAlreadyWidgetState extends State<FamilyExistAlreadyWidget> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            10.0, 0.0, 12.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             context.safePop();
@@ -155,8 +155,8 @@ class _FamilyExistAlreadyWidgetState extends State<FamilyExistAlreadyWidget> {
                         ),
                       ),
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          context.pushNamed('SignUpMember');
                         },
                         text: 'سجل كعضو',
                         options: FFButtonOptions(

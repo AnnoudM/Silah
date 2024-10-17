@@ -1,8 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/empty_posts_widget.dart';
-import '/components/postitems_widget.dart';
-import '/components/share_post_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -10,14 +7,24 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
-import 'dart:async';
+import '/sprint1/side_admin_copy/side_admin_copy_widget.dart';
+import '/sprint2/empty_posts/empty_posts_widget.dart';
+import '/sprint2/postitems/postitems_widget.dart';
+import '/sprint2/share_post/share_post_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:provider/provider.dart';
 import 'posts_model.dart';
 export 'posts_model.dart';
 
 class PostsWidget extends StatefulWidget {
-  const PostsWidget({super.key});
+  const PostsWidget({
+    super.key,
+    this.currentpage,
+  });
+
+  final String? currentpage;
 
   @override
   State<PostsWidget> createState() => _PostsWidgetState();
@@ -35,6 +42,12 @@ class _PostsWidgetState extends State<PostsWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => PostsModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      FFAppState().currentPage = 'posts';
+      safeSetState(() {});
+    });
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
@@ -83,6 +96,8 @@ class _PostsWidgetState extends State<PostsWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<List<UsersRecord>>(
       stream: queryUsersRecord(
         queryBuilder: (usersRecord) => usersRecord.where(
@@ -122,6 +137,14 @@ class _PostsWidgetState extends State<PostsWidget>
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: const Color(0xFFFFFCF6),
+            endDrawer: Drawer(
+              elevation: 16.0,
+              child: wrapWithModel(
+                model: _model.sideAdminCopyModel,
+                updateCallback: () => safeSetState(() {}),
+                child: const SideAdminCopyWidget(),
+              ),
+            ),
             body: Stack(
               children: [
                 Stack(
@@ -132,7 +155,6 @@ class _PostsWidgetState extends State<PostsWidget>
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
-                              flex: 6,
                               child: Container(
                                 width: 100.0,
                                 height: double.infinity,
@@ -161,443 +183,390 @@ class _PostsWidgetState extends State<PostsWidget>
                                           Expanded(
                                             child: Align(
                                               alignment: const AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 66.0, 0.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  child: Image.asset(
-                                                    'assets/images/SilahFINALLogo.jpg',
-                                                    width: 153.0,
-                                                    height: 95.0,
-                                                    fit: BoxFit.cover,
-                                                  ),
+                                                  2.0, 0.0),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: Image.asset(
+                                                  'assets/images/SilahFINALLogo.jpg',
+                                                  width: 153.0,
+                                                  height: 95.0,
+                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    100.0, 25.0, 0.0, 0.0),
+                                            child: FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 8.0,
+                                              buttonSize: 40.0,
+                                              icon: Icon(
+                                                Icons.menu_sharp,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                size: 24.0,
+                                              ),
+                                              onPressed: () async {
+                                                scaffoldKey.currentState!
+                                                    .openEndDrawer();
+                                              },
                                             ),
                                           ),
                                         ],
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(16.0),
-                                        child: FutureBuilder<List<PostsRecord>>(
-                                          future: (_model
-                                                      .firestoreRequestCompleter ??=
-                                                  Completer<List<PostsRecord>>()
-                                                    ..complete(
-                                                        queryPostsRecordOnce(
-                                                      queryBuilder:
-                                                          (postsRecord) =>
-                                                              postsRecord.where(
-                                                        'FamilyID',
-                                                        isEqualTo:
-                                                            postsUsersRecord
-                                                                ?.familyName,
-                                                      ),
-                                                      singleRecord: true,
-                                                    )))
-                                              .future,
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    valueColor:
-                                                        AlwaysStoppedAnimation<
-                                                            Color>(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                    ),
-                                                  ),
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: 610.0,
+                                          constraints: const BoxConstraints(
+                                            maxWidth: 570.0,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xFFFFFCF6),
+                                            boxShadow: const [
+                                              BoxShadow(
+                                                blurRadius: 4.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  2.0,
                                                 ),
-                                              );
-                                            }
-                                            List<PostsRecord>
-                                                containerPostsRecordList =
-                                                snapshot.data!;
-                                            // Return an empty Container when the item does not exist.
-                                            if (snapshot.data!.isEmpty) {
-                                              return Container();
-                                            }
-                                            final containerPostsRecord =
-                                                containerPostsRecordList
-                                                        .isNotEmpty
-                                                    ? containerPostsRecordList
-                                                        .first
-                                                    : null;
-
-                                            return Container(
-                                              width: double.infinity,
-                                              height: 689.0,
-                                              constraints: const BoxConstraints(
-                                                maxWidth: 570.0,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                color: const Color(0xFFFFFCF6),
-                                                boxShadow: const [
-                                                  BoxShadow(
-                                                    blurRadius: 4.0,
-                                                    color: Color(0x33000000),
-                                                    offset: Offset(
-                                                      0.0,
-                                                      2.0,
+                                              )
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 16.0, 0.0, 16.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      'منشورات العائلة',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            color: const Color(
+                                                                0xFF2A497D),
+                                                            fontSize: 23.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
                                                     ),
-                                                  )
-                                                ],
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
+                                                  ],
+                                                ),
                                               ),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 16.0,
-                                                                0.0, 16.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Text(
-                                                          'المنشورات',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                color: const Color(
-                                                                    0xFF2A497D),
-                                                                fontSize: 22.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(15.0, 0.0,
-                                                                15.0, 0.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        10.0,
-                                                                        0.0),
-                                                            child:
-                                                                FlutterFlowChoiceChips(
-                                                              options: const [
-                                                                ChipData(
-                                                                    'الكل'),
-                                                                ChipData(
-                                                                    'مواليد'),
-                                                                ChipData(
-                                                                    'تعزيه'),
-                                                                ChipData(
-                                                                    'أفراح'),
-                                                                ChipData(
-                                                                    'إنجازات')
-                                                              ],
-                                                              onChanged:
-                                                                  (val) async {
-                                                                safeSetState(() =>
-                                                                    _model.choiceChipsValue =
-                                                                        val?.firstOrNull);
-                                                                _model.selectedCategory =
-                                                                    _model
-                                                                        .choiceChipsValue;
-                                                                safeSetState(
-                                                                    () {});
-                                                                safeSetState(() =>
-                                                                    _model.firestoreRequestCompleter =
-                                                                        null);
-                                                                await _model
-                                                                    .waitForFirestoreRequestCompleted(
-                                                                        maxWait:
-                                                                            5);
-                                                              },
-                                                              selectedChipStyle:
-                                                                  ChipStyle(
-                                                                backgroundColor:
-                                                                    const Color(
-                                                                        0xFF87A4D0),
-                                                                textStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .info,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                    ),
-                                                                iconColor: const Color(
-                                                                    0xFFFFFCF6),
-                                                                iconSize: 16.0,
-                                                                elevation: 0.0,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                              ),
-                                                              unselectedChipStyle:
-                                                                  ChipStyle(
-                                                                backgroundColor:
-                                                                    const Color(
-                                                                        0xFFFFFCF6),
-                                                                textStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                    ),
-                                                                iconColor: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryText,
-                                                                iconSize: 16.0,
-                                                                elevation: 0.0,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                              ),
-                                                              chipSpacing: 8.0,
-                                                              rowSpacing: 8.0,
-                                                              multiselect:
-                                                                  false,
-                                                              initialized: _model
-                                                                      .choiceChipsValue !=
-                                                                  null,
-                                                              alignment:
-                                                                  WrapAlignment
-                                                                      .start,
-                                                              controller: _model
-                                                                      .choiceChipsValueController ??=
-                                                                  FormFieldController<
-                                                                      List<
-                                                                          String>>(
-                                                                ['الكل'],
-                                                              ),
-                                                              wrapped: true,
+                                              if (_model.selectedCategory ==
+                                                  'الكل')
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          15.0, 0.0, 15.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0),
+                                                          child:
+                                                              FlutterFlowChoiceChips(
+                                                            options: const [
+                                                              ChipData('الكل'),
+                                                              ChipData(
+                                                                  'مواليد'),
+                                                              ChipData('تعزيه'),
+                                                              ChipData('أفراح'),
+                                                              ChipData(
+                                                                  'إنجازات')
+                                                            ],
+                                                            onChanged:
+                                                                (val) async {
+                                                              safeSetState(() =>
+                                                                  _model.choiceChipsValue =
+                                                                      val?.firstOrNull);
+                                                              _model.selectedCategory =
+                                                                  _model
+                                                                      .choiceChipsValue;
+                                                              safeSetState(
+                                                                  () {});
+                                                            },
+                                                            selectedChipStyle:
+                                                                ChipStyle(
+                                                              backgroundColor:
+                                                                  const Color(
+                                                                      0xFF87A4D0),
+                                                              textStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                              iconColor: const Color(
+                                                                  0xFFFFFCF6),
+                                                              iconSize: 16.0,
+                                                              elevation: 0.0,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
                                                             ),
+                                                            unselectedChipStyle:
+                                                                ChipStyle(
+                                                              backgroundColor:
+                                                                  const Color(
+                                                                      0xFFFFFCF6),
+                                                              textStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                              iconColor: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              iconSize: 16.0,
+                                                              elevation: 0.0,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                            ),
+                                                            chipSpacing: 8.0,
+                                                            rowSpacing: 8.0,
+                                                            multiselect: false,
+                                                            initialized: _model
+                                                                    .choiceChipsValue !=
+                                                                null,
+                                                            alignment:
+                                                                WrapAlignment
+                                                                    .start,
+                                                            controller: _model
+                                                                    .choiceChipsValueController ??=
+                                                                FormFieldController<
+                                                                    List<
+                                                                        String>>(
+                                                              ['الكل'],
+                                                            ),
+                                                            wrapped: true,
                                                           ),
                                                         ),
-                                                      ],
-                                                    ),
+                                                      ),
+                                                    ],
                                                   ),
-                                                  Expanded(
-                                                    child: Align(
-                                                      alignment:
-                                                          const AlignmentDirectional(
-                                                              0.0, -1.0),
+                                                ),
+                                              Expanded(
+                                                child: Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          0.0, -1.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 2.0,
+                                                                0.0, 0.0),
+                                                    child: Container(
+                                                      width: 370.0,
+                                                      height: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.74,
+                                                      decoration: const BoxDecoration(
+                                                        color:
+                                                            Color(0xFFFFFCF6),
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                          bottomLeft:
+                                                              Radius.circular(
+                                                                  20.0),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                  20.0),
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  0.0),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  0.0),
+                                                        ),
+                                                      ),
                                                       child: Padding(
                                                         padding:
                                                             const EdgeInsetsDirectional
                                                                 .fromSTEB(
+                                                                    6.0,
                                                                     0.0,
-                                                                    2.0,
-                                                                    0.0,
+                                                                    6.0,
                                                                     0.0),
-                                                        child: Container(
-                                                          width: 370.0,
-                                                          height:
-                                                              MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .height *
-                                                                  0.74,
-                                                          decoration:
-                                                              const BoxDecoration(
-                                                            color: Color(
-                                                                0xFFFFFCF6),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .only(
-                                                              bottomLeft: Radius
-                                                                  .circular(
-                                                                      20.0),
-                                                              bottomRight:
-                                                                  Radius
-                                                                      .circular(
-                                                                          20.0),
-                                                              topLeft: Radius
-                                                                  .circular(
-                                                                      0.0),
-                                                              topRight: Radius
-                                                                  .circular(
-                                                                      0.0),
-                                                            ),
+                                                        child: StreamBuilder<
+                                                            List<PostsRecord>>(
+                                                          stream:
+                                                              queryPostsRecord(
+                                                            queryBuilder: (postsRecord) =>
+                                                                postsRecord
+                                                                    .where(
+                                                                      'FamilyID',
+                                                                      isEqualTo:
+                                                                          postsUsersRecord
+                                                                              ?.familyName,
+                                                                    )
+                                                                    .orderBy(
+                                                                        'DatePosted',
+                                                                        descending:
+                                                                            true),
                                                           ),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        6.0,
-                                                                        0.0,
-                                                                        6.0,
-                                                                        0.0),
-                                                            child: StreamBuilder<
-                                                                List<
-                                                                    PostsRecord>>(
-                                                              stream:
-                                                                  queryPostsRecord(
-                                                                queryBuilder: (postsRecord) =>
-                                                                    postsRecord
-                                                                        .where(
-                                                                          'FamilyID',
-                                                                          isEqualTo:
-                                                                              postsUsersRecord?.familyName,
-                                                                        )
-                                                                        .orderBy(
-                                                                            'DatePosted'),
-                                                              ),
-                                                              builder: (context,
-                                                                  snapshot) {
-                                                                // Customize what your widget looks like when it's loading.
-                                                                if (!snapshot
-                                                                    .hasData) {
-                                                                  return Center(
-                                                                    child:
-                                                                        SizedBox(
-                                                                      width:
-                                                                          50.0,
-                                                                      height:
-                                                                          50.0,
-                                                                      child:
-                                                                          CircularProgressIndicator(
-                                                                        valueColor:
-                                                                            AlwaysStoppedAnimation<Color>(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .primary,
-                                                                        ),
-                                                                      ),
+                                                          builder: (context,
+                                                              snapshot) {
+                                                            // Customize what your widget looks like when it's loading.
+                                                            if (!snapshot
+                                                                .hasData) {
+                                                              return Center(
+                                                                child: SizedBox(
+                                                                  width: 50.0,
+                                                                  height: 50.0,
+                                                                  child:
+                                                                      CircularProgressIndicator(
+                                                                    valueColor:
+                                                                        AlwaysStoppedAnimation<
+                                                                            Color>(
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
                                                                     ),
-                                                                  );
-                                                                }
-                                                                List<PostsRecord>
-                                                                    mainListPostsRecordList =
-                                                                    snapshot
-                                                                        .data!;
-                                                                if (mainListPostsRecordList
-                                                                    .isEmpty) {
-                                                                  return const EmptyPostsWidget();
-                                                                }
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            }
+                                                            List<PostsRecord>
+                                                                mainListPostsRecordList =
+                                                                snapshot.data!;
+                                                            if (mainListPostsRecordList
+                                                                .isEmpty) {
+                                                              return const EmptyPostsWidget();
+                                                            }
 
-                                                                return SingleChildScrollView(
-                                                                  child: Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .min,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .start,
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .center,
-                                                                    children: List.generate(
-                                                                        mainListPostsRecordList
-                                                                            .length,
-                                                                        (mainListIndex) {
-                                                                      final mainListPostsRecord =
-                                                                          mainListPostsRecordList[
-                                                                              mainListIndex];
-                                                                      return StreamBuilder<
-                                                                          UsersRecord>(
-                                                                        stream:
-                                                                            UsersRecord.getDocument(mainListPostsRecord.userID!),
-                                                                        builder:
-                                                                            (context,
-                                                                                snapshot) {
-                                                                          // Customize what your widget looks like when it's loading.
-                                                                          if (!snapshot
-                                                                              .hasData) {
-                                                                            return Center(
-                                                                              child: SizedBox(
-                                                                                width: 50.0,
-                                                                                height: 50.0,
-                                                                                child: CircularProgressIndicator(
-                                                                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                    FlutterFlowTheme.of(context).primary,
-                                                                                  ),
-                                                                                ),
+                                                            return SingleChildScrollView(
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .center,
+                                                                children: List.generate(
+                                                                    mainListPostsRecordList
+                                                                        .length,
+                                                                    (mainListIndex) {
+                                                                  final mainListPostsRecord =
+                                                                      mainListPostsRecordList[
+                                                                          mainListIndex];
+                                                                  return StreamBuilder<
+                                                                      UsersRecord>(
+                                                                    stream: UsersRecord.getDocument(
+                                                                        mainListPostsRecord
+                                                                            .userID!),
+                                                                    builder:
+                                                                        (context,
+                                                                            snapshot) {
+                                                                      // Customize what your widget looks like when it's loading.
+                                                                      if (!snapshot
+                                                                          .hasData) {
+                                                                        return Center(
+                                                                          child:
+                                                                              SizedBox(
+                                                                            width:
+                                                                                50.0,
+                                                                            height:
+                                                                                50.0,
+                                                                            child:
+                                                                                CircularProgressIndicator(
+                                                                              valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                FlutterFlowTheme.of(context).primary,
                                                                               ),
-                                                                            );
-                                                                          }
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      }
 
-                                                                          final postitemsaUsersRecord =
-                                                                              snapshot.data!;
+                                                                      final postitemsaUsersRecord =
+                                                                          snapshot
+                                                                              .data!;
 
-                                                                          return PostitemsWidget(
-                                                                            key:
-                                                                                Key('Keyu94_${mainListIndex}_of_${mainListPostsRecordList.length}'),
-                                                                            userRef:
-                                                                                postitemsaUsersRecord.reference,
-                                                                            postRef:
-                                                                                mainListPostsRecord.reference,
-                                                                            selectedCategory:
-                                                                                _model.selectedCategory,
-                                                                          );
-                                                                        },
+                                                                      return PostitemsWidget(
+                                                                        key: Key(
+                                                                            'Keyu94_${mainListIndex}_of_${mainListPostsRecordList.length}'),
+                                                                        userRef:
+                                                                            postitemsaUsersRecord.reference,
+                                                                        postRef:
+                                                                            mainListPostsRecord.reference,
+                                                                        selectedCategory:
+                                                                            _model.selectedCategory,
                                                                       );
-                                                                    }).divide(const SizedBox(
+                                                                    },
+                                                                  );
+                                                                }).divide(
+                                                                    const SizedBox(
                                                                         height:
                                                                             2.0)),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            ),
-                                                          ),
+                                                              ),
+                                                            );
+                                                          },
                                                         ),
                                                       ),
                                                     ),
                                                   ),
-                                                ],
+                                                ),
                                               ),
-                                            ).animateOnPageLoad(animationsMap[
-                                                'containerOnPageLoadAnimation']!);
-                                          },
-                                        ),
+                                            ],
+                                          ),
+                                        ).animateOnPageLoad(animationsMap[
+                                            'containerOnPageLoadAnimation']!),
                                       ),
                                     ],
                                   ),
@@ -666,14 +635,12 @@ class _PostsWidgetState extends State<PostsWidget>
                               ],
                             ),
                           ),
-                          Stack(
-                            children: [
-                              wrapWithModel(
-                                model: _model.navBar1Model,
-                                updateCallback: () => safeSetState(() {}),
-                                child: const NavBar1Widget(),
-                              ),
-                            ],
+                          wrapWithModel(
+                            model: _model.navBar1Model,
+                            updateCallback: () => safeSetState(() {}),
+                            child: const NavBar1Widget(
+                              currentpage: 'posts',
+                            ),
                           ),
                         ],
                       ),

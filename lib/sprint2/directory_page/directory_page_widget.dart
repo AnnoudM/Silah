@@ -5,16 +5,26 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
+import '/sprint1/side_admin_copy/side_admin_copy_widget.dart';
+import '/sprint2/empty_search/empty_search_widget.dart';
+import '/sprint2/emptydirectory/emptydirectory_widget.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'directory_page_model.dart';
 export 'directory_page_model.dart';
 
 class DirectoryPageWidget extends StatefulWidget {
-  const DirectoryPageWidget({super.key});
+  const DirectoryPageWidget({
+    super.key,
+    this.currentpage,
+  });
+
+  final String? currentpage;
 
   @override
   State<DirectoryPageWidget> createState() => _DirectoryPageWidgetState();
@@ -36,6 +46,8 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.searchactive = false;
+      safeSetState(() {});
+      FFAppState().currentPage = 'DirectoryPage';
       safeSetState(() {});
     });
 
@@ -127,6 +139,8 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<List<UsersRecord>>(
       stream: queryUsersRecord(
         queryBuilder: (usersRecord) => usersRecord.where(
@@ -167,6 +181,14 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: const Color(0xFFFFFCF6),
+            endDrawer: Drawer(
+              elevation: 16.0,
+              child: wrapWithModel(
+                model: _model.sideAdminCopyModel,
+                updateCallback: () => safeSetState(() {}),
+                child: const SideAdminCopyWidget(),
+              ),
+            ),
             body: Stack(
               children: [
                 Row(
@@ -186,110 +208,117 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                           ),
                         ),
                         alignment: const AlignmentDirectional(0.0, -1.0),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Flexible(
-                                    child: FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 30.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 71.0,
-                                      icon: const Icon(
-                                        Icons.arrow_back_rounded,
-                                        color: Colors.white,
-                                        size: 30.0,
-                                      ),
-                                      onPressed: () async {
-                                        context.pop();
-                                      },
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Align(
-                                      alignment: const AlignmentDirectional(1.0, 0.0),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        child: Image.asset(
-                                          'assets/images/SilahFINALLogo.jpg',
-                                          width: 153.0,
-                                          height: 95.0,
-                                          fit: BoxFit.cover,
-                                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Align(
+                                    alignment: const AlignmentDirectional(2.0, 0.0),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      child: Image.asset(
+                                        'assets/images/SilahFINALLogo.jpg',
+                                        width: 153.0,
+                                        height: 95.0,
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: StreamBuilder<List<UsersRecord>>(
-                                  stream: queryUsersRecord(
-                                    queryBuilder: (usersRecord) => usersRecord
-                                        .where(
-                                          'FamilyName',
-                                          isEqualTo: directoryPageUsersRecord
-                                              ?.familyName,
-                                        )
-                                        .where(
-                                          'Accepted',
-                                          isEqualTo: true,
-                                        )
-                                        .where(
-                                          'Rejected',
-                                          isEqualTo: false,
-                                        ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      100.0, 25.0, 0.0, 0.0),
+                                  child: FlutterFlowIconButton(
+                                    borderColor: Colors.transparent,
+                                    borderRadius: 8.0,
+                                    buttonSize: 40.0,
+                                    icon: Icon(
+                                      Icons.menu_sharp,
+                                      color: FlutterFlowTheme.of(context).info,
+                                      size: 24.0,
+                                    ),
+                                    onPressed: () async {
+                                      scaffoldKey.currentState!.openEndDrawer();
+                                    },
                                   ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            valueColor:
-                                                AlwaysStoppedAnimation<Color>(
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                            ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 16.0, 16.0, 16.0),
+                              child: StreamBuilder<List<UsersRecord>>(
+                                stream: queryUsersRecord(
+                                  queryBuilder: (usersRecord) => usersRecord
+                                      .where(
+                                        'FamilyName',
+                                        isEqualTo: directoryPageUsersRecord
+                                            ?.familyName,
+                                      )
+                                      .where(
+                                        'Accepted',
+                                        isEqualTo: true,
+                                      )
+                                      .where(
+                                        'Rejected',
+                                        isEqualTo: false,
+                                      ),
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
                                           ),
                                         ),
-                                      );
-                                    }
-                                    List<UsersRecord> containerUsersRecordList =
-                                        snapshot.data!;
+                                      ),
+                                    );
+                                  }
+                                  List<UsersRecord> containerUsersRecordList =
+                                      snapshot.data!;
 
-                                    return Container(
-                                      width: double.infinity,
-                                      height: 751.0,
-                                      constraints: const BoxConstraints(
-                                        maxWidth: 570.0,
+                                  return Container(
+                                    width: double.infinity,
+                                    height: 588.0,
+                                    constraints: const BoxConstraints(
+                                      maxWidth: 570.0,
+                                    ),
+                                    decoration: const BoxDecoration(
+                                      color: Color(0xFFFFFCF6),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x33000000),
+                                          offset: Offset(
+                                            0.0,
+                                            2.0,
+                                          ),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(15.0),
+                                        bottomRight: Radius.circular(15.0),
+                                        topLeft: Radius.circular(12.0),
+                                        topRight: Radius.circular(12.0),
                                       ),
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFFFFCF6),
-                                        boxShadow: const [
-                                          BoxShadow(
-                                            blurRadius: 4.0,
-                                            color: Color(0x33000000),
-                                            offset: Offset(
-                                              0.0,
-                                              2.0,
-                                            ),
-                                          )
-                                        ],
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
+                                    ),
+                                    child: SingleChildScrollView(
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
                                         children: [
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -311,10 +340,10 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                             'Readex Pro',
                                                         color:
                                                             const Color(0xFF2A497D),
-                                                        fontSize: 22.0,
+                                                        fontSize: 23.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
-                                                            FontWeight.w300,
+                                                            FontWeight.w600,
                                                       ),
                                                 ),
                                               ),
@@ -326,6 +355,9 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                     16.0, 0.0, 16.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                               children: [
                                                 Expanded(
                                                   child: SizedBox(
@@ -357,7 +389,8 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
-                                                        hintText: 'بحث...',
+                                                        hintText:
+                                                            'بحث باللغة العربية...',
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -434,6 +467,12 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                 'Readex Pro',
                                                             letterSpacing: 0.0,
                                                           ),
+                                                      maxLength: 300,
+                                                      buildCounter: (context,
+                                                              {required currentLength,
+                                                              required isFocused,
+                                                              maxLength}) =>
+                                                          null,
                                                       keyboardType:
                                                           TextInputType.name,
                                                       cursorColor:
@@ -443,13 +482,18 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                       validator: _model
                                                           .textControllerValidator
                                                           .asValidator(context),
+                                                      inputFormatters: [
+                                                        FilteringTextInputFormatter
+                                                            .allow(RegExp(
+                                                                '^[\\u0600-\\u06FF\\s]+\$'))
+                                                      ],
                                                     ),
                                                   ),
                                                 ),
                                                 Padding(
                                                   padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          10.0, 0.0, 0.0, 0.0),
+                                                          16.0, 0.0, 0.0, 0.0),
                                                   child: InkWell(
                                                     splashColor:
                                                         Colors.transparent,
@@ -522,7 +566,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                     size: 24.0,
                                                   ),
                                                 ),
-                                              ],
+                                              ].divide(const SizedBox(width: 10.0)),
                                             ),
                                           ),
                                           if (_model.searchactive == true)
@@ -561,10 +605,21 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                               builder: (context) {
                                                 final directoryNosearch =
                                                     containerUsersRecordList
+                                                        .where((e) =>
+                                                            directoryPageUsersRecord
+                                                                ?.uid !=
+                                                            e.uid)
                                                         .toList();
+                                                if (directoryNosearch.isEmpty) {
+                                                  return const Center(
+                                                    child:
+                                                        EmptydirectoryWidget(),
+                                                  );
+                                                }
 
                                                 return ListView.builder(
                                                   padding: EdgeInsets.zero,
+                                                  primary: false,
                                                   shrinkWrap: true,
                                                   scrollDirection:
                                                       Axis.vertical,
@@ -607,6 +662,23 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                 ),
                                                               )
                                                             ],
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(
+                                                                      15.0),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          15.0),
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      15.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      15.0),
+                                                            ),
                                                           ),
                                                           child: Padding(
                                                             padding:
@@ -695,9 +767,9 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                   clipBehavior:
                                                                       Clip.antiAliasWithSaveLayer,
                                                                   color: const Color(
-                                                                      0xFFF1F4F8),
+                                                                      0xFFFFFCF6),
                                                                   elevation:
-                                                                      1.0,
+                                                                      6.0,
                                                                   shape:
                                                                       RoundedRectangleBorder(
                                                                     borderRadius:
@@ -727,7 +799,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                           () async {
                                                                         context
                                                                             .pushNamed(
-                                                                          'ProfileDetails',
+                                                                          'ProfileDetailsCopy',
                                                                           queryParameters:
                                                                               {
                                                                             'name':
@@ -746,7 +818,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                       child:
                                                                           const Icon(
                                                                         Icons
-                                                                            .keyboard_arrow_right_rounded,
+                                                                            .arrow_forward_ios_sharp,
                                                                         color: Color(
                                                                             0xFF57636C),
                                                                         size:
@@ -772,7 +844,14 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                               builder: (context) {
                                                 final directorysearch = _model
                                                     .simpleSearchResults
+                                                    .where((e) =>
+                                                        directoryPageUsersRecord
+                                                            ?.uid !=
+                                                        e.uid)
                                                     .toList();
+                                                if (directorysearch.isEmpty) {
+                                                  return const EmptySearchWidget();
+                                                }
 
                                                 return ListView.builder(
                                                   padding: EdgeInsets.zero,
@@ -872,6 +951,22 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                     ),
                                                                   )
                                                                 ],
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .only(
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          15.0),
+                                                                  bottomRight: Radius
+                                                                      .circular(
+                                                                          15.0),
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          15.0),
+                                                                  topRight: Radius
+                                                                      .circular(
+                                                                          15.0),
+                                                                ),
                                                               ),
                                                               child: Padding(
                                                                 padding:
@@ -911,8 +1006,8 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                           borderRadius:
                                                                               BorderRadius.circular(40.0),
                                                                           child:
-                                                                              Image.network(
-                                                                            'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=900&q=60',
+                                                                              Image.asset(
+                                                                            'assets/images/default_profile_picture.jpg',
                                                                             width:
                                                                                 60.0,
                                                                             height:
@@ -956,9 +1051,9 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                       clipBehavior:
                                                                           Clip.antiAliasWithSaveLayer,
                                                                       color: const Color(
-                                                                          0xFFF1F4F8),
+                                                                          0xFFFFFCF6),
                                                                       elevation:
-                                                                          1.0,
+                                                                          6.0,
                                                                       shape:
                                                                           RoundedRectangleBorder(
                                                                         borderRadius:
@@ -981,7 +1076,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                           onTap:
                                                                               () async {
                                                                             context.pushNamed(
-                                                                              'ProfileDetails',
+                                                                              'ProfileDetailsCopy',
                                                                               queryParameters: {
                                                                                 'name': serializeParam(
                                                                                   directorysearchItem,
@@ -995,7 +1090,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                           },
                                                                           child:
                                                                               const Icon(
-                                                                            Icons.keyboard_arrow_right_rounded,
+                                                                            Icons.arrow_forward_ios_sharp,
                                                                             color:
                                                                                 Color(0xFF57636C),
                                                                             size:
@@ -1020,13 +1115,13 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                             ),
                                         ],
                                       ),
-                                    ).animateOnPageLoad(animationsMap[
-                                        'containerOnPageLoadAnimation1']!);
-                                  },
-                                ),
+                                    ),
+                                  ).animateOnPageLoad(animationsMap[
+                                      'containerOnPageLoadAnimation1']!);
+                                },
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -1044,7 +1139,9 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                           wrapWithModel(
                             model: _model.navBar1Model,
                             updateCallback: () => safeSetState(() {}),
-                            child: const NavBar1Widget(),
+                            child: const NavBar1Widget(
+                              currentpage: 'DirectoryPage',
+                            ),
                           ),
                         ],
                       ),

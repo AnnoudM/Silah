@@ -45,7 +45,15 @@ class _LoggedinPageWidgetState extends State<LoggedinPageWidget> {
 
           return;
         } else {
-          context.pushNamed('verification');
+          context.pushNamed(
+            'verification',
+            queryParameters: {
+              'email': serializeParam(
+                _model.user?.email,
+                ParamType.String,
+              ),
+            }.withoutNulls,
+          );
 
           return;
         }

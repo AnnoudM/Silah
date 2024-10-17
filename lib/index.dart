@@ -16,20 +16,14 @@ export '/sprint1/verification/verification_widget.dart' show VerificationWidget;
 export '/sprint1/loggedin_page/loggedin_page_widget.dart'
     show LoggedinPageWidget;
 export '/sprint1/reject_page/reject_page_widget.dart' show RejectPageWidget;
-export '/sprint2/directory_page/directory_page_widget.dart'
-    show DirectoryPageWidget;
-export '/sprint2/profile_details/profile_details_widget.dart'
-    show ProfileDetailsWidget;
-export '/sprint2/calenderr/calenderr_widget.dart' show CalenderrWidget;
-export '/sprint2/threadpage/threadpage_widget.dart' show ThreadpageWidget;
 export '/sprint2/profile_page/profile_page_widget.dart' show ProfilePageWidget;
 export '/sprint2/posts/posts_widget.dart' show PostsWidget;
 export '/sprint2/event_details/event_details_widget.dart'
     show EventDetailsWidget;
-export '/sprint2/edit_event/edit_event_widget.dart' show EditEventWidget;
-export '/sprint2/directory_page_copy/directory_page_copy_widget.dart'
-    show DirectoryPageCopyWidget;
-export '/sprint2/calenderr_copy4/calenderr_copy4_widget.dart'
-    show CalenderrCopy4Widget;
-export '/sprint1/home_admin_copy/home_admin_copy_widget.dart'
-    show HomeAdminCopyWidget;
+export '/sprint2/event_edit/event_edit_widget.dart' show EventEditWidget;
+export '/sprint2/directory_page/directory_page_widget.dart'
+    show DirectoryPageWidget;
+export '/sprint2/profile_details_copy/profile_details_copy_widget.dart'
+    show ProfileDetailsCopyWidget;
+export '/sprint2/calender_page/calender_page_widget.dart'
+    show CalenderPageWidget;

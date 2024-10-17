@@ -47,6 +47,12 @@ class FFAppState extends ChangeNotifier {
         ? prefs.setString('ff_FamilyName', value.path)
         : prefs.remove('ff_FamilyName');
   }
+
+  String _currentPage = '';
+  String get currentPage => _currentPage;
+  set currentPage(String value) {
+    _currentPage = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

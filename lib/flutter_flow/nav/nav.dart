@@ -172,34 +172,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'DirectoryPage',
-          path: '/directoryPage',
-          builder: (context, params) => const DirectoryPageWidget(),
-        ),
-        FFRoute(
-          name: 'ProfileDetails',
-          path: '/profileDetails',
-          asyncParams: {
-            'name': getDoc(['Users'], UsersRecord.fromSnapshot),
-          },
-          builder: (context, params) => ProfileDetailsWidget(
-            name: params.getParam(
-              'name',
-              ParamType.Document,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'calenderr',
-          path: '/calenderr',
-          builder: (context, params) => const CalenderrWidget(),
-        ),
-        FFRoute(
-          name: 'threadpage',
-          path: '/threadpage',
-          builder: (context, params) => const ThreadpageWidget(),
-        ),
-        FFRoute(
           name: 'profilePage',
           path: '/profilePage',
           builder: (context, params) => const ProfilePageWidget(),
@@ -207,7 +179,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'posts',
           path: '/posts',
-          builder: (context, params) => const PostsWidget(),
+          builder: (context, params) => PostsWidget(
+            currentpage: params.getParam(
+              'currentpage',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'EventDetails',
@@ -223,32 +200,56 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'EditEvent',
-          path: '/editEvent',
+          name: 'EventEdit',
+          path: '/eventEdit',
+          builder: (context, params) => EventEditWidget(
+            eventEdit: params.getParam(
+              'eventEdit',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['Events'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'DirectoryPage',
+          path: '/directoryPage',
+          builder: (context, params) => DirectoryPageWidget(
+            currentpage: params.getParam(
+              'currentpage',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'ProfileDetailsCopy',
+          path: '/profileDetailsCopy',
           asyncParams: {
-            'event': getDoc(['Events'], EventsRecord.fromSnapshot),
+            'name': getDoc(['Users'], UsersRecord.fromSnapshot),
           },
-          builder: (context, params) => EditEventWidget(
-            event: params.getParam(
-              'event',
+          builder: (context, params) => ProfileDetailsCopyWidget(
+            name: params.getParam(
+              'name',
               ParamType.Document,
             ),
           ),
         ),
         FFRoute(
-          name: 'DirectoryPageCopy',
-          path: '/directoryPageCopy',
-          builder: (context, params) => const DirectoryPageCopyWidget(),
-        ),
-        FFRoute(
-          name: 'calenderrCopy4',
-          path: '/calenderrCopy4',
-          builder: (context, params) => const CalenderrCopy4Widget(),
-        ),
-        FFRoute(
-          name: 'HomeAdminCopy',
-          path: '/homeAdminCopy',
-          builder: (context, params) => const HomeAdminCopyWidget(),
+          name: 'CalenderPage',
+          path: '/calenderPage',
+          asyncParams: {
+            'famName': getDoc(['Family'], FamilyRecord.fromSnapshot),
+          },
+          builder: (context, params) => CalenderPageWidget(
+            famName: params.getParam(
+              'famName',
+              ParamType.Document,
+            ),
+            currentPage: params.getParam(
+              'currentPage',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

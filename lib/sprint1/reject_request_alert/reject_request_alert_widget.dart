@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'reject_request_alert_model.dart';
 export 'reject_request_alert_model.dart';
 
@@ -246,8 +247,9 @@ class _RejectRequestAlertWidgetState extends State<RejectRequestAlertWidget> {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'تم رفض الفرد بنجاح.',
-                                      style: TextStyle(
+                                      'تم رفض الفرد بنجاح',
+                                      style: GoogleFonts.getFont(
+                                        'Readex Pro',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                       ),

@@ -7,26 +7,9 @@ class ProfilePageModel extends FlutterFlowModel<ProfilePageWidget> {
 
   bool searchactive = false;
 
-  ///  State fields for stateful widgets in this page.
-
-  // State field(s) for Number widget.
-  FocusNode? numberFocusNode;
-  TextEditingController? numberTextController;
-  String? Function(BuildContext, String?)? numberTextControllerValidator;
-  // State field(s) for Email widget.
-  FocusNode? emailFocusNode;
-  TextEditingController? emailTextController;
-  String? Function(BuildContext, String?)? emailTextControllerValidator;
-
   @override
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    numberFocusNode?.dispose();
-    numberTextController?.dispose();
-
-    emailFocusNode?.dispose();
-    emailTextController?.dispose();
-  }
+  void dispose() {}
 }

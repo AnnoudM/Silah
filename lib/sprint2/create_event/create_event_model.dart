@@ -9,6 +9,8 @@ class CreateEventModel extends FlutterFlowModel<CreateEventWidget> {
 
   String? dateEmpty;
 
+  String? requiredDate;
+
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
@@ -21,11 +23,11 @@ class CreateEventModel extends FlutterFlowModel<CreateEventWidget> {
       return 'هذا الحقل مطلوب';
     }
 
-    if (val.length > 50) {
+    if (val.length > 30) {
       return 'العنوان طويل جدا!';
     }
     if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
-      return 'عنوان فارغ!';
+      return 'لا يمكن أن يكون عنوان المناسبة فارغًا!';
     }
     return null;
   }
@@ -40,8 +42,11 @@ class CreateEventModel extends FlutterFlowModel<CreateEventWidget> {
       return 'هذا الحقل مطلوب';
     }
 
+    if (val.length > 255) {
+      return 'الموقع طويل جدا!';
+    }
     if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
-      return 'موقع فارغ!';
+      return 'لا يمكن أن يكون الموقع فارغًا!';
     }
     return null;
   }

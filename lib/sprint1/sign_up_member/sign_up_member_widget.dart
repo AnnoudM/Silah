@@ -435,7 +435,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                       TextCapitalization.none,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
-                                                    labelText: ' الاسم ',
+                                                    labelText: ' الاسم * ',
                                                     labelStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .labelMedium
@@ -533,7 +533,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   inputFormatters: [
                                                     FilteringTextInputFormatter
                                                         .allow(RegExp(
-                                                            '^[\\u0600-\\u06FF\\s]+\$'))
+                                                            '^[\\u0621-\\u064A]+\$'))
                                                   ],
                                                 ),
                                               ),
@@ -567,7 +567,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   ],
                                                   obscureText: false,
                                                   decoration: InputDecoration(
-                                                    labelText: 'اسم الأب',
+                                                    labelText: 'اسم الأب *',
                                                     labelStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .labelMedium
@@ -665,7 +665,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   inputFormatters: [
                                                     FilteringTextInputFormatter
                                                         .allow(RegExp(
-                                                            '^[\\u0600-\\u06FF\\s]+\$'))
+                                                            '^[\\u0621-\\u064A]+\$'))
                                                   ],
                                                 ),
                                               ),
@@ -703,7 +703,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                 ],
                                                 obscureText: false,
                                                 decoration: InputDecoration(
-                                                  labelText: ' اسم الجد',
+                                                  labelText: ' اسم الجد *',
                                                   labelStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -798,7 +798,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                 inputFormatters: [
                                                   FilteringTextInputFormatter
                                                       .allow(RegExp(
-                                                          '^[\\u0600-\\u06FF\\s]+\$'))
+                                                          '^[\\u0621-\\u064A]+\$'))
                                                 ],
                                               ),
                                             ),
@@ -822,7 +822,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                 ],
                                                 obscureText: false,
                                                 decoration: InputDecoration(
-                                                  labelText: 'اسم أب الجد',
+                                                  labelText: 'اسم أب الجد *',
                                                   labelStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -917,7 +917,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                 inputFormatters: [
                                                   FilteringTextInputFormatter
                                                       .allow(RegExp(
-                                                          '^[\\u0600-\\u06FF\\s]+\$'))
+                                                          '^[\\u0621-\\u064A]+\$'))
                                                 ],
                                               ),
                                             ),
@@ -1021,7 +1021,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                               'Readex Pro',
                                                           letterSpacing: 0.0,
                                                         ),
-                                                hintText: 'اختر عائلتك',
+                                                hintText: 'اختر عائلتك *',
                                                 searchHintText: 'بحث...',
                                                 icon: Icon(
                                                   Icons
@@ -1231,7 +1231,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 isDense: false,
-                                                labelText: 'رقم الهاتف',
+                                                labelText: 'رقم الهاتف *',
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
@@ -1407,7 +1407,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                     fontFamily: 'Readex Pro',
                                                     letterSpacing: 0.0,
                                                   ),
-                                          hintText: 'الجنس',
+                                          hintText: 'الجنس *',
                                           icon: Icon(
                                             Icons.keyboard_arrow_down_rounded,
                                             color: FlutterFlowTheme.of(context)
@@ -1494,6 +1494,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                           autofillHints: const [AutofillHints.email],
                                           obscureText: false,
                                           decoration: InputDecoration(
+                                            labelText: 'البريد الإلكتروني *',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
@@ -1501,7 +1502,6 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                       fontFamily: 'Readex Pro',
                                                       letterSpacing: 0.0,
                                                     ),
-                                            hintText: 'البريد الإلكتروني',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
@@ -1666,7 +1666,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                           obscureText:
                                               !_model.passwordVisibility,
                                           decoration: InputDecoration(
-                                            labelText: 'كلمة المرور',
+                                            labelText: 'كلمة المرور *',
                                             labelStyle: FlutterFlowTheme.of(
                                                     context)
                                                 .labelMedium
@@ -1811,7 +1811,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                           obscureText:
                                               !_model.passwordConfirmVisibility,
                                           decoration: InputDecoration(
-                                            labelText: 'تأكيد كلمة المرور',
+                                            labelText: 'تأكيد كلمة المرور *',
                                             labelStyle: FlutterFlowTheme.of(
                                                     context)
                                                 .labelMedium

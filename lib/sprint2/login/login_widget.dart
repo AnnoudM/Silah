@@ -231,7 +231,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                           autofillHints: const [AutofillHints.email],
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText: 'البريد الإلكتروني',
+                                            labelText: 'البريد الإلكتروني *',
                                             labelStyle: FlutterFlowTheme.of(
                                                     context)
                                                 .labelMedium
@@ -339,7 +339,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                           obscureText:
                                               !_model.passwordVisibility,
                                           decoration: InputDecoration(
-                                            labelText: 'كلمة المرور',
+                                            labelText: 'كلمة المرور *',
                                             labelStyle: FlutterFlowTheme.of(
                                                     context)
                                                 .labelMedium
