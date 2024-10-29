@@ -463,7 +463,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                                             0.0,
                                                                       ),
                                                               hintText:
-                                                                  'اكتب منشورك....',
+                                                                  'اكتب منشورك...',
                                                               hintStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)

@@ -14,7 +14,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
 
-
 export 'lat_lng.dart';
 export 'place.dart';
 export 'uploaded_file.dart';
