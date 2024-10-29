@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -573,7 +574,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                               ),
                                         ),
                                         Text(
-                                          'يرجى اختيار التاريخ من التقويم بدلا من ادخاله يدويا',
+                                          'يرجى اختيار التاريخ من التقويم بدلا من ادخاله يدويًا',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -673,7 +674,8 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment.center,
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
                                                   children: [
                                                     Align(
                                                       alignment:
@@ -682,7 +684,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                       child: Text(
                                                         valueOrDefault<String>(
                                                           dateTimeFormat(
-                                                            "y/M/d  h:mm a",
+                                                            "y/M/d h:mm a",
                                                             _model.datePicked2,
                                                             locale: FFLocalizations
                                                                     .of(context)
@@ -706,37 +708,87 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                       alignment:
                                                           const AlignmentDirectional(
                                                               -1.0, 0.0),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    2.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            final datePicked2Date =
-                                                                await showDatePicker(
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          final datePicked2Date =
+                                                              await showDatePicker(
+                                                            context: context,
+                                                            initialDate:
+                                                                getCurrentTimestamp,
+                                                            firstDate:
+                                                                getCurrentTimestamp,
+                                                            lastDate:
+                                                                DateTime(2050),
+                                                            builder: (context,
+                                                                child) {
+                                                              return wrapInMaterialDatePickerTheme(
+                                                                context,
+                                                                child!,
+                                                                headerBackgroundColor:
+                                                                    const Color(
+                                                                        0xFF2A497D),
+                                                                headerForegroundColor:
+                                                                    const Color(
+                                                                        0xFFFFFCF6),
+                                                                headerTextStyle:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Outfit',
+                                                                          fontSize:
+                                                                              32.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                        ),
+                                                                pickerBackgroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                pickerForegroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                selectedDateTimeBackgroundColor:
+                                                                    const Color(
+                                                                        0xFF2A497D),
+                                                                selectedDateTimeForegroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .info,
+                                                                actionButtonForegroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                iconSize: 24.0,
+                                                              );
+                                                            },
+                                                          );
+
+                                                          TimeOfDay?
+                                                              datePicked2Time;
+                                                          if (datePicked2Date !=
+                                                              null) {
+                                                            datePicked2Time =
+                                                                await showTimePicker(
                                                               context: context,
-                                                              initialDate:
-                                                                  getCurrentTimestamp,
-                                                              firstDate:
-                                                                  getCurrentTimestamp,
-                                                              lastDate:
-                                                                  DateTime(
-                                                                      2050),
+                                                              initialTime: TimeOfDay
+                                                                  .fromDateTime(
+                                                                      getCurrentTimestamp),
                                                               builder: (context,
                                                                   child) {
-                                                                return wrapInMaterialDatePickerTheme(
+                                                                return wrapInMaterialTimePickerTheme(
                                                                   context,
                                                                   child!,
                                                                   headerBackgroundColor:
@@ -782,106 +834,62 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                 );
                                                               },
                                                             );
+                                                          }
 
-                                                            TimeOfDay?
-                                                                datePicked2Time;
-                                                            if (datePicked2Date !=
-                                                                null) {
-                                                              datePicked2Time =
-                                                                  await showTimePicker(
-                                                                context:
-                                                                    context,
-                                                                initialTime: TimeOfDay
-                                                                    .fromDateTime(
-                                                                        getCurrentTimestamp),
-                                                                builder:
-                                                                    (context,
-                                                                        child) {
-                                                                  return wrapInMaterialTimePickerTheme(
-                                                                    context,
-                                                                    child!,
-                                                                    headerBackgroundColor:
-                                                                        const Color(
-                                                                            0xFF2A497D),
-                                                                    headerForegroundColor:
-                                                                        const Color(
-                                                                            0xFFFFFCF6),
-                                                                    headerTextStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .headlineLarge
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Outfit',
-                                                                          fontSize:
-                                                                              32.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w600,
-                                                                        ),
-                                                                    pickerBackgroundColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground,
-                                                                    pickerForegroundColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                    selectedDateTimeBackgroundColor:
-                                                                        const Color(
-                                                                            0xFF2A497D),
-                                                                    selectedDateTimeForegroundColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .info,
-                                                                    actionButtonForegroundColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                    iconSize:
-                                                                        24.0,
-                                                                  );
-                                                                },
+                                                          if (datePicked2Date !=
+                                                                  null &&
+                                                              datePicked2Time !=
+                                                                  null) {
+                                                            safeSetState(() {
+                                                              _model.datePicked2 =
+                                                                  DateTime(
+                                                                datePicked2Date
+                                                                    .year,
+                                                                datePicked2Date
+                                                                    .month,
+                                                                datePicked2Date
+                                                                    .day,
+                                                                datePicked2Time!
+                                                                    .hour,
+                                                                datePicked2Time
+                                                                    .minute,
                                                               );
-                                                            }
+                                                            });
+                                                          }
+                                                          if (_model
+                                                                  .datePicked2 !=
+                                                              null) {
+                                                            _model.dateEmpty =
+                                                                null;
+                                                            safeSetState(() {});
+                                                          } else {
+                                                            return;
+                                                          }
 
-                                                            if (datePicked2Date !=
-                                                                    null &&
-                                                                datePicked2Time !=
-                                                                    null) {
-                                                              safeSetState(() {
-                                                                _model.datePicked2 =
-                                                                    DateTime(
-                                                                  datePicked2Date
-                                                                      .year,
-                                                                  datePicked2Date
-                                                                      .month,
-                                                                  datePicked2Date
-                                                                      .day,
-                                                                  datePicked2Time!
-                                                                      .hour,
-                                                                  datePicked2Time
-                                                                      .minute,
-                                                                );
-                                                              });
-                                                            }
-                                                            if (_model
-                                                                    .datePicked2 !=
-                                                                null) {
-                                                              _model.dateEmpty =
-                                                                  null;
-                                                              safeSetState(
-                                                                  () {});
-                                                            } else {
-                                                              return;
-                                                            }
-                                                          },
-                                                          child: const Icon(
-                                                            Icons.date_range,
-                                                            color: Color(
-                                                                0xFF2A497D),
-                                                            size: 24.0,
-                                                          ),
+                                                          if (functions
+                                                                  .newCustomFunction(
+                                                                      _model
+                                                                          .datePicked2) ==
+                                                              'true') {
+                                                            _model.pastHour =
+                                                                'لا يمكن أن يكون الوقت قبل الوقت الحالي';
+                                                            safeSetState(() {});
+                                                          } else {
+                                                            _model.pastHour =
+                                                                '  ';
+                                                            safeSetState(() {});
+                                                          }
+                                                        },
+                                                        child: const Icon(
+                                                          Icons.date_range,
+                                                          color:
+                                                              Color(0xFF2A497D),
+                                                          size: 24.0,
                                                         ),
                                                       ),
                                                     ),
-                                                  ],
+                                                  ].divide(
+                                                      const SizedBox(width: 10.0)),
                                                 ),
                                               ),
                                             ),
@@ -894,7 +902,33 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                             padding: const EdgeInsets.all(12.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
                                               children: [
+                                                Expanded(
+                                                  child: Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Text(
+                                                      _model.pastHour,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            fontSize: 12.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w300,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ),
                                                 if (_model.dateEmpty != null &&
                                                     _model.dateEmpty != '')
                                                   Expanded(
@@ -1038,12 +1072,29 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                           _model.dateEmpty =
                                                               null;
                                                           safeSetState(() {});
-                                                          if (!((_model.eventNameTextController
+                                                          if ((_model.eventNameTextController
                                                                           .text !=
                                                                       '') &&
                                                               (_model.eventLocationTextController
                                                                           .text !=
-                                                                      ''))) {
+                                                                      '')) {
+                                                            if (functions
+                                                                    .newCustomFunction(
+                                                                        _model
+                                                                            .datePicked2) ==
+                                                                'true') {
+                                                              _model.pastHour =
+                                                                  'لا يمكن أن يكون الوقت قبل الوقت الحالي';
+                                                              safeSetState(
+                                                                  () {});
+                                                              return;
+                                                            } else {
+                                                              _model.pastHour =
+                                                                  '  ';
+                                                              safeSetState(
+                                                                  () {});
+                                                            }
+                                                          } else {
                                                             return;
                                                           }
                                                         } else {

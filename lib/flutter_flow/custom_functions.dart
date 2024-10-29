@@ -23,3 +23,35 @@ String? concatenateStrings(
   return '${str1 ?? ''} ${str2 ?? ''} ${str3 ?? ''} ${str4 ?? ''} ${str5 ?? ''}'
       .trim();
 }
+
+String? newCustomFunction(DateTime? datePicked2) {
+  if (datePicked2 == null) {
+    return null; // Handle null case if no date is picked
+  }
+
+  // Get the current time
+  DateTime currentTime = DateTime.now();
+
+  // Compare dates (without time)
+  bool isSameDate = datePicked2.year == currentTime.year &&
+      datePicked2.month == currentTime.month &&
+      datePicked2.day == currentTime.day;
+
+  // If not the same date, return false
+  if (!isSameDate) {
+    return 'false';
+  }
+
+  // Now compare the time part only
+  DateTime pickedTime = DateTime(
+    currentTime.year,
+    currentTime.month,
+    currentTime.day,
+    datePicked2.hour,
+    datePicked2.minute,
+    datePicked2.second,
+  );
+
+  // Compare times and return true if the picked time is earlier, false otherwise
+  return pickedTime.isBefore(currentTime) ? 'true' : 'false';
+}

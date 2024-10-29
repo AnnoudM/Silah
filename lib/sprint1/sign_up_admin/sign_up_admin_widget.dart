@@ -1103,7 +1103,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       labelText:
-                                                          'نبذة عن العائلة * ',
+                                                          'نبذة عن العائلة *',
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -2376,217 +2376,221 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                 }
                                                                 return;
                                                               } else {
-                                                                if (currentUserEmail !=
-                                                                        '') {
-                                                                } else {
-                                                                  GoRouter.of(
+                                                                GoRouter.of(
+                                                                        context)
+                                                                    .prepareAuthEvent();
+                                                                if (_model
+                                                                        .passwordTextController
+                                                                        .text !=
+                                                                    _model
+                                                                        .passwordConfirmTextController
+                                                                        .text) {
+                                                                  ScaffoldMessenger.of(
                                                                           context)
-                                                                      .prepareAuthEvent();
-                                                                  if (_model
-                                                                          .passwordTextController
-                                                                          .text !=
-                                                                      _model
-                                                                          .passwordConfirmTextController
-                                                                          .text) {
-                                                                    ScaffoldMessenger.of(
-                                                                            context)
-                                                                        .showSnackBar(
-                                                                      const SnackBar(
-                                                                        content:
-                                                                            Text(
-                                                                          'كلمة المرور لا تتطابق',
-                                                                        ),
+                                                                      .showSnackBar(
+                                                                    const SnackBar(
+                                                                      content:
+                                                                          Text(
+                                                                        'كلمة المرور لا تتطابق',
                                                                       ),
-                                                                    );
-                                                                    return;
-                                                                  }
+                                                                    ),
+                                                                  );
+                                                                  return;
+                                                                }
 
-                                                                  final user =
-                                                                      await authManager
-                                                                          .createAccountWithEmail(
-                                                                    context,
-                                                                    _model
-                                                                        .emailTextController
-                                                                        .text,
-                                                                    _model
+                                                                final user =
+                                                                    await authManager
+                                                                        .createAccountWithEmail(
+                                                                  context,
+                                                                  _model
+                                                                      .emailTextController
+                                                                      .text,
+                                                                  _model
+                                                                      .passwordTextController
+                                                                      .text,
+                                                                );
+                                                                if (user ==
+                                                                    null) {
+                                                                  return;
+                                                                }
+
+                                                                navigate = () =>
+                                                                    context.goNamedAuth(
+                                                                        'loggedinPage',
+                                                                        context
+                                                                            .mounted);
+
+                                                                var familyRecordReference =
+                                                                    FamilyRecord
+                                                                        .collection
+                                                                        .doc();
+                                                                await familyRecordReference
+                                                                    .set(
+                                                                        createFamilyRecordData(
+                                                                  familyDesc: _model
+                                                                      .textController6
+                                                                      .text,
+                                                                  familyAdmin:
+                                                                      _model
+                                                                          .textController1
+                                                                          .text,
+                                                                  familyName: _model
+                                                                      .textController5
+                                                                      .text,
+                                                                ));
+                                                                _model.newFamily =
+                                                                    FamilyRecord
+                                                                        .getDocumentFromData(
+                                                                            createFamilyRecordData(
+                                                                              familyDesc: _model.textController6.text,
+                                                                              familyAdmin: _model.textController1.text,
+                                                                              familyName: _model.textController5.text,
+                                                                            ),
+                                                                            familyRecordReference);
+                                                                shouldSetState =
+                                                                    true;
+
+                                                                var usersRecordReference =
+                                                                    UsersRecord
+                                                                        .collection
+                                                                        .doc();
+                                                                await usersRecordReference
+                                                                    .set({
+                                                                  ...createUsersRecordData(
+                                                                    password: _model
                                                                         .passwordTextController
                                                                         .text,
-                                                                  );
-                                                                  if (user ==
-                                                                      null) {
-                                                                    return;
-                                                                  }
-
-                                                                  navigate = () =>
-                                                                      context.goNamedAuth(
-                                                                          'loggedinPage',
-                                                                          context
-                                                                              .mounted);
-
-                                                                  var familyRecordReference =
-                                                                      FamilyRecord
-                                                                          .collection
-                                                                          .doc();
-                                                                  await familyRecordReference
-                                                                      .set(
-                                                                          createFamilyRecordData(
-                                                                    familyDesc: _model
-                                                                        .textController6
+                                                                    gender: _model
+                                                                        .dropDownValue,
+                                                                    isAdmin:
+                                                                        true,
+                                                                    email: _model
+                                                                        .emailTextController
                                                                         .text,
-                                                                    familyAdmin:
+                                                                    displayName:
                                                                         _model
                                                                             .textController1
                                                                             .text,
-                                                                    familyName: _model
-                                                                        .textController5
+                                                                    phoneNumber:
+                                                                        _model
+                                                                            .textController7
+                                                                            .text,
+                                                                    secondName: _model
+                                                                        .textController2
                                                                         .text,
-                                                                  ));
-                                                                  _model.newFamily =
-                                                                      FamilyRecord.getDocumentFromData(
-                                                                          createFamilyRecordData(
-                                                                            familyDesc:
-                                                                                _model.textController6.text,
-                                                                            familyAdmin:
-                                                                                _model.textController1.text,
-                                                                            familyName:
-                                                                                _model.textController5.text,
-                                                                          ),
-                                                                          familyRecordReference);
-                                                                  shouldSetState =
-                                                                      true;
-
-                                                                  var usersRecordReference =
-                                                                      UsersRecord
-                                                                          .collection
-                                                                          .doc();
-                                                                  await usersRecordReference
-                                                                      .set({
-                                                                    ...createUsersRecordData(
-                                                                      password: _model
-                                                                          .passwordTextController
-                                                                          .text,
-                                                                      gender: _model
-                                                                          .dropDownValue,
-                                                                      isAdmin:
-                                                                          true,
-                                                                      email: _model
-                                                                          .emailTextController
-                                                                          .text,
-                                                                      displayName: _model
-                                                                          .textController1
-                                                                          .text,
-                                                                      phoneNumber: _model
-                                                                          .textController7
-                                                                          .text,
-                                                                      secondName: _model
-                                                                          .textController2
-                                                                          .text,
-                                                                      thirdName: _model
-                                                                          .textController3
-                                                                          .text,
-                                                                      fourthName: _model
-                                                                          .textController4
-                                                                          .text,
-                                                                      uid:
-                                                                          currentUserUid,
-                                                                      familyName: _model
-                                                                          .newFamily
-                                                                          ?.reference,
-                                                                      accepted:
-                                                                          true,
-                                                                      rejected:
-                                                                          false,
-                                                                      fullName: functions.concatenateStrings(
-                                                                          _model
-                                                                              .textController1
-                                                                              .text,
-                                                                          _model
-                                                                              .textController2
-                                                                              .text,
-                                                                          _model
-                                                                              .textController3
-                                                                              .text,
-                                                                          _model
-                                                                              .textController4
-                                                                              .text,
-                                                                          _model
-                                                                              .textController5
-                                                                              .text),
-                                                                    ),
-                                                                    ...mapToFirestore(
-                                                                      {
-                                                                        'created_time':
-                                                                            FieldValue.serverTimestamp(),
-                                                                      },
-                                                                    ),
-                                                                  });
-                                                                  _model.users =
-                                                                      UsersRecord
-                                                                          .getDocumentFromData({
-                                                                    ...createUsersRecordData(
-                                                                      password: _model
-                                                                          .passwordTextController
-                                                                          .text,
-                                                                      gender: _model
-                                                                          .dropDownValue,
-                                                                      isAdmin:
-                                                                          true,
-                                                                      email: _model
-                                                                          .emailTextController
-                                                                          .text,
-                                                                      displayName: _model
-                                                                          .textController1
-                                                                          .text,
-                                                                      phoneNumber: _model
-                                                                          .textController7
-                                                                          .text,
-                                                                      secondName: _model
-                                                                          .textController2
-                                                                          .text,
-                                                                      thirdName: _model
-                                                                          .textController3
-                                                                          .text,
-                                                                      fourthName: _model
-                                                                          .textController4
-                                                                          .text,
-                                                                      uid:
-                                                                          currentUserUid,
-                                                                      familyName: _model
-                                                                          .newFamily
-                                                                          ?.reference,
-                                                                      accepted:
-                                                                          true,
-                                                                      rejected:
-                                                                          false,
-                                                                      fullName: functions.concatenateStrings(
-                                                                          _model
-                                                                              .textController1
-                                                                              .text,
-                                                                          _model
-                                                                              .textController2
-                                                                              .text,
-                                                                          _model
-                                                                              .textController3
-                                                                              .text,
-                                                                          _model
-                                                                              .textController4
-                                                                              .text,
-                                                                          _model
-                                                                              .textController5
-                                                                              .text),
-                                                                    ),
-                                                                    ...mapToFirestore(
-                                                                      {
-                                                                        'created_time':
-                                                                            DateTime.now(),
-                                                                      },
-                                                                    ),
-                                                                  }, usersRecordReference);
-                                                                  shouldSetState =
-                                                                      true;
-                                                                  await authManager
-                                                                      .sendEmailVerification();
-                                                                }
+                                                                    thirdName: _model
+                                                                        .textController3
+                                                                        .text,
+                                                                    fourthName: _model
+                                                                        .textController4
+                                                                        .text,
+                                                                    uid:
+                                                                        currentUserUid,
+                                                                    familyName: _model
+                                                                        .newFamily
+                                                                        ?.reference,
+                                                                    accepted:
+                                                                        true,
+                                                                    rejected:
+                                                                        false,
+                                                                    fullName: functions.concatenateStrings(
+                                                                        _model
+                                                                            .textController1
+                                                                            .text,
+                                                                        _model
+                                                                            .textController2
+                                                                            .text,
+                                                                        _model
+                                                                            .textController3
+                                                                            .text,
+                                                                        _model
+                                                                            .textController4
+                                                                            .text,
+                                                                        _model
+                                                                            .textController5
+                                                                            .text),
+                                                                    userPIc:
+                                                                        'https://i.postimg.cc/j5zbyWSw/default-profile-picture.jpg',
+                                                                  ),
+                                                                  ...mapToFirestore(
+                                                                    {
+                                                                      'created_time':
+                                                                          FieldValue
+                                                                              .serverTimestamp(),
+                                                                    },
+                                                                  ),
+                                                                });
+                                                                _model.users =
+                                                                    UsersRecord
+                                                                        .getDocumentFromData({
+                                                                  ...createUsersRecordData(
+                                                                    password: _model
+                                                                        .passwordTextController
+                                                                        .text,
+                                                                    gender: _model
+                                                                        .dropDownValue,
+                                                                    isAdmin:
+                                                                        true,
+                                                                    email: _model
+                                                                        .emailTextController
+                                                                        .text,
+                                                                    displayName:
+                                                                        _model
+                                                                            .textController1
+                                                                            .text,
+                                                                    phoneNumber:
+                                                                        _model
+                                                                            .textController7
+                                                                            .text,
+                                                                    secondName: _model
+                                                                        .textController2
+                                                                        .text,
+                                                                    thirdName: _model
+                                                                        .textController3
+                                                                        .text,
+                                                                    fourthName: _model
+                                                                        .textController4
+                                                                        .text,
+                                                                    uid:
+                                                                        currentUserUid,
+                                                                    familyName: _model
+                                                                        .newFamily
+                                                                        ?.reference,
+                                                                    accepted:
+                                                                        true,
+                                                                    rejected:
+                                                                        false,
+                                                                    fullName: functions.concatenateStrings(
+                                                                        _model
+                                                                            .textController1
+                                                                            .text,
+                                                                        _model
+                                                                            .textController2
+                                                                            .text,
+                                                                        _model
+                                                                            .textController3
+                                                                            .text,
+                                                                        _model
+                                                                            .textController4
+                                                                            .text,
+                                                                        _model
+                                                                            .textController5
+                                                                            .text),
+                                                                    userPIc:
+                                                                        'https://i.postimg.cc/j5zbyWSw/default-profile-picture.jpg',
+                                                                  ),
+                                                                  ...mapToFirestore(
+                                                                    {
+                                                                      'created_time':
+                                                                          DateTime
+                                                                              .now(),
+                                                                    },
+                                                                  ),
+                                                                }, usersRecordReference);
+                                                                shouldSetState =
+                                                                    true;
+                                                                await authManager
+                                                                    .sendEmailVerification();
                                                               }
                                                             }
                                                           }

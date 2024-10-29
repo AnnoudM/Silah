@@ -204,17 +204,59 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                       children: [
                                         Padding(
                                           padding: const EdgeInsets.all(4.0),
-                                          child: Container(
-                                            width: 160.0,
-                                            height: 160.0,
-                                            clipBehavior: Clip.antiAlias,
-                                            decoration: const BoxDecoration(
-                                              shape: BoxShape.circle,
+                                          child:
+                                              StreamBuilder<List<UsersRecord>>(
+                                            stream: queryUsersRecord(
+                                              singleRecord: true,
                                             ),
-                                            child: Image.asset(
-                                              'assets/images/default_profile_picture.jpg',
-                                              fit: BoxFit.cover,
-                                            ),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 50.0,
+                                                    height: 50.0,
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                      valueColor:
+                                                          AlwaysStoppedAnimation<
+                                                              Color>(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+                                              List<UsersRecord>
+                                                  uploadedImageUsersRecordList =
+                                                  snapshot.data!;
+                                              // Return an empty Container when the item does not exist.
+                                              if (snapshot.data!.isEmpty) {
+                                                return Container();
+                                              }
+                                              final uploadedImageUsersRecord =
+                                                  uploadedImageUsersRecordList
+                                                          .isNotEmpty
+                                                      ? uploadedImageUsersRecordList
+                                                          .first
+                                                      : null;
+
+                                              return Container(
+                                                width: 160.0,
+                                                height: 160.0,
+                                                clipBehavior: Clip.antiAlias,
+                                                decoration: const BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                child: Image.network(
+                                                  uploadedImageUsersRecord!
+                                                      .userPIc,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              );
+                                            },
                                           ),
                                         ),
                                       ],

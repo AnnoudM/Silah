@@ -1005,8 +1005,9 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                                             FocusScope.of(dialogContext).unfocus(),
                                                                         child:
                                                                             DeleteEventAlertWidget(
-                                                                          deleteEvent:
-                                                                              rowEventsRecord.reference,
+                                                                          deleteEvent: widget
+                                                                              .event!
+                                                                              .reference,
                                                                         ),
                                                                       ),
                                                                     );

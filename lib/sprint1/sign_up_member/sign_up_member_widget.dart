@@ -2250,6 +2250,8 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                                 .text,
                                                             _model
                                                                 .dropDownValue1),
+                                                        userPIc:
+                                                            'https://i.postimg.cc/j5zbyWSw/default-profile-picture.jpg',
                                                       ),
                                                       ...mapToFirestore(
                                                         {
@@ -2305,6 +2307,8 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                                 .text,
                                                             _model
                                                                 .dropDownValue1),
+                                                        userPIc:
+                                                            'https://i.postimg.cc/j5zbyWSw/default-profile-picture.jpg',
                                                       ),
                                                       ...mapToFirestore(
                                                         {

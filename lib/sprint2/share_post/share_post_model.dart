@@ -1,6 +1,8 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'share_post_widget.dart' show SharePostWidget;
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
 class SharePostModel extends FlutterFlowModel<SharePostWidget> {
@@ -37,6 +39,11 @@ class SharePostModel extends FlutterFlowModel<SharePostWidget> {
     }
     return null;
   }
+
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  PostsRecord? post;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  List<UsersRecord>? usersFamily;
 
   @override
   void initState(BuildContext context) {

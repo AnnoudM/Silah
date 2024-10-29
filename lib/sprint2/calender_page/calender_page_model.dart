@@ -28,7 +28,7 @@ class CalenderPageModel extends FlutterFlowModel<CalenderPageWidget> {
           int index, Function(EventsRecord) updateFn) =>
       importedEvents[index] = updateFn(importedEvents[index]);
 
-  String? eventselect;
+  String? eventselect = '';
 
   DateTime? selectedDate;
 

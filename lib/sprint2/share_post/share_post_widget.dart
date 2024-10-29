@@ -5,6 +5,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/sprint2/post_back/post_back_widget.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'share_post_model.dart';
@@ -14,9 +16,11 @@ class SharePostWidget extends StatefulWidget {
   const SharePostWidget({
     super.key,
     this.parameter1,
+    this.usersnotified,
   });
 
   final String? parameter1;
+  final DocumentReference? usersnotified;
 
   @override
   State<SharePostWidget> createState() => _SharePostWidgetState();
@@ -159,8 +163,9 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                   decoration: const BoxDecoration(
                                                     shape: BoxShape.circle,
                                                   ),
-                                                  child: Image.asset(
-                                                    'assets/images/default_profile_picture.jpg',
+                                                  child: Image.network(
+                                                    containerUsersRecord!
+                                                        .userPIc,
                                                     fit: BoxFit.cover,
                                                   ),
                                                 ),
@@ -173,7 +178,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 16.0, 0.0),
                                         child: Text(
-                                          containerUsersRecord!.fullName,
+                                          containerUsersRecord.fullName,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
@@ -244,129 +249,123 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                       ],
                                                     ),
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(35.0, 0.0,
-                                                                35.0, 0.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceEvenly,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Flexible(
-                                                          child:
-                                                              FlutterFlowChoiceChips(
-                                                            options: const [
-                                                              ChipData(
-                                                                  'مواليد'),
-                                                              ChipData('تعزيه'),
-                                                              ChipData('أفراح'),
-                                                              ChipData(
-                                                                  'إنجازات')
-                                                            ],
-                                                            onChanged:
-                                                                (val) async {
-                                                              safeSetState(() =>
-                                                                  _model.choiceChipsValue =
-                                                                      val?.firstOrNull);
-                                                              if ((_model.choiceChipsValue ==
-                                                                          null ||
-                                                                      _model.choiceChipsValue ==
-                                                                          '') &&
-                                                                  (_model.textController
-                                                                              .text !=
-                                                                          '')) {
-                                                                _model.emptychoice =
-                                                                    true;
-                                                                safeSetState(
-                                                                    () {});
-                                                              } else {
-                                                                _model.emptychoice =
-                                                                    false;
-                                                                safeSetState(
-                                                                    () {});
-                                                              }
-                                                            },
-                                                            selectedChipStyle:
-                                                                ChipStyle(
-                                                              backgroundColor:
-                                                                  const Color(
-                                                                      0xFF7AB1D0),
-                                                              textStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .info,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                      ),
-                                                              iconColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                              iconSize: 16.0,
-                                                              elevation: 0.0,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                            ),
-                                                            unselectedChipStyle:
-                                                                ChipStyle(
-                                                              backgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                              textStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryText,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                      ),
-                                                              iconColor: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              iconSize: 16.0,
-                                                              elevation: 0.0,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                            ),
-                                                            chipSpacing: 8.0,
-                                                            rowSpacing: 8.0,
-                                                            multiselect: false,
-                                                            alignment:
-                                                                WrapAlignment
-                                                                    .start,
-                                                            controller: _model
-                                                                    .choiceChipsValueController ??=
-                                                                FormFieldController<
-                                                                    List<
-                                                                        String>>(
-                                                              [],
-                                                            ),
-                                                            wrapped: true,
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Flexible(
+                                                        child:
+                                                            FlutterFlowChoiceChips(
+                                                          options: const [
+                                                            ChipData('مواليد'),
+                                                            ChipData('تعزيه'),
+                                                            ChipData('أفراح'),
+                                                            ChipData('إنجازات')
+                                                          ],
+                                                          onChanged:
+                                                              (val) async {
+                                                            safeSetState(() => _model
+                                                                    .choiceChipsValue =
+                                                                val?.firstOrNull);
+                                                            if ((_model.choiceChipsValue ==
+                                                                        null ||
+                                                                    _model.choiceChipsValue ==
+                                                                        '') &&
+                                                                (_model.textController
+                                                                            .text !=
+                                                                        '')) {
+                                                              _model.emptychoice =
+                                                                  true;
+                                                              safeSetState(
+                                                                  () {});
+                                                            } else {
+                                                              _model.emptychoice =
+                                                                  false;
+                                                              safeSetState(
+                                                                  () {});
+                                                            }
+                                                          },
+                                                          selectedChipStyle:
+                                                              ChipStyle(
+                                                            backgroundColor:
+                                                                const Color(
+                                                                    0xFF7AB1D0),
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .info,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                            iconColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                            iconSize: 16.0,
+                                                            elevation: 0.0,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
                                                           ),
+                                                          unselectedChipStyle:
+                                                              ChipStyle(
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                            iconColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                            iconSize: 16.0,
+                                                            elevation: 0.0,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          chipSpacing: 8.0,
+                                                          rowSpacing: 8.0,
+                                                          multiselect: false,
+                                                          alignment:
+                                                              WrapAlignment
+                                                                  .start,
+                                                          controller: _model
+                                                                  .choiceChipsValueController ??=
+                                                              FormFieldController<
+                                                                  List<String>>(
+                                                            [],
+                                                          ),
+                                                          wrapped: true,
                                                         ),
-                                                      ],
-                                                    ),
+                                                      ),
+                                                    ],
                                                   ),
                                                   Padding(
                                                     padding:
@@ -545,51 +544,72 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                       Align(
                                         alignment:
                                             const AlignmentDirectional(0.0, 0.05),
-                                        child: FFButtonWidget(
-                                          onPressed: () async {
-                                            context.safePop();
-                                          },
-                                          text: 'تراجع',
-                                          options: FFButtonOptions(
-                                            width: 80.0,
-                                            height: 44.0,
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    24.0, 0.0, 24.0, 0.0),
-                                            iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            elevation: 3.0,
-                                            borderSide: BorderSide(
+                                        child: Builder(
+                                          builder: (context) => FFButtonWidget(
+                                            onPressed: () async {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: const PostBackWidget(),
+                                                  );
+                                                },
+                                              );
+                                            },
+                                            text: 'تراجع',
+                                            options: FFButtonOptions(
+                                              width: 80.0,
+                                              height: 44.0,
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      24.0, 0.0, 24.0, 0.0),
+                                              iconPadding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                            hoverColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .alternate,
-                                            hoverBorderSide: BorderSide(
-                                              color:
+                                                      .secondaryBackground,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              elevation: 3.0,
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                              hoverColor:
                                                   FlutterFlowTheme.of(context)
                                                       .alternate,
-                                              width: 1.0,
+                                              hoverBorderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 1.0,
+                                              ),
+                                              hoverTextColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              hoverElevation: 3.0,
                                             ),
-                                            hoverTextColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryText,
-                                            hoverElevation: 3.0,
                                           ),
                                         ),
                                       ),
@@ -643,25 +663,74 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                         return;
                                                       }
 
-                                                      await PostsRecord
+                                                      var postsRecordReference =
+                                                          PostsRecord.collection
+                                                              .doc();
+                                                      await postsRecordReference
+                                                          .set(
+                                                              createPostsRecordData(
+                                                        datePosted:
+                                                            getCurrentTimestamp,
+                                                        postContent: _model
+                                                            .textController
+                                                            .text,
+                                                        userID:
+                                                            containerUsersRecord
+                                                                .reference,
+                                                        category: _model
+                                                            .choiceChipsValue,
+                                                        familyID:
+                                                            buttonFamilyRecord
+                                                                .reference,
+                                                      ));
+                                                      _model.post = PostsRecord
+                                                          .getDocumentFromData(
+                                                              createPostsRecordData(
+                                                                datePosted:
+                                                                    getCurrentTimestamp,
+                                                                postContent: _model
+                                                                    .textController
+                                                                    .text,
+                                                                userID: containerUsersRecord
+                                                                    .reference,
+                                                                category: _model
+                                                                    .choiceChipsValue,
+                                                                familyID:
+                                                                    buttonFamilyRecord
+                                                                        .reference,
+                                                              ),
+                                                              postsRecordReference);
+
+                                                      await NotificationsRecord
                                                           .collection
                                                           .doc()
                                                           .set(
-                                                              createPostsRecordData(
-                                                            datePosted:
-                                                                getCurrentTimestamp,
-                                                            postContent: _model
-                                                                .textController
-                                                                .text,
-                                                            userID:
-                                                                containerUsersRecord
-                                                                    .reference,
-                                                            category: _model
-                                                                .choiceChipsValue,
-                                                            familyID:
+                                                              createNotificationsRecordData(
+                                                            familyId:
                                                                 buttonFamilyRecord
                                                                     .reference,
+                                                            userId:
+                                                                containerUsersRecord
+                                                                    .reference,
+                                                            message:
+                                                                'لقد قام بنشر منشور',
+                                                            postid: _model.post
+                                                                ?.reference,
+                                                            title:
+                                                                'منشور جديد!',
                                                           ));
+                                                      _model.usersFamily =
+                                                          await queryUsersRecordOnce(
+                                                        queryBuilder:
+                                                            (usersRecord) =>
+                                                                usersRecord
+                                                                    .where(
+                                                          'FamilyName',
+                                                          isEqualTo:
+                                                              containerUsersRecord
+                                                                  .familyName,
+                                                        ),
+                                                      );
 
                                                       context.goNamed(
                                                         'posts',
@@ -709,6 +778,8 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                     _model.emptychoice = true;
                                                     safeSetState(() {});
                                                   }
+
+                                                  safeSetState(() {});
                                                 },
                                                 text: 'نشر',
                                                 options: FFButtonOptions(

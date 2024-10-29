@@ -184,195 +184,131 @@ class _VerificationWidgetState extends State<VerificationWidget>
                                 alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
                                   padding: const EdgeInsets.all(32.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 16.0),
-                                        child: Text(
-                                          'التحقق من البريد الإلكتروني',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context)
-                                              .displaySmall
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                color: const Color(0xFF2A497D),
-                                                fontSize: 20.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                        ),
-                                      ),
-
-                                      // You will have to add an action on this rich text to go to your login page.
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
-                                        child: Padding(
+                                  child: AuthUserStreamWidget(
+                                    builder: (context) => Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Padding(
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 2.0, 16.0),
-                                          child: RichText(
-                                            textScaler: MediaQuery.of(context)
-                                                .textScaler,
-                                            text: TextSpan(
-                                              children: [
-                                                TextSpan(
-                                                  text:
-                                                      'تم ارسال رابط تحقق الى البريد الإلكتروني ',
-                                                  style: GoogleFonts.getFont(
-                                                    'Plus Jakarta Sans',
-                                                    color: Colors.black,
-                                                    fontSize: 15.0,
-                                                  ),
-                                                ),
-                                                TextSpan(
-                                                  text: widget.email,
-                                                  style: GoogleFonts.getFont(
-                                                    'Plus Jakarta Sans',
-                                                    color: Colors.black,
-                                                    fontSize: 15.0,
-                                                  ),
-                                                ),
-                                                TextSpan(
-                                                  text:
-                                                      '\n افتح الرابط المرسل حتى تستطيع الدخول الى حسابك',
-                                                  style: GoogleFonts.getFont(
-                                                    'Plus Jakarta Sans',
-                                                    color: Colors.black,
-                                                  ),
-                                                )
-                                              ],
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            ),
+                                                  0.0, 0.0, 0.0, 16.0),
+                                          child: Text(
+                                            'التحقق من البريد الإلكتروني',
                                             textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .displaySmall
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  color: const Color(0xFF2A497D),
+                                                  fontSize: 20.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
                                           ),
                                         ),
-                                      ),
-                                      Builder(
-                                        builder: (context) {
-                                          if (currentUserEmailVerified) {
-                                            return Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Text(
-                                                  'تم التحقق من البريد الالكتروني',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                                Icon(
-                                                  Icons.verified_user_sharp,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .success,
-                                                  size: 70.0,
-                                                ),
-                                              ],
-                                            );
-                                          } else {
-                                            return Container(
-                                              width: 1.0,
-                                              height: 1.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                              ),
-                                            );
-                                          }
-                                        },
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 16.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () async {
-                                            context.pushNamed('initialPage');
-                                          },
-                                          text: 'العودة الى الصفحة الرئيسية',
-                                          options: FFButtonOptions(
-                                            width: double.infinity,
-                                            height: 44.0,
+
+                                        // You will have to add an action on this rich text to go to your login page.
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, 0.0),
+                                          child: Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0xFF2A497D),
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color: Colors.white,
-                                                      fontSize: 16.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
+                                                    0.0, 0.0, 2.0, 16.0),
+                                            child: RichText(
+                                              textScaler: MediaQuery.of(context)
+                                                  .textScaler,
+                                              text: TextSpan(
+                                                children: [
+                                                  TextSpan(
+                                                    text:
+                                                        'تم ارسال رابط تحقق الى البريد الإلكتروني ',
+                                                    style: GoogleFonts.getFont(
+                                                      'Plus Jakarta Sans',
+                                                      color: Colors.black,
+                                                      fontSize: 15.0,
                                                     ),
-                                            elevation: 3.0,
-                                            borderSide: const BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1.0,
+                                                  ),
+                                                  TextSpan(
+                                                    text: widget.email,
+                                                    style: GoogleFonts.getFont(
+                                                      'Plus Jakarta Sans',
+                                                      color: Colors.black,
+                                                      fontSize: 15.0,
+                                                    ),
+                                                  ),
+                                                  TextSpan(
+                                                    text:
+                                                        '\n افتح الرابط المرسل حتى تستطيع الدخول الى حسابك',
+                                                    style: GoogleFonts.getFont(
+                                                      'Plus Jakarta Sans',
+                                                      color: Colors.black,
+                                                    ),
+                                                  )
+                                                ],
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                              textAlign: TextAlign.center,
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
                                           ),
-                                          showLoadingIndicator: false,
                                         ),
-                                      ),
-                                      Builder(
-                                        builder: (context) => Padding(
+                                        Builder(
+                                          builder: (context) {
+                                            if (currentUserEmailVerified) {
+                                              return Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    'تم التحقق من البريد الالكتروني',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                  Icon(
+                                                    Icons.verified_user_sharp,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .success,
+                                                    size: 70.0,
+                                                  ),
+                                                ],
+                                              );
+                                            } else {
+                                              return Container(
+                                                width: 1.0,
+                                                height: 1.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                              );
+                                            }
+                                          },
+                                        ),
+                                        Padding(
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 16.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (dialogContext) {
-                                                  return Dialog(
-                                                    elevation: 0,
-                                                    insetPadding:
-                                                        EdgeInsets.zero,
-                                                    backgroundColor:
-                                                        Colors.transparent,
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                                0.0, 0.0)
-                                                            .resolve(
-                                                                Directionality.of(
-                                                                    context)),
-                                                    child: GestureDetector(
-                                                      onTap: () =>
-                                                          FocusScope.of(
-                                                                  dialogContext)
-                                                              .unfocus(),
-                                                      child:
-                                                          const ChangeEmailWidget(),
-                                                    ),
-                                                  );
-                                                },
-                                              );
+                                              context.pushNamed('initialPage');
                                             },
-                                            text: 'تغيير البريد الإلكتروني',
+                                            text: 'العودة الى الصفحة الرئيسية',
                                             options: FFButtonOptions(
                                               width: double.infinity,
                                               height: 44.0,
@@ -380,9 +316,7 @@ class _VerificationWidgetState extends State<VerificationWidget>
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
+                                              color: const Color(0xFF2A497D),
                                               textStyle: FlutterFlowTheme.of(
                                                       context)
                                                   .titleSmall
@@ -404,8 +338,80 @@ class _VerificationWidgetState extends State<VerificationWidget>
                                             showLoadingIndicator: false,
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                        Builder(
+                                          builder: (context) => Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 16.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: GestureDetector(
+                                                        onTap: () =>
+                                                            FocusScope.of(
+                                                                    dialogContext)
+                                                                .unfocus(),
+                                                        child:
+                                                            const ChangeEmailWidget(),
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                              text: 'تغيير البريد الإلكتروني',
+                                              options: FFButtonOptions(
+                                                width: double.infinity,
+                                                height: 44.0,
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 0.0),
+                                                iconPadding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: const BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                              ),
+                                              showLoadingIndicator: false,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),

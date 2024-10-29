@@ -6,6 +6,8 @@ import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
+import '/backend/push_notifications/push_notifications_handler.dart'
+    show PushNotificationsHandler;
 import '/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -250,6 +252,127 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'CalenderPageCopy',
+          path: '/calenderPageCopy',
+          asyncParams: {
+            'famName': getDoc(['Family'], FamilyRecord.fromSnapshot),
+          },
+          builder: (context, params) => CalenderPageCopyWidget(
+            famName: params.getParam(
+              'famName',
+              ParamType.Document,
+            ),
+            currentPage: params.getParam(
+              'currentPage',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'DirectoryPageCopy',
+          path: '/directoryPageCopy',
+          builder: (context, params) => DirectoryPageCopyWidget(
+            currentpage: params.getParam(
+              'currentpage',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'DirectoryPageCopy2',
+          path: '/directoryPageCopy2',
+          builder: (context, params) => DirectoryPageCopy2Widget(
+            currentpage: params.getParam(
+              'currentpage',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'EditDesc',
+          path: '/editDesc',
+          builder: (context, params) => EditDescWidget(
+            editDesc: params.getParam(
+              'editDesc',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['Family'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'HomeUserCopy',
+          path: '/homeUserCopy',
+          builder: (context, params) => const HomeUserCopyWidget(),
+        ),
+        FFRoute(
+          name: 'FamilyFunds',
+          path: '/familyFunds',
+          builder: (context, params) => const FamilyFundsWidget(),
+        ),
+        FFRoute(
+          name: 'notificationCenter',
+          path: '/notificationCenter',
+          builder: (context, params) => const NotificationCenterWidget(),
+        ),
+        FFRoute(
+          name: 'postWithNotification',
+          path: '/postWithNotification',
+          asyncParams: {
+            'notification':
+                getDoc(['notifications'], NotificationsRecord.fromSnapshot),
+          },
+          builder: (context, params) => PostWithNotificationWidget(
+            currentpage: params.getParam(
+              'currentpage',
+              ParamType.String,
+            ),
+            notification: params.getParam(
+              'notification',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'notificationCenterCopy',
+          path: '/notificationCenterCopy',
+          builder: (context, params) => const NotificationCenterCopyWidget(),
+        ),
+        FFRoute(
+          name: 'notificationCenterCopyCopy',
+          path: '/notificationCenterCopyCopy',
+          builder: (context, params) => const NotificationCenterCopyCopyWidget(),
+        ),
+        FFRoute(
+          name: 'ChangePass',
+          path: '/changePass',
+          builder: (context, params) => ChangePassWidget(
+            userEdit: params.getParam(
+              'userEdit',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['Users'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'EditProfile',
+          path: '/editProfile',
+          builder: (context, params) => EditProfileWidget(
+            userEdit: params.getParam(
+              'userEdit',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['Users'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'FamilyFundsCopy',
+          path: '/familyFundsCopy',
+          builder: (context, params) => const FamilyFundsCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -443,7 +566,7 @@ class FFRoute {
                     fit: BoxFit.contain,
                   ),
                 )
-              : page;
+              : PushNotificationsHandler(child: page);
 
           final transitionInfo = state.transitionInfo;
           return transitionInfo.hasTransition

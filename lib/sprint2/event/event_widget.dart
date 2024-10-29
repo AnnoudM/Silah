@@ -159,7 +159,9 @@ class _EventWidgetState extends State<EventWidget> {
                                     rowEventsRecord.date!,
                                     locale: FFLocalizations.of(context)
                                         .languageCode,
-                                  ).maybeHandleOverflow(maxChars: 10),
+                                  ).maybeHandleOverflow(
+                                    maxChars: 10,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyLarge
                                       .override(

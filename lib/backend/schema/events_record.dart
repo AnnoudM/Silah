@@ -55,6 +55,11 @@ class EventsRecord extends FirestoreRecord {
   String get publisherName => _publisherName ?? '';
   bool hasPublisherName() => _publisherName != null;
 
+  // "Time" field.
+  DateTime? _time;
+  DateTime? get time => _time;
+  bool hasTime() => _time != null;
+
   void _initializeFields() {
     _name = snapshotData['Name'] as String?;
     _location = snapshotData['Location'] as String?;
@@ -64,6 +69,7 @@ class EventsRecord extends FirestoreRecord {
     _date = snapshotData['Date'] as DateTime?;
     _createdBy = snapshotData['CreatedBy'] as DocumentReference?;
     _publisherName = snapshotData['PublisherName'] as String?;
+    _time = snapshotData['Time'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -108,6 +114,7 @@ Map<String, dynamic> createEventsRecordData({
   DateTime? date,
   DocumentReference? createdBy,
   String? publisherName,
+  DateTime? time,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -119,6 +126,7 @@ Map<String, dynamic> createEventsRecordData({
       'Date': date,
       'CreatedBy': createdBy,
       'PublisherName': publisherName,
+      'Time': time,
     }.withoutNulls,
   );
 
@@ -137,7 +145,8 @@ class EventsRecordDocumentEquality implements Equality<EventsRecord> {
         e1?.eventDes == e2?.eventDes &&
         e1?.date == e2?.date &&
         e1?.createdBy == e2?.createdBy &&
-        e1?.publisherName == e2?.publisherName;
+        e1?.publisherName == e2?.publisherName &&
+        e1?.time == e2?.time;
   }
 
   @override
@@ -149,7 +158,8 @@ class EventsRecordDocumentEquality implements Equality<EventsRecord> {
         e?.eventDes,
         e?.date,
         e?.createdBy,
-        e?.publisherName
+        e?.publisherName,
+        e?.time
       ]);
 
   @override

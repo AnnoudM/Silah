@@ -168,30 +168,33 @@ class _SideAdminWidgetState extends State<SideAdminWidget> {
                         onTap: () async {
                           context.pushNamed('requestsCopyCopy');
                         },
-                        child: ListTile(
-                          key: ValueKey(FFAppState().DarkMode.toString()),
-                          leading: Icon(
+                        child: Material(
+                          color: Colors.transparent,
+                          child: ListTile(
                             key: ValueKey(FFAppState().DarkMode.toString()),
-                            Icons.group_add_rounded,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 25.0,
+                            leading: Icon(
+                              key: ValueKey(FFAppState().DarkMode.toString()),
+                              Icons.group_add_rounded,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 25.0,
+                            ),
+                            title: Text(
+                              'طلبات الإنضمام للعائلة',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                            ),
+                            tileColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            dense: false,
                           ),
-                          title: Text(
-                            'طلبات الإنضمام للعائلة',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                          ),
-                          tileColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          dense: false,
                         ),
                       ),
                     ),
@@ -205,30 +208,73 @@ class _SideAdminWidgetState extends State<SideAdminWidget> {
                         onTap: () async {
                           context.pushNamed('profilePage');
                         },
-                        child: ListTile(
-                          key: ValueKey(FFAppState().DarkMode.toString()),
-                          leading: Icon(
+                        child: Material(
+                          color: Colors.transparent,
+                          child: ListTile(
                             key: ValueKey(FFAppState().DarkMode.toString()),
-                            Icons.person_sharp,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 25.0,
+                            leading: Icon(
+                              key: ValueKey(FFAppState().DarkMode.toString()),
+                              Icons.person_sharp,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 25.0,
+                            ),
+                            title: Text(
+                              'الحساب الشخصي',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                            ),
+                            tileColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            dense: false,
                           ),
-                          title: Text(
-                            'الحساب الشخصي',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.normal,
-                                ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: const AlignmentDirectional(-1.0, -1.0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('notificationCenter');
+                        },
+                        child: Material(
+                          color: Colors.transparent,
+                          child: ListTile(
+                            key: ValueKey(FFAppState().DarkMode.toString()),
+                            leading: Icon(
+                              key: ValueKey(FFAppState().DarkMode.toString()),
+                              Icons.notifications_active_sharp,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 25.0,
+                            ),
+                            title: Text(
+                              'الإشعارات',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                            ),
+                            tileColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            dense: false,
                           ),
-                          tileColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          dense: false,
                         ),
                       ),
                     ),
@@ -273,25 +319,31 @@ class _SideAdminWidgetState extends State<SideAdminWidget> {
                         },
                       );
                     },
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.logout_rounded,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 25.0,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: ListTile(
+                        leading: Icon(
+                          Icons.logout_rounded,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 25.0,
+                        ),
+                        title: Text(
+                          'تسجيل خروج\n',
+                          style: FlutterFlowTheme.of(context)
+                              .titleLarge
+                              .override(
+                                fontFamily: 'Readex Pro',
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                fontSize: 20.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.normal,
+                              ),
+                        ),
+                        tileColor:
+                            FlutterFlowTheme.of(context).secondaryBackground,
+                        dense: false,
                       ),
-                      title: Text(
-                        'تسجيل خروج\n',
-                        style: FlutterFlowTheme.of(context).titleLarge.override(
-                              fontFamily: 'Readex Pro',
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              fontSize: 20.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.normal,
-                            ),
-                      ),
-                      tileColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      dense: false,
                     ),
                   ),
                 ),

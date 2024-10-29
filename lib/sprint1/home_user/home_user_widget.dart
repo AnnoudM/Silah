@@ -278,29 +278,34 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                                     MainAxisAlignment.center,
                                                 children: [
                                                   Flexible(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(24.0),
-                                                      child: Text(
-                                                        containerFamilyRecord
-                                                            .familyDesc,
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .titleMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Readex Pro',
-                                                              color: const Color(
-                                                                  0xFF57636C),
-                                                              fontSize: 15.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w300,
-                                                            ),
+                                                    child: Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.all(
+                                                            24.0),
+                                                        child: Text(
+                                                          containerFamilyRecord
+                                                              .familyDesc,
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .titleMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                color: const Color(
+                                                                    0xFF57636C),
+                                                                fontSize: 15.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                              ),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -316,6 +321,106 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                               ),
                             );
                           },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            16.0, 12.0, 16.0, 0.0),
+                        child: Container(
+                          width: double.infinity,
+                          height: 120.0,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF2A497D),
+                            borderRadius: BorderRadius.circular(12.0),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: 181.0,
+                                height: 103.0,
+                                decoration: const BoxDecoration(
+                                  color: Color(0xFFFFFCF6),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 4.0,
+                                      color: Color(0xFF2A497D),
+                                      offset: Offset(
+                                        0.0,
+                                        2.0,
+                                      ),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(20.0),
+                                    bottomRight: Radius.circular(20.0),
+                                    topLeft: Radius.circular(20.0),
+                                    topRight: Radius.circular(20.0),
+                                  ),
+                                ),
+                                child: FlutterFlowIconButton(
+                                  borderRadius: 8.0,
+                                  buttonSize: 116.0,
+                                  fillColor: const Color(0xFFFFFCF6),
+                                  icon: const Icon(
+                                    Icons.payments_outlined,
+                                    color: Color(0xFF2A497D),
+                                    size: 50.0,
+                                  ),
+                                  onPressed: () {
+                                    print('IconButton pressed ...');
+                                  },
+                                ),
+                              ),
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('FamilyFunds');
+                                },
+                                child: Container(
+                                  width: 181.0,
+                                  height: 103.0,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xFFFFFCF6),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 4.0,
+                                        color: Color(0xFF2A497D),
+                                        offset: Offset(
+                                          0.0,
+                                          2.0,
+                                        ),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(20.0),
+                                      bottomRight: Radius.circular(20.0),
+                                      topLeft: Radius.circular(20.0),
+                                      topRight: Radius.circular(20.0),
+                                    ),
+                                  ),
+                                  child: FlutterFlowIconButton(
+                                    borderColor: Colors.transparent,
+                                    borderRadius: 8.0,
+                                    buttonSize: 116.0,
+                                    fillColor: const Color(0xFFFFFCF6),
+                                    icon: const Icon(
+                                      Icons.payments_outlined,
+                                      color: Color(0xFF2A497D),
+                                      size: 50.0,
+                                    ),
+                                    onPressed: () async {
+                                      context.pushNamed('FamilyFunds');
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],

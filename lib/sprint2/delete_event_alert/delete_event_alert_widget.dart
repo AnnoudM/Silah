@@ -2,7 +2,9 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'delete_event_alert_model.dart';
 export 'delete_event_alert_model.dart';
 
@@ -207,16 +209,21 @@ class _DeleteEventAlertWidgetState extends State<DeleteEventAlertWidget> {
                             ),
                             FFButtonWidget(
                               onPressed: () async {
-                                await widget.deleteEvent!.delete();
+                                unawaited(
+                                  () async {
+                                    await widget.deleteEvent!.delete();
+                                  }(),
+                                );
                                 Navigator.pop(context);
 
-                                context.pushNamed('CalenderPage');
+                                context.goNamed('CalenderPage');
 
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
                                       'تم حذف المناسبة بنجاح',
-                                      style: TextStyle(
+                                      style: GoogleFonts.getFont(
+                                        'Readex Pro',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                       ),

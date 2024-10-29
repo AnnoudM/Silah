@@ -145,7 +145,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: const Color(0xFFFFFCF6),
-            endDrawer: Drawer(
+            drawer: Drawer(
               elevation: 16.0,
               child: wrapWithModel(
                 model: _model.sideAdminCopyModel,
@@ -184,28 +184,12 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Expanded(
-                                      child: Align(
-                                        alignment:
-                                            const AlignmentDirectional(2.0, 0.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.asset(
-                                            'assets/images/SilahFINALLogo.jpg',
-                                            width: 153.0,
-                                            height: 95.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
                                     Align(
                                       alignment:
                                           const AlignmentDirectional(-1.0, 0.0),
                                       child: Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
-                                            100.0, 25.0, 0.0, 0.0),
+                                            25.0, 25.0, 25.0, 0.0),
                                         child: FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
                                           borderRadius: 8.0,
@@ -218,8 +202,29 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                           ),
                                           onPressed: () async {
                                             scaffoldKey.currentState!
-                                                .openEndDrawer();
+                                                .openDrawer();
                                           },
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            const AlignmentDirectional(2.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  200.0, 0.0, 0.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.asset(
+                                              'assets/images/SilahFINALLogo.jpg',
+                                              width: 153.0,
+                                              height: 95.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -576,6 +581,13 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                                       .of(context)
                                                                   .secondaryText,
                                                               iconSize: 16.0,
+                                                              labelPadding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
                                                               elevation: 0.0,
                                                               borderRadius:
                                                                   BorderRadius

@@ -7,7 +7,7 @@ class EventDetailsModel extends FlutterFlowModel<EventDetailsWidget> {
 
   bool searchactive = false;
 
-  String? eventname;
+  String? eventname = '';
 
   @override
   void initState(BuildContext context) {}

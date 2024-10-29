@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/sprint1/logout_alert/logout_alert_widget.dart';
@@ -85,65 +84,50 @@ class _SideAdminCopyWidgetState extends State<SideAdminCopyWidget> {
               ),
               child: Align(
                 alignment: const AlignmentDirectional(0.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
-                      child: FlutterFlowIconButton(
-                        borderColor: const Color(0xFF2A497D),
-                        borderRadius: 20.0,
-                        borderWidth: 1.0,
-                        buttonSize: 40.0,
-                        fillColor: const Color(0xFF2A497D),
-                        icon: Icon(
-                          Icons.arrow_back_ios,
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                          size: 18.0,
-                        ),
-                        onPressed: () async {
-                          context.safePop();
-                        },
-                      ),
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: Text(
-                            columnUsersRecord!.fullName,
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Text(
+                              columnUsersRecord!.fullName,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                          ),
+                          Text(
+                            columnUsersRecord.email,
                             style: FlutterFlowTheme.of(context)
-                                .bodyMedium
+                                .labelSmall
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  fontSize: 10.0,
                                   letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w100,
                                 ),
                           ),
-                        ),
-                        Text(
-                          columnUsersRecord.email,
-                          style: FlutterFlowTheme.of(context)
-                              .labelSmall
-                              .override(
-                                fontFamily: 'Readex Pro',
-                                color: FlutterFlowTheme.of(context).alternate,
-                                fontSize: 10.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w100,
-                              ),
-                        ),
-                      ]
-                          .divide(const SizedBox(height: 4.0))
-                          .around(const SizedBox(height: 4.0)),
-                    ),
-                  ].divide(const SizedBox(width: 16.0)),
+                        ]
+                            .divide(const SizedBox(height: 4.0))
+                            .around(const SizedBox(height: 4.0)),
+                      ),
+                    ].divide(const SizedBox(width: 16.0)),
+                  ),
                 ),
               ),
             ),
@@ -169,16 +153,59 @@ class _SideAdminCopyWidgetState extends State<SideAdminCopyWidget> {
                           onTap: () async {
                             context.pushNamed('requestsCopyCopy');
                           },
+                          child: Material(
+                            color: Colors.transparent,
+                            child: ListTile(
+                              key: ValueKey(FFAppState().DarkMode.toString()),
+                              leading: Icon(
+                                key: ValueKey(FFAppState().DarkMode.toString()),
+                                Icons.group_add_rounded,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 25.0,
+                              ),
+                              title: Text(
+                                'طلبات الإنضمام للعائلة',
+                                style: FlutterFlowTheme.of(context)
+                                    .titleLarge
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      fontSize: 20.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                              ),
+                              tileColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              dense: false,
+                            ),
+                          ),
+                        ),
+                      ),
+                    Align(
+                      alignment: const AlignmentDirectional(-1.0, -1.0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('profilePage');
+                        },
+                        child: Material(
+                          color: Colors.transparent,
                           child: ListTile(
                             key: ValueKey(FFAppState().DarkMode.toString()),
                             leading: Icon(
                               key: ValueKey(FFAppState().DarkMode.toString()),
-                              Icons.group_add_rounded,
+                              Icons.person_sharp,
                               color: FlutterFlowTheme.of(context).secondaryText,
                               size: 25.0,
                             ),
                             title: Text(
-                              'طلبات الإنضمام للعائلة',
+                              'الحساب الشخصي',
                               style: FlutterFlowTheme.of(context)
                                   .titleLarge
                                   .override(
@@ -196,6 +223,7 @@ class _SideAdminCopyWidgetState extends State<SideAdminCopyWidget> {
                           ),
                         ),
                       ),
+                    ),
                     Align(
                       alignment: const AlignmentDirectional(-1.0, -1.0),
                       child: InkWell(
@@ -204,32 +232,35 @@ class _SideAdminCopyWidgetState extends State<SideAdminCopyWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed('profilePage');
+                          context.pushNamed('notificationCenter');
                         },
-                        child: ListTile(
-                          key: ValueKey(FFAppState().DarkMode.toString()),
-                          leading: Icon(
+                        child: Material(
+                          color: Colors.transparent,
+                          child: ListTile(
                             key: ValueKey(FFAppState().DarkMode.toString()),
-                            Icons.person_sharp,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 25.0,
+                            leading: Icon(
+                              key: ValueKey(FFAppState().DarkMode.toString()),
+                              Icons.notifications_active_sharp,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 25.0,
+                            ),
+                            title: Text(
+                              'الإشعارات',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                            ),
+                            tileColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            dense: false,
                           ),
-                          title: Text(
-                            'الحساب الشخصي',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                          ),
-                          tileColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          dense: false,
                         ),
                       ),
                     ),
@@ -274,25 +305,31 @@ class _SideAdminCopyWidgetState extends State<SideAdminCopyWidget> {
                         },
                       );
                     },
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.logout_rounded,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 25.0,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: ListTile(
+                        leading: Icon(
+                          Icons.logout_rounded,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 25.0,
+                        ),
+                        title: Text(
+                          'تسجيل خروج\n',
+                          style: FlutterFlowTheme.of(context)
+                              .titleLarge
+                              .override(
+                                fontFamily: 'Readex Pro',
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                fontSize: 20.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.normal,
+                              ),
+                        ),
+                        tileColor:
+                            FlutterFlowTheme.of(context).secondaryBackground,
+                        dense: false,
                       ),
-                      title: Text(
-                        'تسجيل خروج\n',
-                        style: FlutterFlowTheme.of(context).titleLarge.override(
-                              fontFamily: 'Readex Pro',
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              fontSize: 20.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.normal,
-                            ),
-                      ),
-                      tileColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      dense: false,
                     ),
                   ),
                 ),
