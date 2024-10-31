@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
 import '/sprint1/side_admin/side_admin_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -32,6 +33,11 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.token = await actions.getFcmToken();
+
+      await currentUserReference!.update(createUserrrRecordData(
+        token: _model.token,
+      ));
       _model.user = await queryUsersRecordOnce(
         queryBuilder: (usersRecord) => usersRecord.where(
           'uid',
@@ -48,6 +54,10 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
       ).then((s) => s.firstOrNull);
       FFAppState().currentPage = 'home';
       safeSetState(() {});
+
+      await currentUserReference!.update(createUserrrRecordData(
+        familyName: _model.user?.familyName,
+      ));
     });
   }
 
@@ -365,86 +375,101 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Container(
-                                width: 181.0,
-                                height: 103.0,
-                                decoration: const BoxDecoration(
-                                  color: Color(0xFFFFFCF6),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      blurRadius: 4.0,
-                                      color: Color(0xFF2A497D),
-                                      offset: Offset(
-                                        0.0,
-                                        2.0,
+                              Expanded(
+                                child: Align(
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        35.0, 0.0, 0.0, 0.0),
+                                    child: Container(
+                                      width: 149.0,
+                                      height: 81.0,
+                                      decoration: const BoxDecoration(
+                                        color: Color(0xFFFFFCF6),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 4.0,
+                                            color: Color(0xFF2A497D),
+                                            offset: Offset(
+                                              0.0,
+                                              2.0,
+                                            ),
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(20.0),
+                                          bottomRight: Radius.circular(20.0),
+                                          topLeft: Radius.circular(20.0),
+                                          topRight: Radius.circular(20.0),
+                                        ),
                                       ),
-                                    )
-                                  ],
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(20.0),
-                                    bottomRight: Radius.circular(20.0),
-                                    topLeft: Radius.circular(20.0),
-                                    topRight: Radius.circular(20.0),
+                                      child: FlutterFlowIconButton(
+                                        borderColor: Colors.transparent,
+                                        borderRadius: 8.0,
+                                        buttonSize: 116.0,
+                                        fillColor: const Color(0xFFFFFCF6),
+                                        icon: const Icon(
+                                          Icons.payments_outlined,
+                                          color: Color(0xFF2A497D),
+                                          size: 50.0,
+                                        ),
+                                        onPressed: () {
+                                          print('IconButton pressed ...');
+                                        },
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 8.0,
-                                  buttonSize: 116.0,
-                                  fillColor: const Color(0xFFFFFCF6),
-                                  icon: const Icon(
-                                    Icons.payments_outlined,
-                                    color: Color(0xFF2A497D),
-                                    size: 50.0,
-                                  ),
-                                  onPressed: () {
-                                    print('IconButton pressed ...');
-                                  },
                                 ),
                               ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed('FamilyFunds');
-                                },
-                                child: Container(
-                                  width: 181.0,
-                                  height: 103.0,
-                                  decoration: const BoxDecoration(
-                                    color: Color(0xFFFFFCF6),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 4.0,
-                                        color: Color(0xFF2A497D),
-                                        offset: Offset(
-                                          0.0,
-                                          2.0,
-                                        ),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(20.0),
-                                      bottomRight: Radius.circular(20.0),
-                                      topLeft: Radius.circular(20.0),
-                                      topRight: Radius.circular(20.0),
-                                    ),
-                                  ),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 8.0,
-                                    buttonSize: 116.0,
-                                    fillColor: const Color(0xFFFFFCF6),
-                                    icon: const Icon(
-                                      Icons.payments_outlined,
-                                      color: Color(0xFF2A497D),
-                                      size: 50.0,
-                                    ),
-                                    onPressed: () async {
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 40.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
                                       context.pushNamed('FamilyFunds');
                                     },
+                                    child: Container(
+                                      width: 149.0,
+                                      height: 81.0,
+                                      decoration: const BoxDecoration(
+                                        color: Color(0xFFFFFCF6),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 4.0,
+                                            color: Color(0xFF2A497D),
+                                            offset: Offset(
+                                              0.0,
+                                              2.0,
+                                            ),
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(20.0),
+                                          bottomRight: Radius.circular(20.0),
+                                          topLeft: Radius.circular(20.0),
+                                          topRight: Radius.circular(20.0),
+                                        ),
+                                      ),
+                                      child: FlutterFlowIconButton(
+                                        borderColor: Colors.transparent,
+                                        borderRadius: 8.0,
+                                        buttonSize: 116.0,
+                                        fillColor: const Color(0xFFFFFCF6),
+                                        icon: const Icon(
+                                          Icons.payments_outlined,
+                                          color: Color(0xFF2A497D),
+                                          size: 50.0,
+                                        ),
+                                        onPressed: () async {
+                                          context.pushNamed('FamilyFunds');
+                                        },
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),

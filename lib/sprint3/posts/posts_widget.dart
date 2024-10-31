@@ -833,11 +833,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                     padding:
                                                         MediaQuery.viewInsetsOf(
                                                             context),
-                                                    child: SharePostWidget(
-                                                      usersnotified:
-                                                          addUserrrRecord
-                                                              ?.reference,
-                                                    ),
+                                                    child: const SharePostWidget(),
                                                   ),
                                                 );
                                               },

@@ -49,3 +49,5 @@ export '/sprint3/change_pass/change_pass_widget.dart' show ChangePassWidget;
 export '/sprint3/edit_profile/edit_profile_widget.dart' show EditProfileWidget;
 export '/sprint3/family_funds_copy/family_funds_copy_widget.dart'
     show FamilyFundsCopyWidget;
+export '/sprint2/event_details_copy/event_details_copy_widget.dart'
+    show EventDetailsCopyWidget;

@@ -716,7 +716,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                             BorderRadius.circular(40.0),
                                                                         child: Image
                                                                             .network(
-                                                                          directoryPageUsersRecord!
+                                                                          directoryNosearchItem
                                                                               .userPIc,
                                                                           width:
                                                                               60.0,
@@ -1001,7 +1001,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                                 BorderRadius.circular(40.0),
                                                                             child:
                                                                                 Image.network(
-                                                                              userListUsersRecord!.userPIc,
+                                                                              directorysearchItem.userPIc,
                                                                               width: 60.0,
                                                                               height: 60.0,
                                                                               fit: BoxFit.cover,

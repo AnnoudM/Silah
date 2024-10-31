@@ -215,6 +215,12 @@ final parametersBuilderMap =
         },
       ),
   'FamilyFundsCopy': ParameterData.none(),
+  'EventDetailsCopy': (data) async => ParameterData(
+        allParams: {
+          'event': await getDocumentParameter<EventsRecord>(
+              data, 'event', EventsRecord.fromSnapshot),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

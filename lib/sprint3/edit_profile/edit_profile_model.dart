@@ -14,6 +14,8 @@ class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
 
   bool? phonExist = false;
 
+  String? photo;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();

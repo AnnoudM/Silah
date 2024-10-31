@@ -4,6 +4,7 @@ admin.initializeApp();
 
 const kFcmTokensCollection = "fcm_tokens";
 const kPushNotificationsCollection = "ff_push_notifications";
+const kUserPushNotificationsCollection = "ff_user_push_notifications";
 const firestore = admin.firestore();
 
 const kPushNotificationRuntimeOpts = {
@@ -71,6 +72,29 @@ exports.sendPushNotificationsTrigger = functions
       }
 
       await sendPushNotifications(snapshot);
+    } catch (e) {
+      console.log(`Error: ${e}`);
+      await snapshot.ref.update({ status: "failed", error: `${e}` });
+    }
+  });
+
+exports.sendUserPushNotificationsTrigger = functions
+  .region("us-central1")
+  .runWith(kPushNotificationRuntimeOpts)
+  .firestore.document(`${kUserPushNotificationsCollection}/{id}`)
+  .onCreate(async (snapshot, _) => {
+    try {
+      // Ignore scheduled push notifications on create
+      const scheduledTime = snapshot.data().scheduled_time || "";
+      if (scheduledTime) {
+        return;
+      }
+
+      // Don't let user-triggered notifications to be sent to all users.
+      const userRefsStr = snapshot.data().user_refs || "";
+      if (userRefsStr) {
+        await sendPushNotifications(snapshot);
+      }
     } catch (e) {
       console.log(`Error: ${e}`);
       await snapshot.ref.update({ status: "failed", error: `${e}` });

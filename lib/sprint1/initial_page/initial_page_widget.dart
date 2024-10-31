@@ -4,7 +4,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/sprint1/no_families_regestered_alert/no_families_regestered_alert_widget.dart';
+import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'initial_page_model.dart';
 export 'initial_page_model.dart';
@@ -28,6 +30,11 @@ class _InitialPageWidgetState extends State<InitialPageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => InitialPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await requestPermission(notificationsPermission);
+    });
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(

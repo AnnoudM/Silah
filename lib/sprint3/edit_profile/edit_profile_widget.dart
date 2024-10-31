@@ -310,8 +310,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         shape: BoxShape.circle,
                                                       ),
                                                       child: Image.network(
-                                                        editProfileUsersRecord!
-                                                            .userPIc,
+                                                        _model.photo == null ||
+                                                                _model.photo ==
+                                                                    ''
+                                                            ? editProfileUsersRecord!
+                                                                .userPIc
+                                                            : _model
+                                                                .uploadedFileUrl,
                                                         fit: BoxFit.contain,
                                                         alignment:
                                                             const Alignment(0.0, 0.0),
@@ -321,137 +326,140 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 ),
                                               ],
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 5.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Align(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            1.0, 0.0),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  140.0,
-                                                                  0.0,
-                                                                  140.0,
-                                                                  10.0),
-                                                      child:
-                                                          FlutterFlowIconButton(
-                                                        borderColor:
-                                                            Colors.transparent,
-                                                        borderRadius: 8.0,
-                                                        buttonSize: 40.0,
-                                                        icon: const Icon(
-                                                          Icons.photo_camera,
-                                                          color:
-                                                              Color(0xFF2A497D),
-                                                          size: 24.0,
-                                                        ),
-                                                        onPressed: () async {
-                                                          final selectedMedia =
-                                                              await selectMediaWithSourceBottomSheet(
-                                                            context: context,
-                                                            allowPhoto: true,
-                                                          );
-                                                          if (selectedMedia !=
-                                                                  null &&
-                                                              selectedMedia.every((m) =>
-                                                                  validateFileFormat(
-                                                                      m.storagePath,
-                                                                      context))) {
-                                                            safeSetState(() =>
-                                                                _model.isDataUploading =
-                                                                    true);
-                                                            var selectedUploadedFiles =
-                                                                <FFUploadedFile>[];
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 5.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              1.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    140.0,
+                                                                    0.0,
+                                                                    140.0,
+                                                                    10.0),
+                                                        child:
+                                                            FlutterFlowIconButton(
+                                                          borderColor: Colors
+                                                              .transparent,
+                                                          borderRadius: 8.0,
+                                                          buttonSize: 40.0,
+                                                          icon: const Icon(
+                                                            Icons.photo_camera,
+                                                            color: Color(
+                                                                0xFF2A497D),
+                                                            size: 24.0,
+                                                          ),
+                                                          onPressed: () async {
+                                                            final selectedMedia =
+                                                                await selectMediaWithSourceBottomSheet(
+                                                              context: context,
+                                                              allowPhoto: true,
+                                                            );
+                                                            if (selectedMedia !=
+                                                                    null &&
+                                                                selectedMedia.every((m) =>
+                                                                    validateFileFormat(
+                                                                        m.storagePath,
+                                                                        context))) {
+                                                              safeSetState(() =>
+                                                                  _model.isDataUploading =
+                                                                      true);
+                                                              var selectedUploadedFiles =
+                                                                  <FFUploadedFile>[];
 
-                                                            var downloadUrls =
-                                                                <String>[];
-                                                            try {
-                                                              showUploadMessage(
-                                                                context,
-                                                                'Uploading file...',
-                                                                showLoading:
-                                                                    true,
-                                                              );
-                                                              selectedUploadedFiles =
+                                                              var downloadUrls =
+                                                                  <String>[];
+                                                              try {
+                                                                showUploadMessage(
+                                                                  context,
+                                                                  'Uploading file...',
+                                                                  showLoading:
+                                                                      true,
+                                                                );
+                                                                selectedUploadedFiles =
+                                                                    selectedMedia
+                                                                        .map((m) =>
+                                                                            FFUploadedFile(
+                                                                              name: m.storagePath.split('/').last,
+                                                                              bytes: m.bytes,
+                                                                              height: m.dimensions?.height,
+                                                                              width: m.dimensions?.width,
+                                                                              blurHash: m.blurHash,
+                                                                            ))
+                                                                        .toList();
+
+                                                                downloadUrls = (await Future
+                                                                        .wait(
                                                                   selectedMedia
-                                                                      .map((m) =>
-                                                                          FFUploadedFile(
-                                                                            name:
-                                                                                m.storagePath.split('/').last,
-                                                                            bytes:
-                                                                                m.bytes,
-                                                                            height:
-                                                                                m.dimensions?.height,
-                                                                            width:
-                                                                                m.dimensions?.width,
-                                                                            blurHash:
-                                                                                m.blurHash,
-                                                                          ))
-                                                                      .toList();
+                                                                      .map(
+                                                                    (m) async =>
+                                                                        await uploadData(
+                                                                            m.storagePath,
+                                                                            m.bytes),
+                                                                  ),
+                                                                ))
+                                                                    .where((u) =>
+                                                                        u !=
+                                                                        null)
+                                                                    .map((u) =>
+                                                                        u!)
+                                                                    .toList();
+                                                              } finally {
+                                                                ScaffoldMessenger.of(
+                                                                        context)
+                                                                    .hideCurrentSnackBar();
+                                                                _model.isDataUploading =
+                                                                    false;
+                                                              }
+                                                              if (selectedUploadedFiles
+                                                                          .length ==
+                                                                      selectedMedia
+                                                                          .length &&
+                                                                  downloadUrls
+                                                                          .length ==
+                                                                      selectedMedia
+                                                                          .length) {
+                                                                safeSetState(
+                                                                    () {
+                                                                  _model.uploadedLocalFile =
+                                                                      selectedUploadedFiles
+                                                                          .first;
+                                                                  _model.uploadedFileUrl =
+                                                                      downloadUrls
+                                                                          .first;
+                                                                });
+                                                                showUploadMessage(
+                                                                    context,
+                                                                    'Success!');
+                                                              } else {
+                                                                safeSetState(
+                                                                    () {});
+                                                                showUploadMessage(
+                                                                    context,
+                                                                    'Failed to upload data');
+                                                                return;
+                                                              }
+                                                            }
 
-                                                              downloadUrls =
-                                                                  (await Future
-                                                                          .wait(
-                                                                selectedMedia
-                                                                    .map(
-                                                                  (m) async =>
-                                                                      await uploadData(
-                                                                          m.storagePath,
-                                                                          m.bytes),
-                                                                ),
-                                                              ))
-                                                                      .where((u) =>
-                                                                          u !=
-                                                                          null)
-                                                                      .map((u) =>
-                                                                          u!)
-                                                                      .toList();
-                                                            } finally {
-                                                              ScaffoldMessenger
-                                                                      .of(context)
-                                                                  .hideCurrentSnackBar();
-                                                              _model.isDataUploading =
-                                                                  false;
-                                                            }
-                                                            if (selectedUploadedFiles
-                                                                        .length ==
-                                                                    selectedMedia
-                                                                        .length &&
-                                                                downloadUrls
-                                                                        .length ==
-                                                                    selectedMedia
-                                                                        .length) {
-                                                              safeSetState(() {
-                                                                _model.uploadedLocalFile =
-                                                                    selectedUploadedFiles
-                                                                        .first;
-                                                                _model.uploadedFileUrl =
-                                                                    downloadUrls
-                                                                        .first;
-                                                              });
-                                                              showUploadMessage(
-                                                                  context,
-                                                                  'Success!');
-                                                            } else {
-                                                              safeSetState(
-                                                                  () {});
-                                                              showUploadMessage(
-                                                                  context,
-                                                                  'Failed to upload data');
-                                                              return;
-                                                            }
-                                                          }
-                                                        },
+                                                            _model.photo = _model
+                                                                .uploadedFileUrl;
+                                                            safeSetState(() {});
+                                                          },
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                             Align(
@@ -479,7 +487,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                   .textController1 ??=
                                                               TextEditingController(
                                                             text: editProfileUsersRecord
-                                                                .displayName,
+                                                                ?.displayName,
                                                           ),
                                                           focusNode: _model
                                                               .textFieldFocusNode1,
@@ -650,7 +658,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                               TextEditingController(
                                                             text:
                                                                 editProfileUsersRecord
-                                                                    .secondName,
+                                                                    ?.secondName,
                                                           ),
                                                           focusNode: _model
                                                               .textFieldFocusNode2,
@@ -807,7 +815,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             TextEditingController(
                                                           text:
                                                               editProfileUsersRecord
-                                                                  .thirdName,
+                                                                  ?.thirdName,
                                                         ),
                                                         focusNode: _model
                                                             .textFieldFocusNode3,
@@ -954,7 +962,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             TextEditingController(
                                                           text:
                                                               editProfileUsersRecord
-                                                                  .fourthName,
+                                                                  ?.fourthName,
                                                         ),
                                                         focusNode: _model
                                                             .textFieldFocusNode4,
@@ -1102,7 +1110,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         FamilyRecord>(
                                                       stream: FamilyRecord
                                                           .getDocument(
-                                                              editProfileUsersRecord
+                                                              editProfileUsersRecord!
                                                                   .familyName!),
                                                       builder:
                                                           (context, snapshot) {

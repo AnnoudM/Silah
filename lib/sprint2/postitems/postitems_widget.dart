@@ -492,10 +492,14 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                     mainAxisAlignment:
                                                         MainAxisAlignment.end,
                                                     children: [
-                                                      if (widget.postrefuser
-                                                              ?.userID ==
-                                                          containerUsersRecord
-                                                              .reference)
+                                                      if ((widget.postrefuser
+                                                                  ?.userID ==
+                                                              containerUsersRecord
+                                                                  .reference) &&
+                                                          (widget.selectedCategory !=
+                                                                  null &&
+                                                              widget.selectedCategory !=
+                                                                  ''))
                                                         Builder(
                                                           builder: (context) =>
                                                               Padding(

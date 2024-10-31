@@ -162,7 +162,7 @@ class _DeletePostAlertWidgetState extends State<DeletePostAlertWidget> {
                                 12.0, 0.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
-                                context.pushNamed('posts');
+                                context.safePop();
                               },
                               text: 'تراجع',
                               options: FFButtonOptions(
@@ -193,6 +193,9 @@ class _DeletePostAlertWidgetState extends State<DeletePostAlertWidget> {
                             onPressed: () async {
                               await widget.deletePost!.delete();
                               Navigator.pop(context);
+
+                              context.pushNamed('posts');
+
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(

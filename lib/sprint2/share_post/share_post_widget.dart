@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -719,13 +720,13 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                             title:
                                                                 'منشور جديد!',
                                                           ));
-                                                      _model.usersFamily =
-                                                          await queryUsersRecordOnce(
+                                                      _model.usersotify =
+                                                          await queryUserrrRecordOnce(
                                                         queryBuilder:
-                                                            (usersRecord) =>
-                                                                usersRecord
+                                                            (userrrRecord) =>
+                                                                userrrRecord
                                                                     .where(
-                                                          'FamilyName',
+                                                          'familyName',
                                                           isEqualTo:
                                                               containerUsersRecord
                                                                   .familyName,
@@ -772,6 +773,22 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                                       context)
                                                                   .secondary,
                                                         ),
+                                                      );
+                                                      triggerPushNotification(
+                                                        notificationTitle:
+                                                            'منشور جديد !',
+                                                        notificationText:
+                                                            '${containerUsersRecord.gender == 'انثى' ? 'لقد قامت' : 'لقد قام'}${containerUsersRecord.fullName} بنشر منشور',
+                                                        notificationSound:
+                                                            'default',
+                                                        userRefs: _model
+                                                            .usersotify!
+                                                            .map((e) =>
+                                                                e.reference)
+                                                            .toList(),
+                                                        initialPageName:
+                                                            'notificationCenter',
+                                                        parameterData: {},
                                                       );
                                                     }
                                                   } else {

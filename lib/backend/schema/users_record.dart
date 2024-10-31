@@ -95,6 +95,16 @@ class UsersRecord extends FirestoreRecord {
   String get fullName => _fullName ?? '';
   bool hasFullName() => _fullName != null;
 
+  // "token" field.
+  String? _token;
+  String get token => _token ?? '';
+  bool hasToken() => _token != null;
+
+  // "uidd" field.
+  DocumentReference? _uidd;
+  DocumentReference? get uidd => _uidd;
+  bool hasUidd() => _uidd != null;
+
   void _initializeFields() {
     _password = snapshotData['Password'] as String?;
     _gender = snapshotData['Gender'] as String?;
@@ -112,6 +122,8 @@ class UsersRecord extends FirestoreRecord {
     _accepted = snapshotData['Accepted'] as bool?;
     _rejected = snapshotData['Rejected'] as bool?;
     _fullName = snapshotData['FullName'] as String?;
+    _token = snapshotData['token'] as String?;
+    _uidd = snapshotData['uidd'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -164,6 +176,8 @@ Map<String, dynamic> createUsersRecordData({
   bool? accepted,
   bool? rejected,
   String? fullName,
+  String? token,
+  DocumentReference? uidd,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -183,6 +197,8 @@ Map<String, dynamic> createUsersRecordData({
       'Accepted': accepted,
       'Rejected': rejected,
       'FullName': fullName,
+      'token': token,
+      'uidd': uidd,
     }.withoutNulls,
   );
 
@@ -209,7 +225,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.familyName == e2?.familyName &&
         e1?.accepted == e2?.accepted &&
         e1?.rejected == e2?.rejected &&
-        e1?.fullName == e2?.fullName;
+        e1?.fullName == e2?.fullName &&
+        e1?.token == e2?.token &&
+        e1?.uidd == e2?.uidd;
   }
 
   @override
@@ -229,7 +247,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.familyName,
         e?.accepted,
         e?.rejected,
-        e?.fullName
+        e?.fullName,
+        e?.token,
+        e?.uidd
       ]);
 
   @override

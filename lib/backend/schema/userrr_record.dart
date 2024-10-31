@@ -50,6 +50,11 @@ class UserrrRecord extends FirestoreRecord {
   String get token => _token ?? '';
   bool hasToken() => _token != null;
 
+  // "familyName" field.
+  DocumentReference? _familyName;
+  DocumentReference? get familyName => _familyName;
+  bool hasFamilyName() => _familyName != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -58,6 +63,7 @@ class UserrrRecord extends FirestoreRecord {
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
     _token = snapshotData['token'] as String?;
+    _familyName = snapshotData['familyName'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -101,6 +107,7 @@ Map<String, dynamic> createUserrrRecordData({
   DateTime? createdTime,
   String? phoneNumber,
   String? token,
+  DocumentReference? familyName,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -111,6 +118,7 @@ Map<String, dynamic> createUserrrRecordData({
       'created_time': createdTime,
       'phone_number': phoneNumber,
       'token': token,
+      'familyName': familyName,
     }.withoutNulls,
   );
 
@@ -128,7 +136,8 @@ class UserrrRecordDocumentEquality implements Equality<UserrrRecord> {
         e1?.uid == e2?.uid &&
         e1?.createdTime == e2?.createdTime &&
         e1?.phoneNumber == e2?.phoneNumber &&
-        e1?.token == e2?.token;
+        e1?.token == e2?.token &&
+        e1?.familyName == e2?.familyName;
   }
 
   @override
@@ -139,7 +148,8 @@ class UserrrRecordDocumentEquality implements Equality<UserrrRecord> {
         e?.uid,
         e?.createdTime,
         e?.phoneNumber,
-        e?.token
+        e?.token,
+        e?.familyName
       ]);
 
   @override

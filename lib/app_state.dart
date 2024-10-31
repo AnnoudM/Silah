@@ -66,6 +66,37 @@ class FFAppState extends ChangeNotifier {
         ? prefs.setString('ff_Multi1', value.path)
         : prefs.remove('ff_Multi1');
   }
+
+  List<DocumentReference> _notifyy = [
+    FirebaseFirestore.instance.doc('/userrr/KFnW7SIUAWdYaH7qsJy7R4uaxJg1')
+  ];
+  List<DocumentReference> get notifyy => _notifyy;
+  set notifyy(List<DocumentReference> value) {
+    _notifyy = value;
+  }
+
+  void addToNotifyy(DocumentReference value) {
+    notifyy.add(value);
+  }
+
+  void removeFromNotifyy(DocumentReference value) {
+    notifyy.remove(value);
+  }
+
+  void removeAtIndexFromNotifyy(int index) {
+    notifyy.removeAt(index);
+  }
+
+  void updateNotifyyAtIndex(
+    int index,
+    DocumentReference Function(DocumentReference) updateFn,
+  ) {
+    notifyy[index] = updateFn(_notifyy[index]);
+  }
+
+  void insertAtIndexInNotifyy(int index, DocumentReference value) {
+    notifyy.insert(index, value);
+  }
 }
 
 void _safeInit(Function() initializeField) {

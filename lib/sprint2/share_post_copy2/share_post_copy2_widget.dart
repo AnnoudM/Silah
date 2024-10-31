@@ -17,10 +17,14 @@ class SharePostCopy2Widget extends StatefulWidget {
     super.key,
     this.parameter1,
     this.usersnotified,
+    this.help,
+    this.pp,
   });
 
   final String? parameter1;
   final DocumentReference? usersnotified;
+  final DocumentReference? help;
+  final NotificationsRecord? pp;
 
   @override
   State<SharePostCopy2Widget> createState() => _SharePostCopy2WidgetState();

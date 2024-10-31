@@ -373,6 +373,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'FamilyFundsCopy',
           path: '/familyFundsCopy',
           builder: (context, params) => const FamilyFundsCopyWidget(),
+        ),
+        FFRoute(
+          name: 'EventDetailsCopy',
+          path: '/eventDetailsCopy',
+          asyncParams: {
+            'event': getDoc(['Events'], EventsRecord.fromSnapshot),
+          },
+          builder: (context, params) => EventDetailsCopyWidget(
+            event: params.getParam(
+              'event',
+              ParamType.Document,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

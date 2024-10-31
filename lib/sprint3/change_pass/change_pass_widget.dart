@@ -676,7 +676,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                   .passwordConfirmVisibility,
                                               decoration: InputDecoration(
                                                 labelText:
-                                                    'تأكيد كلمة المرورالجديدة *',
+                                                    'تأكيد كلمة المرور الجديدة *',
                                                 labelStyle: FlutterFlowTheme.of(
                                                         context)
                                                     .labelMedium

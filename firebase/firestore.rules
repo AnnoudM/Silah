@@ -56,5 +56,10 @@ service cloud.firestore {
       allow write: if false;
       allow delete: if false;
     }
+
+    match /ff_user_push_notifications/{id} {
+      allow read, update, delete: if false;
+      allow create: if /databases/$(database)/documents/userrr/$(request.auth.uid) == request.resource.data.sender;
+    }
   }
 }
