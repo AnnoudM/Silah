@@ -7,12 +7,17 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:math';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'edit_profile_model.dart';
 export 'edit_profile_model.dart';
 
@@ -73,22 +78,22 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 140.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 140.0),
+            end: Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.9, 1.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.9, 1.0),
+            end: Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(-0.349, 0),
-            end: const Offset(0, 0),
+            begin: Offset(-0.349, 0),
+            end: Offset(0, 0),
           ),
         ],
       ),
@@ -116,7 +121,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: Color(0xFFFFFCF6),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -143,7 +148,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: Color(0xFFFFFCF6),
             body: Stack(
               children: [
                 Row(
@@ -154,7 +159,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                       child: Container(
                         width: 100.0,
                         height: double.infinity,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [Color(0xFF2A497D), Color(0xFF2A497D)],
                             stops: [0.0, 1.0],
@@ -162,7 +167,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                             end: AlignmentDirectional(-0.87, 1.0),
                           ),
                         ),
-                        alignment: const AlignmentDirectional(0.0, -1.0),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -178,7 +183,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                       borderRadius: 30.0,
                                       borderWidth: 1.0,
                                       buttonSize: 71.0,
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.arrow_back_rounded,
                                         color: Colors.white,
                                         size: 30.0,
@@ -190,7 +195,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                   ),
                                   Expanded(
                                     child: Align(
-                                      alignment: const AlignmentDirectional(1.0, 0.0),
+                                      alignment: AlignmentDirectional(1.0, 0.0),
                                       child: ClipRRect(
                                         borderRadius:
                                             BorderRadius.circular(8.0),
@@ -206,15 +211,15 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                 ],
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(16.0),
+                                padding: EdgeInsets.all(16.0),
                                 child: Container(
                                   width: double.infinity,
-                                  constraints: const BoxConstraints(
+                                  constraints: BoxConstraints(
                                     maxWidth: 570.0,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFFFFCF6),
-                                    boxShadow: const [
+                                    color: Color(0xFFFFFCF6),
+                                    boxShadow: [
                                       BoxShadow(
                                         blurRadius: 4.0,
                                         color: Color(0x33000000),
@@ -230,9 +235,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                     key: _model.formKey,
                                     autovalidateMode: AutovalidateMode.always,
                                     child: Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsets.all(32.0),
+                                        padding: EdgeInsets.all(32.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -241,7 +246,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                               CrossAxisAlignment.center,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 0.0, 0.0, 16.0),
                                               child: Text(
@@ -252,7 +257,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                     .displaySmall
                                                     .override(
                                                       fontFamily: 'Readex Pro',
-                                                      color: const Color(0xFF2A497D),
+                                                      color: Color(0xFF2A497D),
                                                       fontSize: 20.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -266,7 +271,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 2.0, 16.0),
                                                     child: Text(
@@ -294,11 +299,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(40.0, 4.0,
                                                                 40.0, 0.0),
                                                     child: Container(
@@ -306,7 +311,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                       height: 160.0,
                                                       clipBehavior:
                                                           Clip.antiAlias,
-                                                      decoration: const BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
                                                       ),
                                                       child: Image.network(
@@ -319,7 +324,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                 .uploadedFileUrl,
                                                         fit: BoxFit.contain,
                                                         alignment:
-                                                            const Alignment(0.0, 0.0),
+                                                            Alignment(0.0, 0.0),
                                                       ),
                                                     ),
                                                   ),
@@ -328,7 +333,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                             ),
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 5.0),
                                                 child: Row(
@@ -337,11 +342,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                   children: [
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               1.0, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     140.0,
                                                                     0.0,
@@ -353,7 +358,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                               .transparent,
                                                           borderRadius: 8.0,
                                                           buttonSize: 40.0,
-                                                          icon: const Icon(
+                                                          icon: Icon(
                                                             Icons.photo_camera,
                                                             color: Color(
                                                                 0xFF2A497D),
@@ -463,7 +468,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                               ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   1.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.min,
@@ -474,13 +479,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   2.0,
                                                                   0.0,
                                                                   0.0,
                                                                   16.0),
-                                                      child: SizedBox(
+                                                      child: Container(
                                                         width: 370.0,
                                                         child: TextFormField(
                                                           controller: _model
@@ -495,14 +500,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                               EasyDebounce
                                                                   .debounce(
                                                             '_model.textController1',
-                                                            const Duration(
+                                                            Duration(
                                                                 milliseconds:
                                                                     5),
                                                             () => safeSetState(
                                                                 () {}),
                                                           ),
                                                           autofocus: false,
-                                                          autofillHints: const [
+                                                          autofillHints: [
                                                             AutofillHints.name
                                                           ],
                                                           obscureText: false,
@@ -551,7 +556,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             enabledBorder:
                                                                 OutlineInputBorder(
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Color(
                                                                     0xFFF1F4F8),
                                                                 width: 2.0,
@@ -564,7 +569,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             focusedBorder:
                                                                 OutlineInputBorder(
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Color(
                                                                     0xFF4B39EF),
                                                                 width: 2.0,
@@ -577,7 +582,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             errorBorder:
                                                                 OutlineInputBorder(
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Color(
                                                                     0xFFFF5963),
                                                                 width: 2.0,
@@ -590,7 +595,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             focusedErrorBorder:
                                                                 OutlineInputBorder(
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Color(
                                                                     0xFFFF5963),
                                                                 width: 2.0,
@@ -601,7 +606,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                           12.0),
                                                             ),
                                                             filled: true,
-                                                            fillColor: const Color(
+                                                            fillColor: Color(
                                                                 0xFFF1F4F8),
                                                           ),
                                                           style: FlutterFlowTheme
@@ -610,7 +615,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Plus Jakarta Sans',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF101213),
                                                                 fontSize: 14.0,
                                                                 letterSpacing:
@@ -644,13 +649,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
                                                                   2.0,
                                                                   16.0),
-                                                      child: SizedBox(
+                                                      child: Container(
                                                         width: 370.0,
                                                         child: TextFormField(
                                                           controller: _model
@@ -663,7 +668,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusNode: _model
                                                               .textFieldFocusNode2,
                                                           autofocus: false,
-                                                          autofillHints: const [
+                                                          autofillHints: [
                                                             AutofillHints.name
                                                           ],
                                                           obscureText: false,
@@ -702,7 +707,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             enabledBorder:
                                                                 OutlineInputBorder(
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Color(
                                                                     0xFFF1F4F8),
                                                                 width: 2.0,
@@ -715,7 +720,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             focusedBorder:
                                                                 OutlineInputBorder(
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Color(
                                                                     0xFF4B39EF),
                                                                 width: 2.0,
@@ -728,7 +733,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             errorBorder:
                                                                 OutlineInputBorder(
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Color(
                                                                     0xFFFF5963),
                                                                 width: 2.0,
@@ -741,7 +746,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             focusedErrorBorder:
                                                                 OutlineInputBorder(
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Color(
                                                                     0xFFFF5963),
                                                                 width: 2.0,
@@ -752,7 +757,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                           12.0),
                                                             ),
                                                             filled: true,
-                                                            fillColor: const Color(
+                                                            fillColor: Color(
                                                                 0xFFF1F4F8),
                                                           ),
                                                           style: FlutterFlowTheme
@@ -761,7 +766,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Plus Jakarta Sans',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF101213),
                                                                 fontSize: 14.0,
                                                                 letterSpacing:
@@ -792,7 +797,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                       ),
                                                     ),
                                                   ),
-                                                ].divide(const SizedBox(width: 10.0)),
+                                                ].divide(SizedBox(width: 10.0)),
                                               ),
                                             ),
                                             Row(
@@ -804,10 +809,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(2.0, 0.0,
                                                                 0.0, 16.0),
-                                                    child: SizedBox(
+                                                    child: Container(
                                                       width: 370.0,
                                                       child: TextFormField(
                                                         controller: _model
@@ -820,7 +825,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         focusNode: _model
                                                             .textFieldFocusNode3,
                                                         autofocus: false,
-                                                        autofillHints: const [
+                                                        autofillHints: [
                                                           AutofillHints.name
                                                         ],
                                                         obscureText: false,
@@ -859,7 +864,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFF1F4F8),
                                                               width: 2.0,
@@ -872,7 +877,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFF4B39EF),
                                                               width: 2.0,
@@ -885,7 +890,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           errorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFFF5963),
                                                               width: 2.0,
@@ -898,7 +903,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedErrorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFFF5963),
                                                               width: 2.0,
@@ -910,7 +915,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           ),
                                                           filled: true,
                                                           fillColor:
-                                                              const Color(0xFFF1F4F8),
+                                                              Color(0xFFF1F4F8),
                                                         ),
                                                         style: FlutterFlowTheme
                                                                 .of(context)
@@ -918,7 +923,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Plus Jakarta Sans',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF101213),
                                                               fontSize: 14.0,
                                                               letterSpacing:
@@ -951,10 +956,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 2.0, 16.0),
-                                                    child: SizedBox(
+                                                    child: Container(
                                                       width: 370.0,
                                                       child: TextFormField(
                                                         controller: _model
@@ -967,7 +972,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         focusNode: _model
                                                             .textFieldFocusNode4,
                                                         autofocus: false,
-                                                        autofillHints: const [
+                                                        autofillHints: [
                                                           AutofillHints.name
                                                         ],
                                                         obscureText: false,
@@ -1006,7 +1011,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFF1F4F8),
                                                               width: 2.0,
@@ -1019,7 +1024,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFF4B39EF),
                                                               width: 2.0,
@@ -1032,7 +1037,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           errorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFFF5963),
                                                               width: 2.0,
@@ -1045,7 +1050,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedErrorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFFF5963),
                                                               width: 2.0,
@@ -1057,7 +1062,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           ),
                                                           filled: true,
                                                           fillColor:
-                                                              const Color(0xFFF1F4F8),
+                                                              Color(0xFFF1F4F8),
                                                         ),
                                                         style: FlutterFlowTheme
                                                                 .of(context)
@@ -1065,7 +1070,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Plus Jakarta Sans',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF101213),
                                                               fontSize: 14.0,
                                                               letterSpacing:
@@ -1095,7 +1100,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                     ),
                                                   ),
                                                 ),
-                                              ].divide(const SizedBox(width: 10.0)),
+                                              ].divide(SizedBox(width: 10.0)),
                                             ),
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1103,7 +1108,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 16.0),
                                                     child: StreamBuilder<
@@ -1137,7 +1142,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         final textFieldFamilyRecord =
                                                             snapshot.data!;
 
-                                                        return SizedBox(
+                                                        return Container(
                                                           width: 370.0,
                                                           child: TextFormField(
                                                             controller: _model
@@ -1152,7 +1157,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                 EasyDebounce
                                                                     .debounce(
                                                               '_model.textController5',
-                                                              const Duration(
+                                                              Duration(
                                                                   milliseconds:
                                                                       5),
                                                               () =>
@@ -1160,7 +1165,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                       () {}),
                                                             ),
                                                             autofocus: false,
-                                                            autofillHints: const [
+                                                            autofillHints: [
                                                               AutofillHints.name
                                                             ],
                                                             readOnly: true,
@@ -1198,7 +1203,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                               enabledBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0xFFF1F4F8),
                                                                   width: 2.0,
@@ -1211,7 +1216,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                               focusedBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0xFF4B39EF),
                                                                   width: 2.0,
@@ -1224,7 +1229,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                               errorBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0xFFFF5963),
                                                                   width: 2.0,
@@ -1237,7 +1242,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                               focusedErrorBorder:
                                                                   OutlineInputBorder(
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Color(
                                                                       0xFFFF5963),
                                                                   width: 2.0,
@@ -1258,7 +1263,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                 .override(
                                                                   fontFamily:
                                                                       'Plus Jakarta Sans',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF101213),
                                                                   fontSize:
                                                                       14.0,
@@ -1297,10 +1302,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 16.0),
-                                                    child: SizedBox(
+                                                    child: Container(
                                                       width: 370.0,
                                                       child: TextFormField(
                                                         controller: _model
@@ -1308,12 +1313,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             TextEditingController(
                                                           text:
                                                               editProfileUsersRecord
-                                                                  .gender,
+                                                                  ?.gender,
                                                         ),
                                                         focusNode: _model
                                                             .textFieldFocusNode6,
                                                         autofocus: false,
-                                                        autofillHints: const [
+                                                        autofillHints: [
                                                           AutofillHints.name
                                                         ],
                                                         readOnly: true,
@@ -1352,7 +1357,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFF1F4F8),
                                                               width: 2.0,
@@ -1365,7 +1370,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFF4B39EF),
                                                               width: 2.0,
@@ -1378,7 +1383,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           errorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFFF5963),
                                                               width: 2.0,
@@ -1391,7 +1396,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedErrorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFFF5963),
                                                               width: 2.0,
@@ -1412,7 +1417,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Plus Jakarta Sans',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF101213),
                                                               fontSize: 14.0,
                                                               letterSpacing:
@@ -1442,10 +1447,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 16.0),
-                                                    child: SizedBox(
+                                                    child: Container(
                                                       width: 370.0,
                                                       child: TextFormField(
                                                         controller: _model
@@ -1453,12 +1458,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             TextEditingController(
                                                           text:
                                                               editProfileUsersRecord
-                                                                  .phoneNumber,
+                                                                  ?.phoneNumber,
                                                         ),
                                                         focusNode: _model
                                                             .textFieldFocusNode7,
                                                         autofocus: false,
-                                                        autofillHints: const [
+                                                        autofillHints: [
                                                           AutofillHints
                                                               .telephoneNumber
                                                         ],
@@ -1498,7 +1503,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFF1F4F8),
                                                               width: 2.0,
@@ -1511,7 +1516,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFF4B39EF),
                                                               width: 2.0,
@@ -1524,7 +1529,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           errorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFFF5963),
                                                               width: 2.0,
@@ -1537,7 +1542,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedErrorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFFF5963),
                                                               width: 2.0,
@@ -1549,7 +1554,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           ),
                                                           filled: true,
                                                           fillColor:
-                                                              const Color(0xFFF1F4F8),
+                                                              Color(0xFFF1F4F8),
                                                         ),
                                                         style: FlutterFlowTheme
                                                                 .of(context)
@@ -1557,7 +1562,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Plus Jakarta Sans',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF101213),
                                                               fontSize: 14.0,
                                                               letterSpacing:
@@ -1598,7 +1603,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1647,10 +1652,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 16.0),
-                                                    child: SizedBox(
+                                                    child: Container(
                                                       width: 370.0,
                                                       child: TextFormField(
                                                         controller: _model
@@ -1658,7 +1663,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             TextEditingController(
                                                           text:
                                                               editProfileUsersRecord
-                                                                  .email,
+                                                                  ?.email,
                                                         ),
                                                         focusNode: _model
                                                             .emailFocusNode,
@@ -1710,7 +1715,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFF1F4F8),
                                                               width: 2.0,
@@ -1723,7 +1728,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFF4B39EF),
                                                               width: 2.0,
@@ -1763,7 +1768,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           ),
                                                           filled: true,
                                                           fillColor:
-                                                              const Color(0xFFF1F4F8),
+                                                              Color(0xFFF1F4F8),
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -1772,7 +1777,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                 .override(
                                                                   fontFamily:
                                                                       'Readex Pro',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF101213),
                                                                   letterSpacing:
                                                                       0.0,
@@ -1801,7 +1806,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 if (_model.emaiExist ?? false) {
                                                   return Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 10.0),
                                                     child: Row(
@@ -1847,7 +1852,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 8.0),
                                                   child: InkWell(
@@ -1865,7 +1870,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         queryParameters: {
                                                           'userEdit':
                                                               serializeParam(
-                                                            widget.userEdit,
+                                                            widget!.userEdit,
                                                             ParamType
                                                                 .DocumentReference,
                                                           ),
@@ -1896,12 +1901,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 16.0),
                                                     child: FFButtonWidget(
                                                       onPressed: () async {
-                                                        var shouldSetState =
+                                                        var _shouldSetState =
                                                             false;
                                                         if (_model.formKey
                                                                     .currentState ==
@@ -1912,16 +1917,16 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           return;
                                                         }
                                                         if (editProfileUsersRecord
-                                                                .phoneNumber ==
+                                                                ?.phoneNumber ==
                                                             _model
                                                                 .textController7
                                                                 .text) {
                                                           if (editProfileUsersRecord
-                                                                  .email ==
+                                                                  ?.email ==
                                                               _model
                                                                   .emailTextController
                                                                   .text) {
-                                                            await widget
+                                                            await widget!
                                                                 .userEdit!
                                                                 .update(
                                                                     createUsersRecordData(
@@ -1969,7 +1974,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                         .primaryText,
                                                                   ),
                                                                 ),
-                                                                duration: const Duration(
+                                                                duration: Duration(
                                                                     milliseconds:
                                                                         4000),
                                                                 backgroundColor:
@@ -1978,7 +1983,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                         .secondary,
                                                               ),
                                                             );
-                                                            if (editProfileUsersRecord
+                                                            if (editProfileUsersRecord!
                                                                 .isAdmin) {
                                                               context.pushNamed(
                                                                   'HomeAdmin');
@@ -2002,7 +2007,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                   true,
                                                             ).then((s) => s
                                                                     .firstOrNull);
-                                                            shouldSetState =
+                                                            _shouldSetState =
                                                                 true;
                                                             if (_model.emailExi
                                                                     ?.email ==
@@ -2013,10 +2018,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                   true;
                                                               safeSetState(
                                                                   () {});
-                                                              if (shouldSetState) {
+                                                              if (_shouldSetState)
                                                                 safeSetState(
                                                                     () {});
-                                                              }
                                                               return;
                                                             } else {
                                                               if (_model
@@ -2026,7 +2030,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                 ScaffoldMessenger.of(
                                                                         context)
                                                                     .showSnackBar(
-                                                                  const SnackBar(
+                                                                  SnackBar(
                                                                     content:
                                                                         Text(
                                                                       'Email required!',
@@ -2047,7 +2051,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                               safeSetState(
                                                                   () {});
 
-                                                              await widget
+                                                              await widget!
                                                                   .userEdit!
                                                                   .update(
                                                                       createUsersRecordData(
@@ -2098,7 +2102,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                           .primaryText,
                                                                     ),
                                                                   ),
-                                                                  duration: const Duration(
+                                                                  duration: Duration(
                                                                       milliseconds:
                                                                           4000),
                                                                   backgroundColor:
@@ -2107,7 +2111,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                           .secondary,
                                                                 ),
                                                               );
-                                                              if (editProfileUsersRecord
+                                                              if (editProfileUsersRecord!
                                                                   .isAdmin) {
                                                                 context.pushNamed(
                                                                     'HomeAdmin');
@@ -2132,7 +2136,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                             singleRecord: true,
                                                           ).then((s) => s
                                                                   .firstOrNull);
-                                                          shouldSetState =
+                                                          _shouldSetState =
                                                               true;
                                                           if (_model.phoneEx
                                                                   ?.phoneNumber ==
@@ -2143,14 +2147,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                 true;
                                                             safeSetState(() {});
                                                             if (editProfileUsersRecord
-                                                                    .email ==
+                                                                    ?.email ==
                                                                 _model
                                                                     .emailTextController
                                                                     .text) {
-                                                              if (shouldSetState) {
+                                                              if (_shouldSetState)
                                                                 safeSetState(
                                                                     () {});
-                                                              }
                                                               return;
                                                             }
 
@@ -2169,7 +2172,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                   true,
                                                             ).then((s) => s
                                                                     .firstOrNull);
-                                                            shouldSetState =
+                                                            _shouldSetState =
                                                                 true;
                                                             if (_model.emailEx
                                                                     ?.email ==
@@ -2180,21 +2183,19 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                   true;
                                                               safeSetState(
                                                                   () {});
-                                                              if (shouldSetState) {
+                                                              if (_shouldSetState)
                                                                 safeSetState(
                                                                     () {});
-                                                              }
                                                               return;
                                                             } else {
-                                                              if (shouldSetState) {
+                                                              if (_shouldSetState)
                                                                 safeSetState(
                                                                     () {});
-                                                              }
                                                               return;
                                                             }
                                                           } else {
                                                             if (editProfileUsersRecord
-                                                                    .email !=
+                                                                    ?.email !=
                                                                 _model
                                                                     .emailTextController
                                                                     .text) {
@@ -2213,7 +2214,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                     true,
                                                               ).then((s) => s
                                                                       .firstOrNull);
-                                                              shouldSetState =
+                                                              _shouldSetState =
                                                                   true;
                                                               if (_model
                                                                       .emailExi
@@ -2225,10 +2226,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                     true;
                                                                 safeSetState(
                                                                     () {});
-                                                                if (shouldSetState) {
+                                                                if (_shouldSetState)
                                                                   safeSetState(
                                                                       () {});
-                                                                }
                                                                 return;
                                                               } else {
                                                                 if (_model
@@ -2238,7 +2238,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                   ScaffoldMessenger.of(
                                                                           context)
                                                                       .showSnackBar(
-                                                                    const SnackBar(
+                                                                    SnackBar(
                                                                       content:
                                                                           Text(
                                                                         'Email required!',
@@ -2259,7 +2259,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                 safeSetState(
                                                                     () {});
 
-                                                                await widget
+                                                                await widget!
                                                                     .userEdit!
                                                                     .update(
                                                                         createUsersRecordData(
@@ -2311,7 +2311,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                             .primaryText,
                                                                       ),
                                                                     ),
-                                                                    duration: const Duration(
+                                                                    duration: Duration(
                                                                         milliseconds:
                                                                             4000),
                                                                     backgroundColor:
@@ -2319,7 +2319,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                             .secondary,
                                                                   ),
                                                                 );
-                                                                if (editProfileUsersRecord
+                                                                if (editProfileUsersRecord!
                                                                     .isAdmin) {
                                                                   context.pushNamed(
                                                                       'HomeAdmin');
@@ -2328,15 +2328,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                       'HomeUser');
                                                                 }
 
-                                                                if (shouldSetState) {
+                                                                if (_shouldSetState)
                                                                   safeSetState(
                                                                       () {});
-                                                                }
                                                                 return;
                                                               }
                                                             }
 
-                                                            await widget
+                                                            await widget!
                                                                 .userEdit!
                                                                 .update(
                                                                     createUsersRecordData(
@@ -2384,7 +2383,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                         .primaryText,
                                                                   ),
                                                                 ),
-                                                                duration: const Duration(
+                                                                duration: Duration(
                                                                     milliseconds:
                                                                         4000),
                                                                 backgroundColor:
@@ -2393,7 +2392,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                         .secondary,
                                                               ),
                                                             );
-                                                            if (editProfileUsersRecord
+                                                            if (editProfileUsersRecord!
                                                                 .isAdmin) {
                                                               context.pushNamed(
                                                                   'HomeAdmin');
@@ -2402,38 +2401,36 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                   'HomeUser');
                                                             }
 
-                                                            if (shouldSetState) {
+                                                            if (_shouldSetState)
                                                               safeSetState(
                                                                   () {});
-                                                            }
                                                             return;
                                                           }
                                                         }
 
-                                                        if (shouldSetState) {
+                                                        if (_shouldSetState)
                                                           safeSetState(() {});
-                                                        }
                                                       },
                                                       text: 'تعديل',
                                                       options: FFButtonOptions(
                                                         width: double.infinity,
                                                         height: 44.0,
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
                                                                     0.0,
                                                                     0.0),
                                                         iconPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
                                                                     0.0,
                                                                     0.0),
                                                         color:
-                                                            const Color(0xFF2A497D),
+                                                            Color(0xFF2A497D),
                                                         textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -2452,7 +2449,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                           .w500,
                                                                 ),
                                                         elevation: 3.0,
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color: Colors
                                                               .transparent,
                                                           width: 1.0,

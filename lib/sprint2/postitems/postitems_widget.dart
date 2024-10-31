@@ -4,8 +4,12 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/sprint2/delete_post_alert/delete_post_alert_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'postitems_model.dart';
 export 'postitems_model.dart';
 
@@ -52,7 +56,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
       child: StreamBuilder<List<UsersRecord>>(
         stream: queryUsersRecord(
           queryBuilder: (usersRecord) => usersRecord.where(
@@ -89,7 +93,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
             width: 375.0,
             decoration: BoxDecoration(
               color: Colors.white,
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                   blurRadius: 4.0,
                   color: Color(0xFFE0E3E7),
@@ -99,18 +103,18 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                   ),
                 )
               ],
-              borderRadius: const BorderRadius.only(
+              borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(20.0),
                 bottomRight: Radius.circular(20.0),
                 topLeft: Radius.circular(20.0),
                 topRight: Radius.circular(20.0),
               ),
               border: Border.all(
-                color: const Color(0xFFFFFDF9),
+                color: Color(0xFFFFFDF9),
               ),
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 6.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 6.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -128,18 +132,18 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Align(
-                                alignment: const AlignmentDirectional(0.0, -1.0),
+                                alignment: AlignmentDirectional(0.0, -1.0),
                                 child: Stack(
-                                  alignment: const AlignmentDirectional(0.0, -1.0),
+                                  alignment: AlignmentDirectional(0.0, -1.0),
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 6.0, 0.0, 0.0),
                                       child: Container(
                                         width: 40.0,
                                         height: 40.0,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
+                                        decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: Image.network(
@@ -152,7 +156,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () {
                                     print('Button pressed ...');
@@ -161,10 +165,10 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                   options: FFButtonOptions(
                                     width: 1.0,
                                     height: 36.0,
-                                    padding: const EdgeInsets.all(0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsets.all(0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: const Color(0x91CCCCCC),
+                                    color: Color(0x91CCCCCC),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -173,7 +177,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                           letterSpacing: 0.0,
                                         ),
                                     elevation: 0.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
@@ -200,12 +204,12 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                   children: [
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.0, -1.0),
+                                          AlignmentDirectional(-1.0, -1.0),
                                       child: Container(
                                         width: 270.0,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: const BorderRadius.only(
+                                          borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(0.0),
                                             bottomRight: Radius.circular(0.0),
                                             topLeft: Radius.circular(0.0),
@@ -217,7 +221,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                         ),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 6.0, 0.0, 16.0),
                                           child: SingleChildScrollView(
                                             primary: false,
@@ -240,7 +244,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -250,7 +254,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                             UsersRecord>(
                                                           stream: UsersRecord
                                                               .getDocument(
-                                                                  widget
+                                                                  widget!
                                                                       .userRef!),
                                                           builder: (context,
                                                               snapshot) {
@@ -308,13 +312,13 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.start,
                                                   children: [
-                                                    if (widget
+                                                    if (widget!
                                                             .selectedCategory ==
                                                         'الكل')
                                                       StreamBuilder<
                                                           PostsRecord>(
                                                         stream: PostsRecord
-                                                            .getDocument(widget
+                                                            .getDocument(widget!
                                                                 .postRef!),
                                                         builder: (context,
                                                             snapshot) {
@@ -344,7 +348,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
 
                                                           return FFButtonWidget(
                                                             onPressed:
-                                                                (widget.selectedCategory ==
+                                                                (widget!.selectedCategory ==
                                                                         'الكل')
                                                                     ? null
                                                                     : () {
@@ -359,20 +363,20 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                               width: 80.0,
                                                               height: 22.0,
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           0.0,
                                                                           16.0,
                                                                           0.0),
                                                               iconPadding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFFFFFCF6),
                                                               textStyle:
                                                                   FlutterFlowTheme.of(
@@ -392,7 +396,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                                       ),
                                                               elevation: 0.0,
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 color: Color(
                                                                     0xFF2A497D),
                                                                 width: 0.5,
@@ -417,7 +421,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     6.0,
@@ -427,7 +431,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                             PostsRecord>(
                                                           stream: PostsRecord
                                                               .getDocument(
-                                                                  widget
+                                                                  widget!
                                                                       .postRef!),
                                                           builder: (context,
                                                               snapshot) {
@@ -483,7 +487,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 0.0, 0.0, 0.0),
                                                   child: Row(
@@ -492,19 +496,19 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                     mainAxisAlignment:
                                                         MainAxisAlignment.end,
                                                     children: [
-                                                      if ((widget.postrefuser
+                                                      if ((widget!.postrefuser
                                                                   ?.userID ==
                                                               containerUsersRecord
-                                                                  .reference) &&
-                                                          (widget.selectedCategory !=
+                                                                  ?.reference) &&
+                                                          (widget!.selectedCategory !=
                                                                   null &&
-                                                              widget.selectedCategory !=
+                                                              widget!.selectedCategory !=
                                                                   ''))
                                                         Builder(
                                                           builder: (context) =>
                                                               Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         8.0,
@@ -514,7 +518,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                                 PostsRecord>(
                                                               stream: PostsRecord
                                                                   .getDocument(
-                                                                      widget
+                                                                      widget!
                                                                           .postRef!),
                                                               builder: (context,
                                                                   snapshot) {
@@ -570,11 +574,11 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                                           backgroundColor:
                                                                               Colors.transparent,
                                                                           alignment:
-                                                                              const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                           child:
                                                                               DeletePostAlertWidget(
                                                                             deletePost:
-                                                                                widget.postRef,
+                                                                                widget!.postRef,
                                                                           ),
                                                                         );
                                                                       },
@@ -612,9 +616,9 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(0.0, -1.0),
+                          alignment: AlignmentDirectional(0.0, -1.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 6.0, 6.0, 0.0, 0.0),
                             child: Icon(
                               Icons.keyboard_control,
@@ -628,21 +632,21 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                     Container(
                       width: 375.0,
                       decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
+                        borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(20.0),
                           bottomRight: Radius.circular(20.0),
                           topLeft: Radius.circular(0.0),
                           topRight: Radius.circular(0.0),
                         ),
                         border: Border.all(
-                          color: const Color(0x0000FFFF),
+                          color: Color(0x0000FFFF),
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 6.0),
                         child: StreamBuilder<PostsRecord>(
-                          stream: PostsRecord.getDocument(widget.postRef!),
+                          stream: PostsRecord.getDocument(widget!.postRef!),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -666,13 +670,13 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Align(
-                                  alignment: const AlignmentDirectional(1.0, 0.0),
+                                  alignment: AlignmentDirectional(1.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 70.0, 0.0),
                                     child: StreamBuilder<PostsRecord>(
                                       stream: PostsRecord.getDocument(
-                                          widget.postRef!),
+                                          widget!.postRef!),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
                                         if (!snapshot.hasData) {
@@ -705,7 +709,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Readex Pro',
-                                                color: const Color(0xFF2A497D),
+                                                color: Color(0xFF2A497D),
                                                 fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w200,

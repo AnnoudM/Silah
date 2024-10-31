@@ -8,13 +8,17 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/sprint1/family_exist_already/family_exist_already_widget.dart';
+import 'dart:math';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'sign_up_admin_model.dart';
 export 'sign_up_admin_model.dart';
 
@@ -183,22 +187,22 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 140.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 140.0),
+            end: Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.9, 1.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.9, 1.0),
+            end: Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(-0.349, 0),
-            end: const Offset(0, 0),
+            begin: Offset(-0.349, 0),
+            end: Offset(0, 0),
           ),
         ],
       ),
@@ -218,7 +222,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFFFFCF6),
+        backgroundColor: Color(0xFFFFFCF6),
         body: Stack(
           children: [
             Row(
@@ -229,7 +233,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                   child: Container(
                     width: 100.0,
                     height: double.infinity,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [Color(0xFF2A497D), Color(0xFF2A497D)],
                         stops: [0.0, 1.0],
@@ -237,7 +241,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                         end: AlignmentDirectional(-0.87, 1.0),
                       ),
                     ),
-                    alignment: const AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -253,7 +257,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                   borderRadius: 30.0,
                                   borderWidth: 1.0,
                                   buttonSize: 71.0,
-                                  icon: const Icon(
+                                  icon: Icon(
                                     Icons.arrow_back_rounded,
                                     color: Colors.white,
                                     size: 30.0,
@@ -265,7 +269,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: const AlignmentDirectional(1.0, 0.0),
+                                  alignment: AlignmentDirectional(1.0, 0.0),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: Image.asset(
@@ -280,15 +284,15 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(16.0),
+                            padding: EdgeInsets.all(16.0),
                             child: Container(
                               width: double.infinity,
-                              constraints: const BoxConstraints(
+                              constraints: BoxConstraints(
                                 maxWidth: 570.0,
                               ),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFFFFCF6),
-                                boxShadow: const [
+                                color: Color(0xFFFFFCF6),
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x33000000),
@@ -304,9 +308,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                 key: _model.formKey,
                                 autovalidateMode: AutovalidateMode.always,
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(32.0),
+                                    padding: EdgeInsets.all(32.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -316,7 +320,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 16.0),
                                           child: Text(
                                             'إنشاء حساب كمشرف',
@@ -325,7 +329,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                 .displaySmall
                                                 .override(
                                                   fontFamily: 'Readex Pro',
-                                                  color: const Color(0xFF2A497D),
+                                                  color: Color(0xFF2A497D),
                                                   fontSize: 20.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
@@ -337,7 +341,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 2.0, 16.0),
                                                 child: Text(
@@ -359,7 +363,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(1.0, 0.0),
+                                              AlignmentDirectional(1.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.min,
                                             mainAxisAlignment:
@@ -367,10 +371,10 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                             children: [
                                               Expanded(
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           2.0, 0.0, 0.0, 16.0),
-                                                  child: SizedBox(
+                                                  child: Container(
                                                     width: 370.0,
                                                     child: TextFormField(
                                                       controller: _model
@@ -380,13 +384,13 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         '_model.textController1',
-                                                        const Duration(
+                                                        Duration(
                                                             milliseconds: 5),
                                                         () =>
                                                             safeSetState(() {}),
                                                       ),
                                                       autofocus: false,
-                                                      autofillHints: const [
+                                                      autofillHints: [
                                                         AutofillHints.name
                                                       ],
                                                       obscureText: false,
@@ -434,7 +438,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         enabledBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Color(
                                                                 0xFFF1F4F8),
                                                             width: 2.0,
@@ -447,7 +451,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         focusedBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Color(
                                                                 0xFF4B39EF),
                                                             width: 2.0,
@@ -460,7 +464,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         errorBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Color(
                                                                 0xFFFF5963),
                                                             width: 2.0,
@@ -473,7 +477,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         focusedErrorBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Color(
                                                                 0xFFFF5963),
                                                             width: 2.0,
@@ -485,7 +489,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            const Color(0xFFF1F4F8),
+                                                            Color(0xFFF1F4F8),
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -493,7 +497,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Plus Jakarta Sans',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF101213),
                                                             fontSize: 14.0,
                                                             letterSpacing: 0.0,
@@ -522,10 +526,10 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                               ),
                                               Expanded(
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 2.0, 16.0),
-                                                  child: SizedBox(
+                                                  child: Container(
                                                     width: 370.0,
                                                     child: TextFormField(
                                                       controller: _model
@@ -533,7 +537,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       focusNode: _model
                                                           .textFieldFocusNode2,
                                                       autofocus: false,
-                                                      autofillHints: const [
+                                                      autofillHints: [
                                                         AutofillHints.name
                                                       ],
                                                       obscureText: false,
@@ -571,7 +575,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         enabledBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Color(
                                                                 0xFFF1F4F8),
                                                             width: 2.0,
@@ -584,7 +588,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         focusedBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Color(
                                                                 0xFF4B39EF),
                                                             width: 2.0,
@@ -597,7 +601,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         errorBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Color(
                                                                 0xFFFF5963),
                                                             width: 2.0,
@@ -610,7 +614,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         focusedErrorBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Color(
                                                                 0xFFFF5963),
                                                             width: 2.0,
@@ -622,7 +626,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            const Color(0xFFF1F4F8),
+                                                            Color(0xFFF1F4F8),
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -630,7 +634,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Plus Jakarta Sans',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF101213),
                                                             fontSize: 14.0,
                                                             letterSpacing: 0.0,
@@ -657,7 +661,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                   ),
                                                 ),
                                               ),
-                                            ].divide(const SizedBox(width: 10.0)),
+                                            ].divide(SizedBox(width: 10.0)),
                                           ),
                                         ),
                                         Row(
@@ -667,10 +671,10 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         2.0, 0.0, 0.0, 16.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width: 370.0,
                                                   child: TextFormField(
                                                     controller:
@@ -678,7 +682,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     focusNode: _model
                                                         .textFieldFocusNode3,
                                                     autofocus: false,
-                                                    autofillHints: const [
+                                                    autofillHints: [
                                                       AutofillHints.name
                                                     ],
                                                     obscureText: false,
@@ -713,7 +717,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFF1F4F8),
                                                           width: 2.0,
@@ -724,7 +728,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       focusedBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFF4B39EF),
                                                           width: 2.0,
@@ -735,7 +739,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       errorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFFF5963),
                                                           width: 2.0,
@@ -746,7 +750,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       focusedErrorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFFF5963),
                                                           width: 2.0,
@@ -757,7 +761,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       filled: true,
                                                       fillColor:
-                                                          const Color(0xFFF1F4F8),
+                                                          Color(0xFFF1F4F8),
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -766,7 +770,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF101213),
+                                                              Color(0xFF101213),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -794,10 +798,10 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                             ),
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 2.0, 16.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width: 370.0,
                                                   child: TextFormField(
                                                     controller:
@@ -805,7 +809,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     focusNode: _model
                                                         .textFieldFocusNode4,
                                                     autofocus: false,
-                                                    autofillHints: const [
+                                                    autofillHints: [
                                                       AutofillHints.name
                                                     ],
                                                     obscureText: false,
@@ -841,7 +845,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFF1F4F8),
                                                           width: 2.0,
@@ -852,7 +856,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       focusedBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFF4B39EF),
                                                           width: 2.0,
@@ -863,7 +867,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       errorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFFF5963),
                                                           width: 2.0,
@@ -874,7 +878,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       focusedErrorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFFF5963),
                                                           width: 2.0,
@@ -885,7 +889,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       filled: true,
                                                       fillColor:
-                                                          const Color(0xFFF1F4F8),
+                                                          Color(0xFFF1F4F8),
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -894,7 +898,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF101213),
+                                                              Color(0xFF101213),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -920,17 +924,17 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                 ),
                                               ),
                                             ),
-                                          ].divide(const SizedBox(width: 10.0)),
+                                          ].divide(SizedBox(width: 10.0)),
                                         ),
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width: 370.0,
                                                   child: TextFormField(
                                                     controller:
@@ -940,11 +944,11 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     onChanged: (_) =>
                                                         EasyDebounce.debounce(
                                                       '_model.textController5',
-                                                      const Duration(milliseconds: 5),
+                                                      Duration(milliseconds: 5),
                                                       () => safeSetState(() {}),
                                                     ),
                                                     autofocus: false,
-                                                    autofillHints: const [
+                                                    autofillHints: [
                                                       AutofillHints.name
                                                     ],
                                                     obscureText: false,
@@ -980,7 +984,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFF1F4F8),
                                                           width: 2.0,
@@ -991,7 +995,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       focusedBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFF4B39EF),
                                                           width: 2.0,
@@ -1002,7 +1006,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       errorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFFF5963),
                                                           width: 2.0,
@@ -1013,7 +1017,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       focusedErrorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFFF5963),
                                                           width: 2.0,
@@ -1024,7 +1028,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       filled: true,
                                                       fillColor:
-                                                          const Color(0xFFF1F4F8),
+                                                          Color(0xFFF1F4F8),
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -1033,7 +1037,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF101213),
+                                                              Color(0xFF101213),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -1064,10 +1068,10 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width: 370.0,
                                                   child: TextFormField(
                                                     controller:
@@ -1077,7 +1081,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     onChanged: (_) =>
                                                         EasyDebounce.debounce(
                                                       '_model.textController6',
-                                                      const Duration(milliseconds: 5),
+                                                      Duration(milliseconds: 5),
                                                       () async {
                                                         if ((_model.dropDownValue ==
                                                                     null ||
@@ -1097,7 +1101,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       },
                                                     ),
                                                     autofocus: false,
-                                                    autofillHints: const [
+                                                    autofillHints: [
                                                       AutofillHints.name
                                                     ],
                                                     obscureText: false,
@@ -1133,7 +1137,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFF1F4F8),
                                                           width: 2.0,
@@ -1144,7 +1148,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       focusedBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFF4B39EF),
                                                           width: 2.0,
@@ -1155,7 +1159,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       errorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFFF5963),
                                                           width: 2.0,
@@ -1166,7 +1170,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       focusedErrorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFFF5963),
                                                           width: 2.0,
@@ -1177,7 +1181,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       filled: true,
                                                       fillColor:
-                                                          const Color(0xFFF1F4F8),
+                                                          Color(0xFFF1F4F8),
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -1186,7 +1190,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF101213),
+                                                              Color(0xFF101213),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -1212,10 +1216,10 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width: 370.0,
                                                   child: TextFormField(
                                                     controller:
@@ -1225,7 +1229,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     onChanged: (_) =>
                                                         EasyDebounce.debounce(
                                                       '_model.textController7',
-                                                      const Duration(milliseconds: 5),
+                                                      Duration(milliseconds: 5),
                                                       () async {
                                                         if (!(_model.phoneExist
                                                                     ?.phoneNumber !=
@@ -1240,7 +1244,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       },
                                                     ),
                                                     autofocus: false,
-                                                    autofillHints: const [
+                                                    autofillHints: [
                                                       AutofillHints
                                                           .telephoneNumber
                                                     ],
@@ -1276,7 +1280,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFF1F4F8),
                                                           width: 2.0,
@@ -1287,7 +1291,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       focusedBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFF4B39EF),
                                                           width: 2.0,
@@ -1298,7 +1302,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       errorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFFF5963),
                                                           width: 2.0,
@@ -1309,7 +1313,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       focusedErrorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFFF5963),
                                                           width: 2.0,
@@ -1320,7 +1324,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       filled: true,
                                                       fillColor:
-                                                          const Color(0xFFF1F4F8),
+                                                          Color(0xFFF1F4F8),
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -1329,7 +1333,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF101213),
+                                                              Color(0xFF101213),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -1365,7 +1369,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 16.0),
                                                     child: Text(
@@ -1403,17 +1407,17 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 5.0),
+                                              AlignmentDirectional(0.0, 5.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 16.0),
                                             child: FlutterFlowDropDown<String>(
                                               controller: _model
                                                       .dropDownValueController ??=
                                                   FormFieldController<String>(
                                                       null),
-                                              options: const ['ذكر', 'انثى'],
+                                              options: ['ذكر', 'انثى'],
                                               onChanged: (val) async {
                                                 safeSetState(() =>
                                                     _model.dropDownValue = val);
@@ -1446,15 +1450,15 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         .secondaryText,
                                                 size: 24.0,
                                               ),
-                                              fillColor: const Color(0xFFF1F4F8),
+                                              fillColor: Color(0xFFF1F4F8),
                                               elevation: 2.0,
                                               borderColor: _model.genderChosen
-                                                  ? const Color(0x00000000)
+                                                  ? Color(0x00000000)
                                                   : FlutterFlowTheme.of(context)
                                                       .error,
                                               borderWidth: 2.0,
                                               borderRadius: 8.0,
-                                              margin: const EdgeInsetsDirectional
+                                              margin: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 12.0, 0.0),
                                               hidesUnderline: true,
@@ -1478,7 +1482,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                               );
                                             } else {
                                               return Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 16.0, 16.0),
                                                 child: Row(
@@ -1515,10 +1519,10 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width: 370.0,
                                                   child: TextFormField(
                                                     controller: _model
@@ -1528,7 +1532,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     onChanged: (_) =>
                                                         EasyDebounce.debounce(
                                                       '_model.emailTextController',
-                                                      const Duration(
+                                                      Duration(
                                                           milliseconds: 2000),
                                                       () async {
                                                         if (!(_model.emailExist
@@ -1588,7 +1592,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFF1F4F8),
                                                           width: 2.0,
@@ -1599,7 +1603,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       focusedBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFF4B39EF),
                                                           width: 2.0,
@@ -1634,7 +1638,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       filled: true,
                                                       fillColor:
-                                                          const Color(0xFFF1F4F8),
+                                                          Color(0xFFF1F4F8),
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -1643,7 +1647,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           fontFamily:
                                                               'Readex Pro',
                                                           color:
-                                                              const Color(0xFF101213),
+                                                              Color(0xFF101213),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -1666,7 +1670,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                           builder: (context) {
                                             if (_model.emaiExist ?? false) {
                                               return Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 10.0),
                                                 child: Row(
@@ -1711,7 +1715,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 10.0),
                                                 child: Text(
@@ -1739,10 +1743,10 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width: 370.0,
                                                   child: TextFormField(
                                                     controller: _model
@@ -1750,7 +1754,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     focusNode: _model
                                                         .passwordFocusNode,
                                                     autofocus: false,
-                                                    autofillHints: const [
+                                                    autofillHints: [
                                                       AutofillHints.password
                                                     ],
                                                     obscureText: !_model
@@ -1794,7 +1798,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFF1F4F8),
                                                           width: 2.0,
@@ -1805,7 +1809,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       focusedBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFF4B39EF),
                                                           width: 2.0,
@@ -1816,7 +1820,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       errorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFFF5963),
                                                           width: 2.0,
@@ -1827,7 +1831,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       focusedErrorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFFF5963),
                                                           width: 2.0,
@@ -1838,7 +1842,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       filled: true,
                                                       fillColor:
-                                                          const Color(0xFFF1F4F8),
+                                                          Color(0xFFF1F4F8),
                                                       suffixIcon: InkWell(
                                                         onTap: () =>
                                                             safeSetState(
@@ -1857,7 +1861,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                               : Icons
                                                                   .visibility_off_outlined,
                                                           color:
-                                                              const Color(0xFF757575),
+                                                              Color(0xFF757575),
                                                           size: 22.0,
                                                         ),
                                                       ),
@@ -1869,7 +1873,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF101213),
+                                                              Color(0xFF101213),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -1895,10 +1899,10 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
-                                                child: SizedBox(
+                                                child: Container(
                                                   width: 370.0,
                                                   child: TextFormField(
                                                     controller: _model
@@ -1908,7 +1912,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                     onChanged: (_) =>
                                                         EasyDebounce.debounce(
                                                       '_model.passwordConfirmTextController',
-                                                      const Duration(milliseconds: 5),
+                                                      Duration(milliseconds: 5),
                                                       () async {
                                                         if (_model
                                                                 .passwordTextController
@@ -1927,7 +1931,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       },
                                                     ),
                                                     autofocus: false,
-                                                    autofillHints: const [
+                                                    autofillHints: [
                                                       AutofillHints.password
                                                     ],
                                                     textCapitalization:
@@ -1976,7 +1980,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         borderSide: BorderSide(
                                                           color: _model
                                                                   .matchPass!
-                                                              ? const Color(
+                                                              ? Color(
                                                                   0xFFF1F4F8)
                                                               : FlutterFlowTheme
                                                                       .of(context)
@@ -2007,7 +2011,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       errorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFFF5963),
                                                           width: 2.0,
@@ -2018,7 +2022,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       focusedErrorBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0xFFFF5963),
                                                           width: 2.0,
@@ -2029,7 +2033,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                       ),
                                                       filled: true,
                                                       fillColor:
-                                                          const Color(0xFFF1F4F8),
+                                                          Color(0xFFF1F4F8),
                                                       suffixIcon: InkWell(
                                                         onTap: () =>
                                                             safeSetState(
@@ -2048,7 +2052,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                               : Icons
                                                                   .visibility_off_outlined,
                                                           color:
-                                                              const Color(0xFF757575),
+                                                              Color(0xFF757575),
                                                           size: 22.0,
                                                         ),
                                                       ),
@@ -2060,7 +2064,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
                                                           color:
-                                                              const Color(0xFF101213),
+                                                              Color(0xFF101213),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -2128,7 +2132,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                             Expanded(
                                               child: Builder(
                                                 builder: (context) => Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 16.0),
                                                   child: StreamBuilder<
@@ -2174,9 +2178,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
 
                                                       return FFButtonWidget(
                                                         onPressed: () async {
-                                                          var shouldSetState =
+                                                          var _shouldSetState =
                                                               false;
-                                                          Function() navigate =
+                                                          Function() _navigate =
                                                               () {};
                                                           if (_model.formKey
                                                                       .currentState ==
@@ -2203,7 +2207,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                         .primaryText,
                                                                   ),
                                                                 ),
-                                                                duration: const Duration(
+                                                                duration: Duration(
                                                                     milliseconds:
                                                                         4000),
                                                                 backgroundColor:
@@ -2228,7 +2232,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                             singleRecord: true,
                                                           ).then((s) => s
                                                                   .firstOrNull);
-                                                          shouldSetState =
+                                                          _shouldSetState =
                                                               true;
                                                           if (_model.dropDownValue !=
                                                                   null &&
@@ -2249,7 +2253,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                   true,
                                                             ).then((s) => s
                                                                     .firstOrNull);
-                                                            shouldSetState =
+                                                            _shouldSetState =
                                                                 true;
                                                             _model.emailExist =
                                                                 await queryUsersRecordOnce(
@@ -2266,7 +2270,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                   true,
                                                             ).then((s) => s
                                                                     .firstOrNull);
-                                                            shouldSetState =
+                                                            _shouldSetState =
                                                                 true;
                                                           } else {
                                                             ScaffoldMessenger
@@ -2282,7 +2286,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                         .primaryBackground,
                                                                   ),
                                                                 ),
-                                                                duration: const Duration(
+                                                                duration: Duration(
                                                                     milliseconds:
                                                                         4000),
                                                                 backgroundColor:
@@ -2291,10 +2295,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                         .error,
                                                               ),
                                                             );
-                                                            if (shouldSetState) {
+                                                            if (_shouldSetState)
                                                               safeSetState(
                                                                   () {});
-                                                            }
                                                             return;
                                                           }
 
@@ -2315,7 +2318,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                   backgroundColor:
                                                                       Colors
                                                                           .transparent,
-                                                                  alignment: const AlignmentDirectional(
+                                                                  alignment: AlignmentDirectional(
                                                                           -0.0,
                                                                           0.0)
                                                                       .resolve(
@@ -2327,7 +2330,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                         FocusScope.of(dialogContext)
                                                                             .unfocus(),
                                                                     child:
-                                                                        const FamilyExistAlreadyWidget(),
+                                                                        FamilyExistAlreadyWidget(),
                                                                   ),
                                                                 );
                                                               },
@@ -2354,10 +2357,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                 safeSetState(
                                                                     () {});
                                                               }
-                                                              if (shouldSetState) {
+                                                              if (_shouldSetState)
                                                                 safeSetState(
                                                                     () {});
-                                                              }
                                                               return;
                                                             } else {
                                                               if (_model
@@ -2370,10 +2372,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                     true;
                                                                 safeSetState(
                                                                     () {});
-                                                                if (shouldSetState) {
+                                                                if (_shouldSetState)
                                                                   safeSetState(
                                                                       () {});
-                                                                }
                                                                 return;
                                                               } else {
                                                                 GoRouter.of(
@@ -2388,7 +2389,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                   ScaffoldMessenger.of(
                                                                           context)
                                                                       .showSnackBar(
-                                                                    const SnackBar(
+                                                                    SnackBar(
                                                                       content:
                                                                           Text(
                                                                         'كلمة المرور لا تتطابق',
@@ -2414,7 +2415,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                   return;
                                                                 }
 
-                                                                navigate = () =>
+                                                                _navigate = () =>
                                                                     context.goNamedAuth(
                                                                         'loggedinPage',
                                                                         context
@@ -2447,7 +2448,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                               familyName: _model.textController5.text,
                                                                             ),
                                                                             familyRecordReference);
-                                                                shouldSetState =
+                                                                _shouldSetState =
                                                                     true;
 
                                                                 var usersRecordReference =
@@ -2587,7 +2588,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                     },
                                                                   ),
                                                                 }, usersRecordReference);
-                                                                shouldSetState =
+                                                                _shouldSetState =
                                                                     true;
                                                                 await authManager
                                                                     .sendEmailVerification();
@@ -2595,10 +2596,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                             }
                                                           }
 
-                                                          navigate();
-                                                          if (shouldSetState) {
+                                                          _navigate();
+                                                          if (_shouldSetState)
                                                             safeSetState(() {});
-                                                          }
                                                         },
                                                         text: 'انشاء حساب',
                                                         options:
@@ -2607,21 +2607,21 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                               double.infinity,
                                                           height: 44.0,
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
                                                                       0.0,
                                                                       0.0),
                                                           iconPadding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
                                                                       0.0,
                                                                       0.0),
                                                           color:
-                                                              const Color(0xFF2A497D),
+                                                              Color(0xFF2A497D),
                                                           textStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -2641,7 +2641,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                   ),
                                                           elevation: 3.0,
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Colors
                                                                 .transparent,
                                                             width: 1.0,

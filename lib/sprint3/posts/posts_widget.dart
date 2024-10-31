@@ -5,15 +5,18 @@ import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
 import '/sprint1/side_admin_copy/side_admin_copy_widget.dart';
 import '/sprint2/empty_posts/empty_posts_widget.dart';
 import '/sprint2/postitems/postitems_widget.dart';
 import '/sprint2/share_post/share_post_widget.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'posts_model.dart';
 export 'posts_model.dart';
@@ -65,22 +68,22 @@ class _PostsWidgetState extends State<PostsWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 140.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 140.0),
+            end: Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.9, 1.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.9, 1.0),
+            end: Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(-0.349, 0),
-            end: const Offset(0, 0),
+            begin: Offset(-0.349, 0),
+            end: Offset(0, 0),
           ),
         ],
       ),
@@ -110,7 +113,7 @@ class _PostsWidgetState extends State<PostsWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: Color(0xFFFFFCF6),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -136,13 +139,13 @@ class _PostsWidgetState extends State<PostsWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: Color(0xFFFFFCF6),
             endDrawer: Drawer(
               elevation: 16.0,
               child: wrapWithModel(
                 model: _model.sideAdminCopyModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const SideAdminCopyWidget(),
+                child: SideAdminCopyWidget(),
               ),
             ),
             body: Stack(
@@ -158,7 +161,7 @@ class _PostsWidgetState extends State<PostsWidget>
                               child: Container(
                                 width: 100.0,
                                 height: double.infinity,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                     colors: [
                                       Color(0xFF2A497D),
@@ -169,7 +172,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                     end: AlignmentDirectional(-0.87, 1.0),
                                   ),
                                 ),
-                                alignment: const AlignmentDirectional(0.0, -1.0),
+                                alignment: AlignmentDirectional(0.0, -1.0),
                                 child: SingleChildScrollView(
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -182,7 +185,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                         children: [
                                           Expanded(
                                             child: Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   2.0, 0.0),
                                               child: ClipRRect(
                                                 borderRadius:
@@ -198,7 +201,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     100.0, 25.0, 0.0, 0.0),
                                             child: FlutterFlowIconButton(
                                               borderColor: Colors.transparent,
@@ -220,16 +223,16 @@ class _PostsWidgetState extends State<PostsWidget>
                                         ],
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.all(16.0),
+                                        padding: EdgeInsets.all(16.0),
                                         child: Container(
                                           width: double.infinity,
                                           height: 610.0,
-                                          constraints: const BoxConstraints(
+                                          constraints: BoxConstraints(
                                             maxWidth: 570.0,
                                           ),
                                           decoration: BoxDecoration(
-                                            color: const Color(0xFFFFFCF6),
-                                            boxShadow: const [
+                                            color: Color(0xFFFFFCF6),
+                                            boxShadow: [
                                               BoxShadow(
                                                 blurRadius: 4.0,
                                                 color: Color(0x33000000),
@@ -248,7 +251,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 16.0, 0.0, 16.0),
                                                 child: Row(
@@ -267,7 +270,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Readex Pro',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF2A497D),
                                                             fontSize: 23.0,
                                                             letterSpacing: 0.0,
@@ -279,7 +282,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         15.0, 0.0, 15.0, 0.0),
                                                 child: Row(
@@ -291,7 +294,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     10.0,
                                                                     0.0,
@@ -299,7 +302,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                     0.0),
                                                         child:
                                                             FlutterFlowChoiceChips(
-                                                          options: const [
+                                                          options: [
                                                             ChipData('الكل'),
                                                             ChipData('مواليد'),
                                                             ChipData('تعزيه'),
@@ -319,7 +322,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                           selectedChipStyle:
                                                               ChipStyle(
                                                             backgroundColor:
-                                                                const Color(
+                                                                Color(
                                                                     0xFF87A4D0),
                                                             textStyle:
                                                                 FlutterFlowTheme.of(
@@ -334,7 +337,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
-                                                            iconColor: const Color(
+                                                            iconColor: Color(
                                                                 0xFFFFFCF6),
                                                             iconSize: 16.0,
                                                             elevation: 0.0,
@@ -346,7 +349,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                           unselectedChipStyle:
                                                               ChipStyle(
                                                             backgroundColor:
-                                                                const Color(
+                                                                Color(
                                                                     0xFFFFFCF6),
                                                             textStyle:
                                                                 FlutterFlowTheme.of(
@@ -399,11 +402,11 @@ class _PostsWidgetState extends State<PostsWidget>
                                                 Expanded(
                                                   child: Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, -1.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   2.0,
@@ -417,7 +420,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                     .height *
                                                                 0.74,
                                                         decoration:
-                                                            const BoxDecoration(
+                                                            BoxDecoration(
                                                           color:
                                                               Color(0xFFFFFCF6),
                                                           borderRadius:
@@ -438,7 +441,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       6.0,
                                                                       0.0,
@@ -490,7 +493,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                       .data!;
                                                               if (mainListPostsRecordList
                                                                   .isEmpty) {
-                                                                return const EmptyPostsWidget();
+                                                                return EmptyPostsWidget();
                                                               }
 
                                                               return SingleChildScrollView(
@@ -553,7 +556,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                         );
                                                                       },
                                                                     );
-                                                                  }).divide(const SizedBox(
+                                                                  }).divide(SizedBox(
                                                                       height:
                                                                           2.0)),
                                                                 ),
@@ -570,11 +573,11 @@ class _PostsWidgetState extends State<PostsWidget>
                                                 Expanded(
                                                   child: Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, -1.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   2.0,
@@ -588,7 +591,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                     .height *
                                                                 0.74,
                                                         decoration:
-                                                            const BoxDecoration(
+                                                            BoxDecoration(
                                                           color:
                                                               Color(0xFFFFFCF6),
                                                           borderRadius:
@@ -609,7 +612,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       6.0,
                                                                       0.0,
@@ -666,7 +669,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                       .data!;
                                                               if (mainListPostsRecordList
                                                                   .isEmpty) {
-                                                                return const EmptyPostsWidget();
+                                                                return EmptyPostsWidget();
                                                               }
 
                                                               return SingleChildScrollView(
@@ -727,7 +730,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                         );
                                                                       },
                                                                     );
-                                                                  }).divide(const SizedBox(
+                                                                  }).divide(SizedBox(
                                                                       height:
                                                                           2.0)),
                                                                 ),
@@ -754,23 +757,23 @@ class _PostsWidgetState extends State<PostsWidget>
                       ],
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 30.0, 0.0, 30.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 17.0, 0.0, 10.0),
                                     child: StreamBuilder<List<UserrrRecord>>(
                                       stream: queryUserrrRecord(
@@ -810,7 +813,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                           borderRadius: 25.0,
                                           borderWidth: 1.0,
                                           buttonSize: 60.0,
-                                          fillColor: const Color(0xFF2A497D),
+                                          fillColor: Color(0xFF2A497D),
                                           icon: Icon(
                                             Icons.add_sharp,
                                             color: FlutterFlowTheme.of(context)
@@ -833,7 +836,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                     padding:
                                                         MediaQuery.viewInsetsOf(
                                                             context),
-                                                    child: const SharePostWidget(),
+                                                    child: SharePostWidget(),
                                                   ),
                                                 );
                                               },
@@ -851,7 +854,7 @@ class _PostsWidgetState extends State<PostsWidget>
                           wrapWithModel(
                             model: _model.navBar1Model,
                             updateCallback: () => safeSetState(() {}),
-                            child: const NavBar1Widget(
+                            child: NavBar1Widget(
                               currentpage: 'posts',
                             ),
                           ),

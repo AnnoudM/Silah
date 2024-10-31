@@ -5,10 +5,13 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
 import '/sprint1/side_admin/side_admin_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'edit_desc_model.dart';
 export 'edit_desc_model.dart';
@@ -81,7 +84,7 @@ class _EditDescWidgetState extends State<EditDescWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: const Color(0xFF2A497D),
+            backgroundColor: Color(0xFF2A497D),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -108,19 +111,19 @@ class _EditDescWidgetState extends State<EditDescWidget> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFF2A497D),
+            backgroundColor: Color(0xFF2A497D),
             endDrawer: Drawer(
               elevation: 16.0,
               child: wrapWithModel(
                 model: _model.sideAdminModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const SideAdminWidget(),
+                child: SideAdminWidget(),
               ),
             ),
             appBar: AppBar(
-              backgroundColor: const Color(0xFF2A497D),
+              backgroundColor: Color(0xFF2A497D),
               automaticallyImplyLeading: false,
-              actions: const [],
+              actions: [],
               flexibleSpace: FlexibleSpaceBar(
                 title: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
@@ -144,7 +147,7 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 0.0),
                         child: StreamBuilder<FamilyRecord>(
                           stream: FamilyRecord.getDocument(
@@ -177,8 +180,8 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                 width: double.infinity,
                                 height: 500.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFFFFCF6),
-                                  boxShadow: const [
+                                  color: Color(0xFFFFFCF6),
+                                  boxShadow: [
                                     BoxShadow(
                                       blurRadius: 4.0,
                                       color: Color(0x25090F13),
@@ -191,7 +194,7 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(24.0),
+                                  padding: EdgeInsets.all(24.0),
                                   child: SingleChildScrollView(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -217,7 +220,7 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                                           fontFamily:
                                                               'Readex Pro',
                                                           color:
-                                                              const Color(0xFF2A497D),
+                                                              Color(0xFF2A497D),
                                                           fontSize: 22.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -234,7 +237,7 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                                           fontFamily:
                                                               'Readex Pro',
                                                           color:
-                                                              const Color(0xFF2A497D),
+                                                              Color(0xFF2A497D),
                                                           fontSize: 22.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -247,14 +250,14 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                                     .bodyMedium
                                                     .override(
                                                       fontFamily: 'Readex Pro',
-                                                      color: const Color(0xFF2A497D),
+                                                      color: Color(0xFF2A497D),
                                                       letterSpacing: 0.0,
                                                     ),
                                               ),
                                             ),
                                           ],
                                         ),
-                                        const Divider(
+                                        Divider(
                                           height: 24.0,
                                           thickness: 2.0,
                                           color: Color(0xFFF1F4F8),
@@ -271,7 +274,7 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 24.0,
                                                                 16.0,
@@ -392,7 +395,7 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                                                 .of(context)
                                                             .secondaryBackground,
                                                         contentPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     20.0,
                                                                     24.0,
@@ -424,7 +427,7 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 50.0,
                                                                 25.0,
@@ -439,7 +442,7 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                                       children: [
                                                         Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   0.0, 0.05),
                                                           child: FFButtonWidget(
                                                             onPressed:
@@ -451,14 +454,14 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                                                 FFButtonOptions(
                                                               height: 44.0,
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           24.0,
                                                                           0.0,
                                                                           24.0,
                                                                           0.0),
                                                               iconPadding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -511,13 +514,13 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                                         ),
                                                         Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   0.0, 0.05),
                                                           child: StreamBuilder<
                                                               FamilyRecord>(
                                                             stream: FamilyRecord
                                                                 .getDocument(
-                                                                    editDescUsersRecord
+                                                                    editDescUsersRecord!
                                                                         .familyName!),
                                                             builder: (context,
                                                                 snapshot) {
@@ -550,7 +553,7 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                                               return FFButtonWidget(
                                                                 onPressed:
                                                                     () async {
-                                                                  await widget
+                                                                  await widget!
                                                                       .editDesc!
                                                                       .update(
                                                                           createFamilyRecordData(
@@ -575,7 +578,7 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                                                               FlutterFlowTheme.of(context).primaryText,
                                                                         ),
                                                                       ),
-                                                                      duration: const Duration(
+                                                                      duration: Duration(
                                                                           milliseconds:
                                                                               4000),
                                                                       backgroundColor:
@@ -588,19 +591,19 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                                                 options:
                                                                     FFButtonOptions(
                                                                   height: 44.0,
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           24.0,
                                                                           0.0,
                                                                           24.0,
                                                                           0.0),
-                                                                  iconPadding: const EdgeInsetsDirectional
+                                                                  iconPadding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF2A497D),
                                                                   textStyle: FlutterFlowTheme.of(
                                                                           context)
@@ -616,7 +619,7 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                                                   elevation:
                                                                       3.0,
                                                                   borderSide:
-                                                                      const BorderSide(
+                                                                      BorderSide(
                                                                     color: Colors
                                                                         .transparent,
                                                                     width: 1.0,
@@ -668,7 +671,7 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -679,7 +682,7 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                           wrapWithModel(
                             model: _model.navBar1Model,
                             updateCallback: () => safeSetState(() {}),
-                            child: const NavBar1Widget(),
+                            child: NavBar1Widget(),
                           ),
                         ],
                       ),

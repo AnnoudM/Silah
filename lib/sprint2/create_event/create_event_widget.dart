@@ -4,11 +4,16 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'create_event_model.dart';
 export 'create_event_model.dart';
 
@@ -87,8 +92,8 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
             curve: Curves.bounceOut,
             delay: 300.0.ms,
             duration: 400.0.ms,
-            begin: const Offset(0.0, 100.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 100.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -129,15 +134,15 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 2.0, 16.0, 16.0),
+              padding: EdgeInsetsDirectional.fromSTEB(16.0, 2.0, 16.0, 16.0),
               child: Container(
                 width: double.infinity,
-                constraints: const BoxConstraints(
+                constraints: BoxConstraints(
                   maxWidth: 670.0,
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFFFCF6),
-                  boxShadow: const [
+                  color: Color(0xFFFFFCF6),
+                  boxShadow: [
                     BoxShadow(
                       blurRadius: 12.0,
                       color: Color(0x1E000000),
@@ -186,9 +191,9 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 50.0, 24.0, 0.0),
                             child: Text(
                               'أنشئ مناسبة',
@@ -196,7 +201,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                   .headlineMedium
                                   .override(
                                     fontFamily: 'Readex Pro',
-                                    color: const Color(0xFF2A497D),
+                                    color: Color(0xFF2A497D),
                                     fontSize: 23.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
@@ -215,7 +220,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                           clipBehavior: Clip.none,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 16.0, 0.0, 32.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -228,7 +233,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 16.0, 24.0, 0.0),
                                           child: TextFormField(
                                             controller:
@@ -313,7 +318,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
                                               contentPadding:
-                                                  const EdgeInsetsDirectional
+                                                  EdgeInsetsDirectional
                                                       .fromSTEB(20.0, 24.0,
                                                           20.0, 24.0),
                                             ),
@@ -344,7 +349,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 16.0, 24.0, 0.0),
                                           child: TextFormField(
                                             controller: _model
@@ -429,7 +434,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
                                               contentPadding:
-                                                  const EdgeInsetsDirectional
+                                                  EdgeInsetsDirectional
                                                       .fromSTEB(20.0, 24.0,
                                                           20.0, 24.0),
                                             ),
@@ -455,7 +460,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 16.0, 24.0, 32.0),
                                           child: TextFormField(
                                             controller:
@@ -540,7 +545,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
                                               contentPadding:
-                                                  const EdgeInsetsDirectional
+                                                  EdgeInsetsDirectional
                                                       .fromSTEB(20.0, 24.0,
                                                           20.0, 24.0),
                                             ),
@@ -585,10 +590,10 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 5.0, 0.0, 0.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
@@ -597,7 +602,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                final datePicked1Date =
+                                                final _datePicked1Date =
                                                     await showDatePicker(
                                                   context: context,
                                                   initialDate:
@@ -656,13 +661,13 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                   },
                                                 );
 
-                                                if (datePicked1Date != null) {
+                                                if (_datePicked1Date != null) {
                                                   safeSetState(() {
                                                     _model.datePicked1 =
                                                         DateTime(
-                                                      datePicked1Date.year,
-                                                      datePicked1Date.month,
-                                                      datePicked1Date.day,
+                                                      _datePicked1Date.year,
+                                                      _datePicked1Date.month,
+                                                      _datePicked1Date.day,
                                                     );
                                                   });
                                                 }
@@ -679,7 +684,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                   children: [
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               -1.0, 0.0),
                                                       child: Text(
                                                         valueOrDefault<String>(
@@ -706,7 +711,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                     ),
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               -1.0, 0.0),
                                                       child: InkWell(
                                                         splashColor:
@@ -718,7 +723,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                         highlightColor:
                                                             Colors.transparent,
                                                         onTap: () async {
-                                                          final datePicked2Date =
+                                                          final _datePicked2Date =
                                                               await showDatePicker(
                                                             context: context,
                                                             initialDate:
@@ -733,10 +738,10 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                 context,
                                                                 child!,
                                                                 headerBackgroundColor:
-                                                                    const Color(
+                                                                    Color(
                                                                         0xFF2A497D),
                                                                 headerForegroundColor:
-                                                                    const Color(
+                                                                    Color(
                                                                         0xFFFFFCF6),
                                                                 headerTextStyle:
                                                                     FlutterFlowTheme.of(
@@ -761,7 +766,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                             context)
                                                                         .primaryText,
                                                                 selectedDateTimeBackgroundColor:
-                                                                    const Color(
+                                                                    Color(
                                                                         0xFF2A497D),
                                                                 selectedDateTimeForegroundColor:
                                                                     FlutterFlowTheme.of(
@@ -777,10 +782,10 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                           );
 
                                                           TimeOfDay?
-                                                              datePicked2Time;
-                                                          if (datePicked2Date !=
+                                                              _datePicked2Time;
+                                                          if (_datePicked2Date !=
                                                               null) {
-                                                            datePicked2Time =
+                                                            _datePicked2Time =
                                                                 await showTimePicker(
                                                               context: context,
                                                               initialTime: TimeOfDay
@@ -792,10 +797,10 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                   context,
                                                                   child!,
                                                                   headerBackgroundColor:
-                                                                      const Color(
+                                                                      Color(
                                                                           0xFF2A497D),
                                                                   headerForegroundColor:
-                                                                      const Color(
+                                                                      Color(
                                                                           0xFFFFFCF6),
                                                                   headerTextStyle: FlutterFlowTheme.of(
                                                                           context)
@@ -819,7 +824,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                               context)
                                                                           .primaryText,
                                                                   selectedDateTimeBackgroundColor:
-                                                                      const Color(
+                                                                      Color(
                                                                           0xFF2A497D),
                                                                   selectedDateTimeForegroundColor:
                                                                       FlutterFlowTheme.of(
@@ -836,22 +841,22 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                             );
                                                           }
 
-                                                          if (datePicked2Date !=
+                                                          if (_datePicked2Date !=
                                                                   null &&
-                                                              datePicked2Time !=
+                                                              _datePicked2Time !=
                                                                   null) {
                                                             safeSetState(() {
                                                               _model.datePicked2 =
                                                                   DateTime(
-                                                                datePicked2Date
+                                                                _datePicked2Date
                                                                     .year,
-                                                                datePicked2Date
+                                                                _datePicked2Date
                                                                     .month,
-                                                                datePicked2Date
+                                                                _datePicked2Date
                                                                     .day,
-                                                                datePicked2Time!
+                                                                _datePicked2Time!
                                                                     .hour,
-                                                                datePicked2Time
+                                                                _datePicked2Time
                                                                     .minute,
                                                               );
                                                             });
@@ -880,7 +885,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                             safeSetState(() {});
                                                           }
                                                         },
-                                                        child: const Icon(
+                                                        child: Icon(
                                                           Icons.date_range,
                                                           color:
                                                               Color(0xFF2A497D),
@@ -889,7 +894,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                       ),
                                                     ),
                                                   ].divide(
-                                                      const SizedBox(width: 10.0)),
+                                                      SizedBox(width: 10.0)),
                                                 ),
                                               ),
                                             ),
@@ -897,9 +902,9 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Padding(
-                                            padding: const EdgeInsets.all(12.0),
+                                            padding: EdgeInsets.all(12.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -908,7 +913,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                 Expanded(
                                                   child: Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Text(
                                                       _model.pastHour,
@@ -934,7 +939,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                   Expanded(
                                                     child: Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
                                                         _model.dateEmpty!,
@@ -965,7 +970,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 0.0, 24.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -973,7 +978,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.05),
                                                 child: FFButtonWidget(
                                                   onPressed: () async {
@@ -983,11 +988,11 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                   options: FFButtonOptions(
                                                     height: 44.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -1032,7 +1037,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                 ),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.05),
                                                 child:
                                                     StreamBuilder<FamilyRecord>(
@@ -1074,8 +1079,14 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                           safeSetState(() {});
                                                           if ((_model.eventNameTextController
                                                                           .text !=
+                                                                      null &&
+                                                                  _model.eventNameTextController
+                                                                          .text !=
                                                                       '') &&
                                                               (_model.eventLocationTextController
+                                                                          .text !=
+                                                                      null &&
+                                                                  _model.eventLocationTextController
                                                                           .text !=
                                                                       '')) {
                                                             if (functions
@@ -1122,10 +1133,10 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                       .reference,
                                                               createdBy:
                                                                   columnUsersRecord
-                                                                      .reference,
+                                                                      ?.reference,
                                                               publisherName:
                                                                   columnUsersRecord
-                                                                      .displayName,
+                                                                      ?.displayName,
                                                               eventDes: _model
                                                                   .eventDecTextController
                                                                   .text,
@@ -1148,7 +1159,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                     .secondaryBackground,
                                                               ),
                                                             ),
-                                                            duration: const Duration(
+                                                            duration: Duration(
                                                                 milliseconds:
                                                                     4000),
                                                             backgroundColor:
@@ -1162,21 +1173,21 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                       options: FFButtonOptions(
                                                         height: 44.0,
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     24.0,
                                                                     0.0,
                                                                     24.0,
                                                                     0.0),
                                                         iconPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
                                                                     0.0,
                                                                     0.0),
                                                         color:
-                                                            const Color(0xFF2A497D),
+                                                            Color(0xFF2A497D),
                                                         textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1188,7 +1199,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                       0.0,
                                                                 ),
                                                         elevation: 3.0,
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color: Colors
                                                               .transparent,
                                                           width: 1.0,

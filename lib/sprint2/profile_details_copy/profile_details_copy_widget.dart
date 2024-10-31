@@ -3,9 +3,14 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'profile_details_copy_model.dart';
 export 'profile_details_copy_model.dart';
 
@@ -51,22 +56,22 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 140.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 140.0),
+            end: Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.9, 1.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.9, 1.0),
+            end: Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(-0.349, 0),
-            end: const Offset(0, 0),
+            begin: Offset(-0.349, 0),
+            end: Offset(0, 0),
           ),
         ],
       ),
@@ -86,7 +91,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFFFFCF6),
+        backgroundColor: Color(0xFFFFFCF6),
         body: Stack(
           children: [
             Row(
@@ -97,7 +102,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                   child: Container(
                     width: 100.0,
                     height: double.infinity,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [Color(0xFF2A497D), Color(0xFF2A497D)],
                         stops: [0.0, 1.0],
@@ -105,7 +110,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                         end: AlignmentDirectional(-0.87, 1.0),
                       ),
                     ),
-                    alignment: const AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -121,7 +126,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                   borderRadius: 30.0,
                                   borderWidth: 1.0,
                                   buttonSize: 71.0,
-                                  icon: const Icon(
+                                  icon: Icon(
                                     Icons.arrow_back_rounded,
                                     color: Colors.white,
                                     size: 30.0,
@@ -133,7 +138,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: const AlignmentDirectional(1.0, 0.0),
+                                  alignment: AlignmentDirectional(1.0, 0.0),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: Image.asset(
@@ -148,16 +153,16 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(16.0),
+                            padding: EdgeInsets.all(16.0),
                             child: Container(
                               width: double.infinity,
                               height: 463.0,
-                              constraints: const BoxConstraints(
+                              constraints: BoxConstraints(
                                 maxWidth: 570.0,
                               ),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFFFFCF6),
-                                boxShadow: const [
+                                color: Color(0xFFFFFCF6),
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x33000000),
@@ -177,7 +182,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 16.0, 0.0, 16.0),
                                         child: Text(
                                           'التفاصيل',
@@ -185,7 +190,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Readex Pro',
-                                                color: const Color(0xFF2A497D),
+                                                color: Color(0xFF2A497D),
                                                 fontSize: 23.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
@@ -195,7 +200,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                     ],
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -203,7 +208,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                           MainAxisAlignment.center,
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.all(4.0),
+                                          padding: EdgeInsets.all(4.0),
                                           child:
                                               StreamBuilder<List<UsersRecord>>(
                                             stream: queryUsersRecord(
@@ -247,7 +252,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                 width: 160.0,
                                                 height: 160.0,
                                                 clipBehavior: Clip.antiAlias,
-                                                decoration: const BoxDecoration(
+                                                decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
                                                 ),
                                                 child: Image.network(
@@ -263,7 +268,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -271,7 +276,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          widget.name!.fullName,
+                                          widget!.name!.fullName,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -285,7 +290,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -297,7 +302,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                         Flexible(
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Container(
                                               width: 300.0,
                                               height: 53.0,
@@ -305,7 +310,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
-                                                boxShadow: const [
+                                                boxShadow: [
                                                   BoxShadow(
                                                     blurRadius: 4.0,
                                                     color: Color(0x33000000),
@@ -315,7 +320,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                     ),
                                                   )
                                                 ],
-                                                borderRadius: const BorderRadius.only(
+                                                borderRadius: BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(15.0),
                                                   bottomRight:
@@ -327,7 +332,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Row(
@@ -349,7 +354,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                     Flexible(
                                                       child: Align(
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 -1.0, 0.0),
                                                         child: Row(
                                                           mainAxisSize:
@@ -360,7 +365,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           0.0,
@@ -377,7 +382,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                             Flexible(
                                                               child: Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         -1.0,
                                                                         0.0),
                                                                 child: Wrap(
@@ -403,12 +408,12 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                                   children: [
                                                                     Align(
                                                                       alignment:
-                                                                          const AlignmentDirectional(
+                                                                          AlignmentDirectional(
                                                                               -1.0,
                                                                               0.0),
                                                                       child:
                                                                           Text(
-                                                                        widget
+                                                                        widget!
                                                                             .name!
                                                                             .email,
                                                                         style: FlutterFlowTheme.of(context)
@@ -440,7 +445,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                       onTap: () async {
                                                         await Clipboard.setData(
                                                             ClipboardData(
-                                                                text: widget
+                                                                text: widget!
                                                                     .name!
                                                                     .email));
                                                         ScaffoldMessenger.of(
@@ -455,7 +460,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                                     .alternate,
                                                               ),
                                                             ),
-                                                            duration: const Duration(
+                                                            duration: Duration(
                                                                 milliseconds:
                                                                     4000),
                                                             backgroundColor:
@@ -484,7 +489,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -494,9 +499,9 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                         Flexible(
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 14.0, 0.0, 0.0),
                                               child: Container(
@@ -506,7 +511,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryBackground,
-                                                  boxShadow: const [
+                                                  boxShadow: [
                                                     BoxShadow(
                                                       blurRadius: 4.0,
                                                       color: Color(0x33000000),
@@ -517,7 +522,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                     )
                                                   ],
                                                   borderRadius:
-                                                      const BorderRadius.only(
+                                                      BorderRadius.only(
                                                     bottomLeft:
                                                         Radius.circular(15.0),
                                                     bottomRight:
@@ -529,7 +534,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 10.0, 0.0),
                                                   child: Row(
@@ -542,7 +547,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                       Flexible(
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   -1.0, 0.0),
                                                           child: Row(
                                                             mainAxisSize:
@@ -554,7 +559,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             16.0,
                                                                             0.0,
@@ -571,7 +576,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                               Flexible(
                                                                 child: Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           -1.0,
                                                                           0.0),
                                                                   child: Wrap(
@@ -597,12 +602,12 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                                         Clip.none,
                                                                     children: [
                                                                       Align(
-                                                                        alignment: const AlignmentDirectional(
+                                                                        alignment: AlignmentDirectional(
                                                                             -1.0,
                                                                             0.0),
                                                                         child:
                                                                             Text(
-                                                                          widget
+                                                                          widget!
                                                                               .name!
                                                                               .phoneNumber,
                                                                           style: FlutterFlowTheme.of(context)
@@ -634,7 +639,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                         onTap: () async {
                                                           await Clipboard.setData(
                                                               ClipboardData(
-                                                                  text: widget
+                                                                  text: widget!
                                                                       .name!
                                                                       .phoneNumber));
                                                           ScaffoldMessenger.of(
@@ -650,7 +655,7 @@ class _ProfileDetailsCopyWidgetState extends State<ProfileDetailsCopyWidget>
                                                                       .alternate,
                                                                 ),
                                                               ),
-                                                              duration: const Duration(
+                                                              duration: Duration(
                                                                   milliseconds:
                                                                       4000),
                                                               backgroundColor:

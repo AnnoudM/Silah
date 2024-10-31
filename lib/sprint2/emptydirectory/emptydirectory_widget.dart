@@ -1,6 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'emptydirectory_model.dart';
 export 'emptydirectory_model.dart';
 
@@ -36,12 +38,12 @@ class _EmptydirectoryWidgetState extends State<EmptydirectoryWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          const Padding(
+          Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 0.0),
             child: Icon(
               Icons.no_accounts,
@@ -50,12 +52,12 @@ class _EmptydirectoryWidgetState extends State<EmptydirectoryWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
             child: Text(
               'لايوجد اعضاء في هذه العائلة',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                     fontFamily: 'Outfit',
-                    color: const Color(0xFF15161E),
+                    color: Color(0xFF15161E),
                     fontSize: 24.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w500,

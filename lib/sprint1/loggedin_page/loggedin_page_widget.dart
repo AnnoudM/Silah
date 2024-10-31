@@ -1,9 +1,14 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'loggedin_page_model.dart';
 export 'loggedin_page_model.dart';
 
@@ -90,7 +95,7 @@ class _LoggedinPageWidgetState extends State<LoggedinPageWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFFFFCF6),
+        backgroundColor: Color(0xFFFFFCF6),
         body: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -99,7 +104,7 @@ class _LoggedinPageWidgetState extends State<LoggedinPageWidget> {
               child: Container(
                 width: 100.0,
                 height: double.infinity,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [Color(0xFF2A497D), Color(0xFF2A497D)],
                     stops: [0.0, 1.0],
@@ -107,7 +112,7 @@ class _LoggedinPageWidgetState extends State<LoggedinPageWidget> {
                     end: AlignmentDirectional(-0.87, 1.0),
                   ),
                 ),
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
               ),
             ),
           ],

@@ -1,7 +1,10 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'event_model.dart';
 export 'event_model.dart';
 
@@ -12,7 +15,7 @@ class EventWidget extends StatefulWidget {
     this.eventRef,
     this.familyRef,
     this.eventselect,
-  }) : event = event ?? '';
+  }) : this.event = event ?? '';
 
   final String event;
   final DocumentReference? eventRef;
@@ -48,7 +51,7 @@ class _EventWidgetState extends State<EventWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(1.0),
+      padding: EdgeInsets.all(1.0),
       child: StreamBuilder<List<EventsRecord>>(
         stream: queryEventsRecord(
           singleRecord: true,
@@ -86,7 +89,7 @@ class _EventWidgetState extends State<EventWidget> {
                 BoxShadow(
                   blurRadius: 0.0,
                   color: FlutterFlowTheme.of(context).alternate,
-                  offset: const Offset(
+                  offset: Offset(
                     0.0,
                     1.0,
                   ),
@@ -99,9 +102,9 @@ class _EventWidgetState extends State<EventWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.0),
                   child: StreamBuilder<EventsRecord>(
-                    stream: EventsRecord.getDocument(widget.eventRef!),
+                    stream: EventsRecord.getDocument(widget!.eventRef!),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -127,9 +130,9 @@ class _EventWidgetState extends State<EventWidget> {
                         children: [
                           Expanded(
                             child: Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -170,9 +173,9 @@ class _EventWidgetState extends State<EventWidget> {
                           ),
                           Expanded(
                             child: Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: Text(
                                   dateTimeFormat(
                                     "y/M/d  h:mm a",
@@ -222,7 +225,7 @@ class _EventWidgetState extends State<EventWidget> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 18.0, 0.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -249,7 +252,7 @@ class _EventWidgetState extends State<EventWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Readex Pro',
-                                            color: const Color(0xFF2A497D),
+                                            color: Color(0xFF2A497D),
                                             letterSpacing: 0.0,
                                           ),
                                     ),

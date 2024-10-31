@@ -1,13 +1,19 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'event_edit_model.dart';
 export 'event_edit_model.dart';
 
@@ -58,22 +64,22 @@ class _EventEditWidgetState extends State<EventEditWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 140.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 140.0),
+            end: Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.9, 1.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.9, 1.0),
+            end: Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(-0.349, 0),
-            end: const Offset(0, 0),
+            begin: Offset(-0.349, 0),
+            end: Offset(0, 0),
           ),
         ],
       ),
@@ -90,12 +96,12 @@ class _EventEditWidgetState extends State<EventEditWidget>
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<EventsRecord>(
-      stream: EventsRecord.getDocument(widget.eventEdit!),
+      stream: EventsRecord.getDocument(widget!.eventEdit!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: Color(0xFFFFFCF6),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -116,7 +122,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: Color(0xFFFFFCF6),
             body: Stack(
               children: [
                 Row(
@@ -127,7 +133,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                       child: Container(
                         width: 100.0,
                         height: double.infinity,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [Color(0xFF2A497D), Color(0xFF2A497D)],
                             stops: [0.0, 1.0],
@@ -135,7 +141,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                             end: AlignmentDirectional(-0.87, 1.0),
                           ),
                         ),
-                        alignment: const AlignmentDirectional(0.0, -1.0),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -151,7 +157,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                       borderRadius: 30.0,
                                       borderWidth: 1.0,
                                       buttonSize: 71.0,
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.arrow_back_rounded,
                                         color: Colors.white,
                                         size: 30.0,
@@ -163,7 +169,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                   ),
                                   Expanded(
                                     child: Align(
-                                      alignment: const AlignmentDirectional(1.0, 0.0),
+                                      alignment: AlignmentDirectional(1.0, 0.0),
                                       child: ClipRRect(
                                         borderRadius:
                                             BorderRadius.circular(8.0),
@@ -179,16 +185,16 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                 ],
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(16.0),
+                                padding: EdgeInsets.all(16.0),
                                 child: Container(
                                   width: double.infinity,
                                   height: 598.0,
-                                  constraints: const BoxConstraints(
+                                  constraints: BoxConstraints(
                                     maxWidth: 570.0,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFFFFCF6),
-                                    boxShadow: const [
+                                    color: Color(0xFFFFFCF6),
+                                    boxShadow: [
                                       BoxShadow(
                                         blurRadius: 4.0,
                                         color: Color(0x33000000),
@@ -208,7 +214,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                         children: [
                                           Expanded(
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 30.0, 0.0, 16.0),
                                               child: Text(
@@ -219,7 +225,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                     .bodyMedium
                                                     .override(
                                                       fontFamily: 'Readex Pro',
-                                                      color: const Color(0xFF2A497D),
+                                                      color: Color(0xFF2A497D),
                                                       fontSize: 23.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -238,7 +244,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 16.0, 24.0, 0.0),
                                               child: TextFormField(
@@ -345,7 +351,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                               context)
                                                           .secondaryBackground,
                                                   contentPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(20.0, 24.0,
                                                               20.0, 24.0),
                                                 ),
@@ -377,7 +383,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 16.0, 24.0, 0.0),
                                               child: TextFormField(
@@ -484,7 +490,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                               context)
                                                           .secondaryBackground,
                                                   contentPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(20.0, 24.0,
                                                               20.0, 24.0),
                                                 ),
@@ -511,7 +517,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 16.0, 24.0, 32.0),
                                               child: TextFormField(
@@ -619,7 +625,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                               context)
                                                           .secondaryBackground,
                                                   contentPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(20.0, 24.0,
                                                               20.0, 24.0),
                                                 ),
@@ -670,10 +676,10 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                       ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 5.0, 0.0, 0.0),
                                                 child: InkWell(
@@ -686,7 +692,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                   highlightColor:
                                                       Colors.transparent,
                                                   onTap: () async {
-                                                    final datePicked1Date =
+                                                    final _datePicked1Date =
                                                         await showDatePicker(
                                                       context: context,
                                                       initialDate:
@@ -747,15 +753,15 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                       },
                                                     );
 
-                                                    if (datePicked1Date !=
+                                                    if (_datePicked1Date !=
                                                         null) {
                                                       safeSetState(() {
                                                         _model.datePicked1 =
                                                             DateTime(
-                                                          datePicked1Date.year,
-                                                          datePicked1Date
+                                                          _datePicked1Date.year,
+                                                          _datePicked1Date
                                                               .month,
-                                                          datePicked1Date.day,
+                                                          _datePicked1Date.day,
                                                         );
                                                       });
                                                     }
@@ -775,7 +781,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                             null)
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
                                                               _model
@@ -796,7 +802,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                             null)
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
                                                               valueOrDefault<
@@ -824,11 +830,11 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                           ),
                                                         Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   -1.0, 0.0),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         2.0,
                                                                         0.0,
@@ -845,7 +851,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                                   Colors
                                                                       .transparent,
                                                               onTap: () async {
-                                                                final datePicked2Date =
+                                                                final _datePicked2Date =
                                                                     await showDatePicker(
                                                                   context:
                                                                       context,
@@ -863,7 +869,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                                       context,
                                                                       child!,
                                                                       headerBackgroundColor:
-                                                                          const Color(
+                                                                          Color(
                                                                               0xFF2A497D),
                                                                       headerForegroundColor:
                                                                           FlutterFlowTheme.of(context)
@@ -888,7 +894,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                                           FlutterFlowTheme.of(context)
                                                                               .primaryText,
                                                                       selectedDateTimeBackgroundColor:
-                                                                          const Color(
+                                                                          Color(
                                                                               0xFF2A497D),
                                                                       selectedDateTimeForegroundColor:
                                                                           FlutterFlowTheme.of(context)
@@ -903,10 +909,10 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                                 );
 
                                                                 TimeOfDay?
-                                                                    datePicked2Time;
-                                                                if (datePicked2Date !=
+                                                                    _datePicked2Time;
+                                                                if (_datePicked2Date !=
                                                                     null) {
-                                                                  datePicked2Time =
+                                                                  _datePicked2Time =
                                                                       await showTimePicker(
                                                                     context:
                                                                         context,
@@ -920,7 +926,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                                         context,
                                                                         child!,
                                                                         headerBackgroundColor:
-                                                                            const Color(0xFF2A497D),
+                                                                            Color(0xFF2A497D),
                                                                         headerForegroundColor:
                                                                             FlutterFlowTheme.of(context).info,
                                                                         headerTextStyle: FlutterFlowTheme.of(context)
@@ -936,7 +942,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                                         pickerForegroundColor:
                                                                             FlutterFlowTheme.of(context).primaryText,
                                                                         selectedDateTimeBackgroundColor:
-                                                                            const Color(0xFF2A497D),
+                                                                            Color(0xFF2A497D),
                                                                         selectedDateTimeForegroundColor:
                                                                             FlutterFlowTheme.of(context).info,
                                                                         actionButtonForegroundColor:
@@ -948,23 +954,23 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                                   );
                                                                 }
 
-                                                                if (datePicked2Date !=
+                                                                if (_datePicked2Date !=
                                                                         null &&
-                                                                    datePicked2Time !=
+                                                                    _datePicked2Time !=
                                                                         null) {
                                                                   safeSetState(
                                                                       () {
                                                                     _model.datePicked2 =
                                                                         DateTime(
-                                                                      datePicked2Date
+                                                                      _datePicked2Date
                                                                           .year,
-                                                                      datePicked2Date
+                                                                      _datePicked2Date
                                                                           .month,
-                                                                      datePicked2Date
+                                                                      _datePicked2Date
                                                                           .day,
-                                                                      datePicked2Time!
+                                                                      _datePicked2Time!
                                                                           .hour,
-                                                                      datePicked2Time
+                                                                      _datePicked2Time
                                                                           .minute,
                                                                     );
                                                                   });
@@ -991,7 +997,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                                   return;
                                                                 }
                                                               },
-                                                              child: const Icon(
+                                                              child: Icon(
                                                                 Icons
                                                                     .date_range,
                                                                 color: Color(
@@ -1015,7 +1021,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                   Expanded(
                                                     child: Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
                                                         _model.dateEmpty!,
@@ -1043,7 +1049,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                               ],
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       50.0, 25.0, 50.0, 0.0),
                                               child: Row(
@@ -1054,7 +1060,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                 children: [
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, 0.05),
                                                     child: FFButtonWidget(
                                                       onPressed: () async {
@@ -1064,14 +1070,14 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                       options: FFButtonOptions(
                                                         height: 44.0,
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     24.0,
                                                                     0.0,
                                                                     24.0,
                                                                     0.0),
                                                         iconPadding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1121,7 +1127,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, 0.05),
                                                     child: StreamBuilder<
                                                         FamilyRecord>(
@@ -1161,8 +1167,14 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                                 null) {
                                                               if (!((_model.eventNameTextController
                                                                               .text !=
+                                                                          null &&
+                                                                      _model.eventNameTextController
+                                                                              .text !=
                                                                           '') &&
                                                                   (_model.eventLocationTextController
+                                                                              .text !=
+                                                                          null &&
+                                                                      _model.eventLocationTextController
                                                                               .text !=
                                                                           ''))) {
                                                                 return;
@@ -1170,14 +1182,20 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                             } else {
                                                               if (!((_model.eventNameTextController
                                                                               .text !=
+                                                                          null &&
+                                                                      _model.eventNameTextController
+                                                                              .text !=
                                                                           '') &&
                                                                   (_model.eventLocationTextController
+                                                                              .text !=
+                                                                          null &&
+                                                                      _model.eventLocationTextController
                                                                               .text !=
                                                                           ''))) {
                                                                 return;
                                                               }
 
-                                                              await widget
+                                                              await widget!
                                                                   .eventEdit!
                                                                   .update(
                                                                       createEventsRecordData(
@@ -1209,7 +1227,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                                           .secondaryBackground,
                                                                     ),
                                                                   ),
-                                                                  duration: const Duration(
+                                                                  duration: Duration(
                                                                       milliseconds:
                                                                           4000),
                                                                   backgroundColor:
@@ -1221,7 +1239,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                               return;
                                                             }
 
-                                                            await widget
+                                                            await widget!
                                                                 .eventEdit!
                                                                 .update(
                                                                     createEventsRecordData(
@@ -1255,7 +1273,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                                         .secondaryBackground,
                                                                   ),
                                                                 ),
-                                                                duration: const Duration(
+                                                                duration: Duration(
                                                                     milliseconds:
                                                                         4000),
                                                                 backgroundColor:
@@ -1270,20 +1288,20 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                               FFButtonOptions(
                                                             height: 44.0,
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         24.0,
                                                                         0.0,
                                                                         24.0,
                                                                         0.0),
                                                             iconPadding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
                                                                         0.0,
                                                                         0.0),
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF2A497D),
                                                             textStyle:
                                                                 FlutterFlowTheme.of(
@@ -1299,7 +1317,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                                     ),
                                                             elevation: 3.0,
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Colors
                                                                   .transparent,
                                                               width: 1.0,

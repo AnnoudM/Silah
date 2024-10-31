@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/sprint1/logout_alert/logout_alert_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'side_admin_copy_model.dart';
 export 'side_admin_copy_model.dart';
@@ -79,13 +80,13 @@ class _SideAdminCopyWidgetState extends State<SideAdminCopyWidget> {
             Container(
               width: MediaQuery.sizeOf(context).width * 1.0,
               height: MediaQuery.sizeOf(context).height * 0.2,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Color(0xFF2A497D),
               ),
               child: Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -97,7 +98,7 @@ class _SideAdminCopyWidgetState extends State<SideAdminCopyWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               columnUsersRecord!.fullName,
                               style: FlutterFlowTheme.of(context)
@@ -111,7 +112,7 @@ class _SideAdminCopyWidgetState extends State<SideAdminCopyWidget> {
                             ),
                           ),
                           Text(
-                            columnUsersRecord.email,
+                            columnUsersRecord!.email,
                             style: FlutterFlowTheme.of(context)
                                 .labelSmall
                                 .override(
@@ -123,10 +124,10 @@ class _SideAdminCopyWidgetState extends State<SideAdminCopyWidget> {
                                 ),
                           ),
                         ]
-                            .divide(const SizedBox(height: 4.0))
-                            .around(const SizedBox(height: 4.0)),
+                            .divide(SizedBox(height: 4.0))
+                            .around(SizedBox(height: 4.0)),
                       ),
-                    ].divide(const SizedBox(width: 16.0)),
+                    ].divide(SizedBox(width: 16.0)),
                   ),
                 ),
               ),
@@ -142,9 +143,9 @@ class _SideAdminCopyWidgetState extends State<SideAdminCopyWidget> {
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.vertical,
                   children: [
-                    if (columnUsersRecord.isAdmin == true)
+                    if (columnUsersRecord?.isAdmin == true)
                       Align(
-                        alignment: const AlignmentDirectional(-1.0, -1.0),
+                        alignment: AlignmentDirectional(-1.0, -1.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -185,7 +186,7 @@ class _SideAdminCopyWidgetState extends State<SideAdminCopyWidget> {
                         ),
                       ),
                     Align(
-                      alignment: const AlignmentDirectional(-1.0, -1.0),
+                      alignment: AlignmentDirectional(-1.0, -1.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -225,7 +226,7 @@ class _SideAdminCopyWidgetState extends State<SideAdminCopyWidget> {
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(-1.0, -1.0),
+                      alignment: AlignmentDirectional(-1.0, -1.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -283,7 +284,7 @@ class _SideAdminCopyWidgetState extends State<SideAdminCopyWidget> {
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
               child: Align(
-                alignment: const AlignmentDirectional(-1.0, -1.0),
+                alignment: AlignmentDirectional(-1.0, -1.0),
                 child: Builder(
                   builder: (context) => InkWell(
                     splashColor: Colors.transparent,
@@ -298,9 +299,9 @@ class _SideAdminCopyWidgetState extends State<SideAdminCopyWidget> {
                             elevation: 0,
                             insetPadding: EdgeInsets.zero,
                             backgroundColor: Colors.transparent,
-                            alignment: const AlignmentDirectional(0.0, 0.0)
+                            alignment: AlignmentDirectional(0.0, 0.0)
                                 .resolve(Directionality.of(context)),
-                            child: const LogoutAlertWidget(),
+                            child: LogoutAlertWidget(),
                           );
                         },
                       );

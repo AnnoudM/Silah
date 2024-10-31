@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/sprint1/logout_alert/logout_alert_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'sideuser_copy_model.dart';
 export 'sideuser_copy_model.dart';
@@ -80,24 +81,24 @@ class _SideuserCopyWidgetState extends State<SideuserCopyWidget> {
             Container(
               width: MediaQuery.sizeOf(context).width * 1.0,
               height: MediaQuery.sizeOf(context).height * 0.2,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Color(0xFF2A497D),
               ),
               child: Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: FlutterFlowIconButton(
-                        borderColor: const Color(0xFF2A497D),
+                        borderColor: Color(0xFF2A497D),
                         borderRadius: 20.0,
                         borderWidth: 1.0,
                         buttonSize: 40.0,
-                        fillColor: const Color(0xFF2A497D),
+                        fillColor: Color(0xFF2A497D),
                         icon: Icon(
                           Icons.arrow_back_ios,
                           color: FlutterFlowTheme.of(context).primaryBackground,
@@ -114,7 +115,7 @@ class _SideuserCopyWidgetState extends State<SideuserCopyWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             columnUsersRecord!.fullName,
                             style: FlutterFlowTheme.of(context)
@@ -128,7 +129,7 @@ class _SideuserCopyWidgetState extends State<SideuserCopyWidget> {
                           ),
                         ),
                         Text(
-                          columnUsersRecord.email,
+                          columnUsersRecord!.email,
                           style: FlutterFlowTheme.of(context)
                               .labelSmall
                               .override(
@@ -140,10 +141,10 @@ class _SideuserCopyWidgetState extends State<SideuserCopyWidget> {
                               ),
                         ),
                       ]
-                          .divide(const SizedBox(height: 4.0))
-                          .around(const SizedBox(height: 4.0)),
+                          .divide(SizedBox(height: 4.0))
+                          .around(SizedBox(height: 4.0)),
                     ),
-                  ].divide(const SizedBox(width: 16.0)),
+                  ].divide(SizedBox(width: 16.0)),
                 ),
               ),
             ),
@@ -159,7 +160,7 @@ class _SideuserCopyWidgetState extends State<SideuserCopyWidget> {
                   scrollDirection: Axis.vertical,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(-1.0, -1.0),
+                      alignment: AlignmentDirectional(-1.0, -1.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -199,7 +200,7 @@ class _SideuserCopyWidgetState extends State<SideuserCopyWidget> {
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(-1.0, -1.0),
+                      alignment: AlignmentDirectional(-1.0, -1.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -257,7 +258,7 @@ class _SideuserCopyWidgetState extends State<SideuserCopyWidget> {
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
               child: Align(
-                alignment: const AlignmentDirectional(-1.0, -1.0),
+                alignment: AlignmentDirectional(-1.0, -1.0),
                 child: Builder(
                   builder: (context) => InkWell(
                     splashColor: Colors.transparent,
@@ -272,9 +273,9 @@ class _SideuserCopyWidgetState extends State<SideuserCopyWidget> {
                             elevation: 0,
                             insetPadding: EdgeInsets.zero,
                             backgroundColor: Colors.transparent,
-                            alignment: const AlignmentDirectional(0.0, 0.0)
+                            alignment: AlignmentDirectional(0.0, 0.0)
                                 .resolve(Directionality.of(context)),
-                            child: const LogoutAlertWidget(),
+                            child: LogoutAlertWidget(),
                           );
                         },
                       );
@@ -304,7 +305,7 @@ class _SideuserCopyWidgetState extends State<SideuserCopyWidget> {
                             FlutterFlowTheme.of(context).secondaryBackground,
                         dense: false,
                         contentPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       ),
                     ),
                   ),

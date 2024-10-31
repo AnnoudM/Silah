@@ -1,9 +1,13 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'accept_request_alert_model.dart';
 export 'accept_request_alert_model.dart';
 
@@ -12,7 +16,7 @@ class AcceptRequestAlertWidget extends StatefulWidget {
     super.key,
     required this.useraccept,
     String? accceptedname,
-  }) : accceptedname = accceptedname ?? ' ';
+  }) : this.accceptedname = accceptedname ?? ' ';
 
   final DocumentReference? useraccept;
   final String accceptedname;
@@ -47,18 +51,18 @@ class _AcceptRequestAlertWidgetState extends State<AcceptRequestAlertWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+        padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
         child: Container(
           width: MediaQuery.sizeOf(context).width,
           height: 230.0,
-          constraints: const BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: 530.0,
           ),
           decoration: BoxDecoration(
-            color: const Color(0xFFFFFCF6),
-            boxShadow: const [
+            color: Color(0xFFFFFCF6),
+            boxShadow: [
               BoxShadow(
                 blurRadius: 3.0,
                 color: Color(0x33000000),
@@ -70,12 +74,12 @@ class _AcceptRequestAlertWidgetState extends State<AcceptRequestAlertWidget> {
             ],
             borderRadius: BorderRadius.circular(24.0),
             border: Border.all(
-              color: const Color(0xFFF5FBFB),
+              color: Color(0xFFF5FBFB),
               width: 1.0,
             ),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
             child: StreamBuilder<List<UsersRecord>>(
               stream: queryUsersRecord(
                 singleRecord: true,
@@ -109,7 +113,7 @@ class _AcceptRequestAlertWidgetState extends State<AcceptRequestAlertWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
+                      padding: EdgeInsetsDirectional.fromSTEB(
                           24.0, 16.0, 24.0, 16.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -123,7 +127,7 @@ class _AcceptRequestAlertWidgetState extends State<AcceptRequestAlertWidget> {
                                 .displaySmall
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: const Color(0xFF2A497D),
+                                  color: Color(0xFF2A497D),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
@@ -135,7 +139,7 @@ class _AcceptRequestAlertWidgetState extends State<AcceptRequestAlertWidget> {
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 30.0, 0.0, 30.0),
                                   child: RichText(
                                     textScaler:
@@ -157,7 +161,7 @@ class _AcceptRequestAlertWidgetState extends State<AcceptRequestAlertWidget> {
                                               ),
                                         ),
                                         TextSpan(
-                                          text: widget.accceptedname,
+                                          text: widget!.accceptedname,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -197,15 +201,15 @@ class _AcceptRequestAlertWidgetState extends State<AcceptRequestAlertWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(8.0, 0.0),
+                            alignment: AlignmentDirectional(8.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 0.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
@@ -214,22 +218,22 @@ class _AcceptRequestAlertWidgetState extends State<AcceptRequestAlertWidget> {
                                 text: 'تراجع',
                                 options: FFButtonOptions(
                                   height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 20.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: Colors.white,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyLarge
                                       .override(
                                         fontFamily: 'Readex Pro',
-                                        color: const Color(0xFF2A497D),
+                                        color: Color(0xFF2A497D),
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                       ),
                                   elevation: 0.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0xFF2A497D),
                                   ),
                                   borderRadius: BorderRadius.circular(40.0),
@@ -238,12 +242,12 @@ class _AcceptRequestAlertWidgetState extends State<AcceptRequestAlertWidget> {
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(1.0, 0.0),
+                            alignment: AlignmentDirectional(1.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsets.all(2.0),
+                              padding: EdgeInsets.all(2.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  await widget.useraccept!
+                                  await widget!.useraccept!
                                       .update(createUsersRecordData(
                                     accepted: true,
                                   ));
@@ -258,7 +262,7 @@ class _AcceptRequestAlertWidgetState extends State<AcceptRequestAlertWidget> {
                                               .secondaryBackground,
                                         ),
                                       ),
-                                      duration: const Duration(milliseconds: 4000),
+                                      duration: Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context).success,
                                     ),
@@ -267,9 +271,9 @@ class _AcceptRequestAlertWidgetState extends State<AcceptRequestAlertWidget> {
                                 text: 'قبول',
                                 options: FFButtonOptions(
                                   height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 20.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).success,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -282,7 +286,7 @@ class _AcceptRequestAlertWidgetState extends State<AcceptRequestAlertWidget> {
                                         fontWeight: FontWeight.w500,
                                       ),
                                   elevation: 0.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                   ),
                                   borderRadius: BorderRadius.circular(40.0),
@@ -290,7 +294,7 @@ class _AcceptRequestAlertWidgetState extends State<AcceptRequestAlertWidget> {
                               ),
                             ),
                           ),
-                        ].divide(const SizedBox(width: 10.0)),
+                        ].divide(SizedBox(width: 10.0)),
                       ),
                     ),
                   ],

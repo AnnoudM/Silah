@@ -3,7 +3,10 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'delete_account_alert_model.dart';
 export 'delete_account_alert_model.dart';
 
@@ -45,18 +48,18 @@ class _DeleteAccountAlertWidgetState extends State<DeleteAccountAlertWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+        padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
         child: Container(
           width: MediaQuery.sizeOf(context).width,
           height: 210.0,
-          constraints: const BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: 530.0,
           ),
           decoration: BoxDecoration(
-            color: const Color(0xFFFFFCF6),
-            boxShadow: const [
+            color: Color(0xFFFFFCF6),
+            boxShadow: [
               BoxShadow(
                 blurRadius: 3.0,
                 color: Color(0x33000000),
@@ -68,12 +71,12 @@ class _DeleteAccountAlertWidgetState extends State<DeleteAccountAlertWidget> {
             ],
             borderRadius: BorderRadius.circular(24.0),
             border: Border.all(
-              color: const Color(0xFFF5FBFB),
+              color: Color(0xFFF5FBFB),
               width: 1.0,
             ),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
             child: StreamBuilder<List<UsersRecord>>(
               stream: queryUsersRecord(
                 singleRecord: true,
@@ -107,7 +110,7 @@ class _DeleteAccountAlertWidgetState extends State<DeleteAccountAlertWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
+                      padding: EdgeInsetsDirectional.fromSTEB(
                           24.0, 16.0, 24.0, 16.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -121,7 +124,7 @@ class _DeleteAccountAlertWidgetState extends State<DeleteAccountAlertWidget> {
                                 .displaySmall
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: const Color(0xFF2A497D),
+                                  color: Color(0xFF2A497D),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
@@ -132,7 +135,7 @@ class _DeleteAccountAlertWidgetState extends State<DeleteAccountAlertWidget> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 30.0, 0.0, 30.0),
                                 child: Text(
                                   'هل أنت متأكد من انك تريد حذف حسابك ؟',
@@ -154,13 +157,13 @@ class _DeleteAccountAlertWidgetState extends State<DeleteAccountAlertWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 12.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 12.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
@@ -169,22 +172,22 @@ class _DeleteAccountAlertWidgetState extends State<DeleteAccountAlertWidget> {
                               text: 'تراجع',
                               options: FFButtonOptions(
                                 height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 20.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: Colors.white,
                                 textStyle: FlutterFlowTheme.of(context)
                                     .bodyLarge
                                     .override(
                                       fontFamily: 'Readex Pro',
-                                      color: const Color(0xFF2A497D),
+                                      color: Color(0xFF2A497D),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
                                     ),
                                 elevation: 0.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0xFF2A497D),
                                 ),
                                 borderRadius: BorderRadius.circular(40.0),
@@ -193,7 +196,7 @@ class _DeleteAccountAlertWidgetState extends State<DeleteAccountAlertWidget> {
                           ),
                           FFButtonWidget(
                             onPressed: () async {
-                              await widget.deleteuser!.delete();
+                              await widget!.deleteuser!.delete();
                               await authManager.deleteUser(context);
                               GoRouter.of(context).prepareAuthEvent();
                               await authManager.signOut();
@@ -209,7 +212,7 @@ class _DeleteAccountAlertWidgetState extends State<DeleteAccountAlertWidget> {
                                           .secondaryBackground,
                                     ),
                                   ),
-                                  duration: const Duration(milliseconds: 4000),
+                                  duration: Duration(milliseconds: 4000),
                                   backgroundColor:
                                       FlutterFlowTheme.of(context).error,
                                 ),
@@ -221,9 +224,9 @@ class _DeleteAccountAlertWidgetState extends State<DeleteAccountAlertWidget> {
                             text: 'حذف',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 20.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).error,
                               textStyle: FlutterFlowTheme.of(context)
@@ -236,7 +239,7 @@ class _DeleteAccountAlertWidgetState extends State<DeleteAccountAlertWidget> {
                                     fontWeight: FontWeight.w500,
                                   ),
                               elevation: 0.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                               ),
                               borderRadius: BorderRadius.circular(40.0),

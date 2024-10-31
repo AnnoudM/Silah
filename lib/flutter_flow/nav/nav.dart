@@ -1,15 +1,23 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/backend/push_notifications/push_notifications_handler.dart'
     show PushNotificationsHandler;
 import '/index.dart';
+import '/main.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -74,25 +82,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? const LoggedinPageWidget()
-          : const InitialPageWidget(),
+          ? LoggedinPageWidget()
+          : InitialPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? const LoggedinPageWidget()
-              : const InitialPageWidget(),
+              ? LoggedinPageWidget()
+              : InitialPageWidget(),
         ),
         FFRoute(
           name: 'initialPage',
           path: '/initialPage',
-          builder: (context, params) => const InitialPageWidget(),
+          builder: (context, params) => InitialPageWidget(),
         ),
         FFRoute(
           name: 'Login',
           path: '/login',
-          builder: (context, params) => const LoginWidget(),
+          builder: (context, params) => LoginWidget(),
         ),
         FFRoute(
           name: 'PendingPage',
@@ -107,12 +115,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'recoverpassword',
           path: '/recoverpassword',
-          builder: (context, params) => const RecoverpasswordWidget(),
+          builder: (context, params) => RecoverpasswordWidget(),
         ),
         FFRoute(
           name: 'SignUpAdmin',
           path: '/signUpAdmin',
-          builder: (context, params) => const SignUpAdminWidget(),
+          builder: (context, params) => SignUpAdminWidget(),
         ),
         FFRoute(
           name: 'SignUpMember',
@@ -127,17 +135,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'HomeUser',
           path: '/homeUser',
-          builder: (context, params) => const HomeUserWidget(),
+          builder: (context, params) => HomeUserWidget(),
         ),
         FFRoute(
           name: 'requestsCopyCopy',
           path: '/requestsCopyCopy',
-          builder: (context, params) => const RequestsCopyCopyWidget(),
+          builder: (context, params) => RequestsCopyCopyWidget(),
         ),
         FFRoute(
           name: 'HomeAdmin',
           path: '/homeAdmin',
-          builder: (context, params) => const HomeAdminWidget(),
+          builder: (context, params) => HomeAdminWidget(),
         ),
         FFRoute(
           name: 'verification',
@@ -176,7 +184,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'profilePage',
           path: '/profilePage',
-          builder: (context, params) => const ProfilePageWidget(),
+          builder: (context, params) => ProfilePageWidget(),
         ),
         FFRoute(
           name: 'posts',
@@ -305,17 +313,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'HomeUserCopy',
           path: '/homeUserCopy',
-          builder: (context, params) => const HomeUserCopyWidget(),
+          builder: (context, params) => HomeUserCopyWidget(),
         ),
         FFRoute(
           name: 'FamilyFunds',
           path: '/familyFunds',
-          builder: (context, params) => const FamilyFundsWidget(),
+          builder: (context, params) => FamilyFundsWidget(),
         ),
         FFRoute(
           name: 'notificationCenter',
           path: '/notificationCenter',
-          builder: (context, params) => const NotificationCenterWidget(),
+          builder: (context, params) => NotificationCenterWidget(),
         ),
         FFRoute(
           name: 'postWithNotification',
@@ -334,16 +342,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.Document,
             ),
           ),
-        ),
-        FFRoute(
-          name: 'notificationCenterCopy',
-          path: '/notificationCenterCopy',
-          builder: (context, params) => const NotificationCenterCopyWidget(),
-        ),
-        FFRoute(
-          name: 'notificationCenterCopyCopy',
-          path: '/notificationCenterCopyCopy',
-          builder: (context, params) => const NotificationCenterCopyCopyWidget(),
         ),
         FFRoute(
           name: 'ChangePass',
@@ -368,11 +366,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               collectionNamePath: ['Users'],
             ),
           ),
-        ),
-        FFRoute(
-          name: 'FamilyFundsCopy',
-          path: '/familyFundsCopy',
-          builder: (context, params) => const FamilyFundsCopyWidget(),
         ),
         FFRoute(
           name: 'EventDetailsCopy',
@@ -573,7 +566,7 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: const Color(0xFF2A497D),
+                  color: Color(0xFF2A497D),
                   child: Image.asset(
                     'assets/images/Screenshot_2024-09-08_at_10.16.51_AM.jpeg',
                     fit: BoxFit.contain,
@@ -621,7 +614,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

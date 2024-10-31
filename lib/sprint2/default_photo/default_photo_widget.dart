@@ -1,5 +1,8 @@
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'default_photo_model.dart';
 export 'default_photo_model.dart';
 
@@ -40,20 +43,20 @@ class _DefaultPhotoWidgetState extends State<DefaultPhotoWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: const EdgeInsets.all(4.0),
+        padding: EdgeInsets.all(4.0),
         child: Container(
           width: 160.0,
           height: 160.0,
           clipBehavior: Clip.antiAlias,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             shape: BoxShape.circle,
           ),
           child: Image.asset(
             'assets/images/default_profile_picture.jpg',
             fit: BoxFit.contain,
-            alignment: const Alignment(0.0, 0.0),
+            alignment: Alignment(0.0, 0.0),
           ),
         ),
       ),

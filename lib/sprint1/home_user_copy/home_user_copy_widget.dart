@@ -3,10 +3,14 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/sprint1/sideuser_copy/sideuser_copy_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_user_copy_model.dart';
 export 'home_user_copy_model.dart';
@@ -72,7 +76,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: const Color(0xFF2A497D),
+            backgroundColor: Color(0xFF2A497D),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -99,7 +103,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFF2A497D),
+            backgroundColor: Color(0xFF2A497D),
             endDrawer: Drawer(
               elevation: 16.0,
               child: Column(
@@ -109,14 +113,14 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                     child: wrapWithModel(
                       model: _model.sideuserCopyModel,
                       updateCallback: () => safeSetState(() {}),
-                      child: const SideuserCopyWidget(),
+                      child: SideuserCopyWidget(),
                     ),
                   ),
                 ],
               ),
             ),
             appBar: AppBar(
-              backgroundColor: const Color(0xFF2A497D),
+              backgroundColor: Color(0xFF2A497D),
               automaticallyImplyLeading: false,
               title: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
@@ -127,7 +131,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                   fit: BoxFit.cover,
                 ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: true,
               elevation: 2.0,
             ),
@@ -139,7 +143,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 0.0),
                         child: StreamBuilder<FamilyRecord>(
                           stream: FamilyRecord.getDocument(
@@ -172,8 +176,8 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                 width: double.infinity,
                                 height: 500.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFFFFCF6),
-                                  boxShadow: const [
+                                  color: Color(0xFFFFFCF6),
+                                  boxShadow: [
                                     BoxShadow(
                                       blurRadius: 4.0,
                                       color: Color(0x25090F13),
@@ -186,7 +190,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 12.0, 12.0, 16.0),
                                   child: SingleChildScrollView(
                                     child: Column(
@@ -196,7 +200,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 12.0, 12.0, 16.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -222,7 +226,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Readex Pro',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF2A497D),
                                                                 fontSize: 22.0,
                                                                 letterSpacing:
@@ -242,7 +246,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Readex Pro',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF2A497D),
                                                                 fontSize: 22.0,
                                                                 letterSpacing:
@@ -259,7 +263,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Readex Pro',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF2A497D),
                                                             letterSpacing: 0.0,
                                                           ),
@@ -267,7 +271,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                                   ),
                                                 ],
                                               ),
-                                              const Divider(
+                                              Divider(
                                                 height: 24.0,
                                                 thickness: 2.0,
                                                 color: Color(0xFFF1F4F8),
@@ -280,10 +284,10 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                                   Flexible(
                                                     child: Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Padding(
-                                                        padding: const EdgeInsets.all(
+                                                        padding: EdgeInsets.all(
                                                             24.0),
                                                         child: Text(
                                                           containerFamilyRecord
@@ -296,7 +300,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Readex Pro',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF57636C),
                                                                 fontSize: 15.0,
                                                                 letterSpacing:
@@ -327,7 +331,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -338,7 +342,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                           Container(
                             width: double.infinity,
                             height: 90.0,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               color: Color(0x00EEEEEE),
                             ),
                             child: Stack(
@@ -350,7 +354,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                     Material(
                                       color: Colors.transparent,
                                       elevation: 0.0,
-                                      shape: const RoundedRectangleBorder(
+                                      shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(0.0),
                                           bottomRight: Radius.circular(0.0),
@@ -364,7 +368,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBackground,
-                                          boxShadow: const [
+                                          boxShadow: [
                                             BoxShadow(
                                               blurRadius: 10.0,
                                               color: Color(0x1A57636C),
@@ -375,7 +379,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                               spreadRadius: 0.1,
                                             )
                                           ],
-                                          borderRadius: const BorderRadius.only(
+                                          borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(0.0),
                                             bottomRight: Radius.circular(0.0),
                                             topLeft: Radius.circular(20.0),
@@ -397,7 +401,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                       borderRadius: 30.0,
                                       borderWidth: 1.0,
                                       buttonSize: 50.0,
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.people,
                                         color: Color(0xFF9299A1),
                                         size: 24.0,
@@ -411,7 +415,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                       borderRadius: 30.0,
                                       borderWidth: 1.0,
                                       buttonSize: 50.0,
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.post_add,
                                         color: Color(0xFF9299A1),
                                         size: 24.0,
@@ -435,15 +439,15 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 10.0),
                                           child: FlutterFlowIconButton(
                                             borderColor: Colors.transparent,
                                             borderRadius: 25.0,
                                             borderWidth: 1.0,
                                             buttonSize: 60.0,
-                                            fillColor: const Color(0xFF2A497D),
-                                            icon: const Icon(
+                                            fillColor: Color(0xFF2A497D),
+                                            icon: Icon(
                                               Icons.home,
                                               color: Colors.white,
                                               size: 30.0,
@@ -460,7 +464,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                       borderRadius: 30.0,
                                       borderWidth: 1.0,
                                       buttonSize: 50.0,
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.add_photo_alternate_outlined,
                                         color: Color(0xFF9299A1),
                                         size: 24.0,
@@ -474,7 +478,7 @@ class _HomeUserCopyWidgetState extends State<HomeUserCopyWidget> {
                                       borderRadius: 30.0,
                                       borderWidth: 1.0,
                                       buttonSize: 50.0,
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.date_range_rounded,
                                         color: Color(0xFF9299A1),
                                         size: 24.0,

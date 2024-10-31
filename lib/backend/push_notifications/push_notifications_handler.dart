@@ -1,17 +1,22 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'serialization_util.dart';
 import '../backend.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
+import '../../index.dart';
+import '../../main.dart';
 
 final _handledMessageIds = <String?>{};
 
 class PushNotificationsHandler extends StatefulWidget {
-  const PushNotificationsHandler({super.key, required this.child});
+  const PushNotificationsHandler({Key? key, required this.child})
+      : super(key: key);
 
   final Widget child;
 
@@ -72,7 +77,7 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
   @override
   Widget build(BuildContext context) => _loading
       ? Container(
-          color: const Color(0xFF2A497D),
+          color: Color(0xFF2A497D),
           child: Image.asset(
             'assets/images/Screenshot_2024-09-08_at_10.16.51_AM.jpeg',
             fit: BoxFit.contain,
@@ -97,7 +102,7 @@ class ParameterData {
       );
 
   static Future<ParameterData> Function(Map<String, dynamic>) none() =>
-      (data) async => const ParameterData();
+      (data) async => ParameterData();
 }
 
 final parametersBuilderMap =
@@ -202,8 +207,6 @@ final parametersBuilderMap =
               data, 'notification', NotificationsRecord.fromSnapshot),
         },
       ),
-  'notificationCenterCopy': ParameterData.none(),
-  'notificationCenterCopyCopy': ParameterData.none(),
   'ChangePass': (data) async => ParameterData(
         allParams: {
           'userEdit': getParameter<DocumentReference>(data, 'userEdit'),
@@ -214,7 +217,6 @@ final parametersBuilderMap =
           'userEdit': getParameter<DocumentReference>(data, 'userEdit'),
         },
       ),
-  'FamilyFundsCopy': ParameterData.none(),
   'EventDetailsCopy': (data) async => ParameterData(
         allParams: {
           'event': await getDocumentParameter<EventsRecord>(

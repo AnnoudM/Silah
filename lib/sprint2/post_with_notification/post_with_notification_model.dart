@@ -1,9 +1,24 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_choice_chips.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
 import '/sprint1/side_admin_copy/side_admin_copy_widget.dart';
+import '/sprint2/empty_posts/empty_posts_widget.dart';
+import '/sprint2/postitems/postitems_widget.dart';
+import '/sprint2/share_post_with_notification/share_post_with_notification_widget.dart';
+import 'dart:math';
 import 'post_with_notification_widget.dart' show PostWithNotificationWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class PostWithNotificationModel
     extends FlutterFlowModel<PostWithNotificationWidget> {

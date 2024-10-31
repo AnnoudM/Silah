@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'nav_bar1_model.dart';
 export 'nav_bar1_model.dart';
@@ -47,15 +48,15 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Container(
         width: double.infinity,
         height: 90.0,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: Color(0x00EEEEEE),
         ),
         child: Stack(
-          alignment: const AlignmentDirectional(-0.0, 0.0),
+          alignment: AlignmentDirectional(-0.0, 0.0),
           children: [
             Column(
               mainAxisSize: MainAxisSize.max,
@@ -64,7 +65,7 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                 Material(
                   color: Colors.transparent,
                   elevation: 0.0,
-                  shape: const RoundedRectangleBorder(
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0.0),
                       bottomRight: Radius.circular(0.0),
@@ -75,7 +76,7 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                   child: Container(
                     width: double.infinity,
                     height: 80.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFFFFFCF6),
                       boxShadow: [
                         BoxShadow(
@@ -112,8 +113,8 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                   icon: Icon(
                     Icons.people,
                     color: FFAppState().currentPage == 'DirectoryPage'
-                        ? const Color(0xFF2A497D)
-                        : const Color(0xFF9299A1),
+                        ? Color(0xFF2A497D)
+                        : Color(0xFF9299A1),
                     size: 24.0,
                   ),
                   onPressed: () async {
@@ -128,8 +129,8 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                   icon: Icon(
                     Icons.post_add,
                     color: FFAppState().currentPage == 'posts'
-                        ? const Color(0xFF2A497D)
-                        : const Color(0xFF9299A1),
+                        ? Color(0xFF2A497D)
+                        : Color(0xFF9299A1),
                     size: 24.0,
                   ),
                   onPressed: () async {
@@ -150,7 +151,7 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                       child: StreamBuilder<List<UsersRecord>>(
                         stream: queryUsersRecord(
                           queryBuilder: (usersRecord) => usersRecord.where(
@@ -190,8 +191,8 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                             borderRadius: 25.0,
                             borderWidth: 1.0,
                             buttonSize: 60.0,
-                            fillColor: const Color(0xFF2A497D),
-                            icon: const Icon(
+                            fillColor: Color(0xFF2A497D),
+                            icon: Icon(
                               Icons.home,
                               color: Colors.white,
                               size: 30.0,
@@ -219,13 +220,13 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                   borderRadius: 30.0,
                   borderWidth: 1.0,
                   buttonSize: 50.0,
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.add_photo_alternate_outlined,
                     color: Color(0xFF9299A1),
                     size: 24.0,
                   ),
-                  onPressed: () async {
-                    context.pushNamed('notificationCenterCopyCopy');
+                  onPressed: () {
+                    print('IconButton pressed ...');
                   },
                 ),
                 FlutterFlowIconButton(
@@ -236,8 +237,8 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                   icon: Icon(
                     Icons.date_range_rounded,
                     color: FFAppState().currentPage == 'CalenderPage'
-                        ? const Color(0xFF2A497F)
-                        : const Color(0xFF9299A1),
+                        ? Color(0xFF2A497F)
+                        : Color(0xFF9299A1),
                     size: 24.0,
                   ),
                   onPressed: () async {

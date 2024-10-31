@@ -8,6 +8,8 @@ import '/sprint1/accept_request_alert/accept_request_alert_widget.dart';
 import '/sprint1/empty_request_list_msg/empty_request_list_msg_widget.dart';
 import '/sprint1/reject_request_alert/reject_request_alert_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'requests_copy_copy_model.dart';
 export 'requests_copy_copy_model.dart';
 
@@ -42,18 +44,18 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFF2A497D),
+        backgroundColor: Color(0xFF2A497D),
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(70.0),
+          preferredSize: Size.fromHeight(70.0),
           child: AppBar(
-            backgroundColor: const Color(0xFF2A497D),
+            backgroundColor: Color(0xFF2A497D),
             automaticallyImplyLeading: false,
             leading: FlutterFlowIconButton(
               borderColor: Colors.transparent,
               borderRadius: 30.0,
               borderWidth: 1.0,
               buttonSize: 60.0,
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_back_rounded,
                 color: Colors.white,
                 size: 30.0,
@@ -71,7 +73,7 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                 fit: BoxFit.cover,
               ),
             ),
-            actions: const [],
+            actions: [],
             centerTitle: true,
             toolbarHeight: 70.0,
             elevation: 2.0,
@@ -127,13 +129,13 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(16.0),
+                                padding: EdgeInsets.all(16.0),
                                 child: Container(
                                   width: 430.0,
                                   height: 581.0,
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFFFFCF6),
-                                    boxShadow: const [
+                                    color: Color(0xFFFFFCF6),
+                                    boxShadow: [
                                       BoxShadow(
                                         blurRadius: 4.0,
                                         color: Color(0x33000000),
@@ -146,7 +148,7 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 16.0, 0.0, 0.0),
                                     child: SingleChildScrollView(
                                       child: Column(
@@ -158,7 +160,7 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 16.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -169,7 +171,7 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(16.0,
                                                                 10.0, 0.0, 5.0),
                                                     child: Text(
@@ -182,7 +184,7 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Readex Pro',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF2A497D),
                                                             fontSize: 18.0,
                                                             letterSpacing: 0.0,
@@ -196,11 +198,11 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                           Container(
                                             width: 382.0,
                                             height: 470.0,
-                                            decoration: const BoxDecoration(
+                                            decoration: BoxDecoration(
                                               color: Color(0xFFFFFCF6),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 5.0, 0.0),
                                               child: StreamBuilder<
                                                   List<UsersRecord>>(
@@ -251,7 +253,7 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                                       snapshot.data!;
                                                   if (listViewUsersRecordList
                                                       .isEmpty) {
-                                                    return const Center(
+                                                    return Center(
                                                       child:
                                                           EmptyRequestListMsgWidget(),
                                                     );
@@ -272,7 +274,7 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                                               listViewIndex];
                                                       return Align(
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 0.0, 0.0),
                                                         child: StreamBuilder<
                                                             List<UsersRecord>>(
@@ -352,12 +354,12 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                                                     Flexible(
                                                                       child:
                                                                           Align(
-                                                                        alignment: const AlignmentDirectional(
+                                                                        alignment: AlignmentDirectional(
                                                                             -0.8,
                                                                             1.0),
                                                                         child:
                                                                             Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               50.0,
@@ -377,12 +379,12 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                                                 ),
                                                                 Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           -0.8,
                                                                           1.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -405,12 +407,12 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                                                 ),
                                                                 Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           -0.8,
                                                                           1.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -441,7 +443,7 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                                                     Flexible(
                                                                       child:
                                                                           Align(
-                                                                        alignment: const AlignmentDirectional(
+                                                                        alignment: AlignmentDirectional(
                                                                             1.0,
                                                                             0.0),
                                                                         child:
@@ -457,12 +459,12 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                                                                     elevation: 0,
                                                                                     insetPadding: EdgeInsets.zero,
                                                                                     backgroundColor: Colors.transparent,
-                                                                                    alignment: const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                    alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                                     child: GestureDetector(
                                                                                       onTap: () => FocusScope.of(dialogContext).unfocus(),
                                                                                       child: RejectRequestAlertWidget(
-                                                                                        userreject: columnUsersRecord.reference,
-                                                                                        rejectedname: columnUsersRecord.fullName,
+                                                                                        userreject: columnUsersRecord!.reference,
+                                                                                        rejectedname: columnUsersRecord!.fullName,
                                                                                       ),
                                                                                     ),
                                                                                   );
@@ -474,8 +476,8 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                                                             options:
                                                                                 FFButtonOptions(
                                                                               height: 27.0,
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                                                                              iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                               color: FlutterFlowTheme.of(context).error,
                                                                               textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                     fontFamily: 'Readex Pro',
@@ -491,7 +493,7 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                                                     ),
                                                                     Align(
                                                                       alignment:
-                                                                          const AlignmentDirectional(
+                                                                          AlignmentDirectional(
                                                                               1.0,
                                                                               0.0),
                                                                       child:
@@ -499,7 +501,7 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                                                         builder:
                                                                             (context) =>
                                                                                 Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               20.0,
@@ -515,12 +517,12 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                                                                     elevation: 0,
                                                                                     insetPadding: EdgeInsets.zero,
                                                                                     backgroundColor: Colors.transparent,
-                                                                                    alignment: const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                    alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                                     child: GestureDetector(
                                                                                       onTap: () => FocusScope.of(dialogContext).unfocus(),
                                                                                       child: AcceptRequestAlertWidget(
-                                                                                        useraccept: columnUsersRecord.reference,
-                                                                                        accceptedname: columnUsersRecord.fullName,
+                                                                                        useraccept: columnUsersRecord!.reference,
+                                                                                        accceptedname: columnUsersRecord!.fullName,
                                                                                       ),
                                                                                     ),
                                                                                   );
@@ -532,8 +534,8 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                                                             options:
                                                                                 FFButtonOptions(
                                                                               height: 27.0,
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                                                                              iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                               color: FlutterFlowTheme.of(context).success,
                                                                               textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                     fontFamily: 'Readex Pro',
@@ -548,10 +550,10 @@ class _RequestsCopyCopyWidgetState extends State<RequestsCopyCopyWidget> {
                                                                       ),
                                                                     ),
                                                                   ]
-                                                                      .divide(const SizedBox(
+                                                                      .divide(SizedBox(
                                                                           width:
                                                                               10.0))
-                                                                      .addToEnd(const SizedBox(
+                                                                      .addToEnd(SizedBox(
                                                                           width:
                                                                               10.0)),
                                                                 ),

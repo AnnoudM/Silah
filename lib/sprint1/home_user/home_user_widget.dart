@@ -3,11 +3,15 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/sprint1/sideuser_copy/sideuser_copy_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_user_model.dart';
 export 'home_user_model.dart';
@@ -82,7 +86,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: const Color(0xFF2A497D),
+            backgroundColor: Color(0xFF2A497D),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -109,7 +113,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFF2A497D),
+            backgroundColor: Color(0xFF2A497D),
             endDrawer: Drawer(
               elevation: 16.0,
               child: Column(
@@ -119,14 +123,14 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                     child: wrapWithModel(
                       model: _model.sideuserCopyModel,
                       updateCallback: () => safeSetState(() {}),
-                      child: const SideuserCopyWidget(),
+                      child: SideuserCopyWidget(),
                     ),
                   ),
                 ],
               ),
             ),
             appBar: AppBar(
-              backgroundColor: const Color(0xFF2A497D),
+              backgroundColor: Color(0xFF2A497D),
               automaticallyImplyLeading: false,
               title: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
@@ -137,7 +141,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                   fit: BoxFit.cover,
                 ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: true,
               elevation: 2.0,
             ),
@@ -149,7 +153,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 0.0),
                         child: StreamBuilder<FamilyRecord>(
                           stream: FamilyRecord.getDocument(
@@ -182,8 +186,8 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                 width: double.infinity,
                                 height: 500.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFFFFCF6),
-                                  boxShadow: const [
+                                  color: Color(0xFFFFFCF6),
+                                  boxShadow: [
                                     BoxShadow(
                                       blurRadius: 4.0,
                                       color: Color(0x25090F13),
@@ -196,7 +200,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 12.0, 12.0, 16.0),
                                   child: SingleChildScrollView(
                                     child: Column(
@@ -206,7 +210,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 12.0, 12.0, 16.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -232,7 +236,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Readex Pro',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF2A497D),
                                                                 fontSize: 22.0,
                                                                 letterSpacing:
@@ -252,7 +256,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Readex Pro',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF2A497D),
                                                                 fontSize: 22.0,
                                                                 letterSpacing:
@@ -269,7 +273,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Readex Pro',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF2A497D),
                                                             letterSpacing: 0.0,
                                                           ),
@@ -277,7 +281,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                                   ),
                                                 ],
                                               ),
-                                              const Divider(
+                                              Divider(
                                                 height: 24.0,
                                                 thickness: 2.0,
                                                 color: Color(0xFFF1F4F8),
@@ -290,10 +294,10 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                                   Flexible(
                                                     child: Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Padding(
-                                                        padding: const EdgeInsets.all(
+                                                        padding: EdgeInsets.all(
                                                             24.0),
                                                         child: Text(
                                                           containerFamilyRecord
@@ -306,7 +310,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Readex Pro',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF57636C),
                                                                 fontSize: 15.0,
                                                                 letterSpacing:
@@ -334,13 +338,13 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 0.0),
                         child: Container(
                           width: double.infinity,
                           height: 120.0,
                           decoration: BoxDecoration(
-                            color: const Color(0xFF2A497D),
+                            color: Color(0xFF2A497D),
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Row(
@@ -348,14 +352,14 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       35.0, 0.0, 0.0, 0.0),
                                   child: Container(
                                     width: 149.0,
                                     height: 81.0,
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                       color: Color(0xFFFFFCF6),
                                       boxShadow: [
                                         BoxShadow(
@@ -377,8 +381,8 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                     child: FlutterFlowIconButton(
                                       borderRadius: 8.0,
                                       buttonSize: 116.0,
-                                      fillColor: const Color(0xFFFFFCF6),
-                                      icon: const Icon(
+                                      fillColor: Color(0xFFFFFCF6),
+                                      icon: Icon(
                                         Icons.payments_outlined,
                                         color: Color(0xFF2A497D),
                                         size: 50.0,
@@ -391,9 +395,9 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 35.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -406,7 +410,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                     child: Container(
                                       width: 149.0,
                                       height: 81.0,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         color: Color(0xFFFFFCF6),
                                         boxShadow: [
                                           BoxShadow(
@@ -429,8 +433,8 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                         borderColor: Colors.transparent,
                                         borderRadius: 8.0,
                                         buttonSize: 116.0,
-                                        fillColor: const Color(0xFFFFFCF6),
-                                        icon: const Icon(
+                                        fillColor: Color(0xFFFFFCF6),
+                                        icon: Icon(
                                           Icons.payments_outlined,
                                           color: Color(0xFF2A497D),
                                           size: 50.0,
@@ -451,7 +455,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -462,7 +466,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                           Container(
                             width: double.infinity,
                             height: 90.0,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               color: Color(0x00EEEEEE),
                             ),
                             child: Stack(
@@ -474,7 +478,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                     Material(
                                       color: Colors.transparent,
                                       elevation: 0.0,
-                                      shape: const RoundedRectangleBorder(
+                                      shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(0.0),
                                           bottomRight: Radius.circular(0.0),
@@ -488,7 +492,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBackground,
-                                          boxShadow: const [
+                                          boxShadow: [
                                             BoxShadow(
                                               blurRadius: 10.0,
                                               color: Color(0x1A57636C),
@@ -499,7 +503,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                               spreadRadius: 0.1,
                                             )
                                           ],
-                                          borderRadius: const BorderRadius.only(
+                                          borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(0.0),
                                             bottomRight: Radius.circular(0.0),
                                             topLeft: Radius.circular(20.0),
@@ -521,7 +525,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                       borderRadius: 30.0,
                                       borderWidth: 1.0,
                                       buttonSize: 50.0,
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.people,
                                         color: Color(0xFF9299A1),
                                         size: 24.0,
@@ -535,7 +539,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                       borderRadius: 30.0,
                                       borderWidth: 1.0,
                                       buttonSize: 50.0,
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.post_add,
                                         color: Color(0xFF9299A1),
                                         size: 24.0,
@@ -559,15 +563,15 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 10.0),
                                           child: FlutterFlowIconButton(
                                             borderColor: Colors.transparent,
                                             borderRadius: 25.0,
                                             borderWidth: 1.0,
                                             buttonSize: 60.0,
-                                            fillColor: const Color(0xFF2A497D),
-                                            icon: const Icon(
+                                            fillColor: Color(0xFF2A497D),
+                                            icon: Icon(
                                               Icons.home,
                                               color: Colors.white,
                                               size: 30.0,
@@ -584,7 +588,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                       borderRadius: 30.0,
                                       borderWidth: 1.0,
                                       buttonSize: 50.0,
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.add_photo_alternate_outlined,
                                         color: Color(0xFF9299A1),
                                         size: 24.0,
@@ -598,7 +602,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                       borderRadius: 30.0,
                                       borderWidth: 1.0,
                                       buttonSize: 50.0,
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.date_range_rounded,
                                         color: Color(0xFF9299A1),
                                         size: 24.0,

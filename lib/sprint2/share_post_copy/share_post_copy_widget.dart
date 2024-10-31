@@ -6,9 +6,11 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/sprint2/post_back/post_back_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'share_post_copy_model.dart';
 export 'share_post_copy_model.dart';
 
@@ -63,7 +65,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: StreamBuilder<List<UsersRecord>>(
         stream: queryUsersRecord(
           queryBuilder: (usersRecord) => usersRecord.where(
@@ -99,15 +101,15 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
           return Container(
             width: 400.0,
             height: 491.0,
-            constraints: const BoxConstraints(
+            constraints: BoxConstraints(
               maxWidth: 375.0,
             ),
             decoration: BoxDecoration(
-              color: const Color(0xFFFFFCF6),
+              color: Color(0xFFFFFCF6),
               borderRadius: BorderRadius.circular(16.0),
             ),
             child: Align(
-              alignment: const AlignmentDirectional(0.0, 0.0),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -118,9 +120,9 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                       key: _model.formKey,
                       autovalidateMode: AutovalidateMode.always,
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 16.0),
                           child: SingleChildScrollView(
                             child: Column(
@@ -129,7 +131,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 10.0, 20.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -138,7 +140,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                         CrossAxisAlignment.center,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 10.0, 10.0, 20.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -148,17 +150,17 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                               CrossAxisAlignment.center,
                                           children: [
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 1.14),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 6.0, 0.0, 0.0),
                                                 child: Container(
                                                   width: 30.0,
                                                   height: 30.0,
                                                   clipBehavior: Clip.antiAlias,
-                                                  decoration: const BoxDecoration(
+                                                  decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: Image.network(
@@ -173,10 +175,10 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 16.0, 0.0),
                                         child: Text(
-                                          containerUsersRecord.fullName,
+                                          containerUsersRecord!.fullName,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
@@ -191,9 +193,9 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: ClipRRect(
-                                    borderRadius: const BorderRadius.only(
+                                    borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(20.0),
                                       bottomRight: Radius.circular(20.0),
                                       topLeft: Radius.circular(20.0),
@@ -202,7 +204,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                     child: Container(
                                       width: 374.0,
                                       height: 314.0,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         color: Color(0xCCFFFFFF),
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(20.0),
@@ -212,9 +214,9 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                         ),
                                         shape: BoxShape.rectangle,
                                       ),
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 16.0, 0.0, 16.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -225,7 +227,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 20.0, 10.0),
                                                     child: Row(
@@ -260,7 +262,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                                       Flexible(
                                                         child:
                                                             FlutterFlowChoiceChips(
-                                                          options: const [
+                                                          options: [
                                                             ChipData('مواليد'),
                                                             ChipData('تعزيه'),
                                                             ChipData('أفراح'),
@@ -277,6 +279,9 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                                                         '') &&
                                                                 (_model.textController
                                                                             .text !=
+                                                                        null &&
+                                                                    _model.textController
+                                                                            .text !=
                                                                         '')) {
                                                               _model.emptychoice =
                                                                   true;
@@ -292,7 +297,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                                           selectedChipStyle:
                                                               ChipStyle(
                                                             backgroundColor:
-                                                                const Color(
+                                                                Color(
                                                                     0xFF7AB1D0),
                                                             textStyle:
                                                                 FlutterFlowTheme.of(
@@ -367,7 +372,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 5.0,
                                                                 30.0, 0.0),
                                                     child: Row(
@@ -419,7 +424,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   10.0,
                                                                   16.0,
@@ -435,11 +440,11 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                                               .secondaryBackground,
                                                         ),
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 0.0, 0.0),
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   -1.0, -1.0),
                                                           child: TextFormField(
                                                             controller: _model
@@ -533,7 +538,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 20.0, 16.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -541,7 +546,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                     children: [
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.05),
+                                            AlignmentDirectional(0.0, 0.05),
                                         child: Builder(
                                           builder: (context) => FFButtonWidget(
                                             onPressed: () async {
@@ -555,12 +560,12 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                                     backgroundColor:
                                                         Colors.transparent,
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                                 0.0, 0.0)
                                                             .resolve(
                                                                 Directionality.of(
                                                                     context)),
-                                                    child: const PostBackWidget(),
+                                                    child: PostBackWidget(),
                                                   );
                                                 },
                                               );
@@ -569,10 +574,10 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                             options: FFButtonOptions(
                                               width: 80.0,
                                               height: 44.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -614,10 +619,10 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                       Expanded(
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(1.0, 0.0),
+                                              AlignmentDirectional(1.0, 0.0),
                                           child: StreamBuilder<FamilyRecord>(
                                             stream: FamilyRecord.getDocument(
-                                                containerUsersRecord
+                                                containerUsersRecord!
                                                     .familyName!),
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
@@ -651,6 +656,9 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                                           '') {
                                                     if (_model.textController
                                                                 .text !=
+                                                            null &&
+                                                        _model.textController
+                                                                .text !=
                                                             '') {
                                                       if (_model.formKey
                                                                   .currentState ==
@@ -674,7 +682,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                                             .text,
                                                         userID:
                                                             containerUsersRecord
-                                                                .reference,
+                                                                ?.reference,
                                                         category: _model
                                                             .choiceChipsValue,
                                                         familyID:
@@ -690,7 +698,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                                                     .textController
                                                                     .text,
                                                                 userID: containerUsersRecord
-                                                                    .reference,
+                                                                    ?.reference,
                                                                 category: _model
                                                                     .choiceChipsValue,
                                                                 familyID:
@@ -709,7 +717,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                                                     .reference,
                                                             userId:
                                                                 containerUsersRecord
-                                                                    .reference,
+                                                                    ?.reference,
                                                             message:
                                                                 'لقد قام بنشر منشور',
                                                             postid: _model.post
@@ -726,7 +734,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                                           'FamilyName',
                                                           isEqualTo:
                                                               containerUsersRecord
-                                                                  .familyName,
+                                                                  ?.familyName,
                                                         ),
                                                       );
 
@@ -735,7 +743,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                                         extra: <String,
                                                             dynamic>{
                                                           kTransitionInfoKey:
-                                                              const TransitionInfo(
+                                                              TransitionInfo(
                                                             hasTransition: true,
                                                             transitionType:
                                                                 PageTransitionType
@@ -762,7 +770,7 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                                                   .secondaryBackground,
                                                             ),
                                                           ),
-                                                          duration: const Duration(
+                                                          duration: Duration(
                                                               milliseconds:
                                                                   4000),
                                                           backgroundColor:
@@ -783,12 +791,12 @@ class _SharePostCopyWidgetState extends State<SharePostCopyWidget> {
                                                 options: FFButtonOptions(
                                                   width: 80.0,
                                                   height: 44.0,
-                                                  padding: const EdgeInsets.all(0.0),
+                                                  padding: EdgeInsets.all(0.0),
                                                   iconPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
-                                                  color: const Color(0xFF2A497D),
+                                                  color: Color(0xFF2A497D),
                                                   textStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .titleSmall

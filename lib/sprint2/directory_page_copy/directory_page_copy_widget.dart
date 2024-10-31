@@ -4,15 +4,18 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
 import '/sprint1/side_admin_copy/side_admin_copy_widget.dart';
 import '/sprint2/empty_search/empty_search_widget.dart';
 import '/sprint2/emptydirectory/emptydirectory_widget.dart';
+import 'dart:math';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'directory_page_copy_model.dart';
@@ -71,22 +74,22 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 140.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 140.0),
+            end: Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.9, 1.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.9, 1.0),
+            end: Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(-0.349, 0),
-            end: const Offset(0, 0),
+            begin: Offset(-0.349, 0),
+            end: Offset(0, 0),
           ),
         ],
       ),
@@ -104,8 +107,8 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 400.0.ms,
-            begin: const Offset(0.0, 100.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 100.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -123,8 +126,8 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 400.0.ms,
-            begin: const Offset(0.0, 100.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 100.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -154,7 +157,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: Color(0xFFFFFCF6),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -182,13 +185,13 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: Color(0xFFFFFCF6),
             endDrawer: Drawer(
               elevation: 16.0,
               child: wrapWithModel(
                 model: _model.sideAdminCopyModel,
                 updateCallback: () => safeSetState(() {}),
-                child: const SideAdminCopyWidget(),
+                child: SideAdminCopyWidget(),
               ),
             ),
             body: Stack(
@@ -202,7 +205,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                         child: Container(
                           width: 100.0,
                           height: double.infinity,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0xFF2A497D), Color(0xFF2A497D)],
                               stops: [0.0, 1.0],
@@ -210,7 +213,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                               end: AlignmentDirectional(-0.87, 1.0),
                             ),
                           ),
-                          alignment: const AlignmentDirectional(0.0, -1.0),
+                          alignment: AlignmentDirectional(0.0, -1.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -221,7 +224,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                 children: [
                                   Expanded(
                                     child: Align(
-                                      alignment: const AlignmentDirectional(2.0, 0.0),
+                                      alignment: AlignmentDirectional(2.0, 0.0),
                                       child: ClipRRect(
                                         borderRadius:
                                             BorderRadius.circular(8.0),
@@ -235,7 +238,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         100.0, 25.0, 0.0, 0.0),
                                     child: FlutterFlowIconButton(
                                       borderColor: Colors.transparent,
@@ -256,7 +259,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                 ],
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 16.0),
                                 child: StreamBuilder<List<UsersRecord>>(
                                   stream: queryUsersRecord(
@@ -299,10 +302,10 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                     return Container(
                                       width: double.infinity,
                                       height: 588.0,
-                                      constraints: const BoxConstraints(
+                                      constraints: BoxConstraints(
                                         maxWidth: 570.0,
                                       ),
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         color: Color(0xFFFFFCF6),
                                         boxShadow: [
                                           BoxShadow(
@@ -333,7 +336,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 10.0, 0.0, 16.0),
                                                   child: Text(
@@ -346,7 +349,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                           fontFamily:
                                                               'Readex Pro',
                                                           color:
-                                                              const Color(0xFF2A497D),
+                                                              Color(0xFF2A497D),
                                                           fontSize: 23.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -357,7 +360,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                               ],
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 0.0, 16.0, 0.0),
                                               child: Row(
@@ -367,7 +370,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                         .spaceBetween,
                                                 children: [
                                                   Expanded(
-                                                    child: SizedBox(
+                                                    child: Container(
                                                       width: 200.0,
                                                       child: TextFormField(
                                                         controller: _model
@@ -378,7 +381,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                             EasyDebounce
                                                                 .debounce(
                                                           '_model.textController',
-                                                          const Duration(
+                                                          Duration(
                                                               milliseconds:
                                                                   500),
                                                           () async {},
@@ -413,7 +416,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0x00000000),
                                                               width: 1.0,
@@ -426,7 +429,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0x00000000),
                                                               width: 1.0,
@@ -466,7 +469,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                           ),
                                                           filled: true,
                                                           fillColor:
-                                                              const Color(0xFFFFFCF6),
+                                                              Color(0xFFFFFCF6),
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -504,7 +507,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(16.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: InkWell(
@@ -527,7 +530,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                           record,
                                                                           [
                                                                         record
-                                                                            .fullName
+                                                                            .fullName!
                                                                       ]),
                                                                 )
                                                                 .toList(),
@@ -538,6 +541,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                   .map((r) =>
                                                                       r.object)
                                                                   .toList();
+                                                          ;
                                                         });
                                                         _model.searchactive =
                                                             true;
@@ -580,12 +584,12 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                       size: 24.0,
                                                     ),
                                                   ),
-                                                ].divide(const SizedBox(width: 10.0)),
+                                                ].divide(SizedBox(width: 10.0)),
                                               ),
                                             ),
                                             if (_model.searchactive == true)
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 0.0, 16.0, 0.0),
                                                 child: Row(
@@ -597,7 +601,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   10.0,
@@ -632,7 +636,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                           .toList();
                                                   if (directoryNosearch
                                                       .isEmpty) {
-                                                    return const Center(
+                                                    return Center(
                                                       child:
                                                           EmptydirectoryWidget(),
                                                     );
@@ -659,7 +663,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                     .uid,
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -669,7 +673,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                             width:
                                                                 double.infinity,
                                                             decoration:
-                                                                const BoxDecoration(
+                                                                BoxDecoration(
                                                               color: Color(
                                                                   0xFFFFFCF6),
                                                               boxShadow: [
@@ -704,7 +708,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                             ),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsets
+                                                                  EdgeInsets
                                                                       .all(8.0),
                                                               child: Row(
                                                                 mainAxisSize:
@@ -717,14 +721,14 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                         44.0,
                                                                     decoration:
                                                                         BoxDecoration(
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0x4C4B39EF),
                                                                       shape: BoxShape
                                                                           .circle,
                                                                       border:
                                                                           Border
                                                                               .all(
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF4B39EF),
                                                                         width:
                                                                             2.0,
@@ -733,7 +737,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                     child:
                                                                         Padding(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               2.0),
                                                                       child:
                                                                           ClipRRect(
@@ -763,7 +767,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                               .start,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               12.0,
                                                                               0.0,
                                                                               12.0,
@@ -773,7 +777,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                             directoryNosearchItem.fullName,
                                                                             style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                   fontFamily: 'Plus Jakarta Sans',
-                                                                                  color: const Color(0xFF14181B),
+                                                                                  color: Color(0xFF14181B),
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.w500,
@@ -786,7 +790,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                   Card(
                                                                     clipBehavior:
                                                                         Clip.antiAliasWithSaveLayer,
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFFFFFCF6),
                                                                     elevation:
                                                                         6.0,
@@ -799,7 +803,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                     child:
                                                                         Padding(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               4.0),
                                                                       child:
                                                                           InkWell(
@@ -830,7 +834,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                           );
                                                                         },
                                                                         child:
-                                                                            const Icon(
+                                                                            Icon(
                                                                           Icons
                                                                               .arrow_forward_ios_sharp,
                                                                           color:
@@ -864,7 +868,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                           e.uid)
                                                       .toList();
                                                   if (directorysearch.isEmpty) {
-                                                    return const EmptySearchWidget();
+                                                    return EmptySearchWidget();
                                                   }
 
                                                   return ListView.builder(
@@ -887,7 +891,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                     .uid,
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -953,7 +957,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                 width: double
                                                                     .infinity,
                                                                 decoration:
-                                                                    const BoxDecoration(
+                                                                    BoxDecoration(
                                                                   color: Color(
                                                                       0xFFFFFCF6),
                                                                   boxShadow: [
@@ -988,7 +992,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                 ),
                                                                 child: Padding(
                                                                   padding:
-                                                                      const EdgeInsets
+                                                                      EdgeInsets
                                                                           .all(
                                                                               8.0),
                                                                   child: Row(
@@ -1004,13 +1008,13 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              const Color(0x4C4B39EF),
+                                                                              Color(0x4C4B39EF),
                                                                           shape:
                                                                               BoxShape.circle,
                                                                           border:
                                                                               Border.all(
                                                                             color:
-                                                                                const Color(0xFF4B39EF),
+                                                                                Color(0xFF4B39EF),
                                                                             width:
                                                                                 2.0,
                                                                           ),
@@ -1018,7 +1022,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                         child:
                                                                             Padding(
                                                                           padding:
-                                                                              const EdgeInsets.all(2.0),
+                                                                              EdgeInsets.all(2.0),
                                                                           child:
                                                                               ClipRRect(
                                                                             borderRadius:
@@ -1042,12 +1046,12 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                               CrossAxisAlignment.start,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                                                               child: Text(
                                                                                 directorysearchItem.fullName,
                                                                                 style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                       fontFamily: 'Plus Jakarta Sans',
-                                                                                      color: const Color(0xFF14181B),
+                                                                                      color: Color(0xFF14181B),
                                                                                       fontSize: 16.0,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.w500,
@@ -1060,7 +1064,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                       Card(
                                                                         clipBehavior:
                                                                             Clip.antiAliasWithSaveLayer,
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFFFFFCF6),
                                                                         elevation:
                                                                             6.0,
@@ -1072,7 +1076,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                         child:
                                                                             Padding(
                                                                           padding:
-                                                                              const EdgeInsets.all(4.0),
+                                                                              EdgeInsets.all(4.0),
                                                                           child:
                                                                               InkWell(
                                                                             splashColor:
@@ -1099,7 +1103,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                                                                               );
                                                                             },
                                                                             child:
-                                                                                const Icon(
+                                                                                Icon(
                                                                               Icons.arrow_forward_ios_sharp,
                                                                               color: Color(0xFF57636C),
                                                                               size: 24.0,
@@ -1137,7 +1141,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                   ],
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Container(
                     width: 416.0,
                     height: 60.0,
@@ -1147,7 +1151,7 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -1155,16 +1159,16 @@ class _DirectoryPageCopyWidgetState extends State<DirectoryPageCopyWidget>
                     children: [
                       Flexible(
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.0, 1.0),
                           child: Stack(
-                            alignment: const AlignmentDirectional(-0.0, 1.0),
+                            alignment: AlignmentDirectional(-0.0, 1.0),
                             children: [
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 1.0),
+                                alignment: AlignmentDirectional(0.0, 1.0),
                                 child: wrapWithModel(
                                   model: _model.navBar1Model,
                                   updateCallback: () => safeSetState(() {}),
-                                  child: const NavBar1Widget(
+                                  child: NavBar1Widget(
                                     currentpage: 'DirectoryPage',
                                   ),
                                 ),
