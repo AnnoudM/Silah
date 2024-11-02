@@ -1,23 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
-import '/sprint1/side_admin_copy/side_admin_copy_widget.dart';
-import '/sprint2/empty_search/empty_search_widget.dart';
-import '/sprint2/emptydirectory/emptydirectory_widget.dart';
-import 'dart:math';
+import '/homes/side_bar/side_bar_widget.dart';
 import 'directory_page_widget.dart' show DirectoryPageWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:text_search/text_search.dart';
 
 class DirectoryPageModel extends FlutterFlowModel<DirectoryPageWidget> {
   ///  Local state fields for this page.
@@ -33,13 +19,13 @@ class DirectoryPageModel extends FlutterFlowModel<DirectoryPageWidget> {
   List<UsersRecord> simpleSearchResults = [];
   // Model for NavBar1 component.
   late NavBar1Model navBar1Model;
-  // Model for sideAdminCopy component.
-  late SideAdminCopyModel sideAdminCopyModel;
+  // Model for sideBar component.
+  late SideBarModel sideBarModel;
 
   @override
   void initState(BuildContext context) {
     navBar1Model = createModel(context, () => NavBar1Model());
-    sideAdminCopyModel = createModel(context, () => SideAdminCopyModel());
+    sideBarModel = createModel(context, () => SideBarModel());
   }
 
   @override
@@ -48,6 +34,6 @@ class DirectoryPageModel extends FlutterFlowModel<DirectoryPageWidget> {
     textController?.dispose();
 
     navBar1Model.dispose();
-    sideAdminCopyModel.dispose();
+    sideBarModel.dispose();
   }
 }

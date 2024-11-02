@@ -3,16 +3,15 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class NotificationsRecord extends FirestoreRecord {
   NotificationsRecord._(
-    DocumentReference reference,
-    Map<String, dynamic> data,
-  ) : super(reference, data) {
+    super.reference,
+    super.data,
+  ) {
     _initializeFields();
   }
 
@@ -41,12 +40,18 @@ class NotificationsRecord extends FirestoreRecord {
   DocumentReference? get postid => _postid;
   bool hasPostid() => _postid != null;
 
+  // "createdAt" field.
+  DateTime? _createdAt;
+  DateTime? get createdAt => _createdAt;
+  bool hasCreatedAt() => _createdAt != null;
+
   void _initializeFields() {
     _familyId = snapshotData['familyId'] as DocumentReference?;
     _userId = snapshotData['userId'] as DocumentReference?;
     _title = snapshotData['title'] as String?;
     _message = snapshotData['message'] as String?;
     _postid = snapshotData['postid'] as DocumentReference?;
+    _createdAt = snapshotData['createdAt'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -89,6 +94,7 @@ Map<String, dynamic> createNotificationsRecordData({
   String? title,
   String? message,
   DocumentReference? postid,
+  DateTime? createdAt,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -97,6 +103,7 @@ Map<String, dynamic> createNotificationsRecordData({
       'title': title,
       'message': message,
       'postid': postid,
+      'createdAt': createdAt,
     }.withoutNulls,
   );
 
@@ -113,12 +120,13 @@ class NotificationsRecordDocumentEquality
         e1?.userId == e2?.userId &&
         e1?.title == e2?.title &&
         e1?.message == e2?.message &&
-        e1?.postid == e2?.postid;
+        e1?.postid == e2?.postid &&
+        e1?.createdAt == e2?.createdAt;
   }
 
   @override
-  int hash(NotificationsRecord? e) => const ListEquality()
-      .hash([e?.familyId, e?.userId, e?.title, e?.message, e?.postid]);
+  int hash(NotificationsRecord? e) => const ListEquality().hash(
+      [e?.familyId, e?.userId, e?.title, e?.message, e?.postid, e?.createdAt]);
 
   @override
   bool isValidKey(Object? o) => o is NotificationsRecord;

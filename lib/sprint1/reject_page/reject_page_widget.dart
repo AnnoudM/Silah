@@ -5,15 +5,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/sprint1/delete_account_alert/delete_account_alert_widget.dart';
-import 'dart:math';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'reject_page_model.dart';
 export 'reject_page_model.dart';
 
@@ -69,22 +64,22 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(0.0, 140.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 140.0),
+            end: const Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(0.9, 1.0),
-            end: Offset(1.0, 1.0),
+            begin: const Offset(0.9, 1.0),
+            end: const Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(-0.349, 0),
-            end: Offset(0, 0),
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
           ),
         ],
       ),
@@ -112,7 +107,7 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFFFFFCF6),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -139,7 +134,7 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFFFFFCF6),
             body: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -148,7 +143,7 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                   child: Container(
                     width: 100.0,
                     height: double.infinity,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [Color(0xFF2A497D), Color(0xFF2A497D)],
                         stops: [0.0, 1.0],
@@ -156,7 +151,7 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                         end: AlignmentDirectional(-0.87, 1.0),
                       ),
                     ),
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: const AlignmentDirectional(0.0, -1.0),
                     child: RefreshIndicator(
                       onRefresh: () async {
                         context.pushNamed('RejectPage');
@@ -177,15 +172,15 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.all(16.0),
+                              padding: const EdgeInsets.all(16.0),
                               child: Container(
                                 width: double.infinity,
-                                constraints: BoxConstraints(
+                                constraints: const BoxConstraints(
                                   maxWidth: 570.0,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: Color(0xFFFFFCF6),
-                                  boxShadow: [
+                                  color: const Color(0xFFFFFCF6),
+                                  boxShadow: const [
                                     BoxShadow(
                                       blurRadius: 4.0,
                                       color: Color(0x33000000),
@@ -198,9 +193,9 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: EdgeInsets.all(32.0),
+                                    padding: const EdgeInsets.all(32.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
@@ -208,7 +203,7 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 16.0),
                                           child: Text(
                                             'لقد تم رفض طلب انضمامك',
@@ -217,7 +212,7 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                                                 .displaySmall
                                                 .override(
                                                   fontFamily: 'Readex Pro',
-                                                  color: Color(0xFF2A497D),
+                                                  color: const Color(0xFF2A497D),
                                                   fontSize: 20.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
@@ -228,10 +223,10 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                                         // You will have to add an action on this rich text to go to your login page.
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 2.0, 16.0),
                                             child: StreamBuilder<FamilyRecord>(
                                               stream: FamilyRecord.getDocument(
@@ -327,7 +322,7 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 16.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
@@ -337,11 +332,11 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                                             options: FFButtonOptions(
                                               width: double.infinity,
                                               height: 44.0,
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
+                                              iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Color(0xFF2A497D),
+                                              color: const Color(0xFF2A497D),
                                               textStyle: FlutterFlowTheme.of(
                                                       context)
                                                   .titleSmall
@@ -353,7 +348,7 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                               elevation: 3.0,
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),
@@ -366,7 +361,7 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                                         Builder(
                                           builder: (context) => Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 16.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
@@ -380,7 +375,7 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                                                       backgroundColor:
                                                           Colors.transparent,
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                                   0.0, 0.0)
                                                               .resolve(
                                                                   Directionality.of(
@@ -394,7 +389,7 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                                                             DeleteAccountAlertWidget(
                                                           deleteuser:
                                                               rejectPageUsersRecord
-                                                                  ?.reference,
+                                                                  .reference,
                                                         ),
                                                       ),
                                                     );
@@ -405,11 +400,11 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                                               options: FFButtonOptions(
                                                 width: double.infinity,
                                                 height: 44.0,
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 0.0),
                                                 iconPadding:
-                                                    EdgeInsetsDirectional
+                                                    const EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
                                                 color:
@@ -430,7 +425,7 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                                                               FontWeight.w500,
                                                         ),
                                                 elevation: 3.0,
-                                                borderSide: BorderSide(
+                                                borderSide: const BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),

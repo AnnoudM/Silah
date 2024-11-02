@@ -6,21 +6,18 @@ import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
-import '/sprint1/side_admin_copy/side_admin_copy_widget.dart';
+import '/homes/side_bar/side_bar_widget.dart';
 import '/sprint2/create_event/create_event_widget.dart';
 import '/sprint2/empty_event_day/empty_event_day_widget.dart';
 import '/sprint2/empty_pre_event/empty_pre_event_widget.dart';
 import '/sprint2/emptyevents/emptyevents_widget.dart';
 import '/sprint2/emptymyevent/emptymyevent_widget.dart';
 import '/sprint2/event/event_widget.dart';
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'calender_page_model.dart';
 export 'calender_page_model.dart';
@@ -75,22 +72,22 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(0.0, 140.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 140.0),
+            end: const Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(0.9, 1.0),
-            end: Offset(1.0, 1.0),
+            begin: const Offset(0.9, 1.0),
+            end: const Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(-0.349, 0),
-            end: Offset(0, 0),
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
           ),
         ],
       ),
@@ -120,7 +117,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFFFFFCF6),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -147,13 +144,13 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFFFFFCF6),
             drawer: Drawer(
               elevation: 16.0,
               child: wrapWithModel(
-                model: _model.sideAdminCopyModel,
+                model: _model.sideBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: SideAdminCopyWidget(),
+                child: const SideBarWidget(),
               ),
             ),
             body: Stack(
@@ -166,7 +163,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                       child: Container(
                         width: 100.0,
                         height: double.infinity,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           gradient: LinearGradient(
                             colors: [Color(0xFF2A497D), Color(0xFF2A497D)],
                             stops: [0.0, 1.0],
@@ -174,14 +171,14 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                             end: AlignmentDirectional(-0.87, 1.0),
                           ),
                         ),
-                        alignment: AlignmentDirectional(0.0, -1.0),
+                        alignment: const AlignmentDirectional(0.0, -1.0),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -189,9 +186,9 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                   children: [
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(-1.0, 0.0),
+                                          const AlignmentDirectional(-1.0, 0.0),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             25.0, 25.0, 25.0, 0.0),
                                         child: FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
@@ -213,11 +210,11 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                     Expanded(
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(2.0, 0.0),
+                                            const AlignmentDirectional(-0.6, 0.0),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  200.0, 0.0, 0.0, 0.0),
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 0.0, 0.0),
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
@@ -235,16 +232,16 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.all(16.0),
+                                padding: const EdgeInsets.all(16.0),
                                 child: Container(
                                   width: double.infinity,
                                   height: 610.0,
-                                  constraints: BoxConstraints(
+                                  constraints: const BoxConstraints(
                                     maxWidth: 570.0,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: Color(0xFFFFFCF6),
-                                    boxShadow: [
+                                    color: const Color(0xFFFFFCF6),
+                                    boxShadow: const [
                                       BoxShadow(
                                         blurRadius: 4.0,
                                         color: Color(0x33000000),
@@ -257,22 +254,22 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Align(
-                                    alignment: AlignmentDirectional(0.0, -1.0),
+                                    alignment: const AlignmentDirectional(0.0, -1.0),
                                     child: Container(
                                       height: double.infinity,
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         maxWidth: 500.0,
                                       ),
-                                      decoration: BoxDecoration(),
+                                      decoration: const BoxDecoration(),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 0.0),
                                         child: SingleChildScrollView(
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 54.0, 0.0, 0.0),
                                                 child: Column(
@@ -288,7 +285,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                       children: [
                                                         Align(
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   -1.0, -1.0),
                                                           child: StreamBuilder<
                                                               FamilyRecord>(
@@ -335,7 +332,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                                     .override(
                                                                       fontFamily:
                                                                           'Readex Pro',
-                                                                      color: Color(
+                                                                      color: const Color(
                                                                           0xFF2A497D),
                                                                       fontSize:
                                                                           23.0,
@@ -357,17 +354,17 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                               Container(
                                                 width: double.infinity,
                                                 height: 335.0,
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                   color: Color(0xFFFFFCF6),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 46.0, 0.0, 0.0),
                                                   child: FlutterFlowCalendar(
-                                                    color: Color(0xFF2A497D),
+                                                    color: const Color(0xFF2A497D),
                                                     iconColor:
-                                                        Color(0xFF2A497D),
+                                                        const Color(0xFF2A497D),
                                                     weekFormat: false,
                                                     weekStartsMonday: false,
                                                     initialDate:
@@ -401,7 +398,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                           fontFamily:
                                                               'Readex Pro',
                                                           color:
-                                                              Color(0xFF828282),
+                                                              const Color(0xFF828282),
                                                           fontSize: 15.5,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -452,7 +449,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Readex Pro',
-                                                              color: Color(
+                                                              color: const Color(
                                                                   0xFF3F393F),
                                                               letterSpacing:
                                                                   0.0,
@@ -474,7 +471,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsets.all(6.0),
+                                                        const EdgeInsets.all(6.0),
                                                     child: Text(
                                                       'المناسبات ',
                                                       style: FlutterFlowTheme
@@ -490,7 +487,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                 ],
                                               ),
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: SingleChildScrollView(
                                                   scrollDirection:
@@ -505,7 +502,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                       Flexible(
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -513,7 +510,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                                       10.0),
                                                           child:
                                                               FlutterFlowChoiceChips(
-                                                            options: [
+                                                            options: const [
                                                               ChipData(
                                                                   'القادمة'),
                                                               ChipData(
@@ -537,7 +534,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                             selectedChipStyle:
                                                                 ChipStyle(
                                                               backgroundColor:
-                                                                  Color(
+                                                                  const Color(
                                                                       0xFFBBD1F4),
                                                               textStyle:
                                                                   FlutterFlowTheme.of(
@@ -585,7 +582,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                                   .secondaryText,
                                                               iconSize: 16.0,
                                                               labelPadding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -628,7 +625,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                 Container(
                                                   width: 387.0,
                                                   height: 270.0,
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     color: Color(0xFFFFFCF6),
                                                   ),
                                                   child: StreamBuilder<
@@ -641,7 +638,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                                     'FamilyName',
                                                                     isEqualTo:
                                                                         calenderPageUsersRecord
-                                                                            ?.familyName,
+                                                                            .familyName,
                                                                   )
                                                                   .where(
                                                                     'Date',
@@ -683,7 +680,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                           snapshot.data!;
                                                       if (listViewEventsRecordList
                                                           .isEmpty) {
-                                                        return EmptyEventDayWidget();
+                                                        return const EmptyEventDayWidget();
                                                       }
 
                                                       return ListView.builder(
@@ -719,7 +716,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                 Container(
                                                   width: 387.0,
                                                   height: 270.0,
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     color: Color(0xFFFFFCF6),
                                                   ),
                                                   child: StreamBuilder<
@@ -732,7 +729,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                                     'FamilyName',
                                                                     isEqualTo:
                                                                         calenderPageUsersRecord
-                                                                            ?.familyName,
+                                                                            .familyName,
                                                                   )
                                                                   .where(
                                                                     'Date',
@@ -768,7 +765,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                           snapshot.data!;
                                                       if (listViewEventsRecordList
                                                           .isEmpty) {
-                                                        return EmptyeventsWidget();
+                                                        return const EmptyeventsWidget();
                                                       }
 
                                                       return ListView.builder(
@@ -804,7 +801,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                 Container(
                                                   width: 387.0,
                                                   height: 270.0,
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     color: Color(0xFFFFFCF6),
                                                   ),
                                                   child: StreamBuilder<
@@ -817,13 +814,13 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                                     'FamilyName',
                                                                     isEqualTo:
                                                                         calenderPageUsersRecord
-                                                                            ?.familyName,
+                                                                            .familyName,
                                                                   )
                                                                   .where(
                                                                     'CreatedBy',
                                                                     isEqualTo:
                                                                         calenderPageUsersRecord
-                                                                            ?.reference,
+                                                                            .reference,
                                                                   )
                                                                   .orderBy(
                                                                       'Date',
@@ -856,7 +853,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                           snapshot.data!;
                                                       if (listViewEventsRecordList
                                                           .isEmpty) {
-                                                        return EmptymyeventWidget();
+                                                        return const EmptymyeventWidget();
                                                       }
 
                                                       return ListView.builder(
@@ -892,7 +889,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                 Container(
                                                   width: 387.0,
                                                   height: 270.0,
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     color: Color(0xFFFFFCF6),
                                                   ),
                                                   child: StreamBuilder<
@@ -905,7 +902,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                                     'FamilyName',
                                                                     isEqualTo:
                                                                         calenderPageUsersRecord
-                                                                            ?.familyName,
+                                                                            .familyName,
                                                                   )
                                                                   .where(
                                                                     'Date',
@@ -943,7 +940,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                           snapshot.data!;
                                                       if (listViewEventsRecordList
                                                           .isEmpty) {
-                                                        return EmptyPreEventWidget();
+                                                        return const EmptyPreEventWidget();
                                                       }
 
                                                       return ListView.builder(
@@ -989,30 +986,30 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                   ],
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             30.0, 0.0, 30.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     10.0, 17.0, 0.0, 10.0),
                                 child: FlutterFlowIconButton(
                                   borderColor: Colors.transparent,
                                   borderRadius: 25.0,
                                   borderWidth: 1.0,
                                   buttonSize: 56.0,
-                                  fillColor: Color(0xFF2A497D),
+                                  fillColor: const Color(0xFF2A497D),
                                   icon: Icon(
                                     Icons.add_sharp,
                                     color: FlutterFlowTheme.of(context)
@@ -1032,7 +1029,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                           child: Padding(
                                             padding: MediaQuery.viewInsetsOf(
                                                 context),
-                                            child: CreateEventWidget(),
+                                            child: const CreateEventWidget(),
                                           ),
                                         );
                                       },
@@ -1046,13 +1043,13 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
                         child: Stack(
                           children: [
                             wrapWithModel(
                               model: _model.navBar1Model,
                               updateCallback: () => safeSetState(() {}),
-                              child: NavBar1Widget(
+                              child: const NavBar1Widget(
                                 currentpage: 'CalenderPage',
                               ),
                             ),

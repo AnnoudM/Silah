@@ -1,14 +1,13 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/stripe/payment_manager.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
-import '/sprint1/side_admin/side_admin_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import '/homes/side_bar/side_bar_widget.dart';
 import 'package:collection/collection.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -81,7 +80,7 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: Color(0xFF2A497D),
+            backgroundColor: const Color(0xFF2A497D),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -108,33 +107,14 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFF2A497D),
-            endDrawer: Drawer(
+            backgroundColor: const Color(0xFF2A497D),
+            drawer: Drawer(
               elevation: 16.0,
               child: wrapWithModel(
-                model: _model.sideAdminModel,
+                model: _model.sideBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: SideAdminWidget(),
+                child: const SideBarWidget(),
               ),
-            ),
-            appBar: AppBar(
-              backgroundColor: Color(0xFF2A497D),
-              automaticallyImplyLeading: false,
-              actions: [],
-              flexibleSpace: FlexibleSpaceBar(
-                title: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.asset(
-                    'assets/images/SilahFINALLogo.jpg',
-                    width: 148.0,
-                    height: 86.0,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                centerTitle: true,
-                expandedTitleScale: 1.0,
-              ),
-              elevation: 2.0,
             ),
             body: Stack(
               children: [
@@ -144,7 +124,54 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Align(
+                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    25.0, 25.0, 25.0, 0.0),
+                                child: FlutterFlowIconButton(
+                                  borderColor: Colors.transparent,
+                                  borderRadius: 8.0,
+                                  buttonSize: 40.0,
+                                  icon: Icon(
+                                    Icons.menu_sharp,
+                                    color: FlutterFlowTheme.of(context).info,
+                                    size: 24.0,
+                                  ),
+                                  onPressed: () async {
+                                    scaffoldKey.currentState!.openDrawer();
+                                  },
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Align(
+                                alignment: const AlignmentDirectional(-0.6, 0.0),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 0.0, 0.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    child: Image.asset(
+                                      'assets/images/SilahFINALLogo.jpg',
+                                      width: 148.0,
+                                      height: 86.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 0.0),
                         child: StreamBuilder<FamilyRecord>(
                           stream: FamilyRecord.getDocument(
@@ -177,8 +204,8 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                                 width: double.infinity,
                                 height: 500.0,
                                 decoration: BoxDecoration(
-                                  color: Color(0xFFFFFCF6),
-                                  boxShadow: [
+                                  color: const Color(0xFFFFFCF6),
+                                  boxShadow: const [
                                     BoxShadow(
                                       blurRadius: 4.0,
                                       color: Color(0x25090F13),
@@ -191,7 +218,7 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(24.0),
+                                  padding: const EdgeInsets.all(24.0),
                                   child: SingleChildScrollView(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -219,7 +246,7 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                                                           fontFamily:
                                                               'Readex Pro',
                                                           color:
-                                                              Color(0xFF2A497D),
+                                                              const Color(0xFF2A497D),
                                                           fontSize: 22.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -236,7 +263,7 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                                                           fontFamily:
                                                               'Readex Pro',
                                                           color:
-                                                              Color(0xFF2A497D),
+                                                              const Color(0xFF2A497D),
                                                           fontSize: 22.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -249,21 +276,21 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                                                     .bodyMedium
                                                     .override(
                                                       fontFamily: 'Readex Pro',
-                                                      color: Color(0xFF2A497D),
+                                                      color: const Color(0xFF2A497D),
                                                       letterSpacing: 0.0,
                                                     ),
                                               ),
                                             ),
                                           ],
                                         ),
-                                        Divider(
+                                        const Divider(
                                           height: 24.0,
                                           thickness: 2.0,
                                           color: Color(0xFFF1F4F8),
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 60.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -282,7 +309,7 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   16.0,
@@ -297,7 +324,7 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     0.0, 0.0),
                                                             child: Text(
                                                               'مساهمتك صلة رحم لك .. ',
@@ -315,31 +342,218 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                                                         ],
                                                       ),
                                                     ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Flexible(
-                                                          child: Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    0.0, 0.0),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          20.0,
-                                                                          0.0),
+                                                    Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Flexible(
+                                                            child: Align(
+                                                              alignment:
+                                                                  const AlignmentDirectional(
+                                                                      0.0, 0.0),
                                                               child: Text(
-                                                                'ادخل المبلغ المراد المساهمة به في صندوق العائلة:',
+                                                                'أدخل المبلغ المراد المساهمة به في صندوق العائلة',
                                                                 textAlign:
                                                                     TextAlign
-                                                                        .start,
+                                                                        .center,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      fontSize:
+                                                                          11.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Flexible(
+                                                            child: Align(
+                                                              alignment:
+                                                                  const AlignmentDirectional(
+                                                                      0.0, 0.0),
+                                                              child: Text(
+                                                                'تنبيه: المبلغ سيكون بالدولار، قيمة الدولار مقابل الريال 3.75',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      color: const Color(
+                                                                          0x9857636C),
+                                                                      fontSize:
+                                                                          11.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          24.0,
+                                                                          16.0,
+                                                                          24.0,
+                                                                          0.0),
+                                                              child:
+                                                                  TextFormField(
+                                                                controller: _model
+                                                                    .amountTextController,
+                                                                focusNode: _model
+                                                                    .amountFocusNode,
+                                                                autofocus:
+                                                                    false,
+                                                                obscureText:
+                                                                    false,
+                                                                decoration:
+                                                                    InputDecoration(
+                                                                  labelText:
+                                                                      'المبلغ',
+                                                                  labelStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                                  hintStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                                  errorStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .error,
+                                                                        fontSize:
+                                                                            12.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w300,
+                                                                      ),
+                                                                  enabledBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate,
+                                                                      width:
+                                                                          2.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            12.0),
+                                                                  ),
+                                                                  focusedBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      width:
+                                                                          2.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            12.0),
+                                                                  ),
+                                                                  errorBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .error,
+                                                                      width:
+                                                                          2.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            12.0),
+                                                                  ),
+                                                                  focusedErrorBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .error,
+                                                                      width:
+                                                                          2.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            12.0),
+                                                                  ),
+                                                                  filled: true,
+                                                                  fillColor: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  contentPadding:
+                                                                      const EdgeInsetsDirectional.fromSTEB(
+                                                                          20.0,
+                                                                          24.0,
+                                                                          20.0,
+                                                                          24.0),
+                                                                ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -349,180 +563,28 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        24.0,
-                                                                        16.0,
-                                                                        24.0,
-                                                                        0.0),
-                                                            child:
-                                                                TextFormField(
-                                                              controller: _model
-                                                                  .amountTextController,
-                                                              focusNode: _model
-                                                                  .amountFocusNode,
-                                                              autofocus: false,
-                                                              obscureText:
-                                                                  false,
-                                                              decoration:
-                                                                  InputDecoration(
-                                                                labelText:
-                                                                    'المبلغ',
-                                                                labelStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                    ),
-                                                                hintStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                    ),
-                                                                errorStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .error,
-                                                                      fontSize:
-                                                                          12.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w300,
-                                                                    ),
-                                                                enabledBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .alternate,
-                                                                    width: 2.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              12.0),
-                                                                ),
-                                                                focusedBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: FlutterFlowTheme.of(
+                                                                cursorColor:
+                                                                    FlutterFlowTheme.of(
                                                                             context)
                                                                         .primary,
-                                                                    width: 2.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              12.0),
-                                                                ),
-                                                                errorBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .error,
-                                                                    width: 2.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              12.0),
-                                                                ),
-                                                                focusedErrorBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .error,
-                                                                    width: 2.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              12.0),
-                                                                ),
-                                                                filled: true,
-                                                                fillColor: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                contentPadding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            20.0,
-                                                                            24.0,
-                                                                            20.0,
-                                                                            24.0),
+                                                                validator: _model
+                                                                    .amountTextControllerValidator
+                                                                    .asValidator(
+                                                                        context),
+                                                                inputFormatters: [
+                                                                  FilteringTextInputFormatter
+                                                                      .allow(RegExp(
+                                                                          '[0-9]'))
+                                                                ],
                                                               ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                  ),
-                                                              maxLength: 10,
-                                                              buildCounter: (context,
-                                                                      {required currentLength,
-                                                                      required isFocused,
-                                                                      maxLength}) =>
-                                                                  null,
-                                                              cursorColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                              validator: _model
-                                                                  .amountTextControllerValidator
-                                                                  .asValidator(
-                                                                      context),
-                                                              inputFormatters: [
-                                                                FilteringTextInputFormatter
-                                                                    .allow(RegExp(
-                                                                        '[0-9]'))
-                                                              ],
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   50.0,
                                                                   25.0,
@@ -533,128 +595,268 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                                                             MainAxisSize.max,
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
-                                                                .center,
+                                                                .spaceAround,
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     0.0, 0.0),
-                                                            child:
-                                                                FFButtonWidget(
-                                                              onPressed:
-                                                                  () async {
-                                                                _model.check = double
-                                                                    .tryParse(_model
-                                                                        .amountTextController
-                                                                        .text);
-                                                                safeSetState(
-                                                                    () {});
-                                                                final paymentResponse =
-                                                                    await processStripePayment(
-                                                                  context,
-                                                                  amount: ((_model.check!)
-                                                                              .toDouble() *
-                                                                          100)
-                                                                      .round(),
-                                                                  currency:
-                                                                      'USD',
-                                                                  customerEmail:
-                                                                      familyFundsUsersRecord!
-                                                                          .email,
-                                                                  customerName:
-                                                                      familyFundsUsersRecord!
-                                                                          .displayName,
-                                                                  description:
-                                                                      ' ',
-                                                                  allowGooglePay:
-                                                                      true,
-                                                                  allowApplePay:
-                                                                      false,
-                                                                  buttonColor:
-                                                                      Color(
-                                                                          0xFF2A497D),
-                                                                  buttonTextColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .info,
-                                                                );
-                                                                if (paymentResponse
-                                                                            .paymentId ==
-                                                                        null &&
-                                                                    paymentResponse
-                                                                            .errorMessage !=
-                                                                        null) {
-                                                                  showSnackbar(
-                                                                    context,
-                                                                    'لم تتم طريقة الدفع',
-                                                                  );
-                                                                }
-                                                                _model.paymentId =
-                                                                    paymentResponse
-                                                                            .paymentId ??
-                                                                        '';
-
-                                                                safeSetState(
-                                                                    () {});
-                                                              },
-                                                              text: 'دفع',
-                                                              options:
-                                                                  FFButtonOptions(
-                                                                height: 44.0,
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        24.0,
-                                                                        0.0,
-                                                                        24.0,
-                                                                        0.0),
-                                                                iconPadding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                color: Color(
-                                                                    0xFF2A497D),
-                                                                textStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      fontSize:
-                                                                          14.0,
-                                                                      letterSpacing:
+                                                            child: Semantics(
+                                                              label:
+                                                                  'دفع الى صندوق العائلة',
+                                                              child:
+                                                                  FFButtonWidget(
+                                                                onPressed:
+                                                                    () async {
+                                                                  context
+                                                                      .safePop();
+                                                                },
+                                                                text: 'تراجع',
+                                                                options:
+                                                                    FFButtonOptions(
+                                                                  height: 44.0,
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          24.0,
                                                                           0.0,
-                                                                    ),
-                                                                elevation: 3.0,
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: Colors
-                                                                      .transparent,
-                                                                  width: 1.0,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            12.0),
-                                                                hoverColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .accent1,
-                                                                hoverBorderSide:
-                                                                    BorderSide(
+                                                                          24.0,
+                                                                          0.0),
+                                                                  iconPadding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primary,
-                                                                  width: 1.0,
-                                                                ),
-                                                                hoverTextColor:
-                                                                    FlutterFlowTheme.of(
+                                                                      .secondaryBackground,
+                                                                  textStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                        fontSize:
+                                                                            14.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                                  elevation:
+                                                                      3.0,
+                                                                  borderSide:
+                                                                      const BorderSide(
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                    width: 1.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12.0),
+                                                                  hoverColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .accent1,
+                                                                  hoverBorderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primaryText,
-                                                                hoverElevation:
-                                                                    0.0,
+                                                                        .primary,
+                                                                    width: 1.0,
+                                                                  ),
+                                                                  hoverTextColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                  hoverElevation:
+                                                                      0.0,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Align(
+                                                            alignment:
+                                                                const AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            child: Semantics(
+                                                              label:
+                                                                  'دفع الى صندوق العائلة',
+                                                              child:
+                                                                  FFButtonWidget(
+                                                                onPressed:
+                                                                    () async {
+                                                                  var shouldSetState =
+                                                                      false;
+                                                                  if (_model.formKey
+                                                                              .currentState ==
+                                                                          null ||
+                                                                      !_model
+                                                                          .formKey
+                                                                          .currentState!
+                                                                          .validate()) {
+                                                                    return;
+                                                                  }
+                                                                  _model.check =
+                                                                      double.tryParse(_model
+                                                                          .amountTextController
+                                                                          .text);
+                                                                  safeSetState(
+                                                                      () {});
+                                                                  final paymentResponse =
+                                                                      await processStripePayment(
+                                                                    context,
+                                                                    amount: ((_model.check!).toDouble() *
+                                                                            100)
+                                                                        .round(),
+                                                                    currency:
+                                                                        'USD',
+                                                                    customerEmail:
+                                                                        familyFundsUsersRecord
+                                                                            .email,
+                                                                    customerName:
+                                                                        familyFundsUsersRecord
+                                                                            .displayName,
+                                                                    description:
+                                                                        'أدخل بيانات البطاقة',
+                                                                    allowGooglePay:
+                                                                        true,
+                                                                    allowApplePay:
+                                                                        false,
+                                                                    buttonColor:
+                                                                        const Color(
+                                                                            0xFF2A497D),
+                                                                    buttonTextColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .info,
+                                                                  );
+                                                                  if (paymentResponse
+                                                                              .paymentId ==
+                                                                          null &&
+                                                                      paymentResponse
+                                                                              .errorMessage !=
+                                                                          null) {
+                                                                    showSnackbar(
+                                                                      context,
+                                                                      'لم تتم طريقة الدفع',
+                                                                    );
+                                                                  }
+                                                                  _model.paymentId =
+                                                                      paymentResponse
+                                                                              .paymentId ??
+                                                                          '';
+
+                                                                  shouldSetState =
+                                                                      true;
+                                                                  if (_model.paymentId !=
+                                                                          null &&
+                                                                      _model.paymentId !=
+                                                                          '') {
+                                                                    if (familyFundsUsersRecord
+                                                                        .isAdmin) {
+                                                                      context.pushNamed(
+                                                                          'HomeAdmin');
+                                                                    } else {
+                                                                      context.pushNamed(
+                                                                          'HomeUser');
+                                                                    }
+                                                                  } else {
+                                                                    if (shouldSetState) {
+                                                                      safeSetState(
+                                                                          () {});
+                                                                    }
+                                                                    return;
+                                                                  }
+
+                                                                  ScaffoldMessenger.of(
+                                                                          context)
+                                                                      .showSnackBar(
+                                                                    SnackBar(
+                                                                      content:
+                                                                          Text(
+                                                                        'تمت عملية الدفع بنجاح',
+                                                                        style: GoogleFonts
+                                                                            .getFont(
+                                                                          'Readex Pro',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryBackground,
+                                                                          fontWeight:
+                                                                              FontWeight.w300,
+                                                                        ),
+                                                                      ),
+                                                                      duration: const Duration(
+                                                                          milliseconds:
+                                                                              4000),
+                                                                      backgroundColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .success,
+                                                                    ),
+                                                                  );
+                                                                  if (shouldSetState) {
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  }
+                                                                },
+                                                                text: ' دفع ',
+                                                                options:
+                                                                    FFButtonOptions(
+                                                                  height: 44.0,
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          24.0,
+                                                                          0.0,
+                                                                          24.0,
+                                                                          0.0),
+                                                                  iconPadding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  color: const Color(
+                                                                      0xFF2A497D),
+                                                                  textStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        fontSize:
+                                                                            14.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                                  elevation:
+                                                                      3.0,
+                                                                  borderSide:
+                                                                      const BorderSide(
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                    width: 1.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12.0),
+                                                                  hoverColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .accent1,
+                                                                  hoverBorderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                    width: 1.0,
+                                                                  ),
+                                                                  hoverTextColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                  hoverElevation:
+                                                                      0.0,
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
@@ -680,7 +882,7 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -691,7 +893,7 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                           wrapWithModel(
                             model: _model.navBar1Model,
                             updateCallback: () => safeSetState(() {}),
-                            child: NavBar1Widget(),
+                            child: const NavBar1Widget(),
                           ),
                         ],
                       ),

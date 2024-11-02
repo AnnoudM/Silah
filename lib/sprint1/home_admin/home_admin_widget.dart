@@ -3,17 +3,13 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
-import '/sprint1/side_admin/side_admin_widget.dart';
+import '/homes/side_bar/side_bar_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_admin_model.dart';
 export 'home_admin_model.dart';
@@ -88,7 +84,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: Color(0xFF2A497D),
+            backgroundColor: const Color(0xFF2A497D),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -115,33 +111,14 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFF2A497D),
-            endDrawer: Drawer(
+            backgroundColor: const Color(0xFF2A497D),
+            drawer: Drawer(
               elevation: 16.0,
               child: wrapWithModel(
-                model: _model.sideAdminModel,
+                model: _model.sideBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: SideAdminWidget(),
+                child: const SideBarWidget(),
               ),
-            ),
-            appBar: AppBar(
-              backgroundColor: Color(0xFF2A497D),
-              automaticallyImplyLeading: false,
-              actions: [],
-              flexibleSpace: FlexibleSpaceBar(
-                title: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.asset(
-                    'assets/images/SilahFINALLogo.jpg',
-                    width: 148.0,
-                    height: 86.0,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                centerTitle: true,
-                expandedTitleScale: 1.0,
-              ),
-              elevation: 2.0,
             ),
             body: Stack(
               children: [
@@ -151,7 +128,54 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Align(
+                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    25.0, 25.0, 25.0, 0.0),
+                                child: FlutterFlowIconButton(
+                                  borderColor: Colors.transparent,
+                                  borderRadius: 8.0,
+                                  buttonSize: 40.0,
+                                  icon: Icon(
+                                    Icons.menu_sharp,
+                                    color: FlutterFlowTheme.of(context).info,
+                                    size: 24.0,
+                                  ),
+                                  onPressed: () async {
+                                    scaffoldKey.currentState!.openDrawer();
+                                  },
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Align(
+                                alignment: const AlignmentDirectional(-0.6, 0.0),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 0.0, 0.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    child: Image.asset(
+                                      'assets/images/SilahFINALLogo.jpg',
+                                      width: 148.0,
+                                      height: 86.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 0.0),
                         child: StreamBuilder<FamilyRecord>(
                           stream: FamilyRecord.getDocument(
@@ -182,10 +206,10 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                               ),
                               child: Container(
                                 width: double.infinity,
-                                height: 500.0,
+                                height: 496.0,
                                 decoration: BoxDecoration(
-                                  color: Color(0xFFFFFCF6),
-                                  boxShadow: [
+                                  color: const Color(0xFFFFFCF6),
+                                  boxShadow: const [
                                     BoxShadow(
                                       blurRadius: 4.0,
                                       color: Color(0x25090F13),
@@ -198,7 +222,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(24.0),
+                                  padding: const EdgeInsets.all(24.0),
                                   child: SingleChildScrollView(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -224,7 +248,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                           fontFamily:
                                                               'Readex Pro',
                                                           color:
-                                                              Color(0xFF2A497D),
+                                                              const Color(0xFF2A497D),
                                                           fontSize: 22.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -241,7 +265,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                           fontFamily:
                                                               'Readex Pro',
                                                           color:
-                                                              Color(0xFF2A497D),
+                                                              const Color(0xFF2A497D),
                                                           fontSize: 22.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -254,20 +278,20 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                     .bodyMedium
                                                     .override(
                                                       fontFamily: 'Readex Pro',
-                                                      color: Color(0xFF2A497D),
+                                                      color: const Color(0xFF2A497D),
                                                       letterSpacing: 0.0,
                                                     ),
                                               ),
                                             ),
                                           ],
                                         ),
-                                        Divider(
+                                        const Divider(
                                           height: 24.0,
                                           thickness: 2.0,
                                           color: Color(0xFFF1F4F8),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.all(24.0),
+                                          padding: const EdgeInsets.all(24.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -276,7 +300,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                               Flexible(
                                                 child: Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Text(
                                                     containerFamilyRecord
@@ -289,7 +313,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                           fontFamily:
                                                               'Readex Pro',
                                                           color:
-                                                              Color(0xFF57636C),
+                                                              const Color(0xFF57636C),
                                                           fontSize: 15.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -303,18 +327,18 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(1.0, 0.0),
+                                              const AlignmentDirectional(1.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Expanded(
                                                 child: Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           1.0, 0.0),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(25.0,
                                                                 16.0, 0.0, 0.0),
                                                     child: InkWell(
@@ -366,118 +390,78 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 0.0),
                         child: Container(
                           width: double.infinity,
                           height: 120.0,
                           decoration: BoxDecoration(
-                            color: Color(0xFF2A497D),
+                            color: const Color(0xFF2A497D),
                             borderRadius: BorderRadius.circular(12.0),
                           ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        35.0, 0.0, 0.0, 0.0),
-                                    child: Container(
-                                      width: 149.0,
-                                      height: 81.0,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFFFFCF6),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 4.0,
-                                            color: Color(0xFF2A497D),
-                                            offset: Offset(
-                                              0.0,
-                                              2.0,
+                          child: Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Align(
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed('FamilyFunds');
+                                      },
+                                      child: Container(
+                                        width: 149.0,
+                                        height: 86.0,
+                                        decoration: const BoxDecoration(
+                                          color: Color(0xFFFFFCF6),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 4.0,
+                                              color: Color(0xFF2A497D),
+                                              offset: Offset(
+                                                0.0,
+                                                2.0,
+                                              ),
+                                            )
+                                          ],
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(20.0),
+                                            bottomRight: Radius.circular(20.0),
+                                            topLeft: Radius.circular(20.0),
+                                            topRight: Radius.circular(20.0),
+                                          ),
+                                        ),
+                                        child: Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, 0.0),
+                                          child: FlutterFlowIconButton(
+                                            borderColor: Colors.transparent,
+                                            borderRadius: 8.0,
+                                            buttonSize: 116.0,
+                                            fillColor: const Color(0xFFFFFCF6),
+                                            icon: const Icon(
+                                              Icons.payments_outlined,
+                                              color: Color(0xFF2A497D),
+                                              size: 50.0,
                                             ),
-                                          )
-                                        ],
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(20.0),
-                                          bottomRight: Radius.circular(20.0),
-                                          topLeft: Radius.circular(20.0),
-                                          topRight: Radius.circular(20.0),
+                                            onPressed: () async {
+                                              context.pushNamed('FamilyFunds');
+                                            },
+                                          ),
                                         ),
-                                      ),
-                                      child: FlutterFlowIconButton(
-                                        borderColor: Colors.transparent,
-                                        borderRadius: 8.0,
-                                        buttonSize: 116.0,
-                                        fillColor: Color(0xFFFFFCF6),
-                                        icon: Icon(
-                                          Icons.payments_outlined,
-                                          color: Color(0xFF2A497D),
-                                          size: 50.0,
-                                        ),
-                                        onPressed: () {
-                                          print('IconButton pressed ...');
-                                        },
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 40.0, 0.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.pushNamed('FamilyFunds');
-                                    },
-                                    child: Container(
-                                      width: 149.0,
-                                      height: 81.0,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFFFFCF6),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 4.0,
-                                            color: Color(0xFF2A497D),
-                                            offset: Offset(
-                                              0.0,
-                                              2.0,
-                                            ),
-                                          )
-                                        ],
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(20.0),
-                                          bottomRight: Radius.circular(20.0),
-                                          topLeft: Radius.circular(20.0),
-                                          topRight: Radius.circular(20.0),
-                                        ),
-                                      ),
-                                      child: FlutterFlowIconButton(
-                                        borderColor: Colors.transparent,
-                                        borderRadius: 8.0,
-                                        buttonSize: 116.0,
-                                        fillColor: Color(0xFFFFFCF6),
-                                        icon: Icon(
-                                          Icons.payments_outlined,
-                                          color: Color(0xFF2A497D),
-                                          size: 50.0,
-                                        ),
-                                        onPressed: () async {
-                                          context.pushNamed('FamilyFunds');
-                                        },
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -485,7 +469,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -496,7 +480,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                           wrapWithModel(
                             model: _model.navBar1Model,
                             updateCallback: () => safeSetState(() {}),
-                            child: NavBar1Widget(),
+                            child: const NavBar1Widget(),
                           ),
                         ],
                       ),

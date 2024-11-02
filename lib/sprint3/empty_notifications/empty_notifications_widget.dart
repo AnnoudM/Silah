@@ -1,8 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'empty_notifications_model.dart';
 export 'empty_notifications_model.dart';
 
@@ -39,12 +37,12 @@ class _EmptyNotificationsWidgetState extends State<EmptyNotificationsWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 0.0),
             child: Icon(
               Icons.notifications_off_sharp,
@@ -53,12 +51,12 @@ class _EmptyNotificationsWidgetState extends State<EmptyNotificationsWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
             child: Text(
               'لايوجد أي إشعارات',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                     fontFamily: 'Outfit',
-                    color: Color(0xFF15161E),
+                    color: const Color(0xFF15161E),
                     fontSize: 24.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w500,

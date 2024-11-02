@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'recoverpassword_model.dart';
 export 'recoverpassword_model.dart';
 
@@ -43,7 +42,7 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       appBar: AppBar(
-        backgroundColor: Color(0xFF2A497D),
+        backgroundColor: const Color(0xFF2A497D),
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -59,18 +58,18 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
             context.pop();
           },
         ),
-        actions: [],
+        actions: const [],
         centerTitle: false,
         elevation: 0.0,
       ),
       body: Align(
-        alignment: AlignmentDirectional(0.0, -1.0),
+        alignment: const AlignmentDirectional(0.0, -1.0),
         child: Container(
           width: double.infinity,
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxWidth: 570.0,
           ),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Color(0xFFFFFCF6),
           ),
           child: Column(
@@ -78,13 +77,13 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(13.0, 16.0, 11.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(13.0, 16.0, 11.0, 16.0),
                 child: Text(
                   'نسيت كلمة المرور',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).displaySmall.override(
                         fontFamily: 'Readex Pro',
-                        color: Color(0xFF2A497D),
+                        color: const Color(0xFF2A497D),
                         fontSize: 20.0,
                         letterSpacing: 0.0,
                       ),
@@ -98,7 +97,7 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
                 tablet: false,
               ))
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 8.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 8.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -111,7 +110,7 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 12.0),
                           child: Icon(
                             Icons.arrow_back_rounded,
@@ -120,7 +119,7 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 0.0, 0.0),
                           child: Text(
                             'Back',
@@ -137,7 +136,7 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
                   ),
                 ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 16.0),
                 child: Text(
                   'سنرسل لك رسالة بريد إلكتروني تحتوي على رابط لإعادة تعيين كلمة المرور الخاصة بك، يرجى إدخال البريد الإلكتروني المرتبط بحسابك أدناه.',
                   style: FlutterFlowTheme.of(context).labelMedium.override(
@@ -151,13 +150,13 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
                 autovalidateMode: AutovalidateMode.always,
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
-                  child: Container(
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+                  child: SizedBox(
                     width: double.infinity,
                     child: TextFormField(
                       controller: _model.emailAddressTextController,
                       focusNode: _model.emailAddressFocusNode,
-                      autofillHints: [AutofillHints.email],
+                      autofillHints: const [AutofillHints.email],
                       obscureText: false,
                       decoration: InputDecoration(
                         labelStyle:
@@ -208,8 +207,8 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         filled: true,
-                        fillColor: Color(0xFFF1F4F8),
-                        contentPadding: EdgeInsetsDirectional.fromSTEB(
+                        fillColor: const Color(0xFFF1F4F8),
+                        contentPadding: const EdgeInsetsDirectional.fromSTEB(
                             24.0, 24.0, 20.0, 24.0),
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -232,14 +231,14 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       if (_model.emailAddressTextController.text.isEmpty) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
+                          const SnackBar(
                             content: Text(
                               'Email required!',
                             ),
@@ -261,7 +260,7 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
                                   .secondaryBackground,
                             ),
                           ),
-                          duration: Duration(milliseconds: 4000),
+                          duration: const Duration(milliseconds: 4000),
                           backgroundColor: FlutterFlowTheme.of(context).success,
                         ),
                       );
@@ -271,17 +270,17 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
                       width: 270.0,
                       height: 44.0,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: Color(0xFF2A497D),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: const Color(0xFF2A497D),
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Readex Pro',
                                 letterSpacing: 0.0,
                               ),
                       elevation: 3.0,
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),

@@ -2,8 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'no_families_regestered_alert_model.dart';
 export 'no_families_regestered_alert_model.dart';
 
@@ -41,18 +39,18 @@ class _NoFamiliesRegesteredAlertWidgetState
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
         child: Container(
           width: MediaQuery.sizeOf(context).width,
           height: 250.0,
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxWidth: 530.0,
           ),
           decoration: BoxDecoration(
-            color: Color(0xFFFFFCF6),
-            boxShadow: [
+            color: const Color(0xFFFFFCF6),
+            boxShadow: const [
               BoxShadow(
                 blurRadius: 3.0,
                 color: Color(0x33000000),
@@ -64,19 +62,19 @@ class _NoFamiliesRegesteredAlertWidgetState
             ],
             borderRadius: BorderRadius.circular(24.0),
             border: Border.all(
-              color: Color(0xFFF5FBFB),
+              color: const Color(0xFFF5FBFB),
               width: 1.0,
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
+                      const EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -88,7 +86,7 @@ class _NoFamiliesRegesteredAlertWidgetState
                         style:
                             FlutterFlowTheme.of(context).displaySmall.override(
                                   fontFamily: 'Readex Pro',
-                                  color: Color(0xFF2A497D),
+                                  color: const Color(0xFF2A497D),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
@@ -99,7 +97,7 @@ class _NoFamiliesRegesteredAlertWidgetState
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 30.0, 0.0, 30.0),
                             child: Text(
                               'عزيزي المستخدم,\n لاتوجد عائلات مسجلة للانضمام إليها,\n لذا سجل كمشرف اسرة لإنشاء اول عائلة',
@@ -121,7 +119,7 @@ class _NoFamiliesRegesteredAlertWidgetState
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 12.0),
+                      const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 12.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -133,11 +131,11 @@ class _NoFamiliesRegesteredAlertWidgetState
                         text: 'حسنا',
                         options: FFButtonOptions(
                           height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: Color(0xFF2A497D),
+                          color: const Color(0xFF2A497D),
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Readex Pro',
@@ -147,7 +145,7 @@ class _NoFamiliesRegesteredAlertWidgetState
                                     fontWeight: FontWeight.w500,
                                   ),
                           elevation: 0.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                           ),
                           borderRadius: BorderRadius.circular(40.0),

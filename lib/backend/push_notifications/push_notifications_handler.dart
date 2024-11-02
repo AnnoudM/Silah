@@ -1,22 +1,17 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'serialization_util.dart';
 import '../backend.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
-import '../../index.dart';
-import '../../main.dart';
 
 final _handledMessageIds = <String?>{};
 
 class PushNotificationsHandler extends StatefulWidget {
-  const PushNotificationsHandler({Key? key, required this.child})
-      : super(key: key);
+  const PushNotificationsHandler({super.key, required this.child});
 
   final Widget child;
 
@@ -77,7 +72,7 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
   @override
   Widget build(BuildContext context) => _loading
       ? Container(
-          color: Color(0xFF2A497D),
+          color: const Color(0xFF2A497D),
           child: Image.asset(
             'assets/images/Screenshot_2024-09-08_at_10.16.51_AM.jpeg',
             fit: BoxFit.contain,
@@ -102,7 +97,7 @@ class ParameterData {
       );
 
   static Future<ParameterData> Function(Map<String, dynamic>) none() =>
-      (data) async => ParameterData();
+      (data) async => const ParameterData();
 }
 
 final parametersBuilderMap =
@@ -122,7 +117,7 @@ final parametersBuilderMap =
         },
       ),
   'HomeUser': ParameterData.none(),
-  'requestsCopyCopy': ParameterData.none(),
+  'Requests': ParameterData.none(),
   'HomeAdmin': ParameterData.none(),
   'verification': (data) async => ParameterData(
         allParams: {
@@ -162,7 +157,7 @@ final parametersBuilderMap =
           'currentpage': getParameter<String>(data, 'currentpage'),
         },
       ),
-  'ProfileDetailsCopy': (data) async => ParameterData(
+  'ProfileDetails': (data) async => ParameterData(
         allParams: {
           'name': await getDocumentParameter<UsersRecord>(
               data, 'name', UsersRecord.fromSnapshot),
@@ -175,36 +170,15 @@ final parametersBuilderMap =
           'currentPage': getParameter<String>(data, 'currentPage'),
         },
       ),
-  'CalenderPageCopy': (data) async => ParameterData(
-        allParams: {
-          'famName': await getDocumentParameter<FamilyRecord>(
-              data, 'famName', FamilyRecord.fromSnapshot),
-          'currentPage': getParameter<String>(data, 'currentPage'),
-        },
-      ),
-  'DirectoryPageCopy': (data) async => ParameterData(
-        allParams: {
-          'currentpage': getParameter<String>(data, 'currentpage'),
-        },
-      ),
-  'DirectoryPageCopy2': (data) async => ParameterData(
-        allParams: {
-          'currentpage': getParameter<String>(data, 'currentpage'),
-        },
-      ),
   'EditDesc': (data) async => ParameterData(
         allParams: {
           'editDesc': getParameter<DocumentReference>(data, 'editDesc'),
         },
       ),
-  'HomeUserCopy': ParameterData.none(),
   'FamilyFunds': ParameterData.none(),
-  'notificationCenter': ParameterData.none(),
-  'postWithNotification': (data) async => ParameterData(
+  'notificationCenter': (data) async => ParameterData(
         allParams: {
-          'currentpage': getParameter<String>(data, 'currentpage'),
-          'notification': await getDocumentParameter<NotificationsRecord>(
-              data, 'notification', NotificationsRecord.fromSnapshot),
+          'time': getParameter<bool>(data, 'time'),
         },
       ),
   'ChangePass': (data) async => ParameterData(
@@ -215,12 +189,6 @@ final parametersBuilderMap =
   'EditProfile': (data) async => ParameterData(
         allParams: {
           'userEdit': getParameter<DocumentReference>(data, 'userEdit'),
-        },
-      ),
-  'EventDetailsCopy': (data) async => ParameterData(
-        allParams: {
-          'event': await getDocumentParameter<EventsRecord>(
-              data, 'event', EventsRecord.fromSnapshot),
         },
       ),
 };

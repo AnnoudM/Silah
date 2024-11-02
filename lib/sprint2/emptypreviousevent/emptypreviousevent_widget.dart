@@ -2,8 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'emptypreviousevent_model.dart';
 export 'emptypreviousevent_model.dart';
 
@@ -40,23 +38,23 @@ class _EmptypreviouseventWidgetState extends State<EmptypreviouseventWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          FaIcon(
+          const FaIcon(
             FontAwesomeIcons.solidCalendarTimes,
             color: Color(0xFF606A85),
             size: 72.0,
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
             child: Text(
               'لايوجد مناسبات',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                     fontFamily: 'Outfit',
-                    color: Color(0xFF15161E),
+                    color: const Color(0xFF15161E),
                     fontSize: 24.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w500,
@@ -64,12 +62,12 @@ class _EmptypreviouseventWidgetState extends State<EmptypreviouseventWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
             child: Text(
               'لايوجد اي مناسبات في هذا اليوم',
               style: FlutterFlowTheme.of(context).labelMedium.override(
                     fontFamily: 'Plus Jakarta Sans',
-                    color: Color(0xFF606A85),
+                    color: const Color(0xFF606A85),
                     fontSize: 14.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w500,

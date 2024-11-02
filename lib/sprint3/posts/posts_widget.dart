@@ -5,18 +5,15 @@ import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
-import '/sprint1/side_admin_copy/side_admin_copy_widget.dart';
+import '/homes/side_bar/side_bar_widget.dart';
 import '/sprint2/empty_posts/empty_posts_widget.dart';
 import '/sprint2/postitems/postitems_widget.dart';
 import '/sprint2/share_post/share_post_widget.dart';
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'posts_model.dart';
 export 'posts_model.dart';
@@ -68,22 +65,22 @@ class _PostsWidgetState extends State<PostsWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(0.0, 140.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 140.0),
+            end: const Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(0.9, 1.0),
-            end: Offset(1.0, 1.0),
+            begin: const Offset(0.9, 1.0),
+            end: const Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(-0.349, 0),
-            end: Offset(0, 0),
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
           ),
         ],
       ),
@@ -113,7 +110,7 @@ class _PostsWidgetState extends State<PostsWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFFFFFCF6),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -139,13 +136,13 @@ class _PostsWidgetState extends State<PostsWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFFFFFCF6),
-            endDrawer: Drawer(
+            backgroundColor: const Color(0xFFFFFCF6),
+            drawer: Drawer(
               elevation: 16.0,
               child: wrapWithModel(
-                model: _model.sideAdminCopyModel,
+                model: _model.sideBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: SideAdminCopyWidget(),
+                child: const SideBarWidget(),
               ),
             ),
             body: Stack(
@@ -161,7 +158,7 @@ class _PostsWidgetState extends State<PostsWidget>
                               child: Container(
                                 width: 100.0,
                                 height: double.infinity,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   gradient: LinearGradient(
                                     colors: [
                                       Color(0xFF2A497D),
@@ -172,7 +169,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                     end: AlignmentDirectional(-0.87, 1.0),
                                   ),
                                 ),
-                                alignment: AlignmentDirectional(0.0, -1.0),
+                                alignment: const AlignmentDirectional(0.0, -1.0),
                                 child: SingleChildScrollView(
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -183,56 +180,66 @@ class _PostsWidgetState extends State<PostsWidget>
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
-                                          Expanded(
-                                            child: Align(
-                                              alignment: AlignmentDirectional(
-                                                  2.0, 0.0),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.asset(
-                                                  'assets/images/SilahFINALLogo.jpg',
-                                                  width: 153.0,
-                                                  height: 95.0,
-                                                  fit: BoxFit.cover,
+                                          Align(
+                                            alignment:
+                                                const AlignmentDirectional(0.0, 0.0),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      25.0, 25.0, 25.0, 0.0),
+                                              child: FlutterFlowIconButton(
+                                                borderColor: Colors.transparent,
+                                                borderRadius: 8.0,
+                                                buttonSize: 40.0,
+                                                icon: Icon(
+                                                  Icons.menu_sharp,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .info,
+                                                  size: 24.0,
                                                 ),
+                                                onPressed: () async {
+                                                  scaffoldKey.currentState!
+                                                      .openDrawer();
+                                                },
                                               ),
                                             ),
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    100.0, 25.0, 0.0, 0.0),
-                                            child: FlutterFlowIconButton(
-                                              borderColor: Colors.transparent,
-                                              borderRadius: 8.0,
-                                              buttonSize: 40.0,
-                                              icon: Icon(
-                                                Icons.menu_sharp,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .info,
-                                                size: 24.0,
+                                          Expanded(
+                                            child: Align(
+                                              alignment: const AlignmentDirectional(
+                                                  -0.6, 0.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  child: Image.asset(
+                                                    'assets/images/SilahFINALLogo.jpg',
+                                                    width: 153.0,
+                                                    height: 95.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
                                               ),
-                                              onPressed: () async {
-                                                scaffoldKey.currentState!
-                                                    .openEndDrawer();
-                                              },
                                             ),
                                           ),
                                         ],
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(16.0),
+                                        padding: const EdgeInsets.all(16.0),
                                         child: Container(
                                           width: double.infinity,
                                           height: 610.0,
-                                          constraints: BoxConstraints(
+                                          constraints: const BoxConstraints(
                                             maxWidth: 570.0,
                                           ),
                                           decoration: BoxDecoration(
-                                            color: Color(0xFFFFFCF6),
-                                            boxShadow: [
+                                            color: const Color(0xFFFFFCF6),
+                                            boxShadow: const [
                                               BoxShadow(
                                                 blurRadius: 4.0,
                                                 color: Color(0x33000000),
@@ -251,7 +258,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 16.0, 0.0, 16.0),
                                                 child: Row(
@@ -260,72 +267,89 @@ class _PostsWidgetState extends State<PostsWidget>
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
                                                   children: [
-                                                    Text(
-                                                      'منشورات العائلة',
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .labelLarge
-                                                          .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
-                                                            color: Color(
-                                                                0xFF2A497D),
-                                                            fontSize: 23.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                          ),
+                                                    Semantics(
+                                                      label: 'منشورات العائلة',
+                                                      child: Text(
+                                                        'منشورات العائلة',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelLarge
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Readex Pro',
+                                                              color: const Color(
+                                                                  0xFF2A497D),
+                                                              fontSize: 23.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                            ),
+                                                      ),
                                                     ),
                                                   ],
                                                 ),
                                               ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        15.0, 0.0, 15.0, 0.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0),
-                                                        child:
-                                                            FlutterFlowChoiceChips(
-                                                          options: [
-                                                            ChipData('الكل'),
-                                                            ChipData('مواليد'),
-                                                            ChipData('تعزيه'),
-                                                            ChipData('أفراح'),
-                                                            ChipData('إنجازات')
-                                                          ],
-                                                          onChanged:
-                                                              (val) async {
-                                                            safeSetState(() => _model
-                                                                    .choiceChipsValue =
-                                                                val?.firstOrNull);
-                                                            _model.selectedCategory =
-                                                                _model
-                                                                    .choiceChipsValue;
-                                                            safeSetState(() {});
-                                                          },
-                                                          selectedChipStyle:
-                                                              ChipStyle(
-                                                            backgroundColor:
-                                                                Color(
-                                                                    0xFF87A4D0),
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          15.0, 0.0, 15.0, 0.0),
+                                                  child: SingleChildScrollView(
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Flexible(
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        10.0,
+                                                                        0.0),
+                                                            child:
+                                                                FlutterFlowChoiceChips(
+                                                              options: const [
+                                                                ChipData(
+                                                                    'الكل'),
+                                                                ChipData(
+                                                                    'مواليد'),
+                                                                ChipData(
+                                                                    'تعزيه'),
+                                                                ChipData(
+                                                                    'أفراح'),
+                                                                ChipData(
+                                                                    'إنجازات')
+                                                              ],
+                                                              onChanged:
+                                                                  (val) async {
+                                                                safeSetState(() =>
+                                                                    _model.choiceChipsValue =
+                                                                        val?.firstOrNull);
+                                                                _model.selectedCategory =
+                                                                    _model
+                                                                        .choiceChipsValue;
+                                                                safeSetState(
+                                                                    () {});
+                                                              },
+                                                              selectedChipStyle:
+                                                                  ChipStyle(
+                                                                backgroundColor:
+                                                                    const Color(
+                                                                        0xFF87A4D0),
+                                                                textStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
@@ -337,22 +361,21 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
-                                                            iconColor: Color(
-                                                                0xFFFFFCF6),
-                                                            iconSize: 16.0,
-                                                            elevation: 0.0,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
-                                                          ),
-                                                          unselectedChipStyle:
-                                                              ChipStyle(
-                                                            backgroundColor:
-                                                                Color(
+                                                                iconColor: const Color(
                                                                     0xFFFFFCF6),
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
+                                                                iconSize: 16.0,
+                                                                elevation: 0.0,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              unselectedChipStyle:
+                                                                  ChipStyle(
+                                                                backgroundColor:
+                                                                    const Color(
+                                                                        0xFFFFFCF6),
+                                                                textStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
@@ -364,37 +387,40 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
-                                                            iconColor:
-                                                                FlutterFlowTheme.of(
+                                                                iconColor: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryText,
-                                                            iconSize: 16.0,
-                                                            elevation: 0.0,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
+                                                                iconSize: 16.0,
+                                                                elevation: 0.0,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              chipSpacing: 8.0,
+                                                              rowSpacing: 8.0,
+                                                              multiselect:
+                                                                  false,
+                                                              initialized: _model
+                                                                      .choiceChipsValue !=
+                                                                  null,
+                                                              alignment:
+                                                                  WrapAlignment
+                                                                      .center,
+                                                              controller: _model
+                                                                      .choiceChipsValueController ??=
+                                                                  FormFieldController<
+                                                                      List<
+                                                                          String>>(
+                                                                ['الكل'],
+                                                              ),
+                                                              wrapped: true,
+                                                            ),
                                                           ),
-                                                          chipSpacing: 8.0,
-                                                          rowSpacing: 8.0,
-                                                          multiselect: false,
-                                                          initialized: _model
-                                                                  .choiceChipsValue !=
-                                                              null,
-                                                          alignment:
-                                                              WrapAlignment
-                                                                  .start,
-                                                          controller: _model
-                                                                  .choiceChipsValueController ??=
-                                                              FormFieldController<
-                                                                  List<String>>(
-                                                            ['الكل'],
-                                                          ),
-                                                          wrapped: true,
                                                         ),
-                                                      ),
+                                                      ],
                                                     ),
-                                                  ],
+                                                  ),
                                                 ),
                                               ),
                                               if (_model.selectedCategory ==
@@ -402,11 +428,11 @@ class _PostsWidgetState extends State<PostsWidget>
                                                 Expanded(
                                                   child: Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, -1.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   2.0,
@@ -420,7 +446,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                     .height *
                                                                 0.74,
                                                         decoration:
-                                                            BoxDecoration(
+                                                            const BoxDecoration(
                                                           color:
                                                               Color(0xFFFFFCF6),
                                                           borderRadius:
@@ -441,7 +467,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       6.0,
                                                                       0.0,
@@ -493,7 +519,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                       .data!;
                                                               if (mainListPostsRecordList
                                                                   .isEmpty) {
-                                                                return EmptyPostsWidget();
+                                                                return const EmptyPostsWidget();
                                                               }
 
                                                               return SingleChildScrollView(
@@ -556,7 +582,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                         );
                                                                       },
                                                                     );
-                                                                  }).divide(SizedBox(
+                                                                  }).divide(const SizedBox(
                                                                       height:
                                                                           2.0)),
                                                                 ),
@@ -573,11 +599,11 @@ class _PostsWidgetState extends State<PostsWidget>
                                                 Expanded(
                                                   child: Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, -1.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   2.0,
@@ -591,7 +617,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                     .height *
                                                                 0.74,
                                                         decoration:
-                                                            BoxDecoration(
+                                                            const BoxDecoration(
                                                           color:
                                                               Color(0xFFFFFCF6),
                                                           borderRadius:
@@ -612,7 +638,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       6.0,
                                                                       0.0,
@@ -669,7 +695,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                       .data!;
                                                               if (mainListPostsRecordList
                                                                   .isEmpty) {
-                                                                return EmptyPostsWidget();
+                                                                return const EmptyPostsWidget();
                                                               }
 
                                                               return SingleChildScrollView(
@@ -727,10 +753,12 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                               mainListPostsRecord.reference,
                                                                           selectedCategory:
                                                                               _model.selectedCategory,
+                                                                          postrefuser:
+                                                                              mainListPostsRecord,
                                                                         );
                                                                       },
                                                                     );
-                                                                  }).divide(SizedBox(
+                                                                  }).divide(const SizedBox(
                                                                       height:
                                                                           2.0)),
                                                                 ),
@@ -757,23 +785,23 @@ class _PostsWidgetState extends State<PostsWidget>
                       ],
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 30.0, 0.0, 30.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         10.0, 17.0, 0.0, 10.0),
                                     child: StreamBuilder<List<UserrrRecord>>(
                                       stream: queryUserrrRecord(
@@ -813,7 +841,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                           borderRadius: 25.0,
                                           borderWidth: 1.0,
                                           buttonSize: 60.0,
-                                          fillColor: Color(0xFF2A497D),
+                                          fillColor: const Color(0xFF2A497D),
                                           icon: Icon(
                                             Icons.add_sharp,
                                             color: FlutterFlowTheme.of(context)
@@ -836,7 +864,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                     padding:
                                                         MediaQuery.viewInsetsOf(
                                                             context),
-                                                    child: SharePostWidget(),
+                                                    child: const SharePostWidget(),
                                                   ),
                                                 );
                                               },
@@ -854,7 +882,7 @@ class _PostsWidgetState extends State<PostsWidget>
                           wrapWithModel(
                             model: _model.navBar1Model,
                             updateCallback: () => safeSetState(() {}),
-                            child: NavBar1Widget(
+                            child: const NavBar1Widget(
                               currentpage: 'posts',
                             ),
                           ),

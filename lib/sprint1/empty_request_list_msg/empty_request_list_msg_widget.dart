@@ -1,8 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'empty_request_list_msg_model.dart';
 export 'empty_request_list_msg_model.dart';
 
@@ -41,7 +39,7 @@ class _EmptyRequestListMsgWidgetState extends State<EmptyRequestListMsgWidget> {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        Column(
+        const Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -71,9 +69,9 @@ class _EmptyRequestListMsgWidgetState extends State<EmptyRequestListMsgWidget> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
+              alignment: const AlignmentDirectional(0.0, 0.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: Text(
                   'لا يوجد طلبات إنضمام للعائلة',
                   textAlign: TextAlign.center,

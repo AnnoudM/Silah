@@ -4,12 +4,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/sprint2/delete_post_alert/delete_post_alert_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'postitems_model.dart';
 export 'postitems_model.dart';
 
@@ -20,12 +16,14 @@ class PostitemsWidget extends StatefulWidget {
     this.userRef,
     this.selectedCategory,
     this.postrefuser,
+    this.notiRef,
   });
 
   final DocumentReference? postRef;
   final DocumentReference? userRef;
   final String? selectedCategory;
   final PostsRecord? postrefuser;
+  final DocumentReference? notiRef;
 
   @override
   State<PostitemsWidget> createState() => _PostitemsWidgetState();
@@ -56,7 +54,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
       child: StreamBuilder<List<UsersRecord>>(
         stream: queryUsersRecord(
           queryBuilder: (usersRecord) => usersRecord.where(
@@ -93,7 +91,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
             width: 375.0,
             decoration: BoxDecoration(
               color: Colors.white,
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   blurRadius: 4.0,
                   color: Color(0xFFE0E3E7),
@@ -103,18 +101,18 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                   ),
                 )
               ],
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(20.0),
                 bottomRight: Radius.circular(20.0),
                 topLeft: Radius.circular(20.0),
                 topRight: Radius.circular(20.0),
               ),
               border: Border.all(
-                color: Color(0xFFFFFDF9),
+                color: const Color(0xFFFFFDF9),
               ),
             ),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 6.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 6.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -132,56 +130,55 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(0.0, -1.0),
+                                alignment: const AlignmentDirectional(0.0, -1.0),
                                 child: Stack(
-                                  alignment: AlignmentDirectional(0.0, -1.0),
+                                  alignment: const AlignmentDirectional(0.0, -1.0),
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 6.0, 0.0, 0.0),
-                                      child: Container(
-                                        width: 40.0,
-                                        height: 40.0,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Image.network(
-                                          containerUsersRecord!.userPIc,
-                                          fit: BoxFit.cover,
-                                        ),
+                                      child: StreamBuilder<UsersRecord>(
+                                        stream: UsersRecord.getDocument(
+                                            widget.userRef!),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          }
+
+                                          final circleImageUsersRecord =
+                                              snapshot.data!;
+
+                                          return Container(
+                                            width: 40.0,
+                                            height: 40.0,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Image.network(
+                                              circleImageUsersRecord.userPIc,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          );
+                                        },
                                       ),
                                     ),
                                   ],
-                                ),
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
-                                  },
-                                  text: 'Button',
-                                  options: FFButtonOptions(
-                                    width: 1.0,
-                                    height: 36.0,
-                                    padding: EdgeInsets.all(0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: Color(0x91CCCCCC),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: Colors.white,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    elevation: 0.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
                                 ),
                               ),
                             ],
@@ -204,12 +201,12 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                   children: [
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(-1.0, -1.0),
+                                          const AlignmentDirectional(-1.0, -1.0),
                                       child: Container(
                                         width: 270.0,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             bottomLeft: Radius.circular(0.0),
                                             bottomRight: Radius.circular(0.0),
                                             topLeft: Radius.circular(0.0),
@@ -221,7 +218,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 6.0, 0.0, 16.0),
                                           child: SingleChildScrollView(
                                             primary: false,
@@ -244,7 +241,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -254,7 +251,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                             UsersRecord>(
                                                           stream: UsersRecord
                                                               .getDocument(
-                                                                  widget!
+                                                                  widget
                                                                       .userRef!),
                                                           builder: (context,
                                                               snapshot) {
@@ -312,13 +309,13 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.start,
                                                   children: [
-                                                    if (widget!
+                                                    if (widget
                                                             .selectedCategory ==
                                                         'الكل')
                                                       StreamBuilder<
                                                           PostsRecord>(
                                                         stream: PostsRecord
-                                                            .getDocument(widget!
+                                                            .getDocument(widget
                                                                 .postRef!),
                                                         builder: (context,
                                                             snapshot) {
@@ -348,7 +345,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
 
                                                           return FFButtonWidget(
                                                             onPressed:
-                                                                (widget!.selectedCategory ==
+                                                                (widget.selectedCategory ==
                                                                         'الكل')
                                                                     ? null
                                                                     : () {
@@ -363,20 +360,20 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                               width: 80.0,
                                                               height: 22.0,
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           0.0,
                                                                           16.0,
                                                                           0.0),
                                                               iconPadding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                              color: Color(
+                                                              color: const Color(
                                                                   0xFFFFFCF6),
                                                               textStyle:
                                                                   FlutterFlowTheme.of(
@@ -396,7 +393,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                                       ),
                                                               elevation: 0.0,
                                                               borderSide:
-                                                                  BorderSide(
+                                                                  const BorderSide(
                                                                 color: Color(
                                                                     0xFF2A497D),
                                                                 width: 0.5,
@@ -421,7 +418,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     6.0,
@@ -431,7 +428,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                             PostsRecord>(
                                                           stream: PostsRecord
                                                               .getDocument(
-                                                                  widget!
+                                                                  widget
                                                                       .postRef!),
                                                           builder: (context,
                                                               snapshot) {
@@ -487,7 +484,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 0.0, 0.0, 0.0),
                                                   child: Row(
@@ -496,30 +493,47 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                     mainAxisAlignment:
                                                         MainAxisAlignment.end,
                                                     children: [
-                                                      if ((widget!.postrefuser
+                                                      if ((widget.postrefuser
                                                                   ?.userID ==
                                                               containerUsersRecord
                                                                   ?.reference) &&
-                                                          (widget!.selectedCategory !=
-                                                                  null &&
-                                                              widget!.selectedCategory !=
-                                                                  ''))
+                                                          ((widget.selectedCategory ==
+                                                                  'الكل') ||
+                                                              (widget.selectedCategory ==
+                                                                  'مواليد') ||
+                                                              (widget.selectedCategory ==
+                                                                  'أفراح') ||
+                                                              (widget.selectedCategory ==
+                                                                  'إنجازات') ||
+                                                              (widget.selectedCategory ==
+                                                                  'تعزيه')))
                                                         Builder(
                                                           builder: (context) =>
                                                               Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         8.0,
                                                                         0.0,
                                                                         4.0),
                                                             child: StreamBuilder<
-                                                                PostsRecord>(
-                                                              stream: PostsRecord
-                                                                  .getDocument(
-                                                                      widget!
-                                                                          .postRef!),
+                                                                List<
+                                                                    NotificationsRecord>>(
+                                                              stream:
+                                                                  queryNotificationsRecord(
+                                                                queryBuilder:
+                                                                    (notificationsRecord) =>
+                                                                        notificationsRecord
+                                                                            .where(
+                                                                  'postid',
+                                                                  isEqualTo:
+                                                                      widget
+                                                                          .postRef,
+                                                                ),
+                                                                singleRecord:
+                                                                    true,
+                                                              ),
                                                               builder: (context,
                                                                   snapshot) {
                                                                 // Customize what your widget looks like when it's loading.
@@ -543,57 +557,75 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                                     ),
                                                                   );
                                                                 }
-
-                                                                final iconPostsRecord =
+                                                                List<NotificationsRecord>
+                                                                    iconNotificationsRecordList =
                                                                     snapshot
                                                                         .data!;
+                                                                // Return an empty Container when the item does not exist.
+                                                                if (snapshot
+                                                                    .data!
+                                                                    .isEmpty) {
+                                                                  return Container();
+                                                                }
+                                                                final iconNotificationsRecord =
+                                                                    iconNotificationsRecordList
+                                                                            .isNotEmpty
+                                                                        ? iconNotificationsRecordList
+                                                                            .first
+                                                                        : null;
 
-                                                                return InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    await showDialog(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (dialogContext) {
-                                                                        return Dialog(
-                                                                          elevation:
-                                                                              0,
-                                                                          insetPadding:
-                                                                              EdgeInsets.zero,
-                                                                          backgroundColor:
-                                                                              Colors.transparent,
-                                                                          alignment:
-                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                          child:
-                                                                              DeletePostAlertWidget(
-                                                                            deletePost:
-                                                                                widget!.postRef,
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                    );
-
-                                                                    Navigator.pop(
-                                                                        context);
-                                                                  },
-                                                                  child: FaIcon(
-                                                                    FontAwesomeIcons
-                                                                        .solidTrashAlt,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .error,
-                                                                    size: 17.0,
+                                                                return Semantics(
+                                                                  label:
+                                                                      'حذف المنشور',
+                                                                  child:
+                                                                      InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onTap:
+                                                                        () async {
+                                                                      await showDialog(
+                                                                        context:
+                                                                            context,
+                                                                        builder:
+                                                                            (dialogContext) {
+                                                                          return Dialog(
+                                                                            elevation:
+                                                                                0,
+                                                                            insetPadding:
+                                                                                EdgeInsets.zero,
+                                                                            backgroundColor:
+                                                                                Colors.transparent,
+                                                                            alignment:
+                                                                                const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                            child:
+                                                                                DeletePostAlertWidget(
+                                                                              deletePost: widget.postRef,
+                                                                              deleteNoti: iconNotificationsRecord?.reference,
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                      );
+                                                                    },
+                                                                    child:
+                                                                        FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .solidTrashAlt,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .error,
+                                                                      size:
+                                                                          17.0,
+                                                                    ),
                                                                   ),
                                                                 );
                                                               },
@@ -616,9 +648,9 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, -1.0),
+                          alignment: const AlignmentDirectional(0.0, -1.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 6.0, 6.0, 0.0, 0.0),
                             child: Icon(
                               Icons.keyboard_control,
@@ -632,21 +664,21 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                     Container(
                       width: 375.0,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(20.0),
                           bottomRight: Radius.circular(20.0),
                           topLeft: Radius.circular(0.0),
                           topRight: Radius.circular(0.0),
                         ),
                         border: Border.all(
-                          color: Color(0x0000FFFF),
+                          color: const Color(0x0000FFFF),
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 6.0),
                         child: StreamBuilder<PostsRecord>(
-                          stream: PostsRecord.getDocument(widget!.postRef!),
+                          stream: PostsRecord.getDocument(widget.postRef!),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -670,13 +702,13 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Align(
-                                  alignment: AlignmentDirectional(1.0, 0.0),
+                                  alignment: const AlignmentDirectional(1.0, 0.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 70.0, 0.0),
                                     child: StreamBuilder<PostsRecord>(
                                       stream: PostsRecord.getDocument(
-                                          widget!.postRef!),
+                                          widget.postRef!),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
                                         if (!snapshot.hasData) {
@@ -709,7 +741,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Readex Pro',
-                                                color: Color(0xFF2A497D),
+                                                color: const Color(0xFF2A497D),
                                                 fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w200,

@@ -1,20 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/stripe/payment_manager.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
-import '/sprint1/side_admin/side_admin_widget.dart';
+import '/homes/side_bar/side_bar_widget.dart';
 import 'family_funds_widget.dart' show FamilyFundsWidget;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class FamilyFundsModel extends FlutterFlowModel<FamilyFundsWidget> {
   ///  Local state fields for this page.
@@ -35,10 +24,10 @@ class FamilyFundsModel extends FlutterFlowModel<FamilyFundsWidget> {
       return 'هذا الحقل مطلوب';
     }
 
-    if (val.length > 11) {
-      return 'المبلغ كبير جدا!';
+    if (val.length > 6) {
+      return 'لا يمكن أن يكون المبلغ أكبر \nمن 999.999\$';
     }
-    if (!RegExp('^(?!0\$).+\$').hasMatch(val)) {
+    if (!RegExp('^(?!0+\$)\\d+\$').hasMatch(val)) {
       return 'لا يمكن ان يكون المبلغ صفر';
     }
     return null;
@@ -48,14 +37,14 @@ class FamilyFundsModel extends FlutterFlowModel<FamilyFundsWidget> {
   String? paymentId;
   // Model for NavBar1 component.
   late NavBar1Model navBar1Model;
-  // Model for sideAdmin component.
-  late SideAdminModel sideAdminModel;
+  // Model for sideBar component.
+  late SideBarModel sideBarModel;
 
   @override
   void initState(BuildContext context) {
     amountTextControllerValidator = _amountTextControllerValidator;
     navBar1Model = createModel(context, () => NavBar1Model());
-    sideAdminModel = createModel(context, () => SideAdminModel());
+    sideBarModel = createModel(context, () => SideBarModel());
   }
 
   @override
@@ -64,6 +53,6 @@ class FamilyFundsModel extends FlutterFlowModel<FamilyFundsWidget> {
     amountTextController?.dispose();
 
     navBar1Model.dispose();
-    sideAdminModel.dispose();
+    sideBarModel.dispose();
   }
 }

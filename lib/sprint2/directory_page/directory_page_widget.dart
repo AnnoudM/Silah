@@ -4,17 +4,14 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
-import '/sprint1/side_admin_copy/side_admin_copy_widget.dart';
+import '/homes/side_bar/side_bar_widget.dart';
 import '/sprint2/empty_search/empty_search_widget.dart';
 import '/sprint2/emptydirectory/emptydirectory_widget.dart';
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'directory_page_model.dart';
@@ -72,22 +69,22 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(0.0, 140.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 140.0),
+            end: const Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(0.9, 1.0),
-            end: Offset(1.0, 1.0),
+            begin: const Offset(0.9, 1.0),
+            end: const Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(-0.349, 0),
-            end: Offset(0, 0),
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
           ),
         ],
       ),
@@ -105,8 +102,8 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 400.0.ms,
-            begin: Offset(0.0, 100.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 100.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -124,8 +121,8 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 400.0.ms,
-            begin: Offset(0.0, 100.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 100.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -155,7 +152,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFF2A497D),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -182,13 +179,13 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFF2A497D),
             drawer: Drawer(
               elevation: 16.0,
               child: wrapWithModel(
-                model: _model.sideAdminCopyModel,
+                model: _model.sideBarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: SideAdminCopyWidget(),
+                child: const SideBarWidget(),
               ),
             ),
             body: Stack(
@@ -202,7 +199,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                         child: Container(
                           width: 100.0,
                           height: double.infinity,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0xFF2A497D), Color(0xFF2A497D)],
                               stops: [0.0, 1.0],
@@ -210,40 +207,45 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                               end: AlignmentDirectional(-0.87, 1.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(0.0, -1.0),
+                          alignment: const AlignmentDirectional(0.0, -1.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        25.0, 25.0, 25.0, 0.0),
-                                    child: FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 8.0,
-                                      buttonSize: 40.0,
-                                      icon: Icon(
-                                        Icons.menu_sharp,
-                                        color:
-                                            FlutterFlowTheme.of(context).info,
-                                        size: 24.0,
+                                  Align(
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          25.0, 25.0, 25.0, 0.0),
+                                      child: FlutterFlowIconButton(
+                                        borderColor: Colors.transparent,
+                                        borderRadius: 8.0,
+                                        buttonSize: 40.0,
+                                        icon: Icon(
+                                          Icons.menu_sharp,
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          size: 24.0,
+                                        ),
+                                        onPressed: () async {
+                                          scaffoldKey.currentState!
+                                              .openDrawer();
+                                        },
                                       ),
-                                      onPressed: () async {
-                                        scaffoldKey.currentState!
-                                            .openEndDrawer();
-                                      },
                                     ),
                                   ),
                                   Expanded(
                                     child: Align(
-                                      alignment: AlignmentDirectional(2.0, 0.0),
+                                      alignment:
+                                          const AlignmentDirectional(-0.6, 0.0),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            200.0, 0.0, 0.0, 0.0),
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 0.0),
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
@@ -260,7 +262,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                 ],
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 16.0),
                                 child: StreamBuilder<List<UsersRecord>>(
                                   stream: queryUsersRecord(
@@ -303,10 +305,10 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                     return Container(
                                       width: double.infinity,
                                       height: 588.0,
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         maxWidth: 570.0,
                                       ),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Color(0xFFFFFCF6),
                                         boxShadow: [
                                           BoxShadow(
@@ -337,7 +339,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 10.0, 0.0, 16.0),
                                                   child: Text(
@@ -350,7 +352,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                           fontFamily:
                                                               'Readex Pro',
                                                           color:
-                                                              Color(0xFF2A497D),
+                                                              const Color(0xFF2A497D),
                                                           fontSize: 23.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -361,7 +363,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                               ],
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 0.0, 16.0, 0.0),
                                               child: Row(
@@ -371,7 +373,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                         .spaceBetween,
                                                 children: [
                                                   Expanded(
-                                                    child: Container(
+                                                    child: SizedBox(
                                                       width: 200.0,
                                                       child: TextFormField(
                                                         controller: _model
@@ -390,7 +392,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                             record,
                                                                             [
                                                                           record
-                                                                              .fullName!
+                                                                              .fullName
                                                                         ]),
                                                                   )
                                                                   .toList(),
@@ -401,7 +403,6 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                     .map((r) =>
                                                                         r.object)
                                                                     .toList();
-                                                            ;
                                                           });
                                                           _model.searchactive =
                                                               true;
@@ -440,7 +441,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0x00000000),
                                                               width: 1.0,
@@ -453,7 +454,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0x00000000),
                                                               width: 1.0,
@@ -493,8 +494,8 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                           ),
                                                           filled: true,
                                                           fillColor:
-                                                              Color(0xFFFFFCF6),
-                                                          prefixIcon: Icon(
+                                                              const Color(0xFFFFFCF6),
+                                                          prefixIcon: const Icon(
                                                             Icons.search_sharp,
                                                           ),
                                                         ),
@@ -559,12 +560,12 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                       size: 24.0,
                                                     ),
                                                   ),
-                                                ].divide(SizedBox(width: 10.0)),
+                                                ].divide(const SizedBox(width: 10.0)),
                                               ),
                                             ),
                                             if (_model.searchactive == true)
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 0.0, 16.0, 0.0),
                                                 child: Row(
@@ -576,7 +577,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   10.0,
@@ -611,7 +612,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                           .toList();
                                                   if (directoryNosearch
                                                       .isEmpty) {
-                                                    return Center(
+                                                    return const Center(
                                                       child:
                                                           EmptydirectoryWidget(),
                                                     );
@@ -638,7 +639,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                     .uid,
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -648,7 +649,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                             width:
                                                                 double.infinity,
                                                             decoration:
-                                                                BoxDecoration(
+                                                                const BoxDecoration(
                                                               color: Color(
                                                                   0xFFFFFCF6),
                                                               boxShadow: [
@@ -683,7 +684,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                             ),
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsets
+                                                                  const EdgeInsets
                                                                       .all(8.0),
                                                               child: Row(
                                                                 mainAxisSize:
@@ -696,40 +697,42 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                         44.0,
                                                                     decoration:
                                                                         BoxDecoration(
-                                                                      color: Color(
+                                                                      color: const Color(
                                                                           0x4C4B39EF),
                                                                       shape: BoxShape
                                                                           .circle,
                                                                       border:
                                                                           Border
                                                                               .all(
-                                                                        color: Color(
+                                                                        color: const Color(
                                                                             0xFF4B39EF),
                                                                         width:
                                                                             2.0,
                                                                       ),
                                                                     ),
                                                                     child:
-                                                                        Padding(
-                                                                      padding:
-                                                                          EdgeInsets.all(
-                                                                              2.0),
-                                                                      child:
-                                                                          ClipRRect(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(40.0),
-                                                                        child: Image
-                                                                            .network(
-                                                                          directoryNosearchItem
-                                                                              .userPIc,
+                                                                        Stack(
+                                                                      children: [
+                                                                        Container(
                                                                           width:
-                                                                              60.0,
+                                                                              40.0,
                                                                           height:
-                                                                              60.0,
-                                                                          fit: BoxFit
-                                                                              .contain,
+                                                                              40.0,
+                                                                          clipBehavior:
+                                                                              Clip.antiAlias,
+                                                                          decoration:
+                                                                              const BoxDecoration(
+                                                                            shape:
+                                                                                BoxShape.circle,
+                                                                          ),
+                                                                          child:
+                                                                              Image.network(
+                                                                            directoryNosearchItem.userPIc,
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
                                                                         ),
-                                                                      ),
+                                                                      ],
                                                                     ),
                                                                   ),
                                                                   Expanded(
@@ -743,7 +746,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                               .start,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               12.0,
                                                                               0.0,
                                                                               12.0,
@@ -753,7 +756,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                             directoryNosearchItem.fullName,
                                                                             style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                   fontFamily: 'Plus Jakarta Sans',
-                                                                                  color: Color(0xFF14181B),
+                                                                                  color: const Color(0xFF14181B),
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.w500,
@@ -766,7 +769,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                   Card(
                                                                     clipBehavior:
                                                                         Clip.antiAliasWithSaveLayer,
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFFFFFCF6),
                                                                     elevation:
                                                                         6.0,
@@ -779,7 +782,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                     child:
                                                                         Padding(
                                                                       padding:
-                                                                          EdgeInsets.all(
+                                                                          const EdgeInsets.all(
                                                                               4.0),
                                                                       child:
                                                                           InkWell(
@@ -795,7 +798,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                             () async {
                                                                           context
                                                                               .pushNamed(
-                                                                            'ProfileDetailsCopy',
+                                                                            'ProfileDetails',
                                                                             queryParameters:
                                                                                 {
                                                                               'name': serializeParam(
@@ -810,7 +813,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                           );
                                                                         },
                                                                         child:
-                                                                            Icon(
+                                                                            const Icon(
                                                                           Icons
                                                                               .arrow_forward_ios_sharp,
                                                                           color:
@@ -844,7 +847,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                           e.uid)
                                                       .toList();
                                                   if (directorysearch.isEmpty) {
-                                                    return EmptySearchWidget();
+                                                    return const EmptySearchWidget();
                                                   }
 
                                                   return ListView.builder(
@@ -867,7 +870,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                     .uid,
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -933,7 +936,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                 width: double
                                                                     .infinity,
                                                                 decoration:
-                                                                    BoxDecoration(
+                                                                    const BoxDecoration(
                                                                   color: Color(
                                                                       0xFFFFFCF6),
                                                                   boxShadow: [
@@ -968,7 +971,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                 ),
                                                                 child: Padding(
                                                                   padding:
-                                                                      EdgeInsets
+                                                                      const EdgeInsets
                                                                           .all(
                                                                               8.0),
                                                                   child: Row(
@@ -984,33 +987,33 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              Color(0x4C4B39EF),
+                                                                              const Color(0x4C4B39EF),
                                                                           shape:
                                                                               BoxShape.circle,
                                                                           border:
                                                                               Border.all(
                                                                             color:
-                                                                                Color(0xFF4B39EF),
+                                                                                const Color(0xFF4B39EF),
                                                                             width:
                                                                                 2.0,
                                                                           ),
                                                                         ),
                                                                         child:
-                                                                            Padding(
-                                                                          padding:
-                                                                              EdgeInsets.all(2.0),
-                                                                          child:
-                                                                              ClipRRect(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(40.0),
-                                                                            child:
-                                                                                Image.network(
-                                                                              directorysearchItem.userPIc,
-                                                                              width: 60.0,
-                                                                              height: 60.0,
-                                                                              fit: BoxFit.cover,
+                                                                            Stack(
+                                                                          children: [
+                                                                            Container(
+                                                                              width: 40.0,
+                                                                              height: 40.0,
+                                                                              clipBehavior: Clip.antiAlias,
+                                                                              decoration: const BoxDecoration(
+                                                                                shape: BoxShape.circle,
+                                                                              ),
+                                                                              child: Image.network(
+                                                                                directorysearchItem.userPIc,
+                                                                                fit: BoxFit.cover,
+                                                                              ),
                                                                             ),
-                                                                          ),
+                                                                          ],
                                                                         ),
                                                                       ),
                                                                       Expanded(
@@ -1022,12 +1025,12 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                               CrossAxisAlignment.start,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                                                                               child: Text(
                                                                                 directorysearchItem.fullName,
                                                                                 style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                       fontFamily: 'Plus Jakarta Sans',
-                                                                                      color: Color(0xFF14181B),
+                                                                                      color: const Color(0xFF14181B),
                                                                                       fontSize: 16.0,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.w500,
@@ -1040,7 +1043,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                       Card(
                                                                         clipBehavior:
                                                                             Clip.antiAliasWithSaveLayer,
-                                                                        color: Color(
+                                                                        color: const Color(
                                                                             0xFFFFFCF6),
                                                                         elevation:
                                                                             6.0,
@@ -1052,7 +1055,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                         child:
                                                                             Padding(
                                                                           padding:
-                                                                              EdgeInsets.all(4.0),
+                                                                              const EdgeInsets.all(4.0),
                                                                           child:
                                                                               InkWell(
                                                                             splashColor:
@@ -1066,7 +1069,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                             onTap:
                                                                                 () async {
                                                                               context.pushNamed(
-                                                                                'ProfileDetailsCopy',
+                                                                                'ProfileDetails',
                                                                                 queryParameters: {
                                                                                   'name': serializeParam(
                                                                                     directorysearchItem,
@@ -1079,7 +1082,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                               );
                                                                             },
                                                                             child:
-                                                                                Icon(
+                                                                                const Icon(
                                                                               Icons.arrow_forward_ios_sharp,
                                                                               color: Color(0xFF57636C),
                                                                               size: 24.0,
@@ -1117,7 +1120,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                   ],
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: const AlignmentDirectional(0.0, 1.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -1125,11 +1128,11 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                     children: [
                       Expanded(
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 1.0),
+                          alignment: const AlignmentDirectional(0.0, 1.0),
                           child: wrapWithModel(
                             model: _model.navBar1Model,
                             updateCallback: () => safeSetState(() {}),
-                            child: NavBar1Widget(
+                            child: const NavBar1Widget(
                               currentpage: 'DirectoryPage',
                             ),
                           ),

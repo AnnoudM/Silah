@@ -3,12 +3,9 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'change_email_model.dart';
 export 'change_email_model.dart';
 
@@ -47,18 +44,18 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
         child: Container(
           width: MediaQuery.sizeOf(context).width,
           height: 263.0,
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxWidth: 530.0,
           ),
           decoration: BoxDecoration(
-            color: Color(0xFFFFFCF6),
-            boxShadow: [
+            color: const Color(0xFFFFFCF6),
+            boxShadow: const [
               BoxShadow(
                 blurRadius: 3.0,
                 color: Color(0x33000000),
@@ -70,19 +67,19 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
             ],
             borderRadius: BorderRadius.circular(24.0),
             border: Border.all(
-              color: Color(0xFFF5FBFB),
+              color: const Color(0xFFF5FBFB),
               width: 1.0,
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
+                      const EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -94,7 +91,7 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                         style:
                             FlutterFlowTheme.of(context).displaySmall.override(
                                   fontFamily: 'Readex Pro',
-                                  color: Color(0xFF2A497D),
+                                  color: const Color(0xFF2A497D),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
@@ -105,7 +102,7 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 30.0, 0.0, 0.0),
                             child: Text(
                               'البريد الإلكتروني الجديد:',
@@ -133,16 +130,16 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 16.0),
-                          child: Container(
+                          child: SizedBox(
                             width: 150.0,
                             child: TextFormField(
                               controller: _model.emailTextController,
                               focusNode: _model.textFieldFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
                                 '_model.emailTextController',
-                                Duration(milliseconds: 2000),
+                                const Duration(milliseconds: 2000),
                                 () async {
                                   _model.emailE = await queryUsersRecordOnce(
                                     queryBuilder: (usersRecord) =>
@@ -183,14 +180,14 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                                       letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0xFFF1F4F8),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
@@ -211,7 +208,7 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 filled: true,
-                                fillColor: Color(0xFFF1F4F8),
+                                fillColor: const Color(0xFFF1F4F8),
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -231,13 +228,13 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 10.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 10.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                         child: Builder(
                           builder: (context) {
                             if (_model.email ?? false) {
@@ -278,13 +275,13 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                 Flexible(
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 12.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 12.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 12.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -293,22 +290,22 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                             text: 'تراجع',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 20.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
                                     fontFamily: 'Readex Pro',
-                                    color: Color(0xFF2A497D),
+                                    color: const Color(0xFF2A497D),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
                               elevation: 0.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0xFF2A497D),
                               ),
                               borderRadius: BorderRadius.circular(40.0),
@@ -317,7 +314,7 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                         ),
                         FFButtonWidget(
                           onPressed: () async {
-                            var _shouldSetState = false;
+                            var shouldSetState = false;
                             if (_model.formKey.currentState == null ||
                                 !_model.formKey.currentState!.validate()) {
                               return;
@@ -329,10 +326,10 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                               ),
                               singleRecord: true,
                             ).then((s) => s.firstOrNull);
-                            _shouldSetState = true;
+                            shouldSetState = true;
                             if (_model.equal?.email ==
                                 _model.emailTextController.text) {
-                              if (_shouldSetState) safeSetState(() {});
+                              if (shouldSetState) safeSetState(() {});
                               return;
                             }
                             _model.userLoggedInnCopy =
@@ -343,10 +340,10 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                               ),
                               singleRecord: true,
                             ).then((s) => s.firstOrNull);
-                            _shouldSetState = true;
+                            shouldSetState = true;
                             if (_model.emailTextController.text.isEmpty) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
+                                const SnackBar(
                                   content: Text(
                                     'Email required!',
                                   ),
@@ -378,21 +375,21 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                                         .secondaryBackground,
                                   ),
                                 ),
-                                duration: Duration(milliseconds: 4000),
+                                duration: const Duration(milliseconds: 4000),
                                 backgroundColor:
                                     FlutterFlowTheme.of(context).secondary,
                               ),
                             );
-                            if (_shouldSetState) safeSetState(() {});
+                            if (shouldSetState) safeSetState(() {});
                           },
                           text: 'تغيير وإرسال',
                           options: FFButtonOptions(
                             height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFF2A497D),
+                            color: const Color(0xFF2A497D),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
@@ -403,7 +400,7 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                                   fontWeight: FontWeight.w500,
                                 ),
                             elevation: 0.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                             ),
                             borderRadius: BorderRadius.circular(40.0),

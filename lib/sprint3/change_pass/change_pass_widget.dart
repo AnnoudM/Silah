@@ -5,14 +5,9 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:math';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'change_pass_model.dart';
 export 'change_pass_model.dart';
 
@@ -66,22 +61,22 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(0.0, 140.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 140.0),
+            end: const Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(0.9, 1.0),
-            end: Offset(1.0, 1.0),
+            begin: const Offset(0.9, 1.0),
+            end: const Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(-0.349, 0),
-            end: Offset(0, 0),
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
           ),
         ],
       ),
@@ -109,7 +104,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFFFFFCF6),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -136,7 +131,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFFFFFCF6),
             body: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -145,7 +140,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                   child: Container(
                     width: 100.0,
                     height: double.infinity,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [Color(0xFF2A497D), Color(0xFF2A497D)],
                         stops: [0.0, 1.0],
@@ -153,7 +148,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                         end: AlignmentDirectional(-0.87, 1.0),
                       ),
                     ),
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: const AlignmentDirectional(0.0, -1.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -168,7 +163,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                 borderRadius: 30.0,
                                 borderWidth: 1.0,
                                 buttonSize: 60.0,
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.arrow_back_rounded,
                                   color: Colors.white,
                                   size: 30.0,
@@ -179,9 +174,9 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: AlignmentDirectional(-0.3, 0.0),
+                                  alignment: const AlignmentDirectional(-0.3, 0.0),
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.only(
+                                    borderRadius: const BorderRadius.only(
                                       bottomLeft: Radius.circular(0.0),
                                       bottomRight: Radius.circular(0.0),
                                       topLeft: Radius.circular(0.0),
@@ -192,7 +187,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                       width: 155.0,
                                       height: 96.0,
                                       fit: BoxFit.cover,
-                                      alignment: Alignment(0.0, 0.0),
+                                      alignment: const Alignment(0.0, 0.0),
                                     ),
                                   ),
                                 ),
@@ -200,15 +195,15 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsets.all(16.0),
+                            padding: const EdgeInsets.all(16.0),
                             child: Container(
                               width: double.infinity,
-                              constraints: BoxConstraints(
+                              constraints: const BoxConstraints(
                                 maxWidth: 570.0,
                               ),
                               decoration: BoxDecoration(
-                                color: Color(0xFFFFFCF6),
-                                boxShadow: [
+                                color: const Color(0xFFFFFCF6),
+                                boxShadow: const [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x33000000),
@@ -224,9 +219,9 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                 key: _model.formKey,
                                 autovalidateMode: AutovalidateMode.always,
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: EdgeInsets.all(24.0),
+                                    padding: const EdgeInsets.all(24.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
@@ -237,10 +232,10 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                           children: [
                                             Flexible(
                                               child: Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 16.0),
                                                   child: Text(
@@ -253,7 +248,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                           fontFamily:
                                                               'Readex Pro',
                                                           color:
-                                                              Color(0xFF2A497D),
+                                                              const Color(0xFF2A497D),
                                                           fontSize: 20.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -269,25 +264,28 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 8.0),
-                                              child: Text(
-                                                'شروط كلمة المرور:',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                              child: Semantics(
+                                                label: 'شروط كلمة المرور',
+                                                child: Text(
+                                                  'شروط كلمة المرور:',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
                                               ),
                                             ),
                                           ],
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 16.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -297,17 +295,21 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Expanded(
-                                                child: Text(
-                                                  '- يجب أن تحتوي كلمة المرور على أحرف صغيرة وكبيرة وأرقام.\n- يجب أن تحتوي كلمة المرور 8 خانات على الأقل.\n- يجب أن تحتوي كلمة المرور على أحرف انجليزية فقط\n- يجب أن لا تحتوي كلمة المرور على مسافات.',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        fontSize: 11.0,
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                                child: Semantics(
+                                                  label:
+                                                      '- يجب أن تحتوي كلمة المرور على أحرف صغيرة وكبيرة وأرقام.\n- يجب أن تحتوي كلمة المرور 8 خانات على الأقل.\n- يجب أن تحتوي كلمة المرور على أحرف انجليزية فقط\n- يجب أن لا تحتوي كلمة المرور على مسافات.',
+                                                  child: Text(
+                                                    '- يجب أن تحتوي كلمة المرور على أحرف صغيرة وكبيرة وأرقام.\n- يجب أن تحتوي كلمة المرور 8 خانات على الأقل.\n- يجب أن تحتوي كلمة المرور على أحرف انجليزية فقط\n- يجب أن لا تحتوي كلمة المرور على مسافات.',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          fontSize: 11.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
                                                 ),
                                               ),
                                             ],
@@ -315,17 +317,35 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 16.0),
-                                          child: Container(
+                                          child: SizedBox(
                                             width: 370.0,
                                             child: TextFormField(
                                               controller: _model
                                                   .passwordTextController1,
                                               focusNode:
                                                   _model.passwordFocusNode1,
+                                              onChanged: (_) =>
+                                                  EasyDebounce.debounce(
+                                                '_model.passwordTextController1',
+                                                const Duration(milliseconds: 5),
+                                                () async {
+                                                  if (changePassUsersRecord
+                                                          ?.password ==
+                                                      _model
+                                                          .passwordTextController1
+                                                          .text) {
+                                                    _model.psswordExist = false;
+                                                    safeSetState(() {});
+                                                  } else {
+                                                    _model.psswordExist = true;
+                                                    safeSetState(() {});
+                                                  }
+                                                },
+                                              ),
                                               autofocus: false,
-                                              autofillHints: [
+                                              autofillHints: const [
                                                 AutofillHints.password
                                               ],
                                               obscureText:
@@ -371,7 +391,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                     ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0xFFF1F4F8),
                                                     width: 2.0,
                                                   ),
@@ -381,7 +401,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0xFF4B39EF),
                                                     width: 2.0,
                                                   ),
@@ -390,7 +410,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                           12.0),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0xFFFF5963),
                                                     width: 2.0,
                                                   ),
@@ -400,7 +420,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                 ),
                                                 focusedErrorBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0xFFFF5963),
                                                     width: 2.0,
                                                   ),
@@ -409,7 +429,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                           12.0),
                                                 ),
                                                 filled: true,
-                                                fillColor: Color(0xFFF1F4F8),
+                                                fillColor: const Color(0xFFF1F4F8),
                                                 suffixIcon: InkWell(
                                                   onTap: () => safeSetState(
                                                     () => _model
@@ -425,7 +445,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                             .visibility_outlined
                                                         : Icons
                                                             .visibility_off_outlined,
-                                                    color: Color(0xFF757575),
+                                                    color: const Color(0xFF757575),
                                                     size: 22.0,
                                                   ),
                                                 ),
@@ -436,7 +456,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: Color(0xFF101213),
+                                                    color: const Color(0xFF101213),
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -461,7 +481,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 30.0, 0.0),
                                                     child: Text(
@@ -501,9 +521,9 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 16.0, 0.0, 16.0),
-                                          child: Container(
+                                          child: SizedBox(
                                             width: 370.0,
                                             child: TextFormField(
                                               controller: _model
@@ -511,7 +531,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                               focusNode:
                                                   _model.passwordFocusNode2,
                                               autofocus: false,
-                                              autofillHints: [
+                                              autofillHints: const [
                                                 AutofillHints.password
                                               ],
                                               obscureText:
@@ -557,7 +577,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                     ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0xFFF1F4F8),
                                                     width: 2.0,
                                                   ),
@@ -567,7 +587,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0xFF4B39EF),
                                                     width: 2.0,
                                                   ),
@@ -576,7 +596,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                           12.0),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0xFFFF5963),
                                                     width: 2.0,
                                                   ),
@@ -586,7 +606,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                 ),
                                                 focusedErrorBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0xFFFF5963),
                                                     width: 2.0,
                                                   ),
@@ -595,7 +615,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                           12.0),
                                                 ),
                                                 filled: true,
-                                                fillColor: Color(0xFFF1F4F8),
+                                                fillColor: const Color(0xFFF1F4F8),
                                                 suffixIcon: InkWell(
                                                   onTap: () => safeSetState(
                                                     () => _model
@@ -611,7 +631,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                             .visibility_outlined
                                                         : Icons
                                                             .visibility_off_outlined,
-                                                    color: Color(0xFF757575),
+                                                    color: const Color(0xFF757575),
                                                     size: 22.0,
                                                   ),
                                                 ),
@@ -622,7 +642,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: Color(0xFF101213),
+                                                    color: const Color(0xFF101213),
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -641,9 +661,9 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 16.0),
-                                          child: Container(
+                                          child: SizedBox(
                                             width: 370.0,
                                             child: TextFormField(
                                               controller: _model
@@ -653,7 +673,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                               onChanged: (_) =>
                                                   EasyDebounce.debounce(
                                                 '_model.passwordConfirmTextController',
-                                                Duration(milliseconds: 500),
+                                                const Duration(milliseconds: 500),
                                                 () async {
                                                   if (_model
                                                           .passwordTextController2
@@ -672,7 +692,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                 },
                                               ),
                                               autofocus: false,
-                                              autofillHints: [
+                                              autofillHints: const [
                                                 AutofillHints.password
                                               ],
                                               textCapitalization:
@@ -722,7 +742,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                     OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: _model.matchPass!
-                                                        ? Color(0xFFF1F4F8)
+                                                        ? const Color(0xFFF1F4F8)
                                                         : FlutterFlowTheme.of(
                                                                 context)
                                                             .error,
@@ -749,7 +769,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                           12.0),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0xFFFF5963),
                                                     width: 2.0,
                                                   ),
@@ -759,7 +779,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                 ),
                                                 focusedErrorBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0xFFFF5963),
                                                     width: 2.0,
                                                   ),
@@ -768,7 +788,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                           12.0),
                                                 ),
                                                 filled: true,
-                                                fillColor: Color(0xFFF1F4F8),
+                                                fillColor: const Color(0xFFF1F4F8),
                                                 suffixIcon: InkWell(
                                                   onTap: () => safeSetState(
                                                     () => _model
@@ -784,7 +804,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                             .visibility_outlined
                                                         : Icons
                                                             .visibility_off_outlined,
-                                                    color: Color(0xFF757575),
+                                                    color: const Color(0xFF757575),
                                                     size: 22.0,
                                                   ),
                                                 ),
@@ -795,7 +815,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: Color(0xFF101213),
+                                                    color: const Color(0xFF101213),
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -828,7 +848,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                               );
                                             } else {
                                               return Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 16.0, 16.0),
                                                 child: Row(
@@ -842,7 +862,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -880,89 +900,104 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 16.0),
-                                          child: FFButtonWidget(
-                                            onPressed: () async {
-                                              if (_model.formKey.currentState ==
-                                                      null ||
-                                                  !_model.formKey.currentState!
-                                                      .validate()) {
-                                                return;
-                                              }
-                                              if (changePassUsersRecord
-                                                      ?.password ==
-                                                  _model.passwordTextController1
-                                                      .text) {
-                                                await widget!.userEdit!.update(
-                                                    createUsersRecordData(
-                                                  password: _model
-                                                      .passwordTextController2
-                                                      .text,
-                                                ));
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  SnackBar(
-                                                    content: Text(
-                                                      'تم تعديل كلمة المرور بنجاح!',
-                                                      style: TextStyle(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
-                                                    ),
-                                                    duration: Duration(
-                                                        milliseconds: 4000),
-                                                    backgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondary,
-                                                  ),
-                                                );
-                                                if (changePassUsersRecord!
-                                                    .isAdmin) {
-                                                  context
-                                                      .pushNamed('HomeAdmin');
-                                                } else {
-                                                  context.pushNamed('HomeUser');
+                                          child: Semantics(
+                                            label: 'تعديل كلمة المرور',
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                if (_model.formKey
+                                                            .currentState ==
+                                                        null ||
+                                                    !_model
+                                                        .formKey.currentState!
+                                                        .validate()) {
+                                                  return;
                                                 }
+                                                if (!_model.matchPass!) {
+                                                  return;
+                                                }
+                                                if (changePassUsersRecord
+                                                        ?.password ==
+                                                    _model
+                                                        .passwordTextController1
+                                                        .text) {
+                                                  await widget.userEdit!
+                                                      .update(
+                                                          createUsersRecordData(
+                                                    password: _model
+                                                        .passwordTextController2
+                                                        .text,
+                                                  ));
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        'تم تعديل كلمة المرور بنجاح!',
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
+                                                        ),
+                                                      ),
+                                                      duration: const Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .success,
+                                                    ),
+                                                  );
+                                                  if (changePassUsersRecord!
+                                                      .isAdmin) {
+                                                    context
+                                                        .pushNamed('HomeAdmin');
+                                                  } else {
+                                                    context
+                                                        .pushNamed('HomeUser');
+                                                  }
 
-                                                return;
-                                              } else {
-                                                _model.psswordExist = true;
-                                                safeSetState(() {});
-                                                return;
-                                              }
-                                            },
-                                            text: 'تعديل',
-                                            options: FFButtonOptions(
-                                              width: double.infinity,
-                                              height: 44.0,
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Color(0xFF2A497D),
-                                              textStyle: FlutterFlowTheme.of(
-                                                      context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    color: Colors.white,
-                                                    fontSize: 16.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                              elevation: 3.0,
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
+                                                  return;
+                                                } else {
+                                                  _model.psswordExist = true;
+                                                  safeSetState(() {});
+                                                  return;
+                                                }
+                                              },
+                                              text: 'تعديل',
+                                              options: FFButtonOptions(
+                                                width: double.infinity,
+                                                height: 44.0,
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 0.0),
+                                                iconPadding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color: const Color(0xFF2A497D),
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: const BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                              showLoadingIndicator: false,
                                             ),
-                                            showLoadingIndicator: false,
                                           ),
                                         ),
                                       ],

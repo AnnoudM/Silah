@@ -6,12 +6,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/sprint2/delete_event_alert/delete_event_alert_widget.dart';
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'event_details_model.dart';
 export 'event_details_model.dart';
 
@@ -56,22 +52,22 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(0.0, 140.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 140.0),
+            end: const Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(0.9, 1.0),
-            end: Offset(1.0, 1.0),
+            begin: const Offset(0.9, 1.0),
+            end: const Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: Offset(-0.349, 0),
-            end: Offset(0, 0),
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
           ),
         ],
       ),
@@ -95,7 +91,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFFFFFCF6),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -122,7 +118,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFFFFFCF6),
             body: Stack(
               children: [
                 Row(
@@ -132,7 +128,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                       flex: 6,
                       child: StreamBuilder<EventsRecord>(
                         stream:
-                            EventsRecord.getDocument(widget!.event!.reference),
+                            EventsRecord.getDocument(widget.event!.reference),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
@@ -154,7 +150,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                           return Container(
                             width: 100.0,
                             height: double.infinity,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               gradient: LinearGradient(
                                 colors: [Color(0xFF2A497D), Color(0xFF2A497D)],
                                 stops: [0.0, 1.0],
@@ -162,7 +158,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                 end: AlignmentDirectional(-0.87, 1.0),
                               ),
                             ),
-                            alignment: AlignmentDirectional(0.0, -1.0),
+                            alignment: const AlignmentDirectional(0.0, -1.0),
                             child: SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -178,7 +174,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                           borderRadius: 30.0,
                                           borderWidth: 1.0,
                                           buttonSize: 71.0,
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.arrow_back_rounded,
                                             color: Colors.white,
                                             size: 30.0,
@@ -191,7 +187,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                       Expanded(
                                         child: Align(
                                           alignment:
-                                              AlignmentDirectional(1.0, 0.0),
+                                              const AlignmentDirectional(1.0, 0.0),
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
@@ -207,16 +203,16 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                     ],
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.all(16.0),
+                                    padding: const EdgeInsets.all(16.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: 598.0,
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         maxWidth: 570.0,
                                       ),
                                       decoration: BoxDecoration(
-                                        color: Color(0xFFFFFCF6),
-                                        boxShadow: [
+                                        color: const Color(0xFFFFFCF6),
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x33000000),
@@ -273,7 +269,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 16.0),
                                                 child: Row(
@@ -284,21 +280,21 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   30.0,
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        widget!.event!.name,
+                                                        widget.event!.name,
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium
                                                             .override(
                                                               fontFamily:
                                                                   'Readex Pro',
-                                                              color: Color(
+                                                              color: const Color(
                                                                   0xFF2A497D),
                                                               fontSize: 25.0,
                                                               letterSpacing:
@@ -313,7 +309,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 15.0, 0.0),
                                                 child: Row(
@@ -323,11 +319,11 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                     Flexible(
                                                       child: Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -0.75, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -355,7 +351,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                               ),
                                               Flexible(
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 0.0, 16.0, 0.0),
                                                   child: Row(
@@ -368,7 +364,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                       Flexible(
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       16.0,
@@ -381,7 +377,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .secondaryBackground,
-                                                              boxShadow: [
+                                                              boxShadow: const [
                                                                 BoxShadow(
                                                                   blurRadius:
                                                                       4.0,
@@ -395,7 +391,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                                 )
                                                               ],
                                                               borderRadius:
-                                                                  BorderRadius
+                                                                  const BorderRadius
                                                                       .only(
                                                                 bottomLeft: Radius
                                                                     .circular(
@@ -413,7 +409,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                             ),
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           0.0,
@@ -430,14 +426,14 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                                   Flexible(
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           15.0,
                                                                           0.0,
                                                                           15.0),
                                                                       child:
                                                                           Text(
-                                                                        widget!
+                                                                        widget
                                                                             .event!
                                                                             .eventDes,
                                                                         style: FlutterFlowTheme.of(context)
@@ -461,7 +457,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 15.0, 0.0),
                                                 child: Row(
@@ -471,11 +467,11 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                     Flexible(
                                                       child: Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -0.75, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -501,7 +497,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                               ),
                                               Flexible(
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 0.0, 16.0, 0.0),
                                                   child: Row(
@@ -514,7 +510,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       16.0,
@@ -528,7 +524,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .secondaryBackground,
-                                                              boxShadow: [
+                                                              boxShadow: const [
                                                                 BoxShadow(
                                                                   blurRadius:
                                                                       4.0,
@@ -542,7 +538,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                                 )
                                                               ],
                                                               borderRadius:
-                                                                  BorderRadius
+                                                                  const BorderRadius
                                                                       .only(
                                                                 bottomLeft: Radius
                                                                     .circular(
@@ -560,7 +556,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                             ),
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           0.0,
@@ -586,7 +582,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                                         Expanded(
                                                                           child:
                                                                               Text(
-                                                                            widget!.event!.location,
+                                                                            widget.event!.location,
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Readex Pro',
                                                                                   letterSpacing: 0.0,
@@ -608,7 +604,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 15.0, 0.0),
                                                 child: Row(
@@ -618,11 +614,11 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                     Flexible(
                                                       child: Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -0.75, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -647,7 +643,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 0.0, 16.0, 0.0),
                                                 child: Row(
@@ -660,7 +656,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                     Flexible(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     16.0,
@@ -674,7 +670,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .secondaryBackground,
-                                                            boxShadow: [
+                                                            boxShadow: const [
                                                               BoxShadow(
                                                                 blurRadius: 4.0,
                                                                 color: Color(
@@ -686,7 +682,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                               )
                                                             ],
                                                             borderRadius:
-                                                                BorderRadius
+                                                                const BorderRadius
                                                                     .only(
                                                               bottomLeft: Radius
                                                                   .circular(
@@ -705,7 +701,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         0.0,
@@ -730,7 +726,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                                     Text(
                                                                       dateTimeFormat(
                                                                         "y/M/d  h:mm a",
-                                                                        widget!
+                                                                        widget
                                                                             .event!
                                                                             .date!,
                                                                         locale:
@@ -760,7 +756,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 15.0, 0.0),
                                                 child: Row(
@@ -770,11 +766,11 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                     Flexible(
                                                       child: Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -0.75, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -799,14 +795,14 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 0.0, 16.0, 0.0),
                                                 child:
                                                     StreamBuilder<UsersRecord>(
                                                   stream:
                                                       UsersRecord.getDocument(
-                                                          widget!.event!
+                                                          widget.event!
                                                               .createdBy!),
                                                   builder: (context, snapshot) {
                                                     // Customize what your widget looks like when it's loading.
@@ -842,7 +838,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                         Flexible(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         16.0,
@@ -856,7 +852,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryBackground,
-                                                                boxShadow: [
+                                                                boxShadow: const [
                                                                   BoxShadow(
                                                                     blurRadius:
                                                                         4.0,
@@ -870,7 +866,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                                   )
                                                                 ],
                                                                 borderRadius:
-                                                                    BorderRadius
+                                                                    const BorderRadius
                                                                         .only(
                                                                   bottomLeft: Radius
                                                                       .circular(
@@ -887,7 +883,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                                 ),
                                                               ),
                                                               child: Padding(
-                                                                padding: EdgeInsetsDirectional
+                                                                padding: const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         0.0,
@@ -933,19 +929,19 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                   },
                                                 ),
                                               ),
-                                              if ((widget!.event?.createdBy ==
+                                              if ((widget.event?.createdBy ==
                                                       columnUsersRecord
                                                           ?.reference) &&
-                                                  (widget!.event!.date! >=
+                                                  (widget.event!.date! >=
                                                       getCurrentTimestamp))
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 25.0, 0.0, 16.0),
                                                   child: StreamBuilder<
                                                       EventsRecord>(
                                                     stream: EventsRecord
-                                                        .getDocument(widget!
+                                                        .getDocument(widget
                                                             .event!.reference),
                                                     builder:
                                                         (context, snapshot) {
@@ -972,72 +968,126 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                       final rowEventsRecord =
                                                           snapshot.data!;
 
-                                                      return Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceEvenly,
-                                                        children: [
-                                                          Builder(
-                                                            builder: (context) =>
-                                                                FFButtonWidget(
+                                                      return SingleChildScrollView(
+                                                        scrollDirection:
+                                                            Axis.horizontal,
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .end,
+                                                          children: [
+                                                            Builder(
+                                                              builder: (context) =>
+                                                                  FFButtonWidget(
+                                                                onPressed:
+                                                                    () async {
+                                                                  await showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (dialogContext) {
+                                                                      return Dialog(
+                                                                        elevation:
+                                                                            0,
+                                                                        insetPadding:
+                                                                            EdgeInsets.zero,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        alignment:
+                                                                            const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                        child:
+                                                                            GestureDetector(
+                                                                          onTap: () =>
+                                                                              FocusScope.of(dialogContext).unfocus(),
+                                                                          child:
+                                                                              DeleteEventAlertWidget(
+                                                                            deleteEvent:
+                                                                                widget.event!.reference,
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                  );
+                                                                },
+                                                                text: '  حذف  ',
+                                                                options:
+                                                                    FFButtonOptions(
+                                                                  height: 40.0,
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          16.0,
+                                                                          0.0,
+                                                                          16.0,
+                                                                          0.0),
+                                                                  iconPadding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .error,
+                                                                  textStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        color: Colors
+                                                                            .white,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                                  elevation:
+                                                                      0.0,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            FFButtonWidget(
                                                               onPressed:
                                                                   () async {
-                                                                await showDialog(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (dialogContext) {
-                                                                    return Dialog(
-                                                                      elevation:
-                                                                          0,
-                                                                      insetPadding:
-                                                                          EdgeInsets
-                                                                              .zero,
-                                                                      backgroundColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      alignment: AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0)
-                                                                          .resolve(
-                                                                              Directionality.of(context)),
-                                                                      child:
-                                                                          GestureDetector(
-                                                                        onTap: () =>
-                                                                            FocusScope.of(dialogContext).unfocus(),
-                                                                        child:
-                                                                            DeleteEventAlertWidget(
-                                                                          deleteEvent: widget!
-                                                                              .event!
-                                                                              .reference,
-                                                                        ),
-                                                                      ),
-                                                                    );
-                                                                  },
+                                                                context
+                                                                    .pushNamed(
+                                                                  'EventEdit',
+                                                                  queryParameters:
+                                                                      {
+                                                                    'eventEdit':
+                                                                        serializeParam(
+                                                                      rowEventsRecord
+                                                                          .reference,
+                                                                      ParamType
+                                                                          .DocumentReference,
+                                                                    ),
+                                                                  }.withoutNulls,
                                                                 );
                                                               },
-                                                              text: '  حذف  ',
+                                                              text:
+                                                                  '   تعديل  ',
                                                               options:
                                                                   FFButtonOptions(
                                                                 height: 40.0,
-                                                                padding: EdgeInsetsDirectional
+                                                                padding: const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         0.0,
                                                                         16.0,
                                                                         0.0),
                                                                 iconPadding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .error,
+                                                                color: const Color(
+                                                                    0xFF2A497D),
                                                                 textStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleSmall
@@ -1056,64 +1106,9 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                                             8.0),
                                                               ),
                                                             ),
-                                                          ),
-                                                          FFButtonWidget(
-                                                            onPressed:
-                                                                () async {
-                                                              context.pushNamed(
-                                                                'EventEdit',
-                                                                queryParameters:
-                                                                    {
-                                                                  'eventEdit':
-                                                                      serializeParam(
-                                                                    rowEventsRecord
-                                                                        .reference,
-                                                                    ParamType
-                                                                        .DocumentReference,
-                                                                  ),
-                                                                }.withoutNulls,
-                                                              );
-                                                            },
-                                                            text: '   تعديل  ',
-                                                            options:
-                                                                FFButtonOptions(
-                                                              height: 40.0,
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          16.0,
-                                                                          0.0,
-                                                                          16.0,
-                                                                          0.0),
-                                                              iconPadding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              color: Color(
-                                                                  0xFF2A497D),
-                                                              textStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
-                                                                        color: Colors
-                                                                            .white,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                      ),
-                                                              elevation: 0.0,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                            ),
-                                                          ),
-                                                        ],
+                                                          ].divide(const SizedBox(
+                                                              width: 20.0)),
+                                                        ),
                                                       );
                                                     },
                                                   ),

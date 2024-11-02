@@ -4,16 +4,11 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:math';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'create_event_model.dart';
 export 'create_event_model.dart';
 
@@ -92,8 +87,8 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
             curve: Curves.bounceOut,
             delay: 300.0.ms,
             duration: 400.0.ms,
-            begin: Offset(0.0, 100.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 100.0),
+            end: const Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -134,15 +129,15 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16.0, 2.0, 16.0, 16.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 2.0, 16.0, 16.0),
               child: Container(
                 width: double.infinity,
-                constraints: BoxConstraints(
+                constraints: const BoxConstraints(
                   maxWidth: 670.0,
                 ),
                 decoration: BoxDecoration(
-                  color: Color(0xFFFFFCF6),
-                  boxShadow: [
+                  color: const Color(0xFFFFFCF6),
+                  boxShadow: const [
                     BoxShadow(
                       blurRadius: 12.0,
                       color: Color(0x1E000000),
@@ -191,9 +186,9 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 50.0, 24.0, 0.0),
                             child: Text(
                               'أنشئ مناسبة',
@@ -201,7 +196,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                   .headlineMedium
                                   .override(
                                     fontFamily: 'Readex Pro',
-                                    color: Color(0xFF2A497D),
+                                    color: const Color(0xFF2A497D),
                                     fontSize: 23.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
@@ -220,7 +215,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                           clipBehavior: Clip.none,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 16.0, 0.0, 32.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -233,7 +228,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 16.0, 24.0, 0.0),
                                           child: TextFormField(
                                             controller:
@@ -318,7 +313,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
                                               contentPadding:
-                                                  EdgeInsetsDirectional
+                                                  const EdgeInsetsDirectional
                                                       .fromSTEB(20.0, 24.0,
                                                           20.0, 24.0),
                                             ),
@@ -349,7 +344,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 16.0, 24.0, 0.0),
                                           child: TextFormField(
                                             controller: _model
@@ -434,7 +429,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
                                               contentPadding:
-                                                  EdgeInsetsDirectional
+                                                  const EdgeInsetsDirectional
                                                       .fromSTEB(20.0, 24.0,
                                                           20.0, 24.0),
                                             ),
@@ -460,7 +455,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 16.0, 24.0, 32.0),
                                           child: TextFormField(
                                             controller:
@@ -545,7 +540,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
                                               contentPadding:
-                                                  EdgeInsetsDirectional
+                                                  const EdgeInsetsDirectional
                                                       .fromSTEB(20.0, 24.0,
                                                           20.0, 24.0),
                                             ),
@@ -590,10 +585,10 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 5.0, 0.0, 0.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
@@ -602,7 +597,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                final _datePicked1Date =
+                                                final datePicked1Date =
                                                     await showDatePicker(
                                                   context: context,
                                                   initialDate:
@@ -661,13 +656,13 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                   },
                                                 );
 
-                                                if (_datePicked1Date != null) {
+                                                if (datePicked1Date != null) {
                                                   safeSetState(() {
                                                     _model.datePicked1 =
                                                         DateTime(
-                                                      _datePicked1Date.year,
-                                                      _datePicked1Date.month,
-                                                      _datePicked1Date.day,
+                                                      datePicked1Date.year,
+                                                      datePicked1Date.month,
+                                                      datePicked1Date.day,
                                                     );
                                                   });
                                                 }
@@ -684,7 +679,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                   children: [
                                                     Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               -1.0, 0.0),
                                                       child: Text(
                                                         valueOrDefault<String>(
@@ -711,7 +706,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                     ),
                                                     Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               -1.0, 0.0),
                                                       child: InkWell(
                                                         splashColor:
@@ -723,7 +718,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                         highlightColor:
                                                             Colors.transparent,
                                                         onTap: () async {
-                                                          final _datePicked2Date =
+                                                          final datePicked2Date =
                                                               await showDatePicker(
                                                             context: context,
                                                             initialDate:
@@ -738,10 +733,10 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                 context,
                                                                 child!,
                                                                 headerBackgroundColor:
-                                                                    Color(
+                                                                    const Color(
                                                                         0xFF2A497D),
                                                                 headerForegroundColor:
-                                                                    Color(
+                                                                    const Color(
                                                                         0xFFFFFCF6),
                                                                 headerTextStyle:
                                                                     FlutterFlowTheme.of(
@@ -766,7 +761,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                             context)
                                                                         .primaryText,
                                                                 selectedDateTimeBackgroundColor:
-                                                                    Color(
+                                                                    const Color(
                                                                         0xFF2A497D),
                                                                 selectedDateTimeForegroundColor:
                                                                     FlutterFlowTheme.of(
@@ -782,10 +777,10 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                           );
 
                                                           TimeOfDay?
-                                                              _datePicked2Time;
-                                                          if (_datePicked2Date !=
+                                                              datePicked2Time;
+                                                          if (datePicked2Date !=
                                                               null) {
-                                                            _datePicked2Time =
+                                                            datePicked2Time =
                                                                 await showTimePicker(
                                                               context: context,
                                                               initialTime: TimeOfDay
@@ -797,10 +792,10 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                   context,
                                                                   child!,
                                                                   headerBackgroundColor:
-                                                                      Color(
+                                                                      const Color(
                                                                           0xFF2A497D),
                                                                   headerForegroundColor:
-                                                                      Color(
+                                                                      const Color(
                                                                           0xFFFFFCF6),
                                                                   headerTextStyle: FlutterFlowTheme.of(
                                                                           context)
@@ -824,7 +819,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                               context)
                                                                           .primaryText,
                                                                   selectedDateTimeBackgroundColor:
-                                                                      Color(
+                                                                      const Color(
                                                                           0xFF2A497D),
                                                                   selectedDateTimeForegroundColor:
                                                                       FlutterFlowTheme.of(
@@ -841,22 +836,22 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                             );
                                                           }
 
-                                                          if (_datePicked2Date !=
+                                                          if (datePicked2Date !=
                                                                   null &&
-                                                              _datePicked2Time !=
+                                                              datePicked2Time !=
                                                                   null) {
                                                             safeSetState(() {
                                                               _model.datePicked2 =
                                                                   DateTime(
-                                                                _datePicked2Date
+                                                                datePicked2Date
                                                                     .year,
-                                                                _datePicked2Date
+                                                                datePicked2Date
                                                                     .month,
-                                                                _datePicked2Date
+                                                                datePicked2Date
                                                                     .day,
-                                                                _datePicked2Time!
+                                                                datePicked2Time!
                                                                     .hour,
-                                                                _datePicked2Time
+                                                                datePicked2Time
                                                                     .minute,
                                                               );
                                                             });
@@ -885,7 +880,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                             safeSetState(() {});
                                                           }
                                                         },
-                                                        child: Icon(
+                                                        child: const Icon(
                                                           Icons.date_range,
                                                           color:
                                                               Color(0xFF2A497D),
@@ -894,7 +889,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                       ),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(width: 10.0)),
+                                                      const SizedBox(width: 10.0)),
                                                 ),
                                               ),
                                             ),
@@ -902,9 +897,9 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: Padding(
-                                            padding: EdgeInsets.all(12.0),
+                                            padding: const EdgeInsets.all(12.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -913,7 +908,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                 Expanded(
                                                   child: Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Text(
                                                       _model.pastHour,
@@ -939,7 +934,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                   Expanded(
                                                     child: Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
                                                         _model.dateEmpty!,
@@ -968,241 +963,64 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                             ),
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  24.0, 0.0, 24.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.05),
-                                                child: FFButtonWidget(
-                                                  onPressed: () async {
-                                                    context.safePop();
-                                                  },
-                                                  text: 'تراجع',
-                                                  options: FFButtonOptions(
-                                                    height: 44.0,
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(24.0, 0.0,
-                                                                24.0, 0.0),
-                                                    iconPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                    elevation: 0.0,
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
-                                                      width: 2.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                    hoverColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .alternate,
-                                                    hoverBorderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
-                                                      width: 2.0,
-                                                    ),
-                                                    hoverTextColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primaryText,
-                                                    hoverElevation: 3.0,
-                                                  ),
-                                                ),
-                                              ),
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.05),
-                                                child:
-                                                    StreamBuilder<FamilyRecord>(
-                                                  stream:
-                                                      FamilyRecord.getDocument(
-                                                          columnUsersRecord!
-                                                              .familyName!),
-                                                  builder: (context, snapshot) {
-                                                    // Customize what your widget looks like when it's loading.
-                                                    if (!snapshot.hasData) {
-                                                      return Center(
-                                                        child: SizedBox(
-                                                          width: 50.0,
-                                                          height: 50.0,
-                                                          child:
-                                                              CircularProgressIndicator(
-                                                            valueColor:
-                                                                AlwaysStoppedAnimation<
-                                                                    Color>(
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primary,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    }
-
-                                                    final buttonFamilyRecord =
-                                                        snapshot.data!;
-
-                                                    return FFButtonWidget(
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            child: SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            0.0, 0.05),
+                                                    child: FFButtonWidget(
                                                       onPressed: () async {
-                                                        if (_model
-                                                                .datePicked2 !=
-                                                            null) {
-                                                          _model.dateEmpty =
-                                                              null;
-                                                          safeSetState(() {});
-                                                          if ((_model.eventNameTextController
-                                                                          .text !=
-                                                                      null &&
-                                                                  _model.eventNameTextController
-                                                                          .text !=
-                                                                      '') &&
-                                                              (_model.eventLocationTextController
-                                                                          .text !=
-                                                                      null &&
-                                                                  _model.eventLocationTextController
-                                                                          .text !=
-                                                                      '')) {
-                                                            if (functions
-                                                                    .newCustomFunction(
-                                                                        _model
-                                                                            .datePicked2) ==
-                                                                'true') {
-                                                              _model.pastHour =
-                                                                  'لا يمكن أن يكون الوقت قبل الوقت الحالي';
-                                                              safeSetState(
-                                                                  () {});
-                                                              return;
-                                                            } else {
-                                                              _model.pastHour =
-                                                                  '  ';
-                                                              safeSetState(
-                                                                  () {});
-                                                            }
-                                                          } else {
-                                                            return;
-                                                          }
-                                                        } else {
-                                                          _model.dateEmpty =
-                                                              'هذا الحقل مطلوب';
-                                                          safeSetState(() {});
-                                                          return;
-                                                        }
-
-                                                        await EventsRecord
-                                                            .collection
-                                                            .doc()
-                                                            .set(
-                                                                createEventsRecordData(
-                                                              name: _model
-                                                                  .eventNameTextController
-                                                                  .text,
-                                                              location: _model
-                                                                  .eventLocationTextController
-                                                                  .text,
-                                                              date: _model
-                                                                  .datePicked2,
-                                                              familyName:
-                                                                  buttonFamilyRecord
-                                                                      .reference,
-                                                              createdBy:
-                                                                  columnUsersRecord
-                                                                      ?.reference,
-                                                              publisherName:
-                                                                  columnUsersRecord
-                                                                      ?.displayName,
-                                                              eventDes: _model
-                                                                  .eventDecTextController
-                                                                  .text,
-                                                            ));
-
-                                                        context.pushNamed(
-                                                            'CalenderPage');
-
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          SnackBar(
-                                                            content: Text(
-                                                              'تم انشاء المناسبة بنجاح',
-                                                              style: GoogleFonts
-                                                                  .getFont(
-                                                                'Readex Pro',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                              ),
-                                                            ),
-                                                            duration: Duration(
-                                                                milliseconds:
-                                                                    4000),
-                                                            backgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .success,
-                                                          ),
-                                                        );
+                                                        context.safePop();
                                                       },
-                                                      text: 'إنشاء',
+                                                      text: 'تراجع',
                                                       options: FFButtonOptions(
                                                         height: 44.0,
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     24.0,
                                                                     0.0,
                                                                     24.0,
                                                                     0.0),
                                                         iconPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
                                                                     0.0,
                                                                     0.0),
-                                                        color:
-                                                            Color(0xFF2A497D),
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
                                                         textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .titleSmall
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Readex Pro',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
-                                                        elevation: 3.0,
+                                                        elevation: 0.0,
                                                         borderSide: BorderSide(
-                                                          color: Colors
-                                                              .transparent,
-                                                          width: 1.0,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
+                                                          width: 2.0,
                                                         ),
                                                         borderRadius:
                                                             BorderRadius
@@ -1210,25 +1028,217 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                         hoverColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .accent1,
+                                                                .alternate,
                                                         hoverBorderSide:
                                                             BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primary,
-                                                          width: 1.0,
+                                                              .alternate,
+                                                          width: 2.0,
                                                         ),
                                                         hoverTextColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
-                                                        hoverElevation: 0.0,
+                                                        hoverElevation: 3.0,
                                                       ),
-                                                    );
-                                                  },
-                                                ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            0.0, 0.05),
+                                                    child: StreamBuilder<
+                                                        FamilyRecord>(
+                                                      stream: FamilyRecord
+                                                          .getDocument(
+                                                              columnUsersRecord!
+                                                                  .familyName!),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 50.0,
+                                                              height: 50.0,
+                                                              child:
+                                                                  CircularProgressIndicator(
+                                                                valueColor:
+                                                                    AlwaysStoppedAnimation<
+                                                                        Color>(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
+
+                                                        final buttonFamilyRecord =
+                                                            snapshot.data!;
+
+                                                        return FFButtonWidget(
+                                                          onPressed: () async {
+                                                            if (_model
+                                                                    .datePicked2 !=
+                                                                null) {
+                                                              _model.dateEmpty =
+                                                                  null;
+                                                              safeSetState(
+                                                                  () {});
+                                                              if ((_model.eventNameTextController
+                                                                              .text !=
+                                                                          '') &&
+                                                                  (_model.eventLocationTextController
+                                                                              .text !=
+                                                                          '')) {
+                                                                if (functions.newCustomFunction(
+                                                                        _model
+                                                                            .datePicked2) ==
+                                                                    'true') {
+                                                                  _model.pastHour =
+                                                                      'لا يمكن أن يكون الوقت قبل الوقت الحالي';
+                                                                  safeSetState(
+                                                                      () {});
+                                                                  return;
+                                                                } else {
+                                                                  _model.pastHour =
+                                                                      '  ';
+                                                                  safeSetState(
+                                                                      () {});
+                                                                }
+                                                              } else {
+                                                                return;
+                                                              }
+                                                            } else {
+                                                              _model.dateEmpty =
+                                                                  'هذا الحقل مطلوب';
+                                                              safeSetState(
+                                                                  () {});
+                                                              return;
+                                                            }
+
+                                                            await EventsRecord
+                                                                .collection
+                                                                .doc()
+                                                                .set(
+                                                                    createEventsRecordData(
+                                                                  name: _model
+                                                                      .eventNameTextController
+                                                                      .text,
+                                                                  location: _model
+                                                                      .eventLocationTextController
+                                                                      .text,
+                                                                  date: _model
+                                                                      .datePicked2,
+                                                                  familyName:
+                                                                      buttonFamilyRecord
+                                                                          .reference,
+                                                                  createdBy:
+                                                                      columnUsersRecord
+                                                                          .reference,
+                                                                  publisherName:
+                                                                      columnUsersRecord
+                                                                          .displayName,
+                                                                  eventDes: _model
+                                                                      .eventDecTextController
+                                                                      .text,
+                                                                ));
+
+                                                            context.pushNamed(
+                                                                'CalenderPage');
+
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .showSnackBar(
+                                                              SnackBar(
+                                                                content: Text(
+                                                                  'تم انشاء المناسبة بنجاح',
+                                                                  style: GoogleFonts
+                                                                      .getFont(
+                                                                    'Readex Pro',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                  ),
+                                                                ),
+                                                                duration: const Duration(
+                                                                    milliseconds:
+                                                                        4000),
+                                                                backgroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .success,
+                                                              ),
+                                                            );
+                                                          },
+                                                          text: 'إنشاء',
+                                                          options:
+                                                              FFButtonOptions(
+                                                            height: 44.0,
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        24.0,
+                                                                        0.0,
+                                                                        24.0,
+                                                                        0.0),
+                                                            iconPadding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            color: const Color(
+                                                                0xFF2A497D),
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                            elevation: 3.0,
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12.0),
+                                                            hoverColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .accent1,
+                                                            hoverBorderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              width: 1.0,
+                                                            ),
+                                                            hoverTextColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                            hoverElevation: 0.0,
+                                                          ),
+                                                        );
+                                                      },
+                                                    ),
+                                                  ),
+                                                ].divide(const SizedBox(width: 20.0)),
                                               ),
-                                            ],
+                                            ),
                                           ),
                                         ),
                                       ],

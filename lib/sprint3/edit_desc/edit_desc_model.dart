@@ -1,19 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
-import '/sprint1/side_admin/side_admin_widget.dart';
+import '/homes/side_bar/side_bar_widget.dart';
 import 'edit_desc_widget.dart' show EditDescWidget;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class EditDescModel extends FlutterFlowModel<EditDescWidget> {
   ///  State fields for stateful widgets in this page.
@@ -33,22 +23,24 @@ class EditDescModel extends FlutterFlowModel<EditDescWidget> {
     if (val.length > 300) {
       return 'Maximum 300 characters allowed, currently ${val.length}.';
     }
-    if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
-      return 'لا يمكن أن تكون النبذة فارغة!';
+    if (!RegExp(
+            '^(?=.*\\S)[^A-Za-z]*[\\u0600-\\u06FF0-9\\s?!@#\$%^&*(),.]+[^A-Za-z]*\$')
+        .hasMatch(val)) {
+      return 'يجب ان لاتحتوي النبذة على أحرف\nانجليزية أو على فراغ فقط!';
     }
     return null;
   }
 
   // Model for NavBar1 component.
   late NavBar1Model navBar1Model;
-  // Model for sideAdmin component.
-  late SideAdminModel sideAdminModel;
+  // Model for sideBar component.
+  late SideBarModel sideBarModel;
 
   @override
   void initState(BuildContext context) {
     familyDecTextControllerValidator = _familyDecTextControllerValidator;
     navBar1Model = createModel(context, () => NavBar1Model());
-    sideAdminModel = createModel(context, () => SideAdminModel());
+    sideBarModel = createModel(context, () => SideBarModel());
   }
 
   @override
@@ -57,6 +49,6 @@ class EditDescModel extends FlutterFlowModel<EditDescWidget> {
     familyDecTextController?.dispose();
 
     navBar1Model.dispose();
-    sideAdminModel.dispose();
+    sideBarModel.dispose();
   }
 }

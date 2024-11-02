@@ -1,23 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/backend/push_notifications/push_notifications_handler.dart'
     show PushNotificationsHandler;
 import '/index.dart';
-import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -82,25 +74,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? LoggedinPageWidget()
-          : InitialPageWidget(),
+          ? const LoggedinPageWidget()
+          : const InitialPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? LoggedinPageWidget()
-              : InitialPageWidget(),
+              ? const LoggedinPageWidget()
+              : const InitialPageWidget(),
         ),
         FFRoute(
           name: 'initialPage',
           path: '/initialPage',
-          builder: (context, params) => InitialPageWidget(),
+          builder: (context, params) => const InitialPageWidget(),
         ),
         FFRoute(
           name: 'Login',
           path: '/login',
-          builder: (context, params) => LoginWidget(),
+          builder: (context, params) => const LoginWidget(),
         ),
         FFRoute(
           name: 'PendingPage',
@@ -115,12 +107,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'recoverpassword',
           path: '/recoverpassword',
-          builder: (context, params) => RecoverpasswordWidget(),
+          builder: (context, params) => const RecoverpasswordWidget(),
         ),
         FFRoute(
           name: 'SignUpAdmin',
           path: '/signUpAdmin',
-          builder: (context, params) => SignUpAdminWidget(),
+          builder: (context, params) => const SignUpAdminWidget(),
         ),
         FFRoute(
           name: 'SignUpMember',
@@ -135,17 +127,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'HomeUser',
           path: '/homeUser',
-          builder: (context, params) => HomeUserWidget(),
+          builder: (context, params) => const HomeUserWidget(),
         ),
         FFRoute(
-          name: 'requestsCopyCopy',
-          path: '/requestsCopyCopy',
-          builder: (context, params) => RequestsCopyCopyWidget(),
+          name: 'Requests',
+          path: '/requests',
+          builder: (context, params) => const RequestsWidget(),
         ),
         FFRoute(
           name: 'HomeAdmin',
           path: '/homeAdmin',
-          builder: (context, params) => HomeAdminWidget(),
+          builder: (context, params) => const HomeAdminWidget(),
         ),
         FFRoute(
           name: 'verification',
@@ -184,7 +176,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'profilePage',
           path: '/profilePage',
-          builder: (context, params) => ProfilePageWidget(),
+          builder: (context, params) => const ProfilePageWidget(),
         ),
         FFRoute(
           name: 'posts',
@@ -232,12 +224,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'ProfileDetailsCopy',
-          path: '/profileDetailsCopy',
+          name: 'ProfileDetails',
+          path: '/profileDetails',
           asyncParams: {
             'name': getDoc(['Users'], UsersRecord.fromSnapshot),
           },
-          builder: (context, params) => ProfileDetailsCopyWidget(
+          builder: (context, params) => ProfileDetailsWidget(
             name: params.getParam(
               'name',
               ParamType.Document,
@@ -262,43 +254,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'CalenderPageCopy',
-          path: '/calenderPageCopy',
-          asyncParams: {
-            'famName': getDoc(['Family'], FamilyRecord.fromSnapshot),
-          },
-          builder: (context, params) => CalenderPageCopyWidget(
-            famName: params.getParam(
-              'famName',
-              ParamType.Document,
-            ),
-            currentPage: params.getParam(
-              'currentPage',
-              ParamType.String,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'DirectoryPageCopy',
-          path: '/directoryPageCopy',
-          builder: (context, params) => DirectoryPageCopyWidget(
-            currentpage: params.getParam(
-              'currentpage',
-              ParamType.String,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'DirectoryPageCopy2',
-          path: '/directoryPageCopy2',
-          builder: (context, params) => DirectoryPageCopy2Widget(
-            currentpage: params.getParam(
-              'currentpage',
-              ParamType.String,
-            ),
-          ),
-        ),
-        FFRoute(
           name: 'EditDesc',
           path: '/editDesc',
           builder: (context, params) => EditDescWidget(
@@ -311,35 +266,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'HomeUserCopy',
-          path: '/homeUserCopy',
-          builder: (context, params) => HomeUserCopyWidget(),
-        ),
-        FFRoute(
           name: 'FamilyFunds',
           path: '/familyFunds',
-          builder: (context, params) => FamilyFundsWidget(),
+          builder: (context, params) => const FamilyFundsWidget(),
         ),
         FFRoute(
           name: 'notificationCenter',
           path: '/notificationCenter',
-          builder: (context, params) => NotificationCenterWidget(),
-        ),
-        FFRoute(
-          name: 'postWithNotification',
-          path: '/postWithNotification',
-          asyncParams: {
-            'notification':
-                getDoc(['notifications'], NotificationsRecord.fromSnapshot),
-          },
-          builder: (context, params) => PostWithNotificationWidget(
-            currentpage: params.getParam(
-              'currentpage',
-              ParamType.String,
-            ),
-            notification: params.getParam(
-              'notification',
-              ParamType.Document,
+          builder: (context, params) => NotificationCenterWidget(
+            time: params.getParam(
+              'time',
+              ParamType.bool,
             ),
           ),
         ),
@@ -364,19 +301,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.DocumentReference,
               isList: false,
               collectionNamePath: ['Users'],
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'EventDetailsCopy',
-          path: '/eventDetailsCopy',
-          asyncParams: {
-            'event': getDoc(['Events'], EventsRecord.fromSnapshot),
-          },
-          builder: (context, params) => EventDetailsCopyWidget(
-            event: params.getParam(
-              'event',
-              ParamType.Document,
             ),
           ),
         )
@@ -566,7 +490,7 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: Color(0xFF2A497D),
+                  color: const Color(0xFF2A497D),
                   child: Image.asset(
                     'assets/images/Screenshot_2024-09-08_at_10.16.51_AM.jpeg',
                     fit: BoxFit.contain,
@@ -614,7 +538,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

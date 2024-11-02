@@ -1,8 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'empty_search_model.dart';
 export 'empty_search_model.dart';
 
@@ -38,12 +36,12 @@ class _EmptySearchWidgetState extends State<EmptySearchWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 0.0),
             child: Icon(
               Icons.search_off,
@@ -52,12 +50,12 @@ class _EmptySearchWidgetState extends State<EmptySearchWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
             child: Text(
               'لايوجد نتائج بحث',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                     fontFamily: 'Outfit',
-                    color: Color(0xFF15161E),
+                    color: const Color(0xFF15161E),
                     fontSize: 24.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w500,
@@ -65,13 +63,13 @@ class _EmptySearchWidgetState extends State<EmptySearchWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
             child: Text(
               'يرجى البحث عن الاسم الاول أو الاسم كاملا',
               textAlign: TextAlign.center,
               style: FlutterFlowTheme.of(context).labelMedium.override(
                     fontFamily: 'Plus Jakarta Sans',
-                    color: Color(0xFF606A85),
+                    color: const Color(0xFF606A85),
                     fontSize: 14.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w500,

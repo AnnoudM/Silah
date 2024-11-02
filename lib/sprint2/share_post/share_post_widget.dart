@@ -7,11 +7,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/sprint2/post_back/post_back_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'share_post_model.dart';
 export 'share_post_model.dart';
 
@@ -68,7 +66,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: StreamBuilder<List<UsersRecord>>(
         stream: queryUsersRecord(
           queryBuilder: (usersRecord) => usersRecord.where(
@@ -104,15 +102,15 @@ class _SharePostWidgetState extends State<SharePostWidget> {
           return Container(
             width: 400.0,
             height: 491.0,
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxWidth: 375.0,
             ),
             decoration: BoxDecoration(
-              color: Color(0xFFFFFCF6),
+              color: const Color(0xFFFFFCF6),
               borderRadius: BorderRadius.circular(16.0),
             ),
             child: Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
+              alignment: const AlignmentDirectional(0.0, 0.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -123,9 +121,9 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                       key: _model.formKey,
                       autovalidateMode: AutovalidateMode.always,
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 16.0),
                           child: SingleChildScrollView(
                             child: Column(
@@ -134,7 +132,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 10.0, 20.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -143,7 +141,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                         CrossAxisAlignment.center,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 10.0, 10.0, 20.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -153,17 +151,17 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                               CrossAxisAlignment.center,
                                           children: [
                                             Align(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   0.0, 1.14),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 6.0, 0.0, 0.0),
                                                 child: Container(
                                                   width: 30.0,
                                                   height: 30.0,
                                                   clipBehavior: Clip.antiAlias,
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: Image.network(
@@ -178,10 +176,10 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 16.0, 0.0),
                                         child: Text(
-                                          containerUsersRecord!.fullName,
+                                          containerUsersRecord.fullName,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
@@ -196,9 +194,9 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.only(
+                                    borderRadius: const BorderRadius.only(
                                       bottomLeft: Radius.circular(20.0),
                                       bottomRight: Radius.circular(20.0),
                                       topLeft: Radius.circular(20.0),
@@ -207,7 +205,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                     child: Container(
                                       width: 374.0,
                                       height: 314.0,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Color(0xCCFFFFFF),
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(20.0),
@@ -217,9 +215,9 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                         ),
                                         shape: BoxShape.rectangle,
                                       ),
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 16.0, 0.0, 16.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -230,7 +228,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 20.0, 10.0),
                                                     child: Row(
@@ -265,7 +263,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                       Flexible(
                                                         child:
                                                             FlutterFlowChoiceChips(
-                                                          options: [
+                                                          options: const [
                                                             ChipData('مواليد'),
                                                             ChipData('تعزيه'),
                                                             ChipData('أفراح'),
@@ -282,9 +280,6 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                                         '') &&
                                                                 (_model.textController
                                                                             .text !=
-                                                                        null &&
-                                                                    _model.textController
-                                                                            .text !=
                                                                         '')) {
                                                               _model.emptychoice =
                                                                   true;
@@ -300,7 +295,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                           selectedChipStyle:
                                                               ChipStyle(
                                                             backgroundColor:
-                                                                Color(
+                                                                const Color(
                                                                     0xFF7AB1D0),
                                                             textStyle:
                                                                 FlutterFlowTheme.of(
@@ -375,7 +370,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 5.0,
                                                                 30.0, 0.0),
                                                     child: Row(
@@ -427,7 +422,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   10.0,
                                                                   16.0,
@@ -443,11 +438,11 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                               .secondaryBackground,
                                                         ),
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 0.0, 0.0),
                                                         child: Align(
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   -1.0, -1.0),
                                                           child: TextFormField(
                                                             controller: _model
@@ -541,15 +536,15 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 0.0, 20.0, 16.0),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      60.0, 0.0, 60.0, 16.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.05),
+                                            const AlignmentDirectional(0.0, 0.05),
                                         child: Builder(
                                           builder: (context) => FFButtonWidget(
                                             onPressed: () async {
@@ -563,12 +558,12 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                     backgroundColor:
                                                         Colors.transparent,
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                                 0.0, 0.0)
                                                             .resolve(
                                                                 Directionality.of(
                                                                     context)),
-                                                    child: PostBackWidget(),
+                                                    child: const PostBackWidget(),
                                                   );
                                                 },
                                               );
@@ -577,10 +572,10 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                             options: FFButtonOptions(
                                               width: 80.0,
                                               height: 44.0,
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
+                                              iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -622,10 +617,10 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                       Expanded(
                                         child: Align(
                                           alignment:
-                                              AlignmentDirectional(1.0, 0.0),
+                                              const AlignmentDirectional(1.0, 0.0),
                                           child: StreamBuilder<FamilyRecord>(
                                             stream: FamilyRecord.getDocument(
-                                                containerUsersRecord!
+                                                containerUsersRecord
                                                     .familyName!),
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
@@ -659,9 +654,6 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                           '') {
                                                     if (_model.textController
                                                                 .text !=
-                                                            null &&
-                                                        _model.textController
-                                                                .text !=
                                                             '') {
                                                       if (_model.formKey
                                                                   .currentState ==
@@ -685,7 +677,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                             .text,
                                                         userID:
                                                             containerUsersRecord
-                                                                ?.reference,
+                                                                .reference,
                                                         category: _model
                                                             .choiceChipsValue,
                                                         familyID:
@@ -701,7 +693,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                                     .textController
                                                                     .text,
                                                                 userID: containerUsersRecord
-                                                                    ?.reference,
+                                                                    .reference,
                                                                 category: _model
                                                                     .choiceChipsValue,
                                                                 familyID:
@@ -720,13 +712,15 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                                     .reference,
                                                             userId:
                                                                 containerUsersRecord
-                                                                    ?.reference,
+                                                                    .reference,
                                                             message:
                                                                 'لقد قام بنشر منشور',
                                                             postid: _model.post
                                                                 ?.reference,
                                                             title:
                                                                 'منشور جديد!',
+                                                            createdAt:
+                                                                getCurrentTimestamp,
                                                           ));
                                                       _model.usersotify =
                                                           await queryUserrrRecordOnce(
@@ -737,7 +731,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                           'familyName',
                                                           isEqualTo:
                                                               containerUsersRecord
-                                                                  ?.familyName,
+                                                                  .familyName,
                                                         ),
                                                       );
 
@@ -746,7 +740,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                         extra: <String,
                                                             dynamic>{
                                                           kTransitionInfoKey:
-                                                              TransitionInfo(
+                                                              const TransitionInfo(
                                                             hasTransition: true,
                                                             transitionType:
                                                                 PageTransitionType
@@ -773,7 +767,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                                   .secondaryBackground,
                                                             ),
                                                           ),
-                                                          duration: Duration(
+                                                          duration: const Duration(
                                                               milliseconds:
                                                                   4000),
                                                           backgroundColor:
@@ -786,7 +780,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                         notificationTitle:
                                                             'منشور جديد !',
                                                         notificationText:
-                                                            '${containerUsersRecord?.gender == 'انثى' ? 'لقد قامت' : 'لقد قام'}${containerUsersRecord?.fullName} بنشر منشور',
+                                                            '${containerUsersRecord.gender == 'انثى' ? 'لقد قامت ' : 'لقد قام '}${containerUsersRecord.fullName} بنشر منشور',
                                                         notificationSound:
                                                             'default',
                                                         userRefs: _model
@@ -795,7 +789,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                                 e.reference)
                                                             .toList(),
                                                         initialPageName:
-                                                            'notificationCenter',
+                                                            'posts',
                                                         parameterData: {},
                                                       );
                                                     }
@@ -810,12 +804,12 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                 options: FFButtonOptions(
                                                   width: 80.0,
                                                   height: 44.0,
-                                                  padding: EdgeInsets.all(0.0),
+                                                  padding: const EdgeInsets.all(0.0),
                                                   iconPadding:
-                                                      EdgeInsetsDirectional
+                                                      const EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
-                                                  color: Color(0xFF2A497D),
+                                                  color: const Color(0xFF2A497D),
                                                   textStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .titleSmall
