@@ -60,6 +60,26 @@ class PostsRecord extends FirestoreRecord {
   int get numLike => _numLike ?? 0;
   bool hasNumLike() => _numLike != null;
 
+  // "Replied_By" field.
+  List<DocumentReference>? _repliedBy;
+  List<DocumentReference> get repliedBy => _repliedBy ?? const [];
+  bool hasRepliedBy() => _repliedBy != null;
+
+  // "num_reply" field.
+  int? _numReply;
+  int get numReply => _numReply ?? 0;
+  bool hasNumReply() => _numReply != null;
+
+  // "postReply" field.
+  List<DocumentReference>? _postReply;
+  List<DocumentReference> get postReply => _postReply ?? const [];
+  bool hasPostReply() => _postReply != null;
+
+  // "post_user" field.
+  DocumentReference? _postUser;
+  DocumentReference? get postUser => _postUser;
+  bool hasPostUser() => _postUser != null;
+
   void _initializeFields() {
     _category = snapshotData['Category'] as String?;
     _content = snapshotData['Content'] as String?;
@@ -70,6 +90,10 @@ class PostsRecord extends FirestoreRecord {
     _postContent = snapshotData['postContent'] as String?;
     _likedBy = getDataList(snapshotData['likedBy']);
     _numLike = castToType<int>(snapshotData['numLike']);
+    _repliedBy = getDataList(snapshotData['Replied_By']);
+    _numReply = castToType<int>(snapshotData['num_reply']);
+    _postReply = getDataList(snapshotData['postReply']);
+    _postUser = snapshotData['post_user'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -114,6 +138,8 @@ Map<String, dynamic> createPostsRecordData({
   DateTime? datePosted,
   String? postContent,
   int? numLike,
+  int? numReply,
+  DocumentReference? postUser,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -125,6 +151,8 @@ Map<String, dynamic> createPostsRecordData({
       'DatePosted': datePosted,
       'postContent': postContent,
       'numLike': numLike,
+      'num_reply': numReply,
+      'post_user': postUser,
     }.withoutNulls,
   );
 
@@ -145,7 +173,11 @@ class PostsRecordDocumentEquality implements Equality<PostsRecord> {
         e1?.datePosted == e2?.datePosted &&
         e1?.postContent == e2?.postContent &&
         listEquality.equals(e1?.likedBy, e2?.likedBy) &&
-        e1?.numLike == e2?.numLike;
+        e1?.numLike == e2?.numLike &&
+        listEquality.equals(e1?.repliedBy, e2?.repliedBy) &&
+        e1?.numReply == e2?.numReply &&
+        listEquality.equals(e1?.postReply, e2?.postReply) &&
+        e1?.postUser == e2?.postUser;
   }
 
   @override
@@ -158,7 +190,11 @@ class PostsRecordDocumentEquality implements Equality<PostsRecord> {
         e?.datePosted,
         e?.postContent,
         e?.likedBy,
-        e?.numLike
+        e?.numLike,
+        e?.repliedBy,
+        e?.numReply,
+        e?.postReply,
+        e?.postUser
       ]);
 
   @override

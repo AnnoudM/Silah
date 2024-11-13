@@ -6,11 +6,11 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/sprint2/delete_post_alert/delete_post_alert_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'postitems_model.dart';
-export 'postitems_model.dart';
+import 'postitems_copy_model.dart';
+export 'postitems_copy_model.dart';
 
-class PostitemsWidget extends StatefulWidget {
-  const PostitemsWidget({
+class PostitemsCopyWidget extends StatefulWidget {
+  const PostitemsCopyWidget({
     super.key,
     this.postRef,
     this.userRef,
@@ -26,11 +26,11 @@ class PostitemsWidget extends StatefulWidget {
   final DocumentReference? notiRef;
 
   @override
-  State<PostitemsWidget> createState() => _PostitemsWidgetState();
+  State<PostitemsCopyWidget> createState() => _PostitemsCopyWidgetState();
 }
 
-class _PostitemsWidgetState extends State<PostitemsWidget> {
-  late PostitemsModel _model;
+class _PostitemsCopyWidgetState extends State<PostitemsCopyWidget> {
+  late PostitemsCopyModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -41,7 +41,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => PostitemsModel());
+    _model = createModel(context, () => PostitemsCopyModel());
   }
 
   @override
@@ -483,204 +483,347 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                     ],
                                                   ),
                                                 ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          16.0, 0.0, 0.0, 0.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.end,
-                                                    children: [
-                                                      if ((widget.postrefuser
-                                                                  ?.userID ==
-                                                              containerUsersRecord
-                                                                  ?.reference) &&
-                                                          ((widget.selectedCategory ==
-                                                                  'الكل') ||
-                                                              (widget.selectedCategory ==
-                                                                  'مواليد') ||
-                                                              (widget.selectedCategory ==
-                                                                  'أفراح') ||
-                                                              (widget.selectedCategory ==
-                                                                  'إنجازات') ||
-                                                              (widget.selectedCategory ==
-                                                                  'تعزيه')))
-                                                        Builder(
-                                                          builder: (context) =>
-                                                              Padding(
-                                                            padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        8.0,
-                                                                        0.0,
-                                                                        4.0),
-                                                            child: StreamBuilder<
-                                                                List<
-                                                                    NotificationsRecord>>(
-                                                              stream:
-                                                                  queryNotificationsRecord(
-                                                                queryBuilder:
-                                                                    (notificationsRecord) =>
-                                                                        notificationsRecord
-                                                                            .where(
-                                                                  'postid',
-                                                                  isEqualTo:
-                                                                      widget
-                                                                          .postRef,
-                                                                ),
-                                                                singleRecord:
-                                                                    true,
-                                                              ),
-                                                              builder: (context,
-                                                                  snapshot) {
-                                                                // Customize what your widget looks like when it's loading.
-                                                                if (!snapshot
-                                                                    .hasData) {
-                                                                  return Center(
-                                                                    child:
-                                                                        SizedBox(
-                                                                      width:
-                                                                          50.0,
-                                                                      height:
-                                                                          50.0,
-                                                                      child:
-                                                                          CircularProgressIndicator(
-                                                                        valueColor:
-                                                                            AlwaysStoppedAnimation<Color>(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .primary,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  );
-                                                                }
-                                                                List<NotificationsRecord>
-                                                                    iconNotificationsRecordList =
-                                                                    snapshot
-                                                                        .data!;
-                                                                // Return an empty Container when the item does not exist.
-                                                                if (snapshot
-                                                                    .data!
-                                                                    .isEmpty) {
-                                                                  return Container();
-                                                                }
-                                                                final iconNotificationsRecord =
-                                                                    iconNotificationsRecordList
-                                                                            .isNotEmpty
-                                                                        ? iconNotificationsRecordList
-                                                                            .first
-                                                                        : null;
-
-                                                                return Semantics(
-                                                                  label:
-                                                                      'حذف المنشور',
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          -1.0, 1.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 2.0,
+                                                                8.0, 0.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        StreamBuilder<
+                                                            PostsRecord>(
+                                                          stream: PostsRecord
+                                                              .getDocument(
+                                                                  widget
+                                                                      .postRef!),
+                                                          builder: (context,
+                                                              snapshot) {
+                                                            // Customize what your widget looks like when it's loading.
+                                                            if (!snapshot
+                                                                .hasData) {
+                                                              return Center(
+                                                                child: SizedBox(
+                                                                  width: 50.0,
+                                                                  height: 50.0,
                                                                   child:
-                                                                      InkWell(
-                                                                    splashColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    focusColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    hoverColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    highlightColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    onTap:
-                                                                        () async {
-                                                                      await showDialog(
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (dialogContext) {
-                                                                          return Dialog(
-                                                                            elevation:
-                                                                                0,
-                                                                            insetPadding:
-                                                                                EdgeInsets.zero,
-                                                                            backgroundColor:
-                                                                                Colors.transparent,
-                                                                            alignment:
-                                                                                const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                            child:
-                                                                                DeletePostAlertWidget(
-                                                                              deletePost: widget.postRef,
-                                                                              deleteNoti: iconNotificationsRecord?.reference,
-                                                                            ),
-                                                                          );
-                                                                        },
-                                                                      );
-                                                                    },
-                                                                    child:
-                                                                        FaIcon(
-                                                                      FontAwesomeIcons
-                                                                          .solidTrashAlt,
-                                                                      color: FlutterFlowTheme.of(
+                                                                      CircularProgressIndicator(
+                                                                    valueColor:
+                                                                        AlwaysStoppedAnimation<
+                                                                            Color>(
+                                                                      FlutterFlowTheme.of(
                                                                               context)
-                                                                          .error,
-                                                                      size:
-                                                                          17.0,
+                                                                          .primary,
                                                                     ),
                                                                   ),
-                                                                );
+                                                                ),
+                                                              );
+                                                            }
+
+                                                            final stackPostsRecord =
+                                                                snapshot.data!;
+
+                                                            return InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                final firestoreBatch =
+                                                                    FirebaseFirestore
+                                                                        .instance
+                                                                        .batch();
+                                                                try {
+                                                                  if (stackPostsRecord
+                                                                      .likedBy
+                                                                      .contains(
+                                                                          widget
+                                                                              .userRef)) {
+                                                                    firestoreBatch
+                                                                        .update(
+                                                                            widget.postRef!,
+                                                                            {
+                                                                          ...mapToFirestore(
+                                                                            {
+                                                                              'likedBy': FieldValue.arrayRemove([
+                                                                                widget.userRef
+                                                                              ]),
+                                                                              'numLike': FieldValue.increment(-(1)),
+                                                                            },
+                                                                          ),
+                                                                        });
+                                                                    return;
+                                                                  } else {
+                                                                    firestoreBatch
+                                                                        .update(
+                                                                            widget.postRef!,
+                                                                            {
+                                                                          ...mapToFirestore(
+                                                                            {
+                                                                              'likedBy': FieldValue.arrayUnion([
+                                                                                widget.userRef
+                                                                              ]),
+                                                                              'numLike': FieldValue.increment(1),
+                                                                            },
+                                                                          ),
+                                                                        });
+                                                                    return;
+                                                                  }
+                                                                } finally {
+                                                                  await firestoreBatch
+                                                                      .commit();
+                                                                }
                                                               },
+                                                              child: Stack(
+                                                                children: [
+                                                                  if (stackPostsRecord
+                                                                          .likedBy
+                                                                          .contains(
+                                                                              widget.userRef) ==
+                                                                      false)
+                                                                    Padding(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          8.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Icon(
+                                                                        Icons
+                                                                            .favorite_border,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
+                                                                        size:
+                                                                            20.0,
+                                                                      ),
+                                                                    ),
+                                                                  if (stackPostsRecord
+                                                                          .likedBy
+                                                                          .contains(
+                                                                              widget.userRef) ==
+                                                                      true)
+                                                                    Padding(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          8.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Icon(
+                                                                        Icons
+                                                                            .favorite,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
+                                                                        size:
+                                                                            20.0,
+                                                                      ),
+                                                                    ),
+                                                                ],
+                                                              ),
+                                                            );
+                                                          },
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      8.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            onTap: () async {
+                                                              context.pushNamed(
+                                                                'comment',
+                                                                queryParameters:
+                                                                    {
+                                                                  'postRef':
+                                                                      serializeParam(
+                                                                    widget
+                                                                        .postRef,
+                                                                    ParamType
+                                                                        .DocumentReference,
+                                                                  ),
+                                                                  'userRef':
+                                                                      serializeParam(
+                                                                    widget
+                                                                        .userRef,
+                                                                    ParamType
+                                                                        .DocumentReference,
+                                                                  ),
+                                                                }.withoutNulls,
+                                                              );
+                                                            },
+                                                            child: Icon(
+                                                              Icons
+                                                                  .mode_comment_outlined,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              size: 20.0,
                                                             ),
                                                           ),
                                                         ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    8.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            context.pushNamed(
-                                                              'comment',
-                                                              queryParameters: {
-                                                                'postRef':
-                                                                    serializeParam(
-                                                                  widget
-                                                                      .postRef,
-                                                                  ParamType
-                                                                      .DocumentReference,
+                                                        if ((widget.postrefuser
+                                                                    ?.userID ==
+                                                                containerUsersRecord
+                                                                    ?.reference) &&
+                                                            ((widget.selectedCategory ==
+                                                                    'الكل') ||
+                                                                (widget.selectedCategory ==
+                                                                    'مواليد') ||
+                                                                (widget.selectedCategory ==
+                                                                    'أفراح') ||
+                                                                (widget.selectedCategory ==
+                                                                    'إنجازات') ||
+                                                                (widget.selectedCategory ==
+                                                                    'تعزيه')))
+                                                          Builder(
+                                                            builder:
+                                                                (context) =>
+                                                                    Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          8.0,
+                                                                          0.0,
+                                                                          4.0),
+                                                              child: StreamBuilder<
+                                                                  List<
+                                                                      NotificationsRecord>>(
+                                                                stream:
+                                                                    queryNotificationsRecord(
+                                                                  queryBuilder:
+                                                                      (notificationsRecord) =>
+                                                                          notificationsRecord
+                                                                              .where(
+                                                                    'postid',
+                                                                    isEqualTo:
+                                                                        widget
+                                                                            .postRef,
+                                                                  ),
+                                                                  singleRecord:
+                                                                      true,
                                                                 ),
-                                                                'userRef':
-                                                                    serializeParam(
-                                                                  widget
-                                                                      .userRef,
-                                                                  ParamType
-                                                                      .DocumentReference,
-                                                                ),
-                                                              }.withoutNulls,
-                                                            );
-                                                          },
-                                                          child: Icon(
-                                                            Icons
-                                                                .mode_comment_outlined,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            size: 20.0,
+                                                                builder: (context,
+                                                                    snapshot) {
+                                                                  // Customize what your widget looks like when it's loading.
+                                                                  if (!snapshot
+                                                                      .hasData) {
+                                                                    return Center(
+                                                                      child:
+                                                                          SizedBox(
+                                                                        width:
+                                                                            50.0,
+                                                                        height:
+                                                                            50.0,
+                                                                        child:
+                                                                            CircularProgressIndicator(
+                                                                          valueColor:
+                                                                              AlwaysStoppedAnimation<Color>(
+                                                                            FlutterFlowTheme.of(context).primary,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  }
+                                                                  List<NotificationsRecord>
+                                                                      iconNotificationsRecordList =
+                                                                      snapshot
+                                                                          .data!;
+                                                                  // Return an empty Container when the item does not exist.
+                                                                  if (snapshot
+                                                                      .data!
+                                                                      .isEmpty) {
+                                                                    return Container();
+                                                                  }
+                                                                  final iconNotificationsRecord = iconNotificationsRecordList
+                                                                          .isNotEmpty
+                                                                      ? iconNotificationsRecordList
+                                                                          .first
+                                                                      : null;
+
+                                                                  return Semantics(
+                                                                    label:
+                                                                        'حذف المنشور',
+                                                                    child:
+                                                                        InkWell(
+                                                                      splashColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      focusColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      hoverColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      highlightColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      onTap:
+                                                                          () async {
+                                                                        await showDialog(
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (dialogContext) {
+                                                                            return Dialog(
+                                                                              elevation: 0,
+                                                                              insetPadding: EdgeInsets.zero,
+                                                                              backgroundColor: Colors.transparent,
+                                                                              alignment: const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                              child: DeletePostAlertWidget(
+                                                                                deletePost: widget.postRef,
+                                                                                deleteNoti: iconNotificationsRecord?.reference,
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        );
+                                                                      },
+                                                                      child:
+                                                                          FaIcon(
+                                                                        FontAwesomeIcons
+                                                                            .solidTrashAlt,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .error,
+                                                                        size:
+                                                                            17.0,
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              ),
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ),
-                                                    ],
+                                                      ].divide(const SizedBox(
+                                                          width: 16.0)),
+                                                    ),
                                                   ),
                                                 ),
                                               ],
@@ -749,6 +892,42 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      2.0, 0.0, 8.0, 0.0),
+                                  child: Text(
+                                    '${repliesandLikesPostsRecord.likedBy.length.toString()} اعجاب',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: const Color(0xFF2A497D),
+                                          fontSize: 12.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w200,
+                                        ),
+                                  ),
+                                ),
+                                Text(
+                                  ' . ',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w200,
+                                      ),
+                                ),
+                                Text(
+                                  '${repliesandLikesPostsRecord.postReply.length.toString()} رد',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w200,
+                                      ),
+                                ),
                                 Align(
                                   alignment: const AlignmentDirectional(1.0, 0.0),
                                   child: Padding(

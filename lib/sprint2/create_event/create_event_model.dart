@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'create_event_widget.dart' show CreateEventWidget;
 import 'package:flutter/material.dart';
@@ -59,6 +60,8 @@ class CreateEventModel extends FlutterFlowModel<CreateEventWidget> {
   String? Function(BuildContext, String?)? eventDecTextControllerValidator;
   DateTime? datePicked1;
   DateTime? datePicked2;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  List<UserrrRecord>? usersotify;
 
   @override
   void initState(BuildContext context) {

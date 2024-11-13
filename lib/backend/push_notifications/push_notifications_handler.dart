@@ -191,6 +191,30 @@ final parametersBuilderMap =
           'userEdit': getParameter<DocumentReference>(data, 'userEdit'),
         },
       ),
+  'giveAdminstrativeRole': ParameterData.none(),
+  'comment': (data) async => ParameterData(
+        allParams: {
+          'postRef': getParameter<DocumentReference>(data, 'postRef'),
+          'userRef': getParameter<DocumentReference>(data, 'userRef'),
+          'replyRef': getParameter<DocumentReference>(data, 'replyRef'),
+        },
+      ),
+  'postsCopy': (data) async => ParameterData(
+        allParams: {
+          'currentpage': getParameter<String>(data, 'currentpage'),
+        },
+      ),
+  'gallery': (data) async => ParameterData(
+        allParams: {
+          'currentpage': getParameter<String>(data, 'currentpage'),
+        },
+      ),
+  'analytics': ParameterData.none(),
+  'Album': (data) async => ParameterData(
+        allParams: {
+          'currentpage': getParameter<String>(data, 'currentpage'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

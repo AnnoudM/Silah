@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/sprint1/logout_alert/logout_alert_widget.dart';
+import '/homes/logout_alert/logout_alert_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'side_bar_model.dart';
 export 'side_bar_model.dart';
@@ -15,8 +17,11 @@ class SideBarWidget extends StatefulWidget {
   State<SideBarWidget> createState() => _SideBarWidgetState();
 }
 
-class _SideBarWidgetState extends State<SideBarWidget> {
+class _SideBarWidgetState extends State<SideBarWidget>
+    with TickerProviderStateMixin {
   late SideBarModel _model;
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -28,6 +33,28 @@ class _SideBarWidgetState extends State<SideBarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SideBarModel());
+
+    animationsMap.addAll({
+      'containerOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 300.0.ms,
+            begin: const Offset(-40.0, 0.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
   }
 
   @override
@@ -279,6 +306,139 @@ class _SideBarWidgetState extends State<SideBarWidget> {
                       ),
                     ),
                   ],
+                ),
+              ),
+            ),
+            Container(
+              width: 306.0,
+              height: 57.0,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+              ),
+              child: Align(
+                alignment: const AlignmentDirectional(0.0, 0.0),
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'المظهر',
+                        style: FlutterFlowTheme.of(context).titleLarge.override(
+                              fontFamily: 'Outfit',
+                              color: const Color(0xFF57636C),
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.normal,
+                            ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            if ((Theme.of(context).brightness ==
+                                    Brightness.dark) ==
+                                false) {
+                              setDarkModeSetting(context, ThemeMode.dark);
+                              if (animationsMap[
+                                      'containerOnActionTriggerAnimation'] !=
+                                  null) {
+                                animationsMap[
+                                        'containerOnActionTriggerAnimation']!
+                                    .controller
+                                    .forward(from: 0.0);
+                              }
+                            } else {
+                              setDarkModeSetting(context, ThemeMode.light);
+                              if (animationsMap[
+                                      'containerOnActionTriggerAnimation'] !=
+                                  null) {
+                                animationsMap[
+                                        'containerOnActionTriggerAnimation']!
+                                    .controller
+                                    .reverse();
+                              }
+                            }
+                          },
+                          child: Container(
+                            width: 80.0,
+                            height: 40.0,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFF1F4F8),
+                              borderRadius: BorderRadius.circular(20.0),
+                              border: Border.all(
+                                color: const Color(0xFFE0E3E7),
+                                width: 1.0,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: Stack(
+                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                children: [
+                                  const Align(
+                                    alignment: AlignmentDirectional(-0.9, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          6.0, 0.0, 0.0, 0.0),
+                                      child: Icon(
+                                        Icons.wb_sunny_rounded,
+                                        color: Color(0xFF57636C),
+                                        size: 24.0,
+                                      ),
+                                    ),
+                                  ),
+                                  const Align(
+                                    alignment: AlignmentDirectional(1.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 6.0, 0.0),
+                                      child: Icon(
+                                        Icons.mode_night_rounded,
+                                        color: Color(0xFF57636C),
+                                        size: 24.0,
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: const AlignmentDirectional(1.0, 0.0),
+                                    child: Container(
+                                      width: 36.0,
+                                      height: 36.0,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            blurRadius: 4.0,
+                                            color: Color(0x430B0D0F),
+                                            offset: Offset(
+                                              0.0,
+                                              2.0,
+                                            ),
+                                          )
+                                        ],
+                                        borderRadius:
+                                            BorderRadius.circular(30.0),
+                                        shape: BoxShape.rectangle,
+                                      ),
+                                    ).animateOnActionTrigger(
+                                      animationsMap[
+                                          'containerOnActionTriggerAnimation']!,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

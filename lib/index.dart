@@ -10,7 +10,7 @@ export '/sprint1/sign_up_member/sign_up_member_widget.dart'
     show SignUpMemberWidget;
 export '/sprint1/home_user/home_user_widget.dart' show HomeUserWidget;
 export '/sprint1/requests/requests_widget.dart' show RequestsWidget;
-export '/sprint1/home_admin/home_admin_widget.dart' show HomeAdminWidget;
+export '/homes/home_admin/home_admin_widget.dart' show HomeAdminWidget;
 export '/sprint1/verification/verification_widget.dart' show VerificationWidget;
 export '/sprint1/loggedin_page/loggedin_page_widget.dart'
     show LoggedinPageWidget;
@@ -32,3 +32,10 @@ export '/sprint3/notification_center/notification_center_widget.dart'
     show NotificationCenterWidget;
 export '/sprint3/change_pass/change_pass_widget.dart' show ChangePassWidget;
 export '/sprint3/edit_profile/edit_profile_widget.dart' show EditProfileWidget;
+export '/sprint4/give_adminstrative_role/give_adminstrative_role_widget.dart'
+    show GiveAdminstrativeRoleWidget;
+export '/sprint4/comment/comment_widget.dart' show CommentWidget;
+export '/sprint4/posts_copy/posts_copy_widget.dart' show PostsCopyWidget;
+export '/sprint4/gallery/gallery_widget.dart' show GalleryWidget;
+export '/sprint4/analytics/analytics_widget.dart' show AnalyticsWidget;
+export '/sprint4/album/album_widget.dart' show AlbumWidget;

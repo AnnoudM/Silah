@@ -303,6 +303,70 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               collectionNamePath: ['Users'],
             ),
           ),
+        ),
+        FFRoute(
+          name: 'giveAdminstrativeRole',
+          path: '/giveAdminstrativeRole',
+          builder: (context, params) => const GiveAdminstrativeRoleWidget(),
+        ),
+        FFRoute(
+          name: 'comment',
+          path: '/comment',
+          builder: (context, params) => CommentWidget(
+            postRef: params.getParam(
+              'postRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['Posts'],
+            ),
+            userRef: params.getParam(
+              'userRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['Users'],
+            ),
+            replyRef: params.getParam(
+              'replyRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['reply'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'postsCopy',
+          path: '/postsCopy',
+          builder: (context, params) => PostsCopyWidget(
+            currentpage: params.getParam(
+              'currentpage',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'gallery',
+          path: '/gallery',
+          builder: (context, params) => GalleryWidget(
+            currentpage: params.getParam(
+              'currentpage',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'analytics',
+          path: '/analytics',
+          builder: (context, params) => const AnalyticsWidget(),
+        ),
+        FFRoute(
+          name: 'Album',
+          path: '/album',
+          builder: (context, params) => AlbumWidget(
+            currentpage: params.getParam(
+              'currentpage',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

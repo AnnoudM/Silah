@@ -5,7 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/sprint1/email_verify_alert/email_verify_alert_widget.dart';
+import '/homes/email_verify_alert/email_verify_alert_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';

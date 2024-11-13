@@ -9,17 +9,17 @@ import '/flutter_flow/form_field_controller.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
 import '/homes/side_bar/side_bar_widget.dart';
 import '/sprint2/empty_posts/empty_posts_widget.dart';
-import '/sprint2/postitems/postitems_widget.dart';
 import '/sprint2/share_post/share_post_widget.dart';
+import '/sprint4/postitems_copy/postitems_copy_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
-import 'posts_model.dart';
-export 'posts_model.dart';
+import 'posts_copy_model.dart';
+export 'posts_copy_model.dart';
 
-class PostsWidget extends StatefulWidget {
-  const PostsWidget({
+class PostsCopyWidget extends StatefulWidget {
+  const PostsCopyWidget({
     super.key,
     this.currentpage,
   });
@@ -27,12 +27,12 @@ class PostsWidget extends StatefulWidget {
   final String? currentpage;
 
   @override
-  State<PostsWidget> createState() => _PostsWidgetState();
+  State<PostsCopyWidget> createState() => _PostsCopyWidgetState();
 }
 
-class _PostsWidgetState extends State<PostsWidget>
+class _PostsCopyWidgetState extends State<PostsCopyWidget>
     with TickerProviderStateMixin {
-  late PostsModel _model;
+  late PostsCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -41,7 +41,7 @@ class _PostsWidgetState extends State<PostsWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => PostsModel());
+    _model = createModel(context, () => PostsCopyModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -124,13 +124,14 @@ class _PostsWidgetState extends State<PostsWidget>
             ),
           );
         }
-        List<UsersRecord> postsUsersRecordList = snapshot.data!;
+        List<UsersRecord> postsCopyUsersRecordList = snapshot.data!;
         // Return an empty Container when the item does not exist.
         if (snapshot.data!.isEmpty) {
           return Container();
         }
-        final postsUsersRecord =
-            postsUsersRecordList.isNotEmpty ? postsUsersRecordList.first : null;
+        final postsCopyUsersRecord = postsCopyUsersRecordList.isNotEmpty
+            ? postsCopyUsersRecordList.first
+            : null;
 
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -483,7 +484,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                       .where(
                                                                         'FamilyID',
                                                                         isEqualTo:
-                                                                            postsUsersRecord?.familyName,
+                                                                            postsCopyUsersRecord?.familyName,
                                                                       )
                                                                       .orderBy(
                                                                           'DatePosted',
@@ -565,47 +566,12 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                           );
                                                                         }
 
-                                                                        final postitemsaUsersRecord =
+                                                                        final postitemsCopyUsersRecord =
                                                                             snapshot.data!;
 
-                                                                        return InkWell(
-                                                                          splashColor:
-                                                                              Colors.transparent,
-                                                                          focusColor:
-                                                                              Colors.transparent,
-                                                                          hoverColor:
-                                                                              Colors.transparent,
-                                                                          highlightColor:
-                                                                              Colors.transparent,
-                                                                          onTap:
-                                                                              () async {
-                                                                            context.pushNamed(
-                                                                              'comment',
-                                                                              queryParameters: {
-                                                                                'postRef': serializeParam(
-                                                                                  mainListPostsRecord.reference,
-                                                                                  ParamType.DocumentReference,
-                                                                                ),
-                                                                                'userRef': serializeParam(
-                                                                                  postitemsaUsersRecord.reference,
-                                                                                  ParamType.DocumentReference,
-                                                                                ),
-                                                                              }.withoutNulls,
-                                                                            );
-                                                                          },
-                                                                          child:
-                                                                              PostitemsWidget(
-                                                                            key:
-                                                                                Key('Keyu94_${mainListIndex}_of_${mainListPostsRecordList.length}'),
-                                                                            userRef:
-                                                                                postitemsaUsersRecord.reference,
-                                                                            postRef:
-                                                                                mainListPostsRecord.reference,
-                                                                            selectedCategory:
-                                                                                _model.selectedCategory,
-                                                                            postrefuser:
-                                                                                mainListPostsRecord,
-                                                                          ),
+                                                                        return PostitemsCopyWidget(
+                                                                          key: Key(
+                                                                              'Keyqwl_${mainListIndex}_of_${mainListPostsRecordList.length}'),
                                                                         );
                                                                       },
                                                                     );
@@ -681,7 +647,7 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                       .where(
                                                                         'FamilyID',
                                                                         isEqualTo:
-                                                                            postsUsersRecord?.familyName,
+                                                                            postsCopyUsersRecord?.familyName,
                                                                       )
                                                                       .where(
                                                                         'Category',
@@ -768,20 +734,12 @@ class _PostsWidgetState extends State<PostsWidget>
                                                                           );
                                                                         }
 
-                                                                        final postitemsaUsersRecord =
+                                                                        final postitemsCopyUsersRecord =
                                                                             snapshot.data!;
 
-                                                                        return PostitemsWidget(
+                                                                        return PostitemsCopyWidget(
                                                                           key: Key(
-                                                                              'Keys7l_${mainListIndex}_of_${mainListPostsRecordList.length}'),
-                                                                          userRef:
-                                                                              postitemsaUsersRecord.reference,
-                                                                          postRef:
-                                                                              mainListPostsRecord.reference,
-                                                                          selectedCategory:
-                                                                              _model.selectedCategory,
-                                                                          postrefuser:
-                                                                              mainListPostsRecord,
+                                                                              'Keyosm_${mainListIndex}_of_${mainListPostsRecordList.length}'),
                                                                         );
                                                                       },
                                                                     );

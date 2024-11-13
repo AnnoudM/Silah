@@ -139,7 +139,7 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                     ),
                     onPressed: () async {
                       context.pushNamed(
-                        'posts',
+                        'postsCopy',
                         queryParameters: {
                           'currentpage': serializeParam(
                             'posts',
@@ -233,8 +233,8 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                     color: Color(0xFF9299A1),
                     size: 24.0,
                   ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
+                  onPressed: () async {
+                    context.pushNamed('Album');
                   },
                 ),
                 Semantics(

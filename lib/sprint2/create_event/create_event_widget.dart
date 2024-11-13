@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -1081,6 +1082,8 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
 
                                                         return FFButtonWidget(
                                                           onPressed: () async {
+                                                            var shouldSetState =
+                                                                false;
                                                             if (_model
                                                                     .datePicked2 !=
                                                                 null) {
@@ -1102,14 +1105,35 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                       'لا يمكن أن يكون الوقت قبل الوقت الحالي';
                                                                   safeSetState(
                                                                       () {});
+                                                                  if (shouldSetState) {
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  }
                                                                   return;
                                                                 } else {
                                                                   _model.pastHour =
                                                                       '  ';
                                                                   safeSetState(
                                                                       () {});
+                                                                  _model.usersotify =
+                                                                      await queryUserrrRecordOnce(
+                                                                    queryBuilder:
+                                                                        (userrrRecord) =>
+                                                                            userrrRecord.where(
+                                                                      'familyName',
+                                                                      isEqualTo:
+                                                                          columnUsersRecord
+                                                                              .familyName,
+                                                                    ),
+                                                                  );
+                                                                  shouldSetState =
+                                                                      true;
                                                                 }
                                                               } else {
+                                                                if (shouldSetState) {
+                                                                  safeSetState(
+                                                                      () {});
+                                                                }
                                                                 return;
                                                               }
                                                             } else {
@@ -1117,6 +1141,10 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                   'هذا الحقل مطلوب';
                                                               safeSetState(
                                                                   () {});
+                                                              if (shouldSetState) {
+                                                                safeSetState(
+                                                                    () {});
+                                                              }
                                                               return;
                                                             }
 
@@ -1173,6 +1201,26 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                         .success,
                                                               ),
                                                             );
+                                                            triggerPushNotification(
+                                                              notificationTitle:
+                                                                  'مناسبة جديدة !',
+                                                              notificationText:
+                                                                  '${columnUsersRecord.gender == 'انثى' ? 'لقد قامت ' : 'لقد قام '}${columnUsersRecord.fullName} بإنشاء مناسبة',
+                                                              notificationSound:
+                                                                  'default',
+                                                              userRefs: _model
+                                                                  .usersotify!
+                                                                  .map((e) => e
+                                                                      .reference)
+                                                                  .toList(),
+                                                              initialPageName:
+                                                                  'CalenderPage',
+                                                              parameterData: {},
+                                                            );
+                                                            if (shouldSetState) {
+                                                              safeSetState(
+                                                                  () {});
+                                                            }
                                                           },
                                                           text: 'إنشاء',
                                                           options:

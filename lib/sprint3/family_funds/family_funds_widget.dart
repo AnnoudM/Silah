@@ -407,8 +407,9 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Readex Pro',
-                                                                      color: const Color(
-                                                                          0x9857636C),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .error,
                                                                       fontSize:
                                                                           11.0,
                                                                       letterSpacing:

@@ -456,7 +456,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   try {
                                                                     showUploadMessage(
                                                                       context,
-                                                                      'Uploading file...',
+                                                                      'جاري تحميل الصورة....',
                                                                       showLoading:
                                                                           true,
                                                                     );
@@ -511,7 +511,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                     });
                                                                     showUploadMessage(
                                                                         context,
-                                                                        'Success!');
+                                                                        'تم التحميل بنجاح!');
                                                                   } else {
                                                                     safeSetState(
                                                                         () {});
@@ -1986,6 +1986,15 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                 () async {
                                                               var shouldSetState =
                                                                   false;
+                                                              if (_model.formKey
+                                                                          .currentState ==
+                                                                      null ||
+                                                                  !_model
+                                                                      .formKey
+                                                                      .currentState!
+                                                                      .validate()) {
+                                                                return;
+                                                              }
                                                               if (editProfileUsersRecord
                                                                       .phoneNumber ==
                                                                   _model
