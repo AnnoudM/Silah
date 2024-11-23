@@ -217,6 +217,20 @@
       ]
     },
     {
+      "collectionGroup": "Comment",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "postId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "timeReplied",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "Users",
       "queryScope": "COLLECTION",
       "fields": [

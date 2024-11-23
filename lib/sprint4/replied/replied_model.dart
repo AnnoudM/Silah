@@ -22,7 +22,7 @@ class RepliedModel extends FlutterFlowModel<RepliedWidget> {
   String? Function(BuildContext, String?)? textControllerValidator;
   String? _textControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return ' ';
+      return '   ';
     }
 
     if (val.length > 300) {
@@ -31,7 +31,7 @@ class RepliedModel extends FlutterFlowModel<RepliedWidget> {
     if (!RegExp(
             '^(?=.*\\S)[^A-Za-z]*[\\u0600-\\u06FF0-9\\s?!@#\$%^&*(),.]+[^A-Za-z]*\$')
         .hasMatch(val)) {
-      return 'يجب ان لايحتوي الرد على فراغ فقط او احرف انجليزية';
+      return 'يجب ان لايحتوي الرد على فراغ فقط او احرف \nانجليزية';
     }
     return null;
   }

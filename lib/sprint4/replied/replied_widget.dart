@@ -9,6 +9,7 @@ import '/sprint2/reply_back/reply_back_widget.dart';
 import '/sprint3/postitems/postitems_widget.dart';
 import '/sprint4/emptyreply_list/emptyreply_list_widget.dart';
 import '/sprint4/reply_item/reply_item_widget.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -528,15 +529,16 @@ class _RepliedWidgetState extends State<RepliedWidget>
                                                                       CommentRecord>>(
                                                                 stream:
                                                                     queryCommentRecord(
-                                                                  queryBuilder:
-                                                                      (commentRecord) =>
-                                                                          commentRecord
-                                                                              .where(
-                                                                    'postId',
-                                                                    isEqualTo:
-                                                                        columnPostsRecord
-                                                                            .reference,
-                                                                  ),
+                                                                  queryBuilder: (commentRecord) =>
+                                                                      commentRecord
+                                                                          .where(
+                                                                            'postId',
+                                                                            isEqualTo:
+                                                                                columnPostsRecord.reference,
+                                                                          )
+                                                                          .orderBy(
+                                                                              'timeReplied',
+                                                                              descending: true),
                                                                 ),
                                                                 builder: (context,
                                                                     snapshot) {
@@ -625,55 +627,74 @@ class _RepliedWidgetState extends State<RepliedWidget>
                                                                   .textController,
                                                               focusNode: _model
                                                                   .textFieldFocusNode,
+                                                              onChanged: (_) =>
+                                                                  EasyDebounce
+                                                                      .debounce(
+                                                                '_model.textController',
+                                                                const Duration(
+                                                                    milliseconds:
+                                                                        5),
+                                                                () =>
+                                                                    safeSetState(
+                                                                        () {}),
+                                                              ),
                                                               onFieldSubmitted:
                                                                   (_) async {
-                                                                if (_model.formKey
-                                                                            .currentState ==
-                                                                        null ||
-                                                                    !_model
-                                                                        .formKey
-                                                                        .currentState!
-                                                                        .validate()) {
+                                                                if ((_model
+                                                                        .textFieldFocusNode
+                                                                        ?.hasFocus ??
+                                                                    false)) {
+                                                                  if (_model.formKey
+                                                                              .currentState ==
+                                                                          null ||
+                                                                      !_model
+                                                                          .formKey
+                                                                          .currentState!
+                                                                          .validate()) {
+                                                                    return;
+                                                                  }
+
+                                                                  await CommentRecord
+                                                                      .collection
+                                                                      .doc()
+                                                                      .set(
+                                                                          createCommentRecordData(
+                                                                        content: _model
+                                                                            .textController
+                                                                            .text,
+                                                                        userId:
+                                                                            repliedUsersRecord?.reference,
+                                                                        timeReplied:
+                                                                            getCurrentTimestamp,
+                                                                        postId:
+                                                                            columnPostsRecord.reference,
+                                                                      ));
+                                                                  ScaffoldMessenger.of(
+                                                                          context)
+                                                                      .showSnackBar(
+                                                                    SnackBar(
+                                                                      content:
+                                                                          Text(
+                                                                        'تم ارسال الرد بنجاح',
+                                                                        style: GoogleFonts
+                                                                            .getFont(
+                                                                          'Readex Pro',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                        ),
+                                                                      ),
+                                                                      duration: const Duration(
+                                                                          milliseconds:
+                                                                              4000),
+                                                                      backgroundColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .secondary,
+                                                                    ),
+                                                                  );
+                                                                  return;
+                                                                } else {
                                                                   return;
                                                                 }
-
-                                                                await CommentRecord
-                                                                    .collection
-                                                                    .doc()
-                                                                    .set(
-                                                                        createCommentRecordData(
-                                                                      content: _model
-                                                                          .textController
-                                                                          .text,
-                                                                      userId: repliedUsersRecord
-                                                                          ?.reference,
-                                                                      timeReplied:
-                                                                          getCurrentTimestamp,
-                                                                      postId: columnPostsRecord
-                                                                          .reference,
-                                                                    ));
-                                                                ScaffoldMessenger.of(
-                                                                        context)
-                                                                    .showSnackBar(
-                                                                  SnackBar(
-                                                                    content:
-                                                                        Text(
-                                                                      'تم ارسال الرد بنجاح',
-                                                                      style: GoogleFonts
-                                                                          .getFont(
-                                                                        'Readex Pro',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground,
-                                                                      ),
-                                                                    ),
-                                                                    duration: const Duration(
-                                                                        milliseconds:
-                                                                            4000),
-                                                                    backgroundColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .secondary,
-                                                                  ),
-                                                                );
                                                               },
                                                               autofocus: false,
                                                               textInputAction:
@@ -701,6 +722,21 @@ class _RepliedWidgetState extends State<RepliedWidget>
                                                                     .override(
                                                                       fontFamily:
                                                                           'Readex Pro',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                                errorStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      color: (_model.textFieldFocusNode?.hasFocus ??
+                                                                              false)
+                                                                          ? FlutterFlowTheme.of(context)
+                                                                              .error
+                                                                          : const Color(
+                                                                              0x00000000),
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
@@ -736,7 +772,7 @@ class _RepliedWidgetState extends State<RepliedWidget>
                                                                       BorderSide(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .error,
+                                                                        .primary,
                                                                     width: 1.0,
                                                                   ),
                                                                   borderRadius:
@@ -750,7 +786,7 @@ class _RepliedWidgetState extends State<RepliedWidget>
                                                                       BorderSide(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .error,
+                                                                        .primary,
                                                                     width: 1.0,
                                                                   ),
                                                                   borderRadius:
@@ -762,11 +798,6 @@ class _RepliedWidgetState extends State<RepliedWidget>
                                                                 fillColor: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryBackground,
-                                                                suffixIcon:
-                                                                    const Icon(
-                                                                  Icons
-                                                                      .send_sharp,
-                                                                ),
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
