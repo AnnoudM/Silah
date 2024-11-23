@@ -75,12 +75,12 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                   child: Container(
                     width: double.infinity,
                     height: 80.0,
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFFFFCF6),
-                      boxShadow: [
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      boxShadow: const [
                         BoxShadow(
                           blurRadius: 10.0,
-                          color: Color(0x1A57636C),
+                          color: Color(0x1A59626A),
                           offset: Offset(
                             0.0,
                             -10.0,
@@ -88,7 +88,7 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                           spreadRadius: 0.1,
                         )
                       ],
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(0.0),
                         bottomRight: Radius.circular(0.0),
                         topLeft: Radius.circular(20.0),
@@ -107,7 +107,8 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                 Semantics(
                   label: 'دليل العائلة',
                   child: FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
+                    borderColor:
+                        FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: 30.0,
                     borderWidth: 1.0,
                     buttonSize: 50.0,
@@ -126,7 +127,8 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                 Semantics(
                   label: 'المنشورات',
                   child: FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
+                    borderColor:
+                        FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: 30.0,
                     borderWidth: 1.0,
                     buttonSize: 50.0,
@@ -138,15 +140,7 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                       size: 24.0,
                     ),
                     onPressed: () async {
-                      context.pushNamed(
-                        'postsCopy',
-                        queryParameters: {
-                          'currentpage': serializeParam(
-                            'posts',
-                            ParamType.String,
-                          ),
-                        }.withoutNulls,
-                      );
+                      context.pushNamed('posts');
                     },
                   ),
                 ),
@@ -194,14 +188,15 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                           return Semantics(
                             label: 'الصفحة الرئيسية',
                             child: FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
+                              borderColor: const Color(0xFF757575),
                               borderRadius: 25.0,
                               borderWidth: 1.0,
                               buttonSize: 60.0,
                               fillColor: const Color(0xFF2A497D),
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.home,
-                                color: Colors.white,
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                                 size: 30.0,
                               ),
                               onPressed: () async {
@@ -224,23 +219,34 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                   ],
                 ),
                 FlutterFlowIconButton(
-                  borderColor: Colors.transparent,
+                  borderColor: FlutterFlowTheme.of(context).secondaryBackground,
                   borderRadius: 30.0,
                   borderWidth: 1.0,
                   buttonSize: 50.0,
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.add_photo_alternate_outlined,
-                    color: Color(0xFF9299A1),
+                    color: FFAppState().currentPage == 'album'
+                        ? const Color(0xFF2A497D)
+                        : const Color(0xFF9299A1),
                     size: 24.0,
                   ),
                   onPressed: () async {
-                    context.pushNamed('Album');
+                    context.pushNamed(
+                      'Album',
+                      queryParameters: {
+                        'currentpage': serializeParam(
+                          'album',
+                          ParamType.String,
+                        ),
+                      }.withoutNulls,
+                    );
                   },
                 ),
                 Semantics(
                   label: 'التقويم',
                   child: FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
+                    borderColor:
+                        FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: 30.0,
                     borderWidth: 1.0,
                     buttonSize: 50.0,

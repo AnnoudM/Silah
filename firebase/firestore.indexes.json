@@ -1,6 +1,32 @@
 {
   "indexes": [
     {
+      "collectionGroup": "Users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "Accepted",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "FamilyName",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "isAdmin",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Rejected",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "created_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "Posts",
       "queryScope": "COLLECTION",
       "fields": [
@@ -106,6 +132,132 @@
       "fields": [
         {
           "fieldPath": "familyId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "userId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "FamilyName",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Accepted",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Rejected",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "isAdmin",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "display_name",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "FamilyName",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "isAdmin",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "created_time",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Analytics",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "familyid",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "count",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Album",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "FamilyID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "FamilyName",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "uid",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "notifications",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "familyId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "isRequest",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "notifications",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "familyId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "isRequest",
           "order": "ASCENDING"
         },
         {

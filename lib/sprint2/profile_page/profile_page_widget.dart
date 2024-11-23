@@ -81,7 +81,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFFFFCF6),
+        backgroundColor: const Color(0xFF9299A1),
         body: Stack(
           children: [
             Row(
@@ -111,19 +111,23 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Flexible(
-                                child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 30.0,
-                                  borderWidth: 1.0,
-                                  buttonSize: 71.0,
-                                  icon: const Icon(
-                                    Icons.arrow_back_rounded,
-                                    color: Colors.white,
-                                    size: 30.0,
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      5.0, 25.0, 30.0, 0.0),
+                                  child: FlutterFlowIconButton(
+                                    borderColor: const Color(0xFF757575),
+                                    borderRadius: 8.0,
+                                    buttonSize: 40.0,
+                                    icon: Icon(
+                                      Icons.arrow_back_rounded,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 30.0,
+                                    ),
+                                    onPressed: () async {
+                                      context.pop();
+                                    },
                                   ),
-                                  onPressed: () async {
-                                    context.pop();
-                                  },
                                 ),
                               ),
                               Expanded(
@@ -151,7 +155,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                 maxWidth: 570.0,
                               ),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFFFFCF6),
+                                color: FlutterFlowTheme.of(context).primary,
                                 boxShadow: const [
                                   BoxShadow(
                                     blurRadius: 4.0,
@@ -515,15 +519,16 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                               iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color: const Color(0xFF2A497D),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        color: Colors.white,
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              textStyle: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    letterSpacing: 0.0,
+                                                  ),
                                               elevation: 0.0,
                                               borderRadius:
                                                   BorderRadius.circular(8.0),

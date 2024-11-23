@@ -49,7 +49,7 @@ class _NoFamiliesRegesteredAlertWidgetState
             maxWidth: 530.0,
           ),
           decoration: BoxDecoration(
-            color: const Color(0xFFFFFCF6),
+            color: FlutterFlowTheme.of(context).primary,
             boxShadow: const [
               BoxShadow(
                 blurRadius: 3.0,
@@ -62,7 +62,7 @@ class _NoFamiliesRegesteredAlertWidgetState
             ],
             borderRadius: BorderRadius.circular(24.0),
             border: Border.all(
-              color: const Color(0xFFF5FBFB),
+              color: const Color(0xFF3F393F),
               width: 1.0,
             ),
           ),
@@ -139,14 +139,15 @@ class _NoFamiliesRegesteredAlertWidgetState
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Readex Pro',
-                                    color: Colors.white,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                           elevation: 0.0,
                           borderSide: const BorderSide(
-                            color: Colors.transparent,
+                            color: Color(0xFF757575),
                           ),
                           borderRadius: BorderRadius.circular(40.0),
                         ),

@@ -4,7 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/sprint1/accept_request_alert/accept_request_alert_widget.dart';
+import '/sprint1/accept_request_alert_copy2/accept_request_alert_copy2_widget.dart';
 import '/sprint1/empty_request_list_msg/empty_request_list_msg_widget.dart';
 import '/sprint1/reject_request_alert/reject_request_alert_widget.dart';
 import 'package:flutter/material.dart';
@@ -48,19 +48,22 @@ class _RequestsWidgetState extends State<RequestsWidget> {
           child: AppBar(
             backgroundColor: const Color(0xFF2A497D),
             automaticallyImplyLeading: false,
-            leading: FlutterFlowIconButton(
-              borderColor: Colors.transparent,
-              borderRadius: 30.0,
-              borderWidth: 1.0,
-              buttonSize: 60.0,
-              icon: const Icon(
-                Icons.arrow_back_rounded,
-                color: Colors.white,
-                size: 30.0,
+            leading: Align(
+              alignment: const AlignmentDirectional(0.0, 0.0),
+              child: FlutterFlowIconButton(
+                borderColor: const Color(0xFF757575),
+                borderRadius: 8.0,
+                borderWidth: 1.0,
+                buttonSize: 40.0,
+                icon: Icon(
+                  Icons.arrow_back_rounded,
+                  color: FlutterFlowTheme.of(context).primary,
+                  size: 30.0,
+                ),
+                onPressed: () async {
+                  context.pop();
+                },
               ),
-              onPressed: () async {
-                context.pop();
-              },
             ),
             title: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
@@ -132,7 +135,7 @@ class _RequestsWidgetState extends State<RequestsWidget> {
                                   width: 430.0,
                                   height: 581.0,
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFFFFCF6),
+                                    color: FlutterFlowTheme.of(context).primary,
                                     boxShadow: const [
                                       BoxShadow(
                                         blurRadius: 4.0,
@@ -196,8 +199,10 @@ class _RequestsWidgetState extends State<RequestsWidget> {
                                           Container(
                                             width: 382.0,
                                             height: 470.0,
-                                            decoration: const BoxDecoration(
-                                              color: Color(0xFFFFFCF6),
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
                                             ),
                                             child: Padding(
                                               padding: const EdgeInsetsDirectional
@@ -224,7 +229,10 @@ class _RequestsWidgetState extends State<RequestsWidget> {
                                                           .where(
                                                             'Rejected',
                                                             isEqualTo: false,
-                                                          ),
+                                                          )
+                                                          .orderBy(
+                                                              'created_time',
+                                                              descending: true),
                                                 ),
                                                 builder: (context, snapshot) {
                                                   // Customize what your widget looks like when it's loading.
@@ -479,7 +487,7 @@ class _RequestsWidgetState extends State<RequestsWidget> {
                                                                               color: FlutterFlowTheme.of(context).error,
                                                                               textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                     fontFamily: 'Readex Pro',
-                                                                                    color: Colors.white,
+                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     letterSpacing: 0.0,
                                                                                   ),
                                                                               elevation: 0.0,
@@ -518,9 +526,11 @@ class _RequestsWidgetState extends State<RequestsWidget> {
                                                                                     alignment: const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                                     child: GestureDetector(
                                                                                       onTap: () => FocusScope.of(dialogContext).unfocus(),
-                                                                                      child: AcceptRequestAlertWidget(
+                                                                                      child: AcceptRequestAlertCopy2Widget(
                                                                                         useraccept: columnUsersRecord.reference,
-                                                                                        accceptedname: columnUsersRecord.fullName,
+                                                                                        accceptedname: '',
+                                                                                        acceptedGender: columnUsersRecord.gender,
+                                                                                        accFirstname: columnUsersRecord.displayName,
                                                                                       ),
                                                                                     ),
                                                                                   );
@@ -537,7 +547,7 @@ class _RequestsWidgetState extends State<RequestsWidget> {
                                                                               color: FlutterFlowTheme.of(context).success,
                                                                               textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                     fontFamily: 'Readex Pro',
-                                                                                    color: Colors.white,
+                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     letterSpacing: 0.0,
                                                                                   ),
                                                                               elevation: 0.0,

@@ -1,10 +1,8 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/homes/nav_bar1/nav_bar1_widget.dart';
 import '/homes/side_bar/side_bar_widget.dart';
 import '/sprint3/cancel_edit_desc/cancel_edit_desc_widget.dart';
 import 'package:collection/collection.dart';
@@ -131,40 +129,16 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    25.0, 25.0, 25.0, 0.0),
-                                child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 8.0,
-                                  buttonSize: 40.0,
-                                  icon: Icon(
-                                    Icons.menu_sharp,
-                                    color: FlutterFlowTheme.of(context).info,
-                                    size: 24.0,
-                                  ),
-                                  onPressed: () async {
-                                    scaffoldKey.currentState!.openDrawer();
-                                  },
-                                ),
-                              ),
-                            ),
-                            Expanded(
+                            Flexible(
                               child: Align(
-                                alignment: const AlignmentDirectional(-0.6, 0.0),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 0.0, 0.0),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    child: Image.asset(
-                                      'assets/images/SilahFINALLogo.jpg',
-                                      width: 148.0,
-                                      height: 86.0,
-                                      fit: BoxFit.cover,
-                                    ),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: Image.asset(
+                                    'assets/images/SilahFINALLogo.jpg',
+                                    width: 148.0,
+                                    height: 86.0,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
@@ -206,7 +180,7 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                 width: double.infinity,
                                 height: 500.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFFFFCF6),
+                                  color: FlutterFlowTheme.of(context).primary,
                                   boxShadow: const [
                                     BoxShadow(
                                       blurRadius: 4.0,
@@ -283,10 +257,11 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                             ),
                                           ],
                                         ),
-                                        const Divider(
+                                        Divider(
                                           height: 24.0,
                                           thickness: 2.0,
-                                          color: Color(0xFFF1F4F8),
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
                                         ),
                                         Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -677,8 +652,8 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                                                                         3.0,
                                                                     borderSide:
                                                                         const BorderSide(
-                                                                      color: Colors
-                                                                          .transparent,
+                                                                      color: Color(
+                                                                          0xFF757575),
                                                                       width:
                                                                           1.0,
                                                                     ),
@@ -723,25 +698,6 @@ class _EditDescWidgetState extends State<EditDescWidget> {
                             );
                           },
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Stack(
-                        children: [
-                          wrapWithModel(
-                            model: _model.navBar1Model,
-                            updateCallback: () => safeSetState(() {}),
-                            child: const NavBar1Widget(),
-                          ),
-                        ],
                       ),
                     ],
                   ),

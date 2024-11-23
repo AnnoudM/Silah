@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/homes/nav_bar1/nav_bar1_widget.dart';
 import '/homes/side_bar/side_bar_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:collection/collection.dart';
@@ -137,7 +138,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     25.0, 25.0, 25.0, 0.0),
                                 child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
+                                  borderColor: const Color(0xFF757575),
                                   borderRadius: 8.0,
                                   buttonSize: 40.0,
                                   icon: Icon(
@@ -153,7 +154,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                             ),
                             Expanded(
                               child: Align(
-                                alignment: const AlignmentDirectional(-0.6, 0.0),
+                                alignment: const AlignmentDirectional(-0.8, 0.0),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: Image.asset(
@@ -200,9 +201,9 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                               ),
                               child: Container(
                                 width: double.infinity,
-                                height: 469.0,
+                                height: 349.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFFFFCF6),
+                                  color: FlutterFlowTheme.of(context).primary,
                                   boxShadow: const [
                                     BoxShadow(
                                       blurRadius: 4.0,
@@ -297,10 +298,12 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                                   ),
                                                 ],
                                               ),
-                                              const Divider(
+                                              Divider(
                                                 height: 24.0,
                                                 thickness: 2.0,
-                                                color: Color(0xFFF1F4F8),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
                                               ),
                                               Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -383,9 +386,10 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                       child: Container(
                                         width: 149.0,
                                         height: 86.0,
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xFFFFFCF6),
-                                          boxShadow: [
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          boxShadow: const [
                                             BoxShadow(
                                               blurRadius: 4.0,
                                               color: Color(0xFF2A497D),
@@ -395,7 +399,7 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                               ),
                                             )
                                           ],
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             bottomLeft: Radius.circular(20.0),
                                             bottomRight: Radius.circular(20.0),
                                             topLeft: Radius.circular(20.0),
@@ -406,10 +410,11 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                           alignment:
                                               const AlignmentDirectional(0.0, 0.0),
                                           child: FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
                                             borderRadius: 8.0,
                                             buttonSize: 116.0,
-                                            fillColor: const Color(0xFFFFFCF6),
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
                                             icon: const Icon(
                                               Icons.payments_outlined,
                                               color: Color(0xFF2A497D),
@@ -417,6 +422,63 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                             ),
                                             onPressed: () async {
                                               context.pushNamed('FamilyFunds');
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed('analytics');
+                                      },
+                                      child: Container(
+                                        width: 149.0,
+                                        height: 86.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              blurRadius: 4.0,
+                                              color: Color(0xFF2A497D),
+                                              offset: Offset(
+                                                0.0,
+                                                2.0,
+                                              ),
+                                            )
+                                          ],
+                                          borderRadius: const BorderRadius.only(
+                                            bottomLeft: Radius.circular(20.0),
+                                            bottomRight: Radius.circular(20.0),
+                                            topLeft: Radius.circular(20.0),
+                                            topRight: Radius.circular(20.0),
+                                          ),
+                                        ),
+                                        child: Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, 0.0),
+                                          child: FlutterFlowIconButton(
+                                            borderRadius: 8.0,
+                                            buttonSize: 116.0,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            icon: const Icon(
+                                              Icons.bar_chart,
+                                              color: Color(0xFF2A497D),
+                                              size: 50.0,
+                                            ),
+                                            onPressed: () async {
+                                              context.pushNamed('analytics');
                                             },
                                           ),
                                         ),
@@ -453,141 +515,10 @@ class _HomeUserWidgetState extends State<HomeUserWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    Material(
-                                      color: Colors.transparent,
-                                      elevation: 0.0,
-                                      shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(0.0),
-                                          bottomRight: Radius.circular(0.0),
-                                          topLeft: Radius.circular(20.0),
-                                          topRight: Radius.circular(20.0),
-                                        ),
-                                      ),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 80.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                          boxShadow: const [
-                                            BoxShadow(
-                                              blurRadius: 10.0,
-                                              color: Color(0x1A57636C),
-                                              offset: Offset(
-                                                0.0,
-                                                -10.0,
-                                              ),
-                                              spreadRadius: 0.1,
-                                            )
-                                          ],
-                                          borderRadius: const BorderRadius.only(
-                                            bottomLeft: Radius.circular(0.0),
-                                            bottomRight: Radius.circular(0.0),
-                                            topLeft: Radius.circular(20.0),
-                                            topRight: Radius.circular(20.0),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 30.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 50.0,
-                                      icon: const Icon(
-                                        Icons.people,
-                                        color: Color(0xFF9299A1),
-                                        size: 24.0,
-                                      ),
-                                      onPressed: () async {
-                                        context.pushNamed('DirectoryPage');
-                                      },
-                                    ),
-                                    FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 30.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 50.0,
-                                      icon: const Icon(
-                                        Icons.post_add,
-                                        color: Color(0xFF9299A1),
-                                        size: 24.0,
-                                      ),
-                                      onPressed: () async {
-                                        context.pushNamed(
-                                          'posts',
-                                          queryParameters: {
-                                            'currentpage': serializeParam(
-                                              'posts',
-                                              ParamType.String,
-                                            ),
-                                          }.withoutNulls,
-                                        );
-                                      },
-                                    ),
-                                    Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 10.0),
-                                          child: FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 25.0,
-                                            borderWidth: 1.0,
-                                            buttonSize: 60.0,
-                                            fillColor: const Color(0xFF2A497D),
-                                            icon: const Icon(
-                                              Icons.home,
-                                              color: Colors.white,
-                                              size: 30.0,
-                                            ),
-                                            onPressed: () {
-                                              print('MiddleButton pressed ...');
-                                            },
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 30.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 50.0,
-                                      icon: const Icon(
-                                        Icons.add_photo_alternate_outlined,
-                                        color: Color(0xFF9299A1),
-                                        size: 24.0,
-                                      ),
-                                      onPressed: () {
-                                        print('IconButton pressed ...');
-                                      },
-                                    ),
-                                    FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 30.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 50.0,
-                                      icon: const Icon(
-                                        Icons.date_range_rounded,
-                                        color: Color(0xFF9299A1),
-                                        size: 24.0,
-                                      ),
-                                      onPressed: () async {
-                                        context.pushNamed('CalenderPage');
-                                      },
+                                    wrapWithModel(
+                                      model: _model.navBar1Model,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: const NavBar1Widget(),
                                     ),
                                   ],
                                 ),

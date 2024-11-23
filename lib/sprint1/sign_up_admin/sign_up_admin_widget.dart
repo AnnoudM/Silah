@@ -218,7 +218,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFFFFCF6),
+        backgroundColor: const Color(0xFF9299A1),
         body: Stack(
           children: [
             Row(
@@ -249,13 +249,13 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                             children: [
                               Flexible(
                                 child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
                                   borderRadius: 30.0,
                                   borderWidth: 1.0,
                                   buttonSize: 71.0,
-                                  icon: const Icon(
+                                  icon: Icon(
                                     Icons.arrow_back_rounded,
-                                    color: Colors.white,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                     size: 30.0,
                                   ),
                                   onPressed: () async {
@@ -287,7 +287,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                 maxWidth: 570.0,
                               ),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFFFFCF6),
+                                color: FlutterFlowTheme.of(context).primary,
                                 boxShadow: const [
                                   BoxShadow(
                                     blurRadius: 4.0,
@@ -436,7 +436,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0xFFF1F4F8),
+                                                                0x00000000),
                                                             width: 2.0,
                                                           ),
                                                           borderRadius:
@@ -484,8 +484,6 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                       12.0),
                                                         ),
                                                         filled: true,
-                                                        fillColor:
-                                                            const Color(0xFFF1F4F8),
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -493,8 +491,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Plus Jakarta Sans',
-                                                            color: const Color(
-                                                                0xFF101213),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
                                                             fontSize: 14.0,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
@@ -573,7 +572,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           borderSide:
                                                               const BorderSide(
                                                             color: Color(
-                                                                0xFFF1F4F8),
+                                                                0x00000000),
                                                             width: 2.0,
                                                           ),
                                                           borderRadius:
@@ -621,8 +620,6 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                       12.0),
                                                         ),
                                                         filled: true,
-                                                        fillColor:
-                                                            const Color(0xFFF1F4F8),
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -630,8 +627,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Plus Jakarta Sans',
-                                                            color: const Color(
-                                                                0xFF101213),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
                                                             fontSize: 14.0,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
@@ -715,7 +713,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           OutlineInputBorder(
                                                         borderSide: const BorderSide(
                                                           color:
-                                                              Color(0xFFF1F4F8),
+                                                              Color(0x00000000),
                                                           width: 2.0,
                                                         ),
                                                         borderRadius:
@@ -756,8 +754,6 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                 .circular(12.0),
                                                       ),
                                                       filled: true,
-                                                      fillColor:
-                                                          const Color(0xFFF1F4F8),
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -765,8 +761,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         .override(
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF101213),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -843,7 +840,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           OutlineInputBorder(
                                                         borderSide: const BorderSide(
                                                           color:
-                                                              Color(0xFFF1F4F8),
+                                                              Color(0x00000000),
                                                           width: 2.0,
                                                         ),
                                                         borderRadius:
@@ -884,8 +881,6 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                 .circular(12.0),
                                                       ),
                                                       filled: true,
-                                                      fillColor:
-                                                          const Color(0xFFF1F4F8),
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -893,8 +888,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         .override(
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF101213),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -982,7 +978,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           OutlineInputBorder(
                                                         borderSide: const BorderSide(
                                                           color:
-                                                              Color(0xFFF1F4F8),
+                                                              Color(0x00000000),
                                                           width: 2.0,
                                                         ),
                                                         borderRadius:
@@ -1023,8 +1019,6 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                 .circular(12.0),
                                                       ),
                                                       filled: true,
-                                                      fillColor:
-                                                          const Color(0xFFF1F4F8),
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -1032,8 +1026,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         .override(
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF101213),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -1135,7 +1130,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           OutlineInputBorder(
                                                         borderSide: const BorderSide(
                                                           color:
-                                                              Color(0xFFF1F4F8),
+                                                              Color(0x00000000),
                                                           width: 2.0,
                                                         ),
                                                         borderRadius:
@@ -1146,7 +1141,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           OutlineInputBorder(
                                                         borderSide: const BorderSide(
                                                           color:
-                                                              Color(0xFF4B39EF),
+                                                              Color(0x00000000),
                                                           width: 2.0,
                                                         ),
                                                         borderRadius:
@@ -1176,8 +1171,6 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                 .circular(12.0),
                                                       ),
                                                       filled: true,
-                                                      fillColor:
-                                                          const Color(0xFFF1F4F8),
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -1185,8 +1178,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         .override(
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF101213),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -1273,7 +1267,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           OutlineInputBorder(
                                                         borderSide: const BorderSide(
                                                           color:
-                                                              Color(0xFFF1F4F8),
+                                                              Color(0x00000000),
                                                           width: 2.0,
                                                         ),
                                                         borderRadius:
@@ -1284,7 +1278,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           OutlineInputBorder(
                                                         borderSide: const BorderSide(
                                                           color:
-                                                              Color(0xFF4B39EF),
+                                                              Color(0x00000000),
                                                           width: 2.0,
                                                         ),
                                                         borderRadius:
@@ -1314,8 +1308,6 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                 .circular(12.0),
                                                       ),
                                                       filled: true,
-                                                      fillColor:
-                                                          const Color(0xFFF1F4F8),
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -1323,8 +1315,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         .override(
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF101213),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -1441,7 +1434,6 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         .secondaryText,
                                                 size: 24.0,
                                               ),
-                                              fillColor: const Color(0xFFF1F4F8),
                                               elevation: 2.0,
                                               borderColor: _model.genderChosen
                                                   ? const Color(0x00000000)
@@ -1585,7 +1577,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           OutlineInputBorder(
                                                         borderSide: const BorderSide(
                                                           color:
-                                                              Color(0xFFF1F4F8),
+                                                              Color(0x00000000),
                                                           width: 2.0,
                                                         ),
                                                         borderRadius:
@@ -1596,7 +1588,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           OutlineInputBorder(
                                                         borderSide: const BorderSide(
                                                           color:
-                                                              Color(0xFF4B39EF),
+                                                              Color(0x00000000),
                                                           width: 2.0,
                                                         ),
                                                         borderRadius:
@@ -1628,8 +1620,6 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                 .circular(8.0),
                                                       ),
                                                       filled: true,
-                                                      fillColor:
-                                                          const Color(0xFFF1F4F8),
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -1637,8 +1627,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
-                                                          color:
-                                                              const Color(0xFF101213),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -1791,7 +1782,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           OutlineInputBorder(
                                                         borderSide: const BorderSide(
                                                           color:
-                                                              Color(0xFFF1F4F8),
+                                                              Color(0x00000000),
                                                           width: 2.0,
                                                         ),
                                                         borderRadius:
@@ -1802,7 +1793,7 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           OutlineInputBorder(
                                                         borderSide: const BorderSide(
                                                           color:
-                                                              Color(0xFF4B39EF),
+                                                              Color(0x00000000),
                                                           width: 2.0,
                                                         ),
                                                         borderRadius:
@@ -1832,8 +1823,6 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                 .circular(12.0),
                                                       ),
                                                       filled: true,
-                                                      fillColor:
-                                                          const Color(0xFFF1F4F8),
                                                       suffixIcon: InkWell(
                                                         onTap: () =>
                                                             safeSetState(
@@ -1863,8 +1852,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         .override(
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF101213),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -1971,8 +1961,10 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         borderSide: BorderSide(
                                                           color: _model
                                                                   .matchPass!
-                                                              ? const Color(
-                                                                  0xFFF1F4F8)
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .secondaryBackground
                                                               : FlutterFlowTheme
                                                                       .of(context)
                                                                   .error,
@@ -2023,8 +2015,6 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                 .circular(12.0),
                                                       ),
                                                       filled: true,
-                                                      fillColor:
-                                                          const Color(0xFFF1F4F8),
                                                       suffixIcon: InkWell(
                                                         onTap: () =>
                                                             safeSetState(
@@ -2054,8 +2044,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                         .override(
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF101213),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -2506,6 +2497,8 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                             .text),
                                                                     userPIc:
                                                                         'https://i.postimg.cc/j5zbyWSw/default-profile-picture.jpg',
+                                                                    primAdmin:
+                                                                        true,
                                                                   ),
                                                                   ...mapToFirestore(
                                                                     {
@@ -2573,6 +2566,8 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                             .text),
                                                                     userPIc:
                                                                         'https://i.postimg.cc/j5zbyWSw/default-profile-picture.jpg',
+                                                                    primAdmin:
+                                                                        true,
                                                                   ),
                                                                   ...mapToFirestore(
                                                                     {
@@ -2586,6 +2581,95 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                     true;
                                                                 await authManager
                                                                     .sendEmailVerification();
+                                                                _model.nameEx =
+                                                                    await queryAnalyticsRecordOnce(
+                                                                  queryBuilder: (analyticsRecord) =>
+                                                                      analyticsRecord
+                                                                          .where(
+                                                                            'name',
+                                                                            isEqualTo:
+                                                                                _model.textController1.text,
+                                                                          )
+                                                                          .where(
+                                                                            'familyid',
+                                                                            isEqualTo:
+                                                                                _model.users?.familyName,
+                                                                          ),
+                                                                  singleRecord:
+                                                                      true,
+                                                                ).then((s) => s
+                                                                        .firstOrNull);
+                                                                shouldSetState =
+                                                                    true;
+                                                                if (_model
+                                                                        .nameEx
+                                                                        ?.name ==
+                                                                    _model
+                                                                        .textController1
+                                                                        .text) {
+                                                                  await _model
+                                                                      .nameEx!
+                                                                      .reference
+                                                                      .update({
+                                                                    ...createAnalyticsRecordData(
+                                                                      familyid:
+                                                                          buttonUsersRecord
+                                                                              ?.familyName,
+                                                                    ),
+                                                                    ...mapToFirestore(
+                                                                      {
+                                                                        'count':
+                                                                            FieldValue.increment(1),
+                                                                      },
+                                                                    ),
+                                                                  });
+                                                                } else {
+                                                                  await AnalyticsRecord
+                                                                      .collection
+                                                                      .doc()
+                                                                      .set(
+                                                                          createAnalyticsRecordData(
+                                                                        name: _model
+                                                                            .textController1
+                                                                            .text,
+                                                                        count:
+                                                                            1,
+                                                                        familyid:
+                                                                            buttonUsersRecord?.familyName,
+                                                                      ));
+                                                                }
+
+                                                                if (_model.users
+                                                                        ?.gender ==
+                                                                    'ذكر') {
+                                                                  await _model
+                                                                      .newFamily!
+                                                                      .reference
+                                                                      .update({
+                                                                    ...mapToFirestore(
+                                                                      {
+                                                                        'boys':
+                                                                            FieldValue.increment(1),
+                                                                        'all': FieldValue
+                                                                            .increment(1),
+                                                                      },
+                                                                    ),
+                                                                  });
+                                                                } else {
+                                                                  await _model
+                                                                      .newFamily!
+                                                                      .reference
+                                                                      .update({
+                                                                    ...mapToFirestore(
+                                                                      {
+                                                                        'girls':
+                                                                            FieldValue.increment(1),
+                                                                        'all': FieldValue
+                                                                            .increment(1),
+                                                                      },
+                                                                    ),
+                                                                  });
+                                                                }
                                                               }
                                                             }
                                                           }
@@ -2624,8 +2708,9 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                                   .override(
                                                                     fontFamily:
                                                                         'Readex Pro',
-                                                                    color: Colors
-                                                                        .white,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
                                                                     fontSize:
                                                                         16.0,
                                                                     letterSpacing:
@@ -2637,8 +2722,8 @@ class _SignUpAdminWidgetState extends State<SignUpAdminWidget>
                                                           elevation: 3.0,
                                                           borderSide:
                                                               const BorderSide(
-                                                            color: Colors
-                                                                .transparent,
+                                                            color: Color(
+                                                                0xFF757575),
                                                             width: 1.0,
                                                           ),
                                                           borderRadius:

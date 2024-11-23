@@ -30,10 +30,16 @@ class AlbumRecord extends FirestoreRecord {
   DocumentReference? get userID => _userID;
   bool hasUserID() => _userID != null;
 
+  // "time" field.
+  DateTime? _time;
+  DateTime? get time => _time;
+  bool hasTime() => _time != null;
+
   void _initializeFields() {
     _photo = snapshotData['Photo'] as String?;
     _familyID = snapshotData['FamilyID'] as DocumentReference?;
     _userID = snapshotData['UserID'] as DocumentReference?;
+    _time = snapshotData['time'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -73,12 +79,14 @@ Map<String, dynamic> createAlbumRecordData({
   String? photo,
   DocumentReference? familyID,
   DocumentReference? userID,
+  DateTime? time,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'Photo': photo,
       'FamilyID': familyID,
       'UserID': userID,
+      'time': time,
     }.withoutNulls,
   );
 
@@ -92,12 +100,13 @@ class AlbumRecordDocumentEquality implements Equality<AlbumRecord> {
   bool equals(AlbumRecord? e1, AlbumRecord? e2) {
     return e1?.photo == e2?.photo &&
         e1?.familyID == e2?.familyID &&
-        e1?.userID == e2?.userID;
+        e1?.userID == e2?.userID &&
+        e1?.time == e2?.time;
   }
 
   @override
   int hash(AlbumRecord? e) =>
-      const ListEquality().hash([e?.photo, e?.familyID, e?.userID]);
+      const ListEquality().hash([e?.photo, e?.familyID, e?.userID, e?.time]);
 
   @override
   bool isValidKey(Object? o) => o is AlbumRecord;

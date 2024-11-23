@@ -1,6 +1,5 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/homes/nav_bar1/nav_bar1_widget.dart';
 import '/homes/side_bar/side_bar_widget.dart';
 import 'edit_desc_widget.dart' show EditDescWidget;
 import 'package:flutter/material.dart';
@@ -31,15 +30,12 @@ class EditDescModel extends FlutterFlowModel<EditDescWidget> {
     return null;
   }
 
-  // Model for NavBar1 component.
-  late NavBar1Model navBar1Model;
   // Model for sideBar component.
   late SideBarModel sideBarModel;
 
   @override
   void initState(BuildContext context) {
     familyDecTextControllerValidator = _familyDecTextControllerValidator;
-    navBar1Model = createModel(context, () => NavBar1Model());
     sideBarModel = createModel(context, () => SideBarModel());
   }
 
@@ -48,7 +44,6 @@ class EditDescModel extends FlutterFlowModel<EditDescWidget> {
     familyDecFocusNode?.dispose();
     familyDecTextController?.dispose();
 
-    navBar1Model.dispose();
     sideBarModel.dispose();
   }
 }

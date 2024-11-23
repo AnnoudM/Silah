@@ -43,8 +43,8 @@ class _SideBarWidgetState extends State<SideBarWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(-40.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: const Offset(-7.0, 0.0),
+            end: const Offset(34.0, 0.0),
           ),
         ],
       ),
@@ -154,7 +154,7 @@ class _SideBarWidgetState extends State<SideBarWidget>
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: FlutterFlowTheme.of(context)
-                                            .alternate,
+                                            .secondaryBackground,
                                         fontSize: 10.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w100,
@@ -183,6 +183,46 @@ class _SideBarWidgetState extends State<SideBarWidget>
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.vertical,
                   children: [
+                    Align(
+                      alignment: const AlignmentDirectional(-1.0, -1.0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('profilePage');
+                        },
+                        child: Material(
+                          color: Colors.transparent,
+                          child: ListTile(
+                            key: ValueKey(FFAppState().DarkMode.toString()),
+                            leading: Icon(
+                              key: ValueKey(FFAppState().DarkMode.toString()),
+                              Icons.person_sharp,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 25.0,
+                            ),
+                            title: Text(
+                              'الحساب الشخصي',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                            ),
+                            tileColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            dense: false,
+                          ),
+                        ),
+                      ),
+                    ),
                     if (columnUsersRecord.isAdmin == true)
                       Align(
                         alignment: const AlignmentDirectional(-1.0, -1.0),
@@ -225,46 +265,48 @@ class _SideBarWidgetState extends State<SideBarWidget>
                           ),
                         ),
                       ),
-                    Align(
-                      alignment: const AlignmentDirectional(-1.0, -1.0),
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.pushNamed('profilePage');
-                        },
-                        child: Material(
-                          color: Colors.transparent,
-                          child: ListTile(
-                            key: ValueKey(FFAppState().DarkMode.toString()),
-                            leading: Icon(
+                    if (columnUsersRecord.isAdmin ?? true)
+                      Align(
+                        alignment: const AlignmentDirectional(-1.0, -1.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('giveAdminstrativeRole');
+                          },
+                          child: Material(
+                            color: Colors.transparent,
+                            child: ListTile(
                               key: ValueKey(FFAppState().DarkMode.toString()),
-                              Icons.person_sharp,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 25.0,
+                              leading: Icon(
+                                key: ValueKey(FFAppState().DarkMode.toString()),
+                                Icons.admin_panel_settings_outlined,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 25.0,
+                              ),
+                              title: Text(
+                                'اعدادات مشرف العائلة',
+                                style: FlutterFlowTheme.of(context)
+                                    .titleLarge
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      fontSize: 20.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                              ),
+                              tileColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              dense: false,
                             ),
-                            title: Text(
-                              'الحساب الشخصي',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    fontFamily: 'Outfit',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    fontSize: 20.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                            ),
-                            tileColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            dense: false,
                           ),
                         ),
                       ),
-                    ),
                     Align(
                       alignment: const AlignmentDirectional(-1.0, -1.0),
                       child: InkWell(
@@ -369,10 +411,9 @@ class _SideBarWidgetState extends State<SideBarWidget>
                             width: 80.0,
                             height: 40.0,
                             decoration: BoxDecoration(
-                              color: const Color(0xFFF1F4F8),
                               borderRadius: BorderRadius.circular(20.0),
                               border: Border.all(
-                                color: const Color(0xFFE0E3E7),
+                                color: const Color(0x4C4B39EF),
                                 width: 1.0,
                               ),
                             ),
@@ -406,12 +447,12 @@ class _SideBarWidgetState extends State<SideBarWidget>
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(1.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.83, 0.0),
                                     child: Container(
                                       width: 36.0,
                                       height: 36.0,
                                       decoration: BoxDecoration(
-                                        color: Colors.white,
+                                        color: const Color(0xFFCDCDDB),
                                         boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 4.0,

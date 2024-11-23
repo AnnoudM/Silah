@@ -45,15 +45,19 @@ class _LoggedinPageWidgetState extends State<LoggedinPageWidget> {
 
           return;
         } else {
-          context.pushNamed(
-            'verification',
-            queryParameters: {
-              'email': serializeParam(
-                _model.user?.email,
-                ParamType.String,
-              ),
-            }.withoutNulls,
-          );
+          if (_model.user!.primAdmin) {
+            context.pushNamed(
+              'verification',
+              queryParameters: {
+                'email': serializeParam(
+                  _model.user?.email,
+                  ParamType.String,
+                ),
+              }.withoutNulls,
+            );
+          } else {
+            context.pushNamed('HomeAdmin');
+          }
 
           return;
         }
@@ -90,7 +94,7 @@ class _LoggedinPageWidgetState extends State<LoggedinPageWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFFFFCF6),
+        backgroundColor: const Color(0xFF9299A1),
         body: Row(
           mainAxisSize: MainAxisSize.max,
           children: [

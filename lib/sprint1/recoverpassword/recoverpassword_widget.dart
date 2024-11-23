@@ -45,7 +45,6 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
         backgroundColor: const Color(0xFF2A497D),
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
-          borderColor: Colors.transparent,
           borderRadius: 30.0,
           borderWidth: 1.0,
           buttonSize: 60.0,
@@ -69,8 +68,8 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
           constraints: const BoxConstraints(
             maxWidth: 570.0,
           ),
-          decoration: const BoxDecoration(
-            color: Color(0xFFFFFCF6),
+          decoration: BoxDecoration(
+            color: FlutterFlowTheme.of(context).primary,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -207,7 +206,7 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         filled: true,
-                        fillColor: const Color(0xFFF1F4F8),
+                        fillColor: FlutterFlowTheme.of(context).primary,
                         contentPadding: const EdgeInsetsDirectional.fromSTEB(
                             24.0, 24.0, 20.0, 24.0),
                       ),
@@ -281,7 +280,7 @@ class _RecoverpasswordWidgetState extends State<RecoverpasswordWidget> {
                               ),
                       elevation: 3.0,
                       borderSide: const BorderSide(
-                        color: Colors.transparent,
+                        color: Color(0xFF757575),
                         width: 1.0,
                       ),
                     ),

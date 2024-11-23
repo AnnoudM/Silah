@@ -55,7 +55,7 @@ class _DeleteEventAlertWidgetState extends State<DeleteEventAlertWidget> {
             maxWidth: 530.0,
           ),
           decoration: BoxDecoration(
-            color: const Color(0xFFFFFCF6),
+            color: FlutterFlowTheme.of(context).primary,
             boxShadow: const [
               BoxShadow(
                 blurRadius: 3.0,
@@ -68,7 +68,7 @@ class _DeleteEventAlertWidgetState extends State<DeleteEventAlertWidget> {
             ],
             borderRadius: BorderRadius.circular(24.0),
             border: Border.all(
-              color: const Color(0xFFF5FBFB),
+              color: const Color(0xFF3F393F),
               width: 1.0,
             ),
           ),
@@ -189,7 +189,8 @@ class _DeleteEventAlertWidgetState extends State<DeleteEventAlertWidget> {
                                       20.0, 0.0, 20.0, 0.0),
                                   iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: Colors.white,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyLarge
                                       .override(
@@ -207,56 +208,103 @@ class _DeleteEventAlertWidgetState extends State<DeleteEventAlertWidget> {
                                 ),
                               ),
                             ),
-                            FFButtonWidget(
-                              onPressed: () async {
-                                unawaited(
-                                  () async {
-                                    await widget.deleteEvent!.delete();
-                                  }(),
-                                );
-                                Navigator.pop(context);
-
-                                context.goNamed('CalenderPage');
-
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'تم حذف المناسبة بنجاح',
-                                      style: GoogleFonts.getFont(
-                                        'Readex Pro',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
+                            StreamBuilder<List<NotificationsRecord>>(
+                              stream: queryNotificationsRecord(
+                                queryBuilder: (notificationsRecord) =>
+                                    notificationsRecord.where(
+                                  'eventid',
+                                  isEqualTo: widget.deleteEvent,
+                                ),
+                                singleRecord: true,
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          FlutterFlowTheme.of(context).primary,
+                                        ),
                                       ),
                                     ),
-                                    duration: const Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).error,
+                                  );
+                                }
+                                List<NotificationsRecord>
+                                    buttonNotificationsRecordList =
+                                    snapshot.data!;
+                                // Return an empty Container when the item does not exist.
+                                if (snapshot.data!.isEmpty) {
+                                  return Container();
+                                }
+                                final buttonNotificationsRecord =
+                                    buttonNotificationsRecordList.isNotEmpty
+                                        ? buttonNotificationsRecordList.first
+                                        : null;
+
+                                return FFButtonWidget(
+                                  onPressed: () async {
+                                    unawaited(
+                                      () async {
+                                        await widget.deleteEvent!.delete();
+                                      }(),
+                                    );
+                                    unawaited(
+                                      () async {
+                                        await buttonNotificationsRecord!
+                                            .reference
+                                            .delete();
+                                      }(),
+                                    );
+                                    Navigator.pop(context);
+
+                                    context.goNamed('CalenderPage');
+
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'تم حذف المناسبة بنجاح',
+                                          style: GoogleFonts.getFont(
+                                            'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                        ),
+                                        duration: const Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context).error,
+                                      ),
+                                    );
+                                  },
+                                  text: 'حذف',
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        20.0, 0.0, 20.0, 0.0),
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).error,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          fontSize: 16.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                    elevation: 0.0,
+                                    borderSide: const BorderSide(
+                                      color: Color(0xFF757575),
+                                    ),
+                                    borderRadius: BorderRadius.circular(40.0),
                                   ),
                                 );
                               },
-                              text: 'حذف',
-                              options: FFButtonOptions(
-                                height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 20.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).error,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      color: Colors.white,
-                                      fontSize: 16.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                elevation: 0.0,
-                                borderSide: const BorderSide(
-                                  color: Colors.transparent,
-                                ),
-                                borderRadius: BorderRadius.circular(40.0),
-                              ),
                             ),
                           ].divide(const SizedBox(width: 10.0)),
                         ),

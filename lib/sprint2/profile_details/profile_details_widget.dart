@@ -85,7 +85,7 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFFFFCF6),
+        backgroundColor: const Color(0xFF2A497D),
         body: Stack(
           children: [
             Row(
@@ -115,19 +115,23 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Flexible(
-                                child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 30.0,
-                                  borderWidth: 1.0,
-                                  buttonSize: 71.0,
-                                  icon: const Icon(
-                                    Icons.arrow_back_rounded,
-                                    color: Colors.white,
-                                    size: 30.0,
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      5.0, 25.0, 30.0, 0.0),
+                                  child: FlutterFlowIconButton(
+                                    borderColor: const Color(0xFF757575),
+                                    borderRadius: 8.0,
+                                    buttonSize: 40.0,
+                                    icon: Icon(
+                                      Icons.arrow_back_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      size: 30.0,
+                                    ),
+                                    onPressed: () async {
+                                      context.pop();
+                                    },
                                   ),
-                                  onPressed: () async {
-                                    context.pop();
-                                  },
                                 ),
                               ),
                               Expanded(
@@ -155,7 +159,7 @@ class _ProfileDetailsWidgetState extends State<ProfileDetailsWidget>
                                 maxWidth: 570.0,
                               ),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFFFFCF6),
+                                color: FlutterFlowTheme.of(context).primary,
                                 boxShadow: const [
                                   BoxShadow(
                                     blurRadius: 4.0,

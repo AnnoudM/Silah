@@ -14,6 +14,8 @@ import 'schema/requests_record.dart';
 import 'schema/notifications_record.dart';
 import 'schema/userrr_record.dart';
 import 'schema/reply_record.dart';
+import 'schema/comment_record.dart';
+import 'schema/analytics_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -31,6 +33,8 @@ export 'schema/requests_record.dart';
 export 'schema/notifications_record.dart';
 export 'schema/userrr_record.dart';
 export 'schema/reply_record.dart';
+export 'schema/comment_record.dart';
+export 'schema/analytics_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -360,6 +364,80 @@ Future<List<ReplyRecord>> queryReplyRecordOnce({
     queryCollectionOnce(
       ReplyRecord.collection,
       ReplyRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query CommentRecords (as a Stream and as a Future).
+Future<int> queryCommentRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      CommentRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<CommentRecord>> queryCommentRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      CommentRecord.collection,
+      CommentRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<CommentRecord>> queryCommentRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      CommentRecord.collection,
+      CommentRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query AnalyticsRecords (as a Stream and as a Future).
+Future<int> queryAnalyticsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      AnalyticsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<AnalyticsRecord>> queryAnalyticsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      AnalyticsRecord.collection,
+      AnalyticsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<AnalyticsRecord>> queryAnalyticsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      AnalyticsRecord.collection,
+      AnalyticsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

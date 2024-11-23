@@ -87,7 +87,7 @@ class _InitialPageWidgetState extends State<InitialPageWidget>
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFFFFCF6),
+        backgroundColor: const Color(0xFF2A497D),
         body: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -127,7 +127,8 @@ class _InitialPageWidgetState extends State<InitialPageWidget>
                             maxWidth: 570.0,
                           ),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFFFFCF6),
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             boxShadow: const [
                               BoxShadow(
                                 blurRadius: 4.0,
@@ -186,14 +187,16 @@ class _InitialPageWidgetState extends State<InitialPageWidget>
                                             .titleSmall
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              color: Colors.white,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                             ),
                                         elevation: 3.0,
                                         borderSide: const BorderSide(
-                                          color: Colors.transparent,
+                                          color: Color(0xFF757575),
                                           width: 1.0,
                                         ),
                                         borderRadius:
@@ -217,24 +220,25 @@ class _InitialPageWidgetState extends State<InitialPageWidget>
                                         iconPadding:
                                             const EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
-                                        color: Colors.white,
+                                        color: const Color(0xFF2A497D),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              color: const Color(0xFF2A497D),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                             ),
                                         elevation: 0.0,
                                         borderSide: const BorderSide(
-                                          color: Color(0xFFE0E3E7),
+                                          color: Color(0xFF757575),
                                           width: 2.0,
                                         ),
                                         borderRadius:
                                             BorderRadius.circular(12.0),
-                                        hoverColor: const Color(0xFFF1F4F8),
                                       ),
                                     ),
                                   ),
@@ -310,25 +314,26 @@ class _InitialPageWidgetState extends State<InitialPageWidget>
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Colors.white,
+                                              color: const Color(0xFF2A497D),
                                               textStyle: FlutterFlowTheme.of(
                                                       context)
                                                   .titleSmall
                                                   .override(
                                                     fontFamily: 'Readex Pro',
-                                                    color: const Color(0xFF2A497D),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                               elevation: 0.0,
                                               borderSide: const BorderSide(
-                                                color: Color(0xFFE0E3E7),
+                                                color: Color(0xFF757575),
                                                 width: 2.0,
                                               ),
                                               borderRadius:
                                                   BorderRadius.circular(12.0),
-                                              hoverColor: const Color(0xFFF1F4F8),
                                             ),
                                           );
                                         },

@@ -213,6 +213,8 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
   FamilyRecord? newFamily;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   UsersRecord? users;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  AnalyticsRecord? nameEx;
 
   @override
   void initState(BuildContext context) {

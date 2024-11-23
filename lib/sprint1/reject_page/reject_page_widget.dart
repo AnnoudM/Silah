@@ -107,7 +107,7 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFF9299A1),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -134,7 +134,7 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFF9299A1),
             body: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -179,7 +179,7 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                                   maxWidth: 570.0,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFFFFCF6),
+                                  color: FlutterFlowTheme.of(context).primary,
                                   boxShadow: const [
                                     BoxShadow(
                                       blurRadius: 4.0,
@@ -342,14 +342,16 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                                                   .titleSmall
                                                   .override(
                                                     fontFamily: 'Readex Pro',
-                                                    color: Colors.white,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                               elevation: 3.0,
                                               borderSide: const BorderSide(
-                                                color: Colors.transparent,
+                                                color: Color(0xFF757575),
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -426,7 +428,7 @@ class _RejectPageWidgetState extends State<RejectPageWidget>
                                                         ),
                                                 elevation: 3.0,
                                                 borderSide: const BorderSide(
-                                                  color: Colors.transparent,
+                                                  color: Color(0xFF757575),
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:

@@ -54,7 +54,7 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
             maxWidth: 530.0,
           ),
           decoration: BoxDecoration(
-            color: const Color(0xFFFFFCF6),
+            color: FlutterFlowTheme.of(context).secondaryBackground,
             boxShadow: const [
               BoxShadow(
                 blurRadius: 3.0,
@@ -67,7 +67,7 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
             ],
             borderRadius: BorderRadius.circular(24.0),
             border: Border.all(
-              color: const Color(0xFFF5FBFB),
+              color: const Color(0xFF3F393F),
               width: 1.0,
             ),
           ),
@@ -180,8 +180,9 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                                       letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: Color(0xFFF1F4F8),
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
@@ -208,7 +209,8 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 filled: true,
-                                fillColor: const Color(0xFFF1F4F8),
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -294,7 +296,8 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                                   20.0, 0.0, 20.0, 0.0),
                               iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color: Colors.white,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
@@ -394,14 +397,15 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                                 .titleSmall
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: Colors.white,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                 ),
                             elevation: 0.0,
                             borderSide: const BorderSide(
-                              color: Colors.transparent,
+                              color: Color(0xFF757575),
                             ),
                             borderRadius: BorderRadius.circular(40.0),
                           ),

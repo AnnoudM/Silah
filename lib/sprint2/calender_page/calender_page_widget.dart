@@ -117,7 +117,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFF9299A1),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -144,7 +144,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFF9299A1),
             drawer: Drawer(
               elevation: 16.0,
               child: wrapWithModel(
@@ -191,7 +191,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             25.0, 25.0, 25.0, 0.0),
                                         child: FlutterFlowIconButton(
-                                          borderColor: Colors.transparent,
+                                          borderColor: const Color(0xFF757575),
                                           borderRadius: 8.0,
                                           buttonSize: 40.0,
                                           icon: Icon(
@@ -210,7 +210,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                     Expanded(
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(-0.6, 0.0),
+                                            const AlignmentDirectional(-0.8, 0.0),
                                         child: Padding(
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
@@ -240,7 +240,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                     maxWidth: 570.0,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFFFFCF6),
+                                    color: FlutterFlowTheme.of(context).primary,
                                     boxShadow: const [
                                       BoxShadow(
                                         blurRadius: 4.0,
@@ -354,8 +354,10 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                               Container(
                                                 width: double.infinity,
                                                 height: 335.0,
-                                                decoration: const BoxDecoration(
-                                                  color: Color(0xFFFFFCF6),
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
                                                 ),
                                                 child: Padding(
                                                   padding: const EdgeInsetsDirectional
@@ -421,7 +423,9 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
-                                                          color: Colors.black,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w300,
@@ -433,8 +437,9 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Readex Pro',
-                                                              color:
-                                                                  Colors.white,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
                                                               fontSize: 14.0,
                                                               letterSpacing:
                                                                   0.0,
@@ -625,8 +630,10 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                 Container(
                                                   width: 387.0,
                                                   height: 270.0,
-                                                  decoration: const BoxDecoration(
-                                                    color: Color(0xFFFFFCF6),
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
                                                   ),
                                                   child: StreamBuilder<
                                                       List<EventsRecord>>(
@@ -716,8 +723,10 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                 Container(
                                                   width: 387.0,
                                                   height: 270.0,
-                                                  decoration: const BoxDecoration(
-                                                    color: Color(0xFFFFFCF6),
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
                                                   ),
                                                   child: StreamBuilder<
                                                       List<EventsRecord>>(
@@ -801,8 +810,10 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                 Container(
                                                   width: 387.0,
                                                   height: 270.0,
-                                                  decoration: const BoxDecoration(
-                                                    color: Color(0xFFFFFCF6),
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
                                                   ),
                                                   child: StreamBuilder<
                                                       List<EventsRecord>>(
@@ -889,8 +900,10 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                                 Container(
                                                   width: 387.0,
                                                   height: 270.0,
-                                                  decoration: const BoxDecoration(
-                                                    color: Color(0xFFFFFCF6),
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
                                                   ),
                                                   child: StreamBuilder<
                                                       List<EventsRecord>>(
@@ -1005,7 +1018,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     10.0, 17.0, 0.0, 10.0),
                                 child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
+                                  borderColor: const Color(0xFF757575),
                                   borderRadius: 25.0,
                                   borderWidth: 1.0,
                                   buttonSize: 56.0,
@@ -1019,7 +1032,7 @@ class _CalenderPageWidgetState extends State<CalenderPageWidget>
                                   onPressed: () async {
                                     await showModalBottomSheet(
                                       isScrollControlled: true,
-                                      backgroundColor: Colors.transparent,
+                                      backgroundColor: const Color(0xFF757575),
                                       enableDrag: false,
                                       context: context,
                                       builder: (context) {

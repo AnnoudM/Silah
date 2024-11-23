@@ -45,6 +45,21 @@ class NotificationsRecord extends FirestoreRecord {
   DateTime? get createdAt => _createdAt;
   bool hasCreatedAt() => _createdAt != null;
 
+  // "eventid" field.
+  DocumentReference? _eventid;
+  DocumentReference? get eventid => _eventid;
+  bool hasEventid() => _eventid != null;
+
+  // "type" field.
+  String? _type;
+  String get type => _type ?? '';
+  bool hasType() => _type != null;
+
+  // "isRequest" field.
+  bool? _isRequest;
+  bool get isRequest => _isRequest ?? false;
+  bool hasIsRequest() => _isRequest != null;
+
   void _initializeFields() {
     _familyId = snapshotData['familyId'] as DocumentReference?;
     _userId = snapshotData['userId'] as DocumentReference?;
@@ -52,6 +67,9 @@ class NotificationsRecord extends FirestoreRecord {
     _message = snapshotData['message'] as String?;
     _postid = snapshotData['postid'] as DocumentReference?;
     _createdAt = snapshotData['createdAt'] as DateTime?;
+    _eventid = snapshotData['eventid'] as DocumentReference?;
+    _type = snapshotData['type'] as String?;
+    _isRequest = snapshotData['isRequest'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -95,6 +113,9 @@ Map<String, dynamic> createNotificationsRecordData({
   String? message,
   DocumentReference? postid,
   DateTime? createdAt,
+  DocumentReference? eventid,
+  String? type,
+  bool? isRequest,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -104,6 +125,9 @@ Map<String, dynamic> createNotificationsRecordData({
       'message': message,
       'postid': postid,
       'createdAt': createdAt,
+      'eventid': eventid,
+      'type': type,
+      'isRequest': isRequest,
     }.withoutNulls,
   );
 
@@ -121,12 +145,24 @@ class NotificationsRecordDocumentEquality
         e1?.title == e2?.title &&
         e1?.message == e2?.message &&
         e1?.postid == e2?.postid &&
-        e1?.createdAt == e2?.createdAt;
+        e1?.createdAt == e2?.createdAt &&
+        e1?.eventid == e2?.eventid &&
+        e1?.type == e2?.type &&
+        e1?.isRequest == e2?.isRequest;
   }
 
   @override
-  int hash(NotificationsRecord? e) => const ListEquality().hash(
-      [e?.familyId, e?.userId, e?.title, e?.message, e?.postid, e?.createdAt]);
+  int hash(NotificationsRecord? e) => const ListEquality().hash([
+        e?.familyId,
+        e?.userId,
+        e?.title,
+        e?.message,
+        e?.postid,
+        e?.createdAt,
+        e?.eventid,
+        e?.type,
+        e?.isRequest
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is NotificationsRecord;

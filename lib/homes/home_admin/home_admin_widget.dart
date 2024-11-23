@@ -139,7 +139,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     25.0, 25.0, 25.0, 0.0),
                                 child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
+                                  borderColor: const Color(0xFF757575),
                                   borderRadius: 8.0,
                                   buttonSize: 40.0,
                                   icon: Icon(
@@ -155,7 +155,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                             ),
                             Expanded(
                               child: Align(
-                                alignment: const AlignmentDirectional(-0.6, 0.0),
+                                alignment: const AlignmentDirectional(-0.8, 0.0),
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 0.0, 0.0),
@@ -206,9 +206,10 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                               ),
                               child: Container(
                                 width: double.infinity,
-                                height: 496.0,
+                                height: 349.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFFFFCF6),
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   boxShadow: const [
                                     BoxShadow(
                                       blurRadius: 4.0,
@@ -223,165 +224,175 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(24.0),
-                                  child: SingleChildScrollView(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            RichText(
-                                              textScaler: MediaQuery.of(context)
-                                                  .textScaler,
-                                              text: TextSpan(
-                                                children: [
-                                                  TextSpan(
-                                                    text: 'عائلة ',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color:
-                                                              const Color(0xFF2A497D),
-                                                          fontSize: 22.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          RichText(
+                                            textScaler: MediaQuery.of(context)
+                                                .textScaler,
+                                            text: TextSpan(
+                                              children: [
+                                                TextSpan(
+                                                  text: 'عائلة ',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        color:
+                                                            const Color(0xFF2A497D),
+                                                        fontSize: 22.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                ),
+                                                TextSpan(
+                                                  text: containerFamilyRecord
+                                                      .familyName,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        color:
+                                                            const Color(0xFF2A497D),
+                                                        fontSize: 22.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                )
+                                              ],
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: const Color(0xFF2A497D),
+                                                    letterSpacing: 0.0,
                                                   ),
-                                                  TextSpan(
-                                                    text: containerFamilyRecord
-                                                        .familyName,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color:
-                                                              const Color(0xFF2A497D),
-                                                          fontSize: 22.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Divider(
+                                        height: 24.0,
+                                        thickness: 2.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                      ),
+                                      Flexible(
+                                        child: SingleChildScrollView(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.all(24.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Flexible(
+                                                      child: Align(
+                                                        alignment:
+                                                            const AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Text(
+                                                          containerFamilyRecord
+                                                              .familyDesc,
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .titleMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                color: const Color(
+                                                                    0xFF57636C),
+                                                                fontSize: 15.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                              ),
                                                         ),
-                                                  )
-                                                ],
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color: const Color(0xFF2A497D),
-                                                      letterSpacing: 0.0,
+                                                      ),
                                                     ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(1.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: Align(
+                                                alignment: const AlignmentDirectional(
+                                                    1.0, 0.0),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          25.0, 16.0, 0.0, 0.0),
+                                                  child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      context.pushNamed(
+                                                        'EditDesc',
+                                                        queryParameters: {
+                                                          'editDesc':
+                                                              serializeParam(
+                                                            containerFamilyRecord
+                                                                .reference,
+                                                            ParamType
+                                                                .DocumentReference,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    },
+                                                    child: FaIcon(
+                                                      FontAwesomeIcons
+                                                          .solidEdit,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 19.0,
+                                                    ),
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                           ],
                                         ),
-                                        const Divider(
-                                          height: 24.0,
-                                          thickness: 2.0,
-                                          color: Color(0xFFF1F4F8),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(24.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Flexible(
-                                                child: Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Text(
-                                                    containerFamilyRecord
-                                                        .familyDesc,
-                                                    textAlign: TextAlign.start,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .titleMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color:
-                                                              const Color(0xFF57636C),
-                                                          fontSize: 15.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w300,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(1.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Expanded(
-                                                child: Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          1.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(25.0,
-                                                                16.0, 0.0, 0.0),
-                                                    child: InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        context.pushNamed(
-                                                          'EditDesc',
-                                                          queryParameters: {
-                                                            'editDesc':
-                                                                serializeParam(
-                                                              containerFamilyRecord
-                                                                  .reference,
-                                                              ParamType
-                                                                  .DocumentReference,
-                                                            ),
-                                                          }.withoutNulls,
-                                                        );
-                                                      },
-                                                      child: FaIcon(
-                                                        FontAwesomeIcons
-                                                            .solidEdit,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        size: 19.0,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
@@ -419,9 +430,10 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                       child: Container(
                                         width: 149.0,
                                         height: 86.0,
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xFFFFFCF6),
-                                          boxShadow: [
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          boxShadow: const [
                                             BoxShadow(
                                               blurRadius: 4.0,
                                               color: Color(0xFF2A497D),
@@ -431,7 +443,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                               ),
                                             )
                                           ],
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             bottomLeft: Radius.circular(20.0),
                                             bottomRight: Radius.circular(20.0),
                                             topLeft: Radius.circular(20.0),
@@ -442,10 +454,11 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                           alignment:
                                               const AlignmentDirectional(0.0, 0.0),
                                           child: FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
                                             borderRadius: 8.0,
                                             buttonSize: 116.0,
-                                            fillColor: const Color(0xFFFFFCF6),
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
                                             icon: const Icon(
                                               Icons.payments_outlined,
                                               color: Color(0xFF2A497D),
@@ -453,6 +466,63 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                             ),
                                             onPressed: () async {
                                               context.pushNamed('FamilyFunds');
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Align(
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed('analytics');
+                                      },
+                                      child: Container(
+                                        width: 149.0,
+                                        height: 86.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              blurRadius: 4.0,
+                                              color: Color(0xFF2A497D),
+                                              offset: Offset(
+                                                0.0,
+                                                2.0,
+                                              ),
+                                            )
+                                          ],
+                                          borderRadius: const BorderRadius.only(
+                                            bottomLeft: Radius.circular(20.0),
+                                            bottomRight: Radius.circular(20.0),
+                                            topLeft: Radius.circular(20.0),
+                                            topRight: Radius.circular(20.0),
+                                          ),
+                                        ),
+                                        child: Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, 0.0),
+                                          child: FlutterFlowIconButton(
+                                            borderRadius: 8.0,
+                                            buttonSize: 116.0,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            icon: const Icon(
+                                              Icons.bar_chart,
+                                              color: Color(0xFF2A497D),
+                                              size: 50.0,
+                                            ),
+                                            onPressed: () async {
+                                              context.pushNamed('analytics');
                                             },
                                           ),
                                         ),

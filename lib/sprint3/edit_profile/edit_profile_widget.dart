@@ -75,7 +75,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFF9299A1),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -102,7 +102,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFF9299A1),
             body: Stack(
               children: [
                 Row(
@@ -153,45 +153,50 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                     children: [
                                       Flexible(
                                         child: Builder(
-                                          builder: (context) =>
-                                              FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 30.0,
-                                            borderWidth: 1.0,
-                                            buttonSize: 71.0,
-                                            icon: const Icon(
-                                              Icons.arrow_back_rounded,
-                                              color: Colors.white,
-                                              size: 30.0,
+                                          builder: (context) => Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 25.0, 30.0, 0.0),
+                                            child: FlutterFlowIconButton(
+                                              borderColor: const Color(0xFF757575),
+                                              borderRadius: 8.0,
+                                              buttonSize: 40.0,
+                                              icon: Icon(
+                                                Icons.arrow_back_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                size: 30.0,
+                                              ),
+                                              onPressed: () async {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: GestureDetector(
+                                                        onTap: () =>
+                                                            FocusScope.of(
+                                                                    dialogContext)
+                                                                .unfocus(),
+                                                        child:
+                                                            const CancelEditprofileWidget(),
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              },
                                             ),
-                                            onPressed: () async {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (dialogContext) {
-                                                  return Dialog(
-                                                    elevation: 0,
-                                                    insetPadding:
-                                                        EdgeInsets.zero,
-                                                    backgroundColor:
-                                                        Colors.transparent,
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                                0.0, 0.0)
-                                                            .resolve(
-                                                                Directionality.of(
-                                                                    context)),
-                                                    child: GestureDetector(
-                                                      onTap: () =>
-                                                          FocusScope.of(
-                                                                  dialogContext)
-                                                              .unfocus(),
-                                                      child:
-                                                          const CancelEditprofileWidget(),
-                                                    ),
-                                                  );
-                                                },
-                                              );
-                                            },
                                           ),
                                         ),
                                       ),
@@ -222,7 +227,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                       ),
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
+                                            .primary,
                                         boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 4.0,
@@ -419,8 +424,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                     0.0, 0.0),
                                                             child:
                                                                 FlutterFlowIconButton(
-                                                              borderColor: Colors
-                                                                  .transparent,
                                                               borderRadius: 8.0,
                                                               buttonSize: 40.0,
                                                               icon: const Icon(
@@ -627,7 +630,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                     borderSide:
                                                                         const BorderSide(
                                                                       color: Color(
-                                                                          0xFFF1F4F8),
+                                                                          0x00000000),
                                                                       width:
                                                                           2.0,
                                                                     ),
@@ -638,9 +641,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   focusedBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
-                                                                        const BorderSide(
-                                                                      color: Color(
-                                                                          0xFF4B39EF),
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
                                                                       width:
                                                                           2.0,
                                                                     ),
@@ -675,8 +679,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                             12.0),
                                                                   ),
                                                                   filled: true,
-                                                                  fillColor: const Color(
-                                                                      0xFFF1F4F8),
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -684,8 +686,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Plus Jakarta Sans',
-                                                                      color: const Color(
-                                                                          0xFF101213),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
                                                                       fontSize:
                                                                           14.0,
                                                                       letterSpacing:
@@ -778,7 +781,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                     borderSide:
                                                                         const BorderSide(
                                                                       color: Color(
-                                                                          0xFFF1F4F8),
+                                                                          0x00000000),
                                                                       width:
                                                                           2.0,
                                                                     ),
@@ -789,9 +792,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   focusedBorder:
                                                                       OutlineInputBorder(
                                                                     borderSide:
-                                                                        const BorderSide(
-                                                                      color: Color(
-                                                                          0xFF4B39EF),
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
                                                                       width:
                                                                           2.0,
                                                                     ),
@@ -826,8 +830,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                             12.0),
                                                                   ),
                                                                   filled: true,
-                                                                  fillColor: const Color(
-                                                                      0xFFF1F4F8),
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -835,8 +837,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Plus Jakarta Sans',
-                                                                      color: const Color(
-                                                                          0xFF101213),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
                                                                       fontSize:
                                                                           14.0,
                                                                       letterSpacing:
@@ -941,7 +944,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   borderSide:
                                                                       const BorderSide(
                                                                     color: Color(
-                                                                        0xFFF1F4F8),
+                                                                        0x00000000),
                                                                     width: 2.0,
                                                                   ),
                                                                   borderRadius:
@@ -952,9 +955,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                 focusedBorder:
                                                                     OutlineInputBorder(
                                                                   borderSide:
-                                                                      const BorderSide(
-                                                                    color: Color(
-                                                                        0xFF4B39EF),
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
                                                                     width: 2.0,
                                                                   ),
                                                                   borderRadius:
@@ -989,8 +993,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                               12.0),
                                                                 ),
                                                                 filled: true,
-                                                                fillColor: const Color(
-                                                                    0xFFF1F4F8),
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
@@ -998,8 +1000,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Plus Jakarta Sans',
-                                                                    color: const Color(
-                                                                        0xFF101213),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
                                                                     fontSize:
                                                                         14.0,
                                                                     letterSpacing:
@@ -1093,7 +1096,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   borderSide:
                                                                       const BorderSide(
                                                                     color: Color(
-                                                                        0xFFF1F4F8),
+                                                                        0x00000000),
                                                                     width: 2.0,
                                                                   ),
                                                                   borderRadius:
@@ -1104,9 +1107,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                 focusedBorder:
                                                                     OutlineInputBorder(
                                                                   borderSide:
-                                                                      const BorderSide(
-                                                                    color: Color(
-                                                                        0xFF4B39EF),
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
                                                                     width: 2.0,
                                                                   ),
                                                                   borderRadius:
@@ -1141,8 +1145,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                               12.0),
                                                                 ),
                                                                 filled: true,
-                                                                fillColor: const Color(
-                                                                    0xFFF1F4F8),
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
@@ -1150,8 +1152,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Plus Jakarta Sans',
-                                                                    color: const Color(
-                                                                        0xFF101213),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
                                                                     fontSize:
                                                                         14.0,
                                                                     letterSpacing:
@@ -1253,7 +1256,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   borderSide:
                                                                       const BorderSide(
                                                                     color: Color(
-                                                                        0xFFF1F4F8),
+                                                                        0x00000000),
                                                                     width: 2.0,
                                                                   ),
                                                                   borderRadius:
@@ -1264,9 +1267,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                 focusedBorder:
                                                                     OutlineInputBorder(
                                                                   borderSide:
-                                                                      const BorderSide(
-                                                                    color: Color(
-                                                                        0xFF4B39EF),
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
                                                                     width: 2.0,
                                                                   ),
                                                                   borderRadius:
@@ -1311,8 +1315,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Plus Jakarta Sans',
-                                                                    color: const Color(
-                                                                        0xFF101213),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
                                                                     fontSize:
                                                                         14.0,
                                                                     letterSpacing:
@@ -1405,7 +1410,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   borderSide:
                                                                       const BorderSide(
                                                                     color: Color(
-                                                                        0xFFF1F4F8),
+                                                                        0x00000000),
                                                                     width: 2.0,
                                                                   ),
                                                                   borderRadius:
@@ -1416,9 +1421,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                 focusedBorder:
                                                                     OutlineInputBorder(
                                                                   borderSide:
-                                                                      const BorderSide(
-                                                                    color: Color(
-                                                                        0xFF4B39EF),
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
                                                                     width: 2.0,
                                                                   ),
                                                                   borderRadius:
@@ -1463,8 +1469,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Plus Jakarta Sans',
-                                                                    color: const Color(
-                                                                        0xFF101213),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
                                                                     fontSize:
                                                                         14.0,
                                                                     letterSpacing:
@@ -1555,7 +1562,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   borderSide:
                                                                       const BorderSide(
                                                                     color: Color(
-                                                                        0xFFF1F4F8),
+                                                                        0x00000000),
                                                                     width: 2.0,
                                                                   ),
                                                                   borderRadius:
@@ -1566,9 +1573,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                 focusedBorder:
                                                                     OutlineInputBorder(
                                                                   borderSide:
-                                                                      const BorderSide(
-                                                                    color: Color(
-                                                                        0xFF4B39EF),
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
                                                                     width: 2.0,
                                                                   ),
                                                                   borderRadius:
@@ -1603,8 +1611,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                               12.0),
                                                                 ),
                                                                 filled: true,
-                                                                fillColor: const Color(
-                                                                    0xFFF1F4F8),
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
@@ -1612,8 +1618,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Plus Jakarta Sans',
-                                                                    color: const Color(
-                                                                        0xFF101213),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
                                                                     fontSize:
                                                                         14.0,
                                                                     letterSpacing:
@@ -1775,7 +1782,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   borderSide:
                                                                       const BorderSide(
                                                                     color: Color(
-                                                                        0xFFF1F4F8),
+                                                                        0x00000000),
                                                                     width: 2.0,
                                                                   ),
                                                                   borderRadius:
@@ -1786,9 +1793,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                 focusedBorder:
                                                                     OutlineInputBorder(
                                                                   borderSide:
-                                                                      const BorderSide(
-                                                                    color: Color(
-                                                                        0xFF4B39EF),
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
                                                                     width: 2.0,
                                                                   ),
                                                                   borderRadius:
@@ -1825,8 +1833,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                               8.0),
                                                                 ),
                                                                 filled: true,
-                                                                fillColor: const Color(
-                                                                    0xFFF1F4F8),
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
@@ -1834,8 +1840,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Readex Pro',
-                                                                    color: const Color(
-                                                                        0xFF101213),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
                                                                     letterSpacing:
                                                                         0.0,
                                                                     fontWeight:
@@ -2510,8 +2517,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Readex Pro',
-                                                                        color: Colors
-                                                                            .white,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
                                                                         fontSize:
                                                                             16.0,
                                                                         letterSpacing:
@@ -2522,8 +2529,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                               elevation: 3.0,
                                                               borderSide:
                                                                   const BorderSide(
-                                                                color: Colors
-                                                                    .transparent,
+                                                                color: Color(
+                                                                    0xFF757575),
                                                                 width: 1.0,
                                                               ),
                                                               borderRadius:

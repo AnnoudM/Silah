@@ -250,7 +250,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFFFFCF6),
+        backgroundColor: const Color(0xFF9299A1),
         body: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -278,13 +278,13 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           FlutterFlowIconButton(
-                            borderColor: Colors.transparent,
                             borderRadius: 30.0,
                             borderWidth: 1.0,
                             buttonSize: 60.0,
-                            icon: const Icon(
+                            icon: Icon(
                               Icons.arrow_back_rounded,
-                              color: Colors.white,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                               size: 30.0,
                             ),
                             onPressed: () async {
@@ -321,7 +321,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                             maxWidth: 570.0,
                           ),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFFFFCF6),
+                            color: FlutterFlowTheme.of(context).primary,
                             boxShadow: const [
                               BoxShadow(
                                 blurRadius: 4.0,
@@ -462,7 +462,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0xFFF1F4F8),
+                                                            Color(0x00000000),
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -503,8 +503,6 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                               12.0),
                                                     ),
                                                     filled: true,
-                                                    fillColor:
-                                                        const Color(0xFFF1F4F8),
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -513,7 +511,9 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                         fontFamily:
                                                             'Plus Jakarta Sans',
                                                         color:
-                                                            const Color(0xFF101213),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                         fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -594,7 +594,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                         OutlineInputBorder(
                                                       borderSide: const BorderSide(
                                                         color:
-                                                            Color(0xFFF1F4F8),
+                                                            Color(0x00000000),
                                                         width: 2.0,
                                                       ),
                                                       borderRadius:
@@ -635,8 +635,6 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                               12.0),
                                                     ),
                                                     filled: true,
-                                                    fillColor:
-                                                        const Color(0xFFF1F4F8),
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -645,7 +643,9 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                         fontFamily:
                                                             'Plus Jakarta Sans',
                                                         color:
-                                                            const Color(0xFF101213),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                         fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -731,7 +731,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF1F4F8),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -741,7 +741,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   focusedBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFF4B39EF),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -769,7 +769,6 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                             12.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF1F4F8),
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -777,8 +776,9 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                         .override(
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF101213),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -850,7 +850,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFFF1F4F8),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -860,7 +860,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   focusedBorder:
                                                       OutlineInputBorder(
                                                     borderSide: const BorderSide(
-                                                      color: Color(0xFF4B39EF),
+                                                      color: Color(0x00000000),
                                                       width: 2.0,
                                                     ),
                                                     borderRadius:
@@ -888,7 +888,6 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                             12.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF1F4F8),
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -896,8 +895,9 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                         .override(
                                                           fontFamily:
                                                               'Plus Jakarta Sans',
-                                                          color:
-                                                              const Color(0xFF101213),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -1031,10 +1031,11 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                       .secondaryText,
                                                   size: 24.0,
                                                 ),
-                                                fillColor: const Color(0xFFF1F4F8),
                                                 elevation: 2.0,
                                                 borderColor: _model.familyChosen
-                                                    ? const Color(0xFFF1F4F8)
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryBackground
                                                     : FlutterFlowTheme.of(
                                                             context)
                                                         .error,
@@ -1257,7 +1258,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                 enabledBorder:
                                                     OutlineInputBorder(
                                                   borderSide: const BorderSide(
-                                                    color: Color(0xFFF1F4F8),
+                                                    color: Color(0x00000000),
                                                     width: 2.0,
                                                   ),
                                                   borderRadius:
@@ -1267,7 +1268,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                 focusedBorder:
                                                     OutlineInputBorder(
                                                   borderSide: const BorderSide(
-                                                    color: Color(0xFF4B39EF),
+                                                    color: Color(0x00000000),
                                                     width: 2.0,
                                                   ),
                                                   borderRadius:
@@ -1294,7 +1295,6 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                           12.0),
                                                 ),
                                                 filled: true,
-                                                fillColor: const Color(0xFFF1F4F8),
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -1302,7 +1302,9 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: const Color(0xFF101213),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -1414,7 +1416,6 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                 .secondaryText,
                                             size: 24.0,
                                           ),
-                                          fillColor: const Color(0xFFF1F4F8),
                                           elevation: 2.0,
                                           borderColor: _model.genderChosen!
                                               ? const Color(0x00000000)
@@ -1523,7 +1524,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                 ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: const BorderSide(
-                                                color: Color(0xFFF1F4F8),
+                                                color: Color(0x00000000),
                                                 width: 2.0,
                                               ),
                                               borderRadius:
@@ -1531,7 +1532,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: const BorderSide(
-                                                color: Color(0xFF4B39EF),
+                                                color: Color(0x00000000),
                                                 width: 2.0,
                                               ),
                                               borderRadius:
@@ -1555,13 +1556,14 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   BorderRadius.circular(12.0),
                                             ),
                                             filled: true,
-                                            fillColor: const Color(0xFFF1F4F8),
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Plus Jakarta Sans',
-                                                color: const Color(0xFF101213),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                                 fontSize: 14.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
@@ -1700,7 +1702,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                 ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: const BorderSide(
-                                                color: Color(0xFFF1F4F8),
+                                                color: Color(0x00000000),
                                                 width: 2.0,
                                               ),
                                               borderRadius:
@@ -1708,7 +1710,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: const BorderSide(
-                                                color: Color(0xFF4B39EF),
+                                                color: Color(0x00000000),
                                                 width: 2.0,
                                               ),
                                               borderRadius:
@@ -1732,7 +1734,6 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   BorderRadius.circular(12.0),
                                             ),
                                             filled: true,
-                                            fillColor: const Color(0xFFF1F4F8),
                                             suffixIcon: InkWell(
                                               onTap: () => safeSetState(
                                                 () => _model
@@ -1755,7 +1756,9 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Plus Jakarta Sans',
-                                                color: const Color(0xFF101213),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                                 fontSize: 14.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
@@ -1846,7 +1849,9 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: _model.matchPass!
-                                                    ? const Color(0xFFF1F4F8)
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground
                                                     : FlutterFlowTheme.of(
                                                             context)
                                                         .error,
@@ -1870,8 +1875,10 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   BorderRadius.circular(12.0),
                                             ),
                                             errorBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0xFFFF5963),
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
                                                 width: 2.0,
                                               ),
                                               borderRadius:
@@ -1879,15 +1886,16 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                             ),
                                             focusedErrorBorder:
                                                 OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0xFFFF5963),
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
                                                 width: 2.0,
                                               ),
                                               borderRadius:
                                                   BorderRadius.circular(12.0),
                                             ),
                                             filled: true,
-                                            fillColor: const Color(0xFFF1F4F8),
                                             suffixIcon: InkWell(
                                               onTap: () => safeSetState(
                                                 () => _model
@@ -1911,7 +1919,7 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Plus Jakarta Sans',
-                                                color: const Color(0xFF101213),
+                                                color: const Color(0x33000000),
                                                 fontSize: 14.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
@@ -2319,11 +2327,35 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                     }, usersRecordReference);
                                                     shouldSetState = true;
 
-                                                    navigate();
-                                                    if (shouldSetState) {
-                                                      safeSetState(() {});
-                                                    }
-                                                    return;
+                                                    await NotificationsRecord
+                                                        .collection
+                                                        .doc()
+                                                        .set(
+                                                            createNotificationsRecordData(
+                                                          familyId: _model
+                                                              .family
+                                                              ?.reference,
+                                                          userId: _model
+                                                              .user?.reference,
+                                                          title: 'طلب انضمام!',
+                                                          message:
+                                                              'بطلب انضمام الى العائلة',
+                                                          createdAt:
+                                                              getCurrentTimestamp,
+                                                          type: 'request',
+                                                          isRequest: true,
+                                                        ));
+                                                    await queryAnalyticsRecordOnce(
+                                                      singleRecord: true,
+                                                    ).then(
+                                                        (s) => s.firstOrNull);
+
+                                                    await AnalyticsRecord
+                                                        .collection
+                                                        .doc(buttonUsersRecord!
+                                                            .displayName)
+                                                        .set(
+                                                            createAnalyticsRecordData());
                                                   }
                                                 }
                                               } else {
@@ -2354,14 +2386,16 @@ class _SignUpMemberWidgetState extends State<SignUpMemberWidget>
                                                   .titleSmall
                                                   .override(
                                                     fontFamily: 'Readex Pro',
-                                                    color: Colors.white,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                               elevation: 3.0,
                                               borderSide: const BorderSide(
-                                                color: Colors.transparent,
+                                                color: Color(0xFF757575),
                                                 width: 1.0,
                                               ),
                                               borderRadius:

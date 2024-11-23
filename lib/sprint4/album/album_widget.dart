@@ -1,7 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/albumitem_widget.dart';
-import '/components/share_photo_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -9,6 +7,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/homes/nav_bar1/nav_bar1_widget.dart';
 import '/homes/side_bar/side_bar_widget.dart';
 import '/sprint2/empty_posts/empty_posts_widget.dart';
+import '/sprint4/albumitem/albumitem_widget.dart';
+import '/sprint4/share_photo/share_photo_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -43,7 +43,7 @@ class _AlbumWidgetState extends State<AlbumWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      FFAppState().currentPage = 'posts';
+      FFAppState().currentPage = 'album';
       safeSetState(() {});
     });
 
@@ -108,7 +108,7 @@ class _AlbumWidgetState extends State<AlbumWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFF9299A1),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -134,7 +134,7 @@ class _AlbumWidgetState extends State<AlbumWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFF9299A1),
             drawer: Drawer(
               elevation: 16.0,
               child: wrapWithModel(
@@ -186,7 +186,7 @@ class _AlbumWidgetState extends State<AlbumWidget>
                                                   .fromSTEB(
                                                       25.0, 25.0, 25.0, 0.0),
                                               child: FlutterFlowIconButton(
-                                                borderColor: Colors.transparent,
+                                                borderColor: const Color(0xFF757575),
                                                 borderRadius: 8.0,
                                                 buttonSize: 40.0,
                                                 icon: Icon(
@@ -206,7 +206,7 @@ class _AlbumWidgetState extends State<AlbumWidget>
                                           Expanded(
                                             child: Align(
                                               alignment: const AlignmentDirectional(
-                                                  -0.6, 0.0),
+                                                  -0.8, 0.0),
                                               child: Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -236,7 +236,8 @@ class _AlbumWidgetState extends State<AlbumWidget>
                                             maxWidth: 570.0,
                                           ),
                                           decoration: BoxDecoration(
-                                            color: const Color(0xFFFFFCF6),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
                                             boxShadow: const [
                                               BoxShadow(
                                                 blurRadius: 4.0,
@@ -307,11 +308,13 @@ class _AlbumWidgetState extends State<AlbumWidget>
                                                                   context)
                                                               .height *
                                                           0.74,
-                                                      decoration: const BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         color:
-                                                            Color(0xFFFFFCF6),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
                                                         borderRadius:
-                                                            BorderRadius.only(
+                                                            const BorderRadius.only(
                                                           bottomLeft:
                                                               Radius.circular(
                                                                   20.0),
@@ -338,15 +341,18 @@ class _AlbumWidgetState extends State<AlbumWidget>
                                                             List<AlbumRecord>>(
                                                           stream:
                                                               queryAlbumRecord(
-                                                            queryBuilder:
-                                                                (albumRecord) =>
-                                                                    albumRecord
-                                                                        .where(
-                                                              'FamilyID',
-                                                              isEqualTo:
-                                                                  albumUsersRecord
-                                                                      ?.familyName,
-                                                            ),
+                                                            queryBuilder: (albumRecord) =>
+                                                                albumRecord
+                                                                    .where(
+                                                                      'FamilyID',
+                                                                      isEqualTo:
+                                                                          albumUsersRecord
+                                                                              ?.familyName,
+                                                                    )
+                                                                    .orderBy(
+                                                                        'time',
+                                                                        descending:
+                                                                            true),
                                                           ),
                                                           builder: (context,
                                                               snapshot) {
@@ -485,7 +491,7 @@ class _AlbumWidgetState extends State<AlbumWidget>
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         10.0, 17.0, 0.0, 10.0),
                                     child: FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
+                                      borderColor: const Color(0xFF757575),
                                       borderRadius: 25.0,
                                       borderWidth: 1.0,
                                       buttonSize: 60.0,

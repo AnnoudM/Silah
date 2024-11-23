@@ -91,7 +91,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFF9299A1),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -118,7 +118,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFF9299A1),
             body: Stack(
               children: [
                 Row(
@@ -170,13 +170,13 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                     children: [
                                       Flexible(
                                         child: FlutterFlowIconButton(
-                                          borderColor: Colors.transparent,
                                           borderRadius: 30.0,
                                           borderWidth: 1.0,
                                           buttonSize: 71.0,
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.arrow_back_rounded,
-                                            color: Colors.white,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
                                             size: 30.0,
                                           ),
                                           onPressed: () async {
@@ -211,7 +211,8 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                         maxWidth: 570.0,
                                       ),
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFFFFCF6),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
                                         boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 4.0,
@@ -1036,8 +1037,8 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Readex Pro',
-                                                                        color: Colors
-                                                                            .white,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),
@@ -1094,8 +1095,9 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                                     .override(
                                                                       fontFamily:
                                                                           'Readex Pro',
-                                                                      color: Colors
-                                                                          .white,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),

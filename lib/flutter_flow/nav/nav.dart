@@ -271,9 +271,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const FamilyFundsWidget(),
         ),
         FFRoute(
-          name: 'notificationCenter',
-          path: '/notificationCenter',
-          builder: (context, params) => NotificationCenterWidget(
+          name: 'notificcc',
+          path: '/notificcc',
+          builder: (context, params) => NotificccWidget(
             time: params.getParam(
               'time',
               ParamType.bool,
@@ -344,16 +344,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'gallery',
-          path: '/gallery',
-          builder: (context, params) => GalleryWidget(
-            currentpage: params.getParam(
-              'currentpage',
-              ParamType.String,
-            ),
-          ),
-        ),
-        FFRoute(
           name: 'analytics',
           path: '/analytics',
           builder: (context, params) => const AnalyticsWidget(),
@@ -365,6 +355,109 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             currentpage: params.getParam(
               'currentpage',
               ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'postsCopy2',
+          path: '/postsCopy2',
+          builder: (context, params) => PostsCopy2Widget(
+            currentpage: params.getParam(
+              'currentpage',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Replied',
+          path: '/replied',
+          asyncParams: {
+            'postUserRef': getDoc(['Posts'], PostsRecord.fromSnapshot),
+          },
+          builder: (context, params) => RepliedWidget(
+            currentpage: params.getParam(
+              'currentpage',
+              ParamType.String,
+            ),
+            post: params.getParam(
+              'post',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['Posts'],
+            ),
+            userRef: params.getParam(
+              'userRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['Users'],
+            ),
+            postUserRef: params.getParam(
+              'postUserRef',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'notificationCenter',
+          path: '/notificationCenter',
+          builder: (context, params) => NotificationCenterWidget(
+            time: params.getParam(
+              'time',
+              ParamType.bool,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'giveAdminstrativeRoleCopy',
+          path: '/giveAdminstrativeRoleCopy',
+          builder: (context, params) => const GiveAdminstrativeRoleCopyWidget(),
+        ),
+        FFRoute(
+          name: 'NameAnalytics',
+          path: '/nameAnalytics',
+          builder: (context, params) => const NameAnalyticsWidget(),
+        ),
+        FFRoute(
+          name: 'analyticsCopy',
+          path: '/analyticsCopy',
+          builder: (context, params) => const AnalyticsCopyWidget(),
+        ),
+        FFRoute(
+          name: 'RequestsCopy',
+          path: '/requestsCopy',
+          builder: (context, params) => const RequestsCopyWidget(),
+        ),
+        FFRoute(
+          name: 'RequestsCopy2',
+          path: '/requestsCopy2',
+          builder: (context, params) => const RequestsCopy2Widget(),
+        ),
+        FFRoute(
+          name: 'RepliedCopy',
+          path: '/repliedCopy',
+          asyncParams: {
+            'postUserRef': getDoc(['Posts'], PostsRecord.fromSnapshot),
+          },
+          builder: (context, params) => RepliedCopyWidget(
+            currentpage: params.getParam(
+              'currentpage',
+              ParamType.String,
+            ),
+            post: params.getParam(
+              'post',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['Posts'],
+            ),
+            userRef: params.getParam(
+              'userRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['Users'],
+            ),
+            postUserRef: params.getParam(
+              'postUserRef',
+              ParamType.Document,
             ),
           ),
         )

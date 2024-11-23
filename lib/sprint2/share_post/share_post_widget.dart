@@ -106,7 +106,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
               maxWidth: 375.0,
             ),
             decoration: BoxDecoration(
-              color: const Color(0xFFFFFCF6),
+              color: FlutterFlowTheme.of(context).secondaryBackground,
               borderRadius: BorderRadius.circular(16.0),
             ),
             child: Align(
@@ -184,9 +184,7 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                               .bodyLarge
                                               .override(
                                                 fontFamily: 'Readex Pro',
-                                                fontSize: 11.0,
                                                 letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w600,
                                               ),
                                         ),
                                       ),
@@ -205,9 +203,10 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                     child: Container(
                                       width: 374.0,
                                       height: 314.0,
-                                      decoration: const BoxDecoration(
-                                        color: Color(0xCCFFFFFF),
-                                        borderRadius: BorderRadius.only(
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(20.0),
                                           bottomRight: Radius.circular(20.0),
                                           topLeft: Radius.circular(20.0),
@@ -714,13 +713,15 @@ class _SharePostWidgetState extends State<SharePostWidget> {
                                                                 containerUsersRecord
                                                                     .reference,
                                                             message:
-                                                                'لقد قام بنشر منشور',
+                                                                'بنشر منشور',
                                                             postid: _model.post
                                                                 ?.reference,
                                                             title:
                                                                 'منشور جديد!',
                                                             createdAt:
                                                                 getCurrentTimestamp,
+                                                            type: 'post',
+                                                            isRequest: false,
                                                           ));
                                                       _model.usersotify =
                                                           await queryUserrrRecordOnce(

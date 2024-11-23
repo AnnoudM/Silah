@@ -55,7 +55,7 @@ class _DeleteAccountAlertWidgetState extends State<DeleteAccountAlertWidget> {
             maxWidth: 530.0,
           ),
           decoration: BoxDecoration(
-            color: const Color(0xFFFFFCF6),
+            color: FlutterFlowTheme.of(context).primary,
             boxShadow: const [
               BoxShadow(
                 blurRadius: 3.0,
@@ -68,7 +68,7 @@ class _DeleteAccountAlertWidgetState extends State<DeleteAccountAlertWidget> {
             ],
             borderRadius: BorderRadius.circular(24.0),
             border: Border.all(
-              color: const Color(0xFFF5FBFB),
+              color: const Color(0xFF3F393F),
               width: 1.0,
             ),
           ),
@@ -173,7 +173,8 @@ class _DeleteAccountAlertWidgetState extends State<DeleteAccountAlertWidget> {
                                     20.0, 0.0, 20.0, 0.0),
                                 iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: Colors.white,
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                                 textStyle: FlutterFlowTheme.of(context)
                                     .bodyLarge
                                     .override(
@@ -230,14 +231,15 @@ class _DeleteAccountAlertWidgetState extends State<DeleteAccountAlertWidget> {
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Readex Pro',
-                                    color: Colors.white,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                               elevation: 0.0,
                               borderSide: const BorderSide(
-                                color: Colors.transparent,
+                                color: Color(0xFF757575),
                               ),
                               borderRadius: BorderRadius.circular(40.0),
                             ),

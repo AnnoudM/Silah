@@ -120,7 +120,7 @@ class _VerificationWidgetState extends State<VerificationWidget>
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFFFFCF6),
+        backgroundColor: const Color(0xFF9299A1),
         body: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -165,7 +165,7 @@ class _VerificationWidgetState extends State<VerificationWidget>
                               maxWidth: 570.0,
                             ),
                             decoration: BoxDecoration(
-                              color: const Color(0xFFFFFCF6),
+                              color: FlutterFlowTheme.of(context).primary,
                               boxShadow: const [
                                 BoxShadow(
                                   blurRadius: 4.0,
@@ -227,7 +227,10 @@ class _VerificationWidgetState extends State<VerificationWidget>
                                                         'تم ارسال رابط تحقق الى البريد الإلكتروني ',
                                                     style: GoogleFonts.getFont(
                                                       'Plus Jakarta Sans',
-                                                      color: Colors.black,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                       fontSize: 15.0,
                                                     ),
                                                   ),
@@ -235,7 +238,10 @@ class _VerificationWidgetState extends State<VerificationWidget>
                                                     text: widget.email,
                                                     style: GoogleFonts.getFont(
                                                       'Plus Jakarta Sans',
-                                                      color: Colors.black,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                       fontSize: 15.0,
                                                     ),
                                                   ),
@@ -244,18 +250,24 @@ class _VerificationWidgetState extends State<VerificationWidget>
                                                         '\n افتح الرابط المرسل حتى تستطيع الدخول الى حسابك',
                                                     style: GoogleFonts.getFont(
                                                       'Plus Jakarta Sans',
-                                                      color: Colors.black,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                     ),
                                                   )
                                                 ],
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      letterSpacing: 0.0,
+                                                    ),
                                               ),
                                               textAlign: TextAlign.center,
                                             ),
@@ -322,14 +334,16 @@ class _VerificationWidgetState extends State<VerificationWidget>
                                                   .titleSmall
                                                   .override(
                                                     fontFamily: 'Readex Pro',
-                                                    color: Colors.white,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                               elevation: 3.0,
                                               borderSide: const BorderSide(
-                                                color: Colors.transparent,
+                                                color: Color(0xFF757575),
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -392,7 +406,9 @@ class _VerificationWidgetState extends State<VerificationWidget>
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
-                                                          color: Colors.white,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -400,7 +416,7 @@ class _VerificationWidgetState extends State<VerificationWidget>
                                                         ),
                                                 elevation: 3.0,
                                                 borderSide: const BorderSide(
-                                                  color: Colors.transparent,
+                                                  color: Color(0xFF757575),
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:

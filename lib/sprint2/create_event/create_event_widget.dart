@@ -137,7 +137,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                   maxWidth: 670.0,
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFFFCF6),
+                  color: FlutterFlowTheme.of(context).primary,
                   boxShadow: const [
                     BoxShadow(
                       blurRadius: 12.0,
@@ -738,7 +738,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                         0xFF2A497D),
                                                                 headerForegroundColor:
                                                                     const Color(
-                                                                        0xFFFFFCF6),
+                                                                        0xFF9299A1),
                                                                 headerTextStyle:
                                                                     FlutterFlowTheme.of(
                                                                             context)
@@ -797,7 +797,7 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                                           0xFF2A497D),
                                                                   headerForegroundColor:
                                                                       const Color(
-                                                                          0xFFFFFCF6),
+                                                                          0xFF9299A1),
                                                                   headerTextStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .headlineLarge
@@ -1148,31 +1148,84 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                               return;
                                                             }
 
-                                                            await EventsRecord
+                                                            var eventsRecordReference =
+                                                                EventsRecord
+                                                                    .collection
+                                                                    .doc();
+                                                            await eventsRecordReference
+                                                                .set(
+                                                                    createEventsRecordData(
+                                                              name: _model
+                                                                  .eventNameTextController
+                                                                  .text,
+                                                              location: _model
+                                                                  .eventLocationTextController
+                                                                  .text,
+                                                              date: _model
+                                                                  .datePicked2,
+                                                              familyName:
+                                                                  buttonFamilyRecord
+                                                                      .reference,
+                                                              createdBy:
+                                                                  columnUsersRecord
+                                                                      .reference,
+                                                              publisherName:
+                                                                  columnUsersRecord
+                                                                      .displayName,
+                                                              eventDes: _model
+                                                                  .eventDecTextController
+                                                                  .text,
+                                                            ));
+                                                            _model.event = EventsRecord
+                                                                .getDocumentFromData(
+                                                                    createEventsRecordData(
+                                                                      name: _model
+                                                                          .eventNameTextController
+                                                                          .text,
+                                                                      location: _model
+                                                                          .eventLocationTextController
+                                                                          .text,
+                                                                      date: _model
+                                                                          .datePicked2,
+                                                                      familyName:
+                                                                          buttonFamilyRecord
+                                                                              .reference,
+                                                                      createdBy:
+                                                                          columnUsersRecord
+                                                                              .reference,
+                                                                      publisherName:
+                                                                          columnUsersRecord
+                                                                              .displayName,
+                                                                      eventDes: _model
+                                                                          .eventDecTextController
+                                                                          .text,
+                                                                    ),
+                                                                    eventsRecordReference);
+                                                            shouldSetState =
+                                                                true;
+
+                                                            await NotificationsRecord
                                                                 .collection
                                                                 .doc()
                                                                 .set(
-                                                                    createEventsRecordData(
-                                                                  name: _model
-                                                                      .eventNameTextController
-                                                                      .text,
-                                                                  location: _model
-                                                                      .eventLocationTextController
-                                                                      .text,
-                                                                  date: _model
-                                                                      .datePicked2,
-                                                                  familyName:
+                                                                    createNotificationsRecordData(
+                                                                  familyId:
                                                                       buttonFamilyRecord
                                                                           .reference,
-                                                                  createdBy:
-                                                                      columnUsersRecord
-                                                                          .reference,
-                                                                  publisherName:
-                                                                      columnUsersRecord
-                                                                          .displayName,
-                                                                  eventDes: _model
-                                                                      .eventDecTextController
-                                                                      .text,
+                                                                  userId: columnUsersRecord
+                                                                      .reference,
+                                                                  title:
+                                                                      'مناسبة جديدة!',
+                                                                  message:
+                                                                      'بأنشاء مناسبة',
+                                                                  createdAt:
+                                                                      getCurrentTimestamp,
+                                                                  eventid: _model
+                                                                      .event
+                                                                      ?.reference,
+                                                                  type: 'event',
+                                                                  isRequest:
+                                                                      false,
                                                                 ));
 
                                                             context.pushNamed(
@@ -1255,8 +1308,8 @@ class _CreateEventWidgetState extends State<CreateEventWidget>
                                                             elevation: 3.0,
                                                             borderSide:
                                                                 const BorderSide(
-                                                              color: Colors
-                                                                  .transparent,
+                                                              color: Color(
+                                                                  0xFF757575),
                                                               width: 1.0,
                                                             ),
                                                             borderRadius:

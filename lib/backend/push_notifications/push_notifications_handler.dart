@@ -176,7 +176,7 @@ final parametersBuilderMap =
         },
       ),
   'FamilyFunds': ParameterData.none(),
-  'notificationCenter': (data) async => ParameterData(
+  'notificcc': (data) async => ParameterData(
         allParams: {
           'time': getParameter<bool>(data, 'time'),
         },
@@ -204,15 +204,43 @@ final parametersBuilderMap =
           'currentpage': getParameter<String>(data, 'currentpage'),
         },
       ),
-  'gallery': (data) async => ParameterData(
-        allParams: {
-          'currentpage': getParameter<String>(data, 'currentpage'),
-        },
-      ),
   'analytics': ParameterData.none(),
   'Album': (data) async => ParameterData(
         allParams: {
           'currentpage': getParameter<String>(data, 'currentpage'),
+        },
+      ),
+  'postsCopy2': (data) async => ParameterData(
+        allParams: {
+          'currentpage': getParameter<String>(data, 'currentpage'),
+        },
+      ),
+  'Replied': (data) async => ParameterData(
+        allParams: {
+          'currentpage': getParameter<String>(data, 'currentpage'),
+          'post': getParameter<DocumentReference>(data, 'post'),
+          'userRef': getParameter<DocumentReference>(data, 'userRef'),
+          'postUserRef': await getDocumentParameter<PostsRecord>(
+              data, 'postUserRef', PostsRecord.fromSnapshot),
+        },
+      ),
+  'notificationCenter': (data) async => ParameterData(
+        allParams: {
+          'time': getParameter<bool>(data, 'time'),
+        },
+      ),
+  'giveAdminstrativeRoleCopy': ParameterData.none(),
+  'NameAnalytics': ParameterData.none(),
+  'analyticsCopy': ParameterData.none(),
+  'RequestsCopy': ParameterData.none(),
+  'RequestsCopy2': ParameterData.none(),
+  'RepliedCopy': (data) async => ParameterData(
+        allParams: {
+          'currentpage': getParameter<String>(data, 'currentpage'),
+          'post': getParameter<DocumentReference>(data, 'post'),
+          'userRef': getParameter<DocumentReference>(data, 'userRef'),
+          'postUserRef': await getDocumentParameter<PostsRecord>(
+              data, 'postUserRef', PostsRecord.fromSnapshot),
         },
       ),
 };

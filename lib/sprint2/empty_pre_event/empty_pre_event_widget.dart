@@ -53,7 +53,7 @@ class _EmptyPreEventWidgetState extends State<EmptyPreEventWidget> {
               'لايوجد مناسبات',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                     fontFamily: 'Outfit',
-                    color: const Color(0xFF15161E),
+                    color: const Color(0x00999999),
                     fontSize: 24.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w500,

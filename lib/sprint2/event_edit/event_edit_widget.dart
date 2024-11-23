@@ -97,7 +97,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFF9299A1),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -118,7 +118,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFF9299A1),
             body: Stack(
               children: [
                 Row(
@@ -149,13 +149,13 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                 children: [
                                   Flexible(
                                     child: FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
                                       borderRadius: 30.0,
                                       borderWidth: 1.0,
                                       buttonSize: 71.0,
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.arrow_back_rounded,
-                                        color: Colors.white,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
                                         size: 30.0,
                                       ),
                                       onPressed: () async {
@@ -189,7 +189,7 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                     maxWidth: 570.0,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFFFFCF6),
+                                    color: FlutterFlowTheme.of(context).primary,
                                     boxShadow: const [
                                       BoxShadow(
                                         blurRadius: 4.0,
@@ -1344,8 +1344,8 @@ class _EventEditWidgetState extends State<EventEditWidget>
                                                               elevation: 3.0,
                                                               borderSide:
                                                                   const BorderSide(
-                                                                color: Colors
-                                                                    .transparent,
+                                                                color: Color(
+                                                                    0xFF757575),
                                                                 width: 1.0,
                                                               ),
                                                               borderRadius:

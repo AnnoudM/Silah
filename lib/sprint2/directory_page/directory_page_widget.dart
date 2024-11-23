@@ -223,7 +223,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           25.0, 25.0, 25.0, 0.0),
                                       child: FlutterFlowIconButton(
-                                        borderColor: Colors.transparent,
+                                        borderColor: const Color(0xFF757575),
                                         borderRadius: 8.0,
                                         buttonSize: 40.0,
                                         icon: Icon(
@@ -242,7 +242,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                   Expanded(
                                     child: Align(
                                       alignment:
-                                          const AlignmentDirectional(-0.6, 0.0),
+                                          const AlignmentDirectional(-0.8, 0.0),
                                       child: Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
@@ -308,9 +308,10 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                       constraints: const BoxConstraints(
                                         maxWidth: 570.0,
                                       ),
-                                      decoration: const BoxDecoration(
-                                        color: Color(0xFFFFFCF6),
-                                        boxShadow: [
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        boxShadow: const [
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x33000000),
@@ -320,7 +321,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                             ),
                                           )
                                         ],
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(15.0),
                                           bottomRight: Radius.circular(15.0),
                                           topLeft: Radius.circular(12.0),
@@ -423,6 +424,9 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                   .override(
                                                                     fontFamily:
                                                                         'Readex Pro',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
                                                                     letterSpacing:
                                                                         0.0,
                                                                   ),
@@ -493,8 +497,9 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                         8.0),
                                                           ),
                                                           filled: true,
-                                                          fillColor:
-                                                              const Color(0xFFFFFCF6),
+                                                          fillColor: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
                                                           prefixIcon: const Icon(
                                                             Icons.search_sharp,
                                                           ),
@@ -649,15 +654,16 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                             width:
                                                                 double.infinity,
                                                             decoration:
-                                                                const BoxDecoration(
-                                                              color: Color(
-                                                                  0xFFFFFCF6),
-                                                              boxShadow: [
+                                                                BoxDecoration(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              boxShadow: const [
                                                                 BoxShadow(
                                                                   blurRadius:
                                                                       0.0,
                                                                   color: Color(
-                                                                      0xFFE0E3E7),
+                                                                      0x4C4B39EF),
                                                                   offset:
                                                                       Offset(
                                                                     0.0,
@@ -666,7 +672,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                 )
                                                               ],
                                                               borderRadius:
-                                                                  BorderRadius
+                                                                  const BorderRadius
                                                                       .only(
                                                                 bottomLeft: Radius
                                                                     .circular(
@@ -756,7 +762,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                             directoryNosearchItem.fullName,
                                                                             style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                   fontFamily: 'Plus Jakarta Sans',
-                                                                                  color: const Color(0xFF14181B),
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.w500,
@@ -769,8 +775,9 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                   Card(
                                                                     clipBehavior:
                                                                         Clip.antiAliasWithSaveLayer,
-                                                                    color: const Color(
-                                                                        0xFFFFFCF6),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
                                                                     elevation:
                                                                         6.0,
                                                                     shape:
@@ -936,15 +943,16 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                 width: double
                                                                     .infinity,
                                                                 decoration:
-                                                                    const BoxDecoration(
-                                                                  color: Color(
-                                                                      0xFFFFFCF6),
-                                                                  boxShadow: [
+                                                                    BoxDecoration(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  boxShadow: const [
                                                                     BoxShadow(
                                                                       blurRadius:
                                                                           0.0,
                                                                       color: Color(
-                                                                          0xFFE0E3E7),
+                                                                          0x4C4B39EF),
                                                                       offset:
                                                                           Offset(
                                                                         0.0,
@@ -953,7 +961,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                     )
                                                                   ],
                                                                   borderRadius:
-                                                                      BorderRadius
+                                                                      const BorderRadius
                                                                           .only(
                                                                     bottomLeft:
                                                                         Radius.circular(
@@ -1030,7 +1038,7 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                                 directorysearchItem.fullName,
                                                                                 style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                       fontFamily: 'Plus Jakarta Sans',
-                                                                                      color: const Color(0xFF14181B),
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontSize: 16.0,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.w500,
@@ -1043,8 +1051,8 @@ class _DirectoryPageWidgetState extends State<DirectoryPageWidget>
                                                                       Card(
                                                                         clipBehavior:
                                                                             Clip.antiAliasWithSaveLayer,
-                                                                        color: const Color(
-                                                                            0xFFFFFCF6),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primary,
                                                                         elevation:
                                                                             6.0,
                                                                         shape:

@@ -104,7 +104,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFF9299A1),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -131,7 +131,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFFFFCF6),
+            backgroundColor: const Color(0xFF9299A1),
             body: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -159,13 +159,13 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               FlutterFlowIconButton(
-                                borderColor: Colors.transparent,
                                 borderRadius: 30.0,
                                 borderWidth: 1.0,
                                 buttonSize: 60.0,
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.arrow_back_rounded,
-                                  color: Colors.white,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   size: 30.0,
                                 ),
                                 onPressed: () async {
@@ -202,7 +202,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                 maxWidth: 570.0,
                               ),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFFFFCF6),
+                                color: FlutterFlowTheme.of(context).primary,
                                 boxShadow: const [
                                   BoxShadow(
                                     blurRadius: 4.0,
@@ -392,7 +392,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                 enabledBorder:
                                                     OutlineInputBorder(
                                                   borderSide: const BorderSide(
-                                                    color: Color(0xFFF1F4F8),
+                                                    color: Color(0x00000000),
                                                     width: 2.0,
                                                   ),
                                                   borderRadius:
@@ -429,7 +429,6 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                           12.0),
                                                 ),
                                                 filled: true,
-                                                fillColor: const Color(0xFFF1F4F8),
                                                 suffixIcon: InkWell(
                                                   onTap: () => safeSetState(
                                                     () => _model
@@ -456,7 +455,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: const Color(0xFF101213),
+                                                    color: const Color(0x33000000),
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -578,7 +577,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                 enabledBorder:
                                                     OutlineInputBorder(
                                                   borderSide: const BorderSide(
-                                                    color: Color(0xFFF1F4F8),
+                                                    color: Color(0x00000000),
                                                     width: 2.0,
                                                   ),
                                                   borderRadius:
@@ -587,8 +586,10 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
-                                                    color: Color(0xFF4B39EF),
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
                                                     width: 2.0,
                                                   ),
                                                   borderRadius:
@@ -615,7 +616,6 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                           12.0),
                                                 ),
                                                 filled: true,
-                                                fillColor: const Color(0xFFF1F4F8),
                                                 suffixIcon: InkWell(
                                                   onTap: () => safeSetState(
                                                     () => _model
@@ -642,7 +642,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: const Color(0xFF101213),
+                                                    color: const Color(0x33000000),
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -742,7 +742,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                     OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: _model.matchPass!
-                                                        ? const Color(0xFFF1F4F8)
+                                                        ? const Color(0xFFFF5963)
                                                         : FlutterFlowTheme.of(
                                                                 context)
                                                             .error,
@@ -788,7 +788,6 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                           12.0),
                                                 ),
                                                 filled: true,
-                                                fillColor: const Color(0xFFF1F4F8),
                                                 suffixIcon: InkWell(
                                                   onTap: () => safeSetState(
                                                     () => _model
@@ -815,7 +814,7 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: const Color(0xFF101213),
+                                                    color: const Color(0x33000000),
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -976,21 +975,20 @@ class _ChangePassWidgetState extends State<ChangePassWidget>
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
                                                 color: const Color(0xFF2A497D),
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color: Colors.white,
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                textStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color: const Color(0xFF4B39EF),
+                                                      fontSize: 16.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                                 elevation: 3.0,
                                                 borderSide: const BorderSide(
-                                                  color: Colors.transparent,
+                                                  color: Color(0xFF757575),
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:

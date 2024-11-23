@@ -15,7 +15,7 @@ class ConfirmAdminWidget extends StatefulWidget {
   });
 
   final DocumentReference? deleteuser;
-  final String? adminUser;
+  final DocumentReference? adminUser;
 
   @override
   State<ConfirmAdminWidget> createState() => _ConfirmAdminWidgetState();
@@ -56,7 +56,7 @@ class _ConfirmAdminWidgetState extends State<ConfirmAdminWidget> {
             maxWidth: 530.0,
           ),
           decoration: BoxDecoration(
-            color: const Color(0xFFFFFCF6),
+            color: FlutterFlowTheme.of(context).primary,
             boxShadow: const [
               BoxShadow(
                 blurRadius: 3.0,
@@ -69,7 +69,7 @@ class _ConfirmAdminWidgetState extends State<ConfirmAdminWidget> {
             ],
             borderRadius: BorderRadius.circular(24.0),
             border: Border.all(
-              color: const Color(0xFFF5FBFB),
+              color: const Color(0xFF3F393F),
               width: 1.0,
             ),
           ),
@@ -137,52 +137,80 @@ class _ConfirmAdminWidgetState extends State<ConfirmAdminWidget> {
                               child: Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 30.0, 0.0, 30.0),
-                                child: RichText(
-                                  textScaler: MediaQuery.of(context).textScaler,
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: 'هل أنت متأكد من رغبتك في تعيين ',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
+                                child: StreamBuilder<UsersRecord>(
+                                  stream: UsersRecord.getDocument(
+                                      widget.adminUser!),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+
+                                    final richTextUsersRecord = snapshot.data!;
+
+                                    return RichText(
+                                      textScaler:
+                                          MediaQuery.of(context).textScaler,
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text:
+                                                'هل أنت متأكد من رغبتك في تعيين ',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  fontSize: 15.0,
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                          TextSpan(
+                                            text: richTextUsersRecord.fullName,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  fontSize: 15.0,
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                          TextSpan(
+                                            text: '  كمشرف للعائلة ؟',
+                                            style: TextStyle(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryText,
                                               fontSize: 15.0,
-                                              letterSpacing: 0.0,
                                             ),
-                                      ),
-                                      TextSpan(
-                                        text: widget.adminUser!,
+                                          )
+                                        ],
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontSize: 15.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
-                                      TextSpan(
-                                        text: '  كمشرف للعائلة ؟',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          fontSize: 15.0,
-                                        ),
-                                      )
-                                    ],
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
+                                    );
+                                  },
                                 ),
                               ),
                             ),
@@ -218,7 +246,8 @@ class _ConfirmAdminWidgetState extends State<ConfirmAdminWidget> {
                                         20.0, 0.0, 20.0, 0.0),
                                     iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: Colors.white,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .bodyLarge
                                         .override(
@@ -247,9 +276,10 @@ class _ConfirmAdminWidgetState extends State<ConfirmAdminWidget> {
                                 label: 'تأكيد التعديل',
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    await columnUsersRecord!.reference
+                                    await widget.adminUser!
                                         .update(createUsersRecordData(
                                       isAdmin: true,
+                                      primAdmin: false,
                                     ));
                                     Navigator.pop(context);
                                     ScaffoldMessenger.of(context).showSnackBar(
@@ -281,14 +311,15 @@ class _ConfirmAdminWidgetState extends State<ConfirmAdminWidget> {
                                         .titleSmall
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          color: Colors.white,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                         ),
                                     elevation: 0.0,
                                     borderSide: const BorderSide(
-                                      color: Colors.transparent,
+                                      color: Color(0xFF757575),
                                     ),
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),

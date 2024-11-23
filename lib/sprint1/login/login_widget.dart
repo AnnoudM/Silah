@@ -103,7 +103,7 @@ class _LoginWidgetState extends State<LoginWidget>
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFFFFCF6),
+        backgroundColor: const Color(0xFF2A497D),
         body: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -131,13 +131,13 @@ class _LoginWidgetState extends State<LoginWidget>
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           FlutterFlowIconButton(
-                            borderColor: Colors.transparent,
                             borderRadius: 30.0,
                             borderWidth: 1.0,
                             buttonSize: 60.0,
-                            icon: const Icon(
+                            icon: Icon(
                               Icons.arrow_back_rounded,
-                              color: Colors.white,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                               size: 30.0,
                             ),
                             onPressed: () async {
@@ -174,7 +174,7 @@ class _LoginWidgetState extends State<LoginWidget>
                             maxWidth: 570.0,
                           ),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFFFFCF6),
+                            color: FlutterFlowTheme.of(context).primary,
                             boxShadow: const [
                               BoxShadow(
                                 blurRadius: 4.0,
@@ -248,6 +248,13 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             errorStyle: FlutterFlowTheme.of(
                                                     context)
                                                 .bodyMedium
@@ -262,15 +269,17 @@ class _LoginWidgetState extends State<LoginWidget>
                                                 ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: const BorderSide(
-                                                color: Color(0xFFF1F4F8),
+                                                color: Color(0x00000000),
                                                 width: 2.0,
                                               ),
                                               borderRadius:
                                                   BorderRadius.circular(12.0),
                                             ),
                                             focusedBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0xFF4B39EF),
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .common1,
                                                 width: 2.0,
                                               ),
                                               borderRadius:
@@ -294,13 +303,14 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   BorderRadius.circular(12.0),
                                             ),
                                             filled: true,
-                                            fillColor: const Color(0xFFF1F4F8),
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Plus Jakarta Sans',
-                                                color: const Color(0xFF101213),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                                 fontSize: 14.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
@@ -356,6 +366,13 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             errorStyle: FlutterFlowTheme.of(
                                                     context)
                                                 .bodyMedium
@@ -370,15 +387,17 @@ class _LoginWidgetState extends State<LoginWidget>
                                                 ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: const BorderSide(
-                                                color: Color(0xFFF1F4F8),
+                                                color: Color(0x00000000),
                                                 width: 2.0,
                                               ),
                                               borderRadius:
                                                   BorderRadius.circular(12.0),
                                             ),
                                             focusedBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0xFF4B39EF),
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .common1,
                                                 width: 2.0,
                                               ),
                                               borderRadius:
@@ -402,7 +421,6 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   BorderRadius.circular(12.0),
                                             ),
                                             filled: true,
-                                            fillColor: const Color(0xFFF1F4F8),
                                             suffixIcon: InkWell(
                                               onTap: () => safeSetState(
                                                 () => _model
@@ -425,7 +443,9 @@ class _LoginWidgetState extends State<LoginWidget>
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Plus Jakarta Sans',
-                                                color: const Color(0xFF101213),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                                 fontSize: 14.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
@@ -543,32 +563,38 @@ class _LoginWidgetState extends State<LoginWidget>
                                                     'HomeAdmin',
                                                     context.mounted);
                                               } else {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder: (dialogContext) {
-                                                    return Dialog(
-                                                      elevation: 0,
-                                                      insetPadding:
-                                                          EdgeInsets.zero,
-                                                      backgroundColor:
-                                                          Colors.transparent,
-                                                      alignment:
-                                                          const AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      child: GestureDetector(
-                                                        onTap: () =>
-                                                            FocusScope.of(
-                                                                    dialogContext)
-                                                                .unfocus(),
-                                                        child:
-                                                            const EmailVerifyAlertWidget(),
-                                                      ),
-                                                    );
-                                                  },
-                                                );
+                                                if (_model.userLog!.primAdmin) {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            const AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: GestureDetector(
+                                                          onTap: () =>
+                                                              FocusScope.of(
+                                                                      dialogContext)
+                                                                  .unfocus(),
+                                                          child:
+                                                              const EmailVerifyAlertWidget(),
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                } else {
+                                                  context.pushNamedAuth(
+                                                      'HomeAdmin',
+                                                      context.mounted);
+                                                }
                                               }
                                             } else {
                                               if (_model.userLog!.accepted) {
@@ -621,20 +647,21 @@ class _LoginWidgetState extends State<LoginWidget>
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             color: const Color(0xFF2A497D),
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color: Colors.white,
-                                                      fontSize: 16.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
+                                            textStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .titleSmall
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  fontSize: 16.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
                                             elevation: 3.0,
                                             borderSide: const BorderSide(
-                                              color: Colors.transparent,
+                                              color: Color(0xFF757575),
                                               width: 1.0,
                                             ),
                                             borderRadius:

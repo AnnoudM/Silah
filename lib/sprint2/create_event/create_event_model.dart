@@ -62,6 +62,8 @@ class CreateEventModel extends FlutterFlowModel<CreateEventWidget> {
   DateTime? datePicked2;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   List<UserrrRecord>? usersotify;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  EventsRecord? event;
 
   @override
   void initState(BuildContext context) {

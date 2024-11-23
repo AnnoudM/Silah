@@ -135,7 +135,7 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     25.0, 25.0, 25.0, 0.0),
                                 child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
+                                  borderColor: const Color(0xFF757575),
                                   borderRadius: 8.0,
                                   buttonSize: 40.0,
                                   icon: Icon(
@@ -204,7 +204,7 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                                 width: double.infinity,
                                 height: 500.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFFFFCF6),
+                                  color: FlutterFlowTheme.of(context).primary,
                                   boxShadow: const [
                                     BoxShadow(
                                       blurRadius: 4.0,
@@ -283,10 +283,11 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                                             ),
                                           ],
                                         ),
-                                        const Divider(
+                                        Divider(
                                           height: 24.0,
                                           thickness: 2.0,
-                                          color: Color(0xFFF1F4F8),
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
                                         ),
                                         Padding(
                                           padding:
@@ -648,8 +649,8 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                                                                       3.0,
                                                                   borderSide:
                                                                       const BorderSide(
-                                                                    color: Colors
-                                                                        .transparent,
+                                                                    color: Color(
+                                                                        0xFF757575),
                                                                     width: 1.0,
                                                                   ),
                                                                   borderRadius:
@@ -832,8 +833,8 @@ class _FamilyFundsWidgetState extends State<FamilyFundsWidget> {
                                                                       3.0,
                                                                   borderSide:
                                                                       const BorderSide(
-                                                                    color: Colors
-                                                                        .transparent,
+                                                                    color: Color(
+                                                                        0xFF757575),
                                                                     width: 1.0,
                                                                   ),
                                                                   borderRadius:
