@@ -15,7 +15,7 @@
     },
     {
       "name": "archive",
-      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/archive-3.6.1",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/archive-4.0.2",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -111,9 +111,9 @@
     },
     {
       "name": "collection",
-      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/collection-1.18.0",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/collection-1.19.0",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.4"
     },
     {
       "name": "cross_file",
@@ -140,6 +140,18 @@
       "languageVersion": "3.1"
     },
     {
+      "name": "device_info_plus",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/device_info_plus-10.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "device_info_plus_platform_interface",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/device_info_plus_platform_interface-7.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "dropdown_button2",
       "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/dropdown_button2-2.3.9",
       "packageUri": "lib/",
@@ -148,6 +160,12 @@
     {
       "name": "easy_debounce",
       "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/easy_debounce-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "equatable",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/equatable-2.0.7",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -177,7 +195,7 @@
     },
     {
       "name": "file_selector_linux",
-      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/file_selector_linux-0.9.3",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/file_selector_linux-0.9.3+2",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -195,9 +213,9 @@
     },
     {
       "name": "file_selector_windows",
-      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/file_selector_windows-0.9.3+3",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/file_selector_windows-0.9.3+4",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.4"
     },
     {
       "name": "firebase_auth",
@@ -294,6 +312,12 @@
       "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/fixnum-1.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.1"
+    },
+    {
+      "name": "fl_chart",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/fl_chart-0.68.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
     },
     {
       "name": "flutter",
@@ -399,9 +423,9 @@
     },
     {
       "name": "google_identity_services_web",
-      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/google_identity_services_web-0.3.1+4",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/google_identity_services_web-0.3.3",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.4"
     },
     {
       "name": "google_sign_in",
@@ -447,15 +471,15 @@
     },
     {
       "name": "http_parser",
-      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.0.2",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.1.2",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.4"
     },
     {
       "name": "image",
-      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/image-4.3.0",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/image-4.5.2",
       "packageUri": "lib/",
-      "languageVersion": "2.15"
+      "languageVersion": "3.0"
     },
     {
       "name": "image_picker",
@@ -531,13 +555,13 @@
     },
     {
       "name": "leak_tracker",
-      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker-10.0.5",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker-10.0.7",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "leak_tracker_flutter_testing",
-      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.5",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.8",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -651,9 +675,45 @@
     },
     {
       "name": "path_provider_windows",
-      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_windows-2.2.1",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_windows-2.3.0",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "permission_handler",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler-11.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "permission_handler_android",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_android-12.0.12",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "permission_handler_apple",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_apple-9.4.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "permission_handler_html",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_html-0.1.3+2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "permission_handler_platform_interface",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_platform_interface-4.2.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "permission_handler_windows",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_windows-0.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "petitparser",
@@ -670,6 +730,12 @@
     {
       "name": "plugin_platform_interface",
       "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/plugin_platform_interface-2.1.8",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "posix",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/posix-6.0.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -789,9 +855,9 @@
     },
     {
       "name": "stack_trace",
-      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/stack_trace-1.11.1",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/stack_trace-1.12.0",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.4"
     },
     {
       "name": "stream_channel",
@@ -807,9 +873,9 @@
     },
     {
       "name": "string_scanner",
-      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/string_scanner-1.2.0",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/string_scanner-1.3.0",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.1"
     },
     {
       "name": "stripe_android",
@@ -855,9 +921,9 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/test_api-0.7.2",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/test_api-0.7.3",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.4"
     },
     {
       "name": "text_search",
@@ -981,7 +1047,7 @@
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-14.2.5",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-14.3.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -994,6 +1060,12 @@
     {
       "name": "win32",
       "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/win32-5.5.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "win32_registry",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/win32_registry-1.1.5",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -1011,9 +1083,9 @@
     },
     {
       "name": "yaml",
-      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/yaml-3.1.2",
+      "rootUri": "file:///C:/Users/Alano/AppData/Local/Pub/Cache/hosted/pub.dev/yaml-3.1.3",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.4"
     },
     {
       "name": "silah",
@@ -1022,10 +1094,10 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-10-29T19:35:15.864922Z",
+  "generated": "2025-04-13T18:45:44.266512Z",
   "generator": "pub",
-  "generatorVersion": "3.5.2",
+  "generatorVersion": "3.6.2",
   "flutterRoot": "file:///C:/Users/Alano/AppData/Roaming/FlutterFlow/flutterflow/flutter",
-  "flutterVersion": "3.24.2",
+  "flutterVersion": "3.27.4",
   "pubCache": "file:///C:/Users/Alano/AppData/Local/Pub/Cache"
 }
