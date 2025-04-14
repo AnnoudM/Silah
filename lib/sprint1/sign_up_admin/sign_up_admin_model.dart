@@ -22,91 +22,43 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
-  String? _textController1Validator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'هذا الحقل مطلوب';
-    }
-
-    if (val.length > 50) {
-      return 'الاسم طويل جدا';
-    }
-    if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
-      return 'اسم فارغ!';
-    }
-    return null;
-  }
 
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  String? _textController2Validator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'هذا الحقل مطلوب';
-    }
-
-    if (val.length > 50) {
-      return 'الاسم طويل جدا';
-    }
-    if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
-      return 'الاسم فارغ!';
-    }
-    return null;
-  }
 
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode3;
   TextEditingController? textController3;
   String? Function(BuildContext, String?)? textController3Validator;
-  String? _textController3Validator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'هذا الحقل مطلوب';
-    }
-
-    if (val.length > 50) {
-      return 'الاسم طويل جدا';
-    }
-    if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
-      return 'اسم فارغ!';
-    }
-    return null;
-  }
 
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode4;
   TextEditingController? textController4;
   String? Function(BuildContext, String?)? textController4Validator;
-  String? _textController4Validator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'هذا الحقل مطلوب';
-    }
-
-    if (val.length > 50) {
-      return 'الاسم طويل جدا';
-    }
-    if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
-      return 'اسم فارغ!';
-    }
-    return null;
-  }
 
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode5;
   TextEditingController? textController5;
   String? Function(BuildContext, String?)? textController5Validator;
-  String? _textController5Validator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'هذا الحقل مطلوب';
-    }
 
-    if (val.length > 50) {
-      return 'الاسم طويل جدا';
-    }
-    if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
-      return 'اسم فارغ!';
-    }
-    return null;
+   String? commonValidator(BuildContext context, String? val) {
+  if (val == null || val.isEmpty) {
+    return 'هذا الحقل مطلوب';
   }
+
+  if (val.length > 50) {
+    return 'الاسم طويل جدا';
+  }
+
+  if (!RegExp('^(?!\\s*\$).+').hasMatch(val)) {
+    return 'اسم فارغ!';
+  }
+
+  return null;
+}
+ 
 
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode6;
@@ -218,11 +170,11 @@ class SignUpAdminModel extends FlutterFlowModel<SignUpAdminWidget> {
 
   @override
   void initState(BuildContext context) {
-    textController1Validator = _textController1Validator;
-    textController2Validator = _textController2Validator;
-    textController3Validator = _textController3Validator;
-    textController4Validator = _textController4Validator;
-    textController5Validator = _textController5Validator;
+    textController1Validator = commonValidator;
+    textController2Validator = commonValidator;
+    textController3Validator = commonValidator;
+    textController4Validator = commonValidator;
+    textController5Validator = commonValidator;
     textController6Validator = _textController6Validator;
     textController7Validator = _textController7Validator;
     emailTextControllerValidator = _emailTextControllerValidator;
