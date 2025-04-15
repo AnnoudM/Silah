@@ -86,7 +86,14 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
           final containerUsersRecord = containerUsersRecordList.isNotEmpty
               ? containerUsersRecordList.first
               : null;
-
+       final bool isPostOwner = widget.postrefuser?.userID == containerUsersRecord?.reference;
+                                                final bool isTargetCategory = [
+                                                                                 'الكل',
+                                                                                 'مواليد',
+                                                                                  'أفراح',
+                                                                                  'إنجازات',
+                                                                                   'تعزيه',
+                                                                               ].contains(widget.selectedCategory);
           return Container(
             width: 375.0,
             decoration: BoxDecoration(
@@ -645,6 +652,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                                           snapshot
                                                                               .data!;
 
+
                                                                       return Text(
                                                                         textCommentRecordList
                                                                             .length
@@ -665,20 +673,9 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                           );
                                                         },
                                                       ),
-                                                      if ((widget.postrefuser
-                                                                  ?.userID ==
-                                                              containerUsersRecord
-                                                                  ?.reference) &&
-                                                          ((widget.selectedCategory ==
-                                                                  'الكل') ||
-                                                              (widget.selectedCategory ==
-                                                                  'مواليد') ||
-                                                              (widget.selectedCategory ==
-                                                                  'أفراح') ||
-                                                              (widget.selectedCategory ==
-                                                                  'إنجازات') ||
-                                                              (widget.selectedCategory ==
-                                                                  'تعزيه')))
+                                                    
+                                                      if (isPostOwner && isTargetCategory)
+                                                      
                                                         Builder(
                                                           builder: (context) =>
                                                               Padding(
@@ -805,6 +802,7 @@ class _PostitemsWidgetState extends State<PostitemsWidget> {
                                                           ),
                                                         ),
                                                     ],
+                                                
                                                   ),
                                                 ),
                                               ],
