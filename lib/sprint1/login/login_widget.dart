@@ -490,186 +490,129 @@ class _LoginWidgetState extends State<LoginWidget>
                                           ),
                                         ),
                                       ),
-                                    Builder(
-                                      builder: (context) => Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 16.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () async {
-                                            await authManager.refreshUser();
-                                            _model.logValid =
-                                                await actions.validateLogIn(
-                                              _model.emailAddressTextController
-                                                  .text,
-                                              _model
-                                                  .passwordTextController.text,
-                                            );
-                                            if (_model.logValid!) {
-                                              _model.errLogIn = '';
-                                              safeSetState(() {});
-                                            } else {
-                                              _model.errLogIn =
-                                                  'البريد الإلكتروني أو كلمة المرور غير صحيحة، حاول مرة أخرى';
-                                              safeSetState(() {});
-                                            }
+                                   Builder(
+  builder: (context) => Padding(
+    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+    child: FFButtonWidget(
+      onPressed: () async {
+        await authManager.refreshUser();
 
-                                            GoRouter.of(context)
-                                                .prepareAuthEvent();
+        _model.logValid = await actions.validateLogIn(
+          _model.emailAddressTextController.text,
+          _model.passwordTextController.text,
+        );
 
-                                            final user = await authManager
-                                                .signInWithEmail(
-                                              context,
-                                              _model.emailAddressTextController
-                                                  .text,
-                                              _model
-                                                  .passwordTextController.text,
-                                            );
-                                            if (user == null) {
-                                              return;
-                                            }
+        if (_model.logValid!) {
+          _model.errLogIn = '';
+        } else {
+          _model.errLogIn = 'البريد الإلكتروني أو كلمة المرور غير صحيحة، حاول مرة أخرى';
+        }
+        safeSetState(() {});
 
-                                            _model.userLog =
-                                                await queryUsersRecordOnce(
-                                              queryBuilder: (usersRecord) =>
-                                                  usersRecord.where(
-                                                'uid',
-                                                isEqualTo: currentUserUid,
-                                              ),
-                                              singleRecord: true,
-                                            ).then((s) => s.firstOrNull);
-                                            if (_model.userLog!.isAdmin) {
-                                              if (currentUserEmailVerified) {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  SnackBar(
-                                                    content: Text(
-                                                      'تم تسجيل الدخول بنجاح',
-                                                      style: TextStyle(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                      ),
-                                                    ),
-                                                    duration: const Duration(
-                                                        milliseconds: 4000),
-                                                    backgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .success,
-                                                  ),
-                                                );
+        GoRouter.of(context).prepareAuthEvent();
 
-                                                context.pushNamedAuth(
-                                                    'HomeAdmin',
-                                                    context.mounted);
-                                              } else {
-                                                if (_model.userLog!.primAdmin) {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder: (dialogContext) {
-                                                      return Dialog(
-                                                        elevation: 0,
-                                                        insetPadding:
-                                                            EdgeInsets.zero,
-                                                        backgroundColor:
-                                                            Colors.transparent,
-                                                        alignment:
-                                                            const AlignmentDirectional(
-                                                                    0.0, 0.0)
-                                                                .resolve(
-                                                                    Directionality.of(
-                                                                        context)),
-                                                        child: GestureDetector(
-                                                          onTap: () =>
-                                                              FocusScope.of(
-                                                                      dialogContext)
-                                                                  .unfocus(),
-                                                          child:
-                                                              const EmailVerifyAlertWidget(),
-                                                        ),
-                                                      );
-                                                    },
-                                                  );
-                                                } else {
-                                                  context.pushNamedAuth(
-                                                      'HomeAdmin',
-                                                      context.mounted);
-                                                }
-                                              }
-                                            } else {
-                                              if (_model.userLog!.accepted) {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  SnackBar(
-                                                    content: Text(
-                                                      'تم تسجيل الدخول بنجاح',
-                                                      style: TextStyle(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                      ),
-                                                    ),
-                                                    duration: const Duration(
-                                                        milliseconds: 4000),
-                                                    backgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .success,
-                                                  ),
-                                                );
+        final user = await authManager.signInWithEmail(
+          context,
+          _model.emailAddressTextController.text,
+          _model.passwordTextController.text,
+        );
+        if (user == null) return;
 
-                                                context.pushNamedAuth(
-                                                    'HomeUser',
-                                                    context.mounted);
-                                              } else {
-                                                if (_model.userLog!.rejected) {
-                                                  context.pushNamedAuth(
-                                                      'RejectPage',
-                                                      context.mounted);
-                                                } else {
-                                                  context.pushNamedAuth(
-                                                      'PendingPage',
-                                                      context.mounted);
-                                                }
-                                              }
-                                            }
+        _model.userLog = await queryUsersRecordOnce(
+          queryBuilder: (usersRecord) => usersRecord.where(
+            'uid',
+            isEqualTo: currentUserUid,
+          ),
+          singleRecord: true,
+        ).then((s) => s.firstOrNull);
 
-                                            safeSetState(() {});
-                                          },
-                                          text: 'تسجيل الدخول',
-                                          options: FFButtonOptions(
-                                            width: double.infinity,
-                                            height: 44.0,
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0xFF2A497D),
-                                            textStyle: FlutterFlowTheme.of(
-                                                    context)
-                                                .titleSmall
-                                                .override(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  fontSize: 16.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                            elevation: 3.0,
-                                            borderSide: const BorderSide(
-                                              color: Color(0xFF757575),
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
+        final isAdmin = _model.userLog?.isAdmin ?? false;
+        final isPrimAdmin = _model.userLog?.primAdmin ?? false;
+        final isAccepted = _model.userLog?.accepted ?? false;
+        final isRejected = _model.userLog?.rejected ?? false;
+
+        if (isAdmin) {
+          if (currentUserEmailVerified) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  'تم تسجيل الدخول بنجاح',
+                  style: TextStyle(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                ),
+                duration: const Duration(milliseconds: 4000),
+                backgroundColor: FlutterFlowTheme.of(context).success,
+              ),
+            );
+            context.pushNamedAuth('HomeAdmin', context.mounted);
+          } else if (isPrimAdmin) {
+            await showDialog(
+              context: context,
+              builder: (dialogContext) {
+                return Dialog(
+                  elevation: 0,
+                  insetPadding: EdgeInsets.zero,
+                  backgroundColor: Colors.transparent,
+                  alignment: const AlignmentDirectional(0.0, 0.0)
+                      .resolve(Directionality.of(context)),
+                  child: GestureDetector(
+                    onTap: () => FocusScope.of(dialogContext).unfocus(),
+                    child: const EmailVerifyAlertWidget(),
+                  ),
+                );
+              },
+            );
+          } else {
+            context.pushNamedAuth('HomeAdmin', context.mounted);
+          }
+        } else {
+          if (isAccepted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  'تم تسجيل الدخول بنجاح',
+                  style: TextStyle(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                ),
+                duration: const Duration(milliseconds: 4000),
+                backgroundColor: FlutterFlowTheme.of(context).success,
+              ),
+            );
+            context.pushNamedAuth('HomeUser', context.mounted);
+          } else {
+            final targetPage = isRejected ? 'RejectPage' : 'PendingPage';
+            context.pushNamedAuth(targetPage, context.mounted);
+          }
+        }
+
+        safeSetState(() {});
+      },
+      text: 'تسجيل الدخول',
+      options: FFButtonOptions(
+        width: double.infinity,
+        height: 44.0,
+        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        color: const Color(0xFF2A497D),
+        textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+              fontFamily: 'Readex Pro',
+              color: FlutterFlowTheme.of(context).secondaryBackground,
+              fontSize: 16.0,
+              letterSpacing: 0.0,
+              fontWeight: FontWeight.w500,
+            ),
+        elevation: 3.0,
+        borderSide: const BorderSide(
+          color: Color(0xFF757575),
+          width: 1.0,
+        ),
+        borderRadius: BorderRadius.circular(12.0),
+      ),
+    ),
+  ),
+), 
                                     InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
